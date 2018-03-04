@@ -1,0 +1,74 @@
+<div class="container">
+	
+	<h1>Set up your theme</h1>
+	
+	<p><strong>Thanks for using our theme.</strong> Before you get started, you'll need to do a bit of set up.</p>
+	
+	<blockquote>
+		<p><strong>Please note:</strong> once you've started the set up process, this page will disappear.</p>
+		<p>You'll need to refer to the <a href="https://github.com/civilservicelgbt/cslgbt-theme/blob/master/README.md">README</a> on <a href="https://github.com/civilservicelgbt/cslgbt-theme/">the Github repository</a> instead.</p>
+	</blockquote>
+	
+	<hr>
+	
+	<h2>1. Set up <code>_config.yml</code></h2>
+	
+	<p>If you don't already have one, create a <code>_config.yml</code> file in the site's root directory.</p>
+	
+	<p>This theme requires the following information to be added to that file to function:</p>
+	
+	<h3>Basic information</h3>
+	
+	<ul>
+		<li><code>title:</code> <em>(string)</em> - Add a title for the site. We use "Civil Service LGBT+ Network". This will show up in the navbar, in bookmarks and social shares, and in the footer of the site.</li>
+		<li><code>short-title:</code> <em>(string)</em> - Add a 'short' title that show up in the site's header. e.g. instead of "Civil Service LGBT+ Network", we use "Civil Service LGBT+".</li>
+		<li><code>author:</code> <em>(string)</em> - The name of your organisation. e.g. "Civil Service LGBT+ Network".</li>
+		<li><code>description:</code> <em>(string)</em> - This is a brief description of the site (or organisation the site is for). It should be up to 160 characters for Search Engine Optimisation.</li>
+	</ul>
+	
+	<h3>Home page section toggles</h3>
+	
+	<p>There are 4 sections that display on the homepage: news, events, publications and consultations.</p> 
+	
+	<p>By default, they do not appear. You need to manually enable them. To do that add:</p>
+	
+	<ul>
+		<li><code>home-news: true</code> <em>(boolean)</em> - This shows the latest news posts</li>
+		<li><code>home-events: true</code> <em>(boolean)</em> - This shows upcoming events</li>
+		<li><code>home-publications: true</code> <em>(boolean)</em> - This shows the latest publications</li>
+		<li><code>home-consultations: true</code> <em>(boolean)</em> - This shows recent consulations (both open and closed)</li>
+	</ul>
+	
+	<h3>Splash area information</h3>
+	
+	<ul>
+		<li><code>home-splash-h1:</code> <em>(string)</em> - This adds a level 1 heading to the home page splash area. Add something like "Hello".</li>
+		<li><code>home-splash-h2:</code> <em>(string)</em> - This adds a level 2 heading to the home page splash area. Add something like "We're the Civil Service LGBT+ Network".</li>
+		<li><code>home-splash-p:</code> <em>(string)</em> - This adds paragraph text to the home page splash area. Add something like "We're helping to create a more diverse, inclusive and equal place to work for lesbian, gay, bisexual and trans civil servants."</li>
+	</ul>
+	
+	<h3>Other settings</h3>
+	
+	<p>A number of other settings also need to be added for things like social media and analytics.</p> 
+	
+	<p>These should be obvious from the template <code>_config.yml</code> included in this theme. (It's in the '_templates' folder)</p>
+	
+	<hr>
+	
+	<h2>2. Set up menus</h2>
+	
+	<p>There are 3 menus in this theme. Each is controlled through a <code>.csv</code> file in the <code>_data</code> folder.</p>
+	
+	<p>Blank versions have been included in this theme, but you will need to add them to your site's <code>_data</code> directory.</p>
+	
+	<ul>
+		<li><code>menu.csv</code> - controls the header menu.</li>
+		<li><code>membership.csv</code> - controls the menu in the centre top of the footer. You should use it for important links like membership registration.</li>
+		<li><code>disclaimer.csv</code> - controls the menu at the bottom of the footer. Use it for links to 'terms and conditions' style pages.</li>
+	</ul>		
+	
+	<hr>
+	
+	<h1>That's it!</h1>
+	
+</div>

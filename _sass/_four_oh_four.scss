@@ -1,0 +1,119 @@
+// Home page styles
+
+// Page styles
+
+main#four-oh-four {
+	
+	@supports (display: grid) {
+		display: 					grid;
+
+		grid-template-rows: 			auto auto auto;
+		grid-template-columns: 		1fr;
+		grid-template-areas: 		"page-title"
+									"page-lead-paragraph"
+									"page-content";
+		
+		@include md-up {
+			grid-template-rows: 			auto auto auto;
+			grid-template-columns: 		2fr 1fr;
+			grid-column-gap: 			30px;
+			grid-template-areas: 		"page-title ."
+										"page-lead-paragraph ."
+										"page-content.";
+		}
+	}
+	
+	@supports not (display: grid) {
+		&::after {
+		    content: "";
+		    clear: both;
+		    display: table;
+		}
+	}
+	
+	padding: 45px 0;
+	
+	div#page-title {
+		@supports (display: grid) {
+			grid-area:					page-title;
+		}
+		
+		margin-top: 					45px;
+		margin-bottom: 				45px;
+		
+		h1.page-title {
+			margin: 0;
+			padding: 0;			
+		}
+	}
+	
+	div#page-lead-paragraph {
+		@supports (display: grid) {
+			grid-area:					page-lead-paragraph;
+		}
+		
+		margin-bottom: 				45px;
+		
+		p {
+			font-size: 				$font-size-base + 5px;
+		}
+	}
+	
+	div#page-metadata {
+		@supports (display: grid) {
+			grid-area:					page-metadata;
+		}
+
+		margin-bottom: 				45px;
+		padding-top: 				15px;
+		
+		border-top: 					2px solid $light-gray;
+		
+		p {
+			font-size: 		$font-size-base - 3px;
+			margin:			0;
+		}
+	}
+	
+	div#page-content {
+		
+		@supports not (display: grid) {
+			@include md-up {
+				width: 67%;
+				float: left;
+				clear: left;
+			}
+		}
+		@supports (display: grid) {
+			grid-area:					page-content;
+		}
+
+		margin-bottom: 				45px;
+		padding-top: 				15px;
+		
+		border-top: 					2px solid $light-gray;
+		
+		img.page-image {
+			width: 100%;
+			min-width: 100%;
+			min-height: 100px;
+		}
+		
+		div.footnotes {
+			
+			border-top: 					2px solid $light-gray;
+			
+			margin-top: 					45px;
+			padding: 					15px 0 0 0;
+			
+			&:before {
+				@extend h4;
+				display: inline-block;
+				width: 100%;
+				padding-bottom: 15px;
+				content:	 "Footnotes";
+			}
+		}
+	}
+	
+}

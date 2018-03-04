@@ -1,0 +1,15 @@
+@page {
+	size: A4 portrait;
+	margin: 10mm;
+	
+	@footnote {
+		border-top: 1mm solid $brand-gray;
+		padding-top: 5mm;
+	}
+		
+}
+
+header, 
+footer {
+	display: none;
+}

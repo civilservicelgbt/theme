@@ -1,0 +1,75 @@
+main#news {
+	
+	div#page-related {
+		display: none;
+	}
+	
+}
+
+main#consultation {
+	
+	div#page-related {
+		display: none;
+	}
+	
+}
+
+main#publication {
+	
+	padding: 1cm !important;
+	
+	div#publication-header {
+		
+		display: block;
+		
+		margin: 0;
+		
+		width: 17cm;
+		height: 25.7cm;
+		
+		page-break-after: always;
+		
+		@include box-shadow(20);
+		
+		h1 {
+			font-size: $heading1-font-size-base * 1.4;
+		}
+		
+	}
+	
+	div#page-contents {
+		
+		display: block;
+		
+		ul#markdown-toc {
+			
+			display: none;
+			
+		}
+		
+		div#page-content {
+			
+			page-break-after: always;
+			
+			h1, h2 {
+				page-break-before: always;
+			}
+			
+			> h2:first-of-type {
+				padding-top: 45px;
+			}
+			
+			h3, h4, h5, h6 {
+				page-break-after: avoid;
+			}
+			
+		}
+		
+		div.footnotes {
+			border-top: 		none;
+			padding: 		0;
+		}
+		
+	}
+	
+}

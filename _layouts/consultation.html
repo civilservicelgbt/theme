@@ -1,0 +1,76 @@
+---
+layout: default
+---
+
+<main id="{{ page.layout }}">
+	
+	{% assign today-date = 'now' | date: '%s' %}
+	{% assign end-date = page.end-date | date: '%s' %}
+
+	<div id="page-title">
+		{% if today-date < end-date %}
+		<p class="page-type">Open {{ page.layout }}</p>
+		{% else %}
+		<p class="page-type">Closed {{ page.layout }}</p>
+		{% endif %}
+		<h1 class="page-title">{{ page.title }}</h1>
+	</div>
+	
+	{% include layouts/meta.html %}
+	
+	<div id="page-lead-paragraph">
+		
+		<h2>Summary</h2>
+		
+		<p>{{ page.excerpt }}</p>
+		
+		{% unless page.end-date %}
+			<p><strong>Error: No end date found.</strong> Add end date in post front matter using this format <code>end-date: 2018-01-30</code>.</p>
+		{% endunless %}
+		{% unless page.consultation-link %}
+			<p><strong>Error: No link found.</strong> Add survey link in post front matter using this format <code>consultation-link: https://www.example.com</code>.</p>
+		{% endunless %}
+		
+		
+		{% if today-date < end-date %}
+		
+			{% if page.consultation-link %}
+				<p><strong>This consultation is held on <a href="{{ page.consultation-link }}" title="Open survey in new window" target="_blank">another website</a>.</strong></p>
+			{% endif %}
+			
+			{% if page.end-date %}
+				<p>This consultation closes on <br><time datetime="{{ page.end-date | date: '%Y-%m-%d' }}">{{ page.end-date | date:'%d %B %Y' }}</time></p>
+			{% endif %}
+		
+		{% else %}
+		
+			<p><strong>This consultation has now closed.</strong></p>
+		
+		{% endif %}
+		
+	</div>
+	
+	<div id="page-content">
+		{{ content }}
+	</div>
+	
+	{% assign counter = 0 %}
+	{% for consultation in site.consultations %}
+		{% if consultation.url != page.url %}
+			{% assign counter = counter | plus: 1 %}
+		{% endif %}
+	{% endfor %}	
+	
+	{% if counter > 0 %}
+	<div id="page-related">
+		<h2 class="page-related-title">Other consultations</h2>
+		{% assign consultations = site.consultations | sort: 'end-date' | reverse %}
+		{% for consultation in consultations limit: 3 %}
+			{% if consultation.url != page.url %}
+			<p><a href="{{ consultation.url }}" title="Go to {{ consultation.title }}">{{ consultation.title }}</a></p>
+			{% endif %}
+		{% endfor %}
+	</div>
+	{% endif %}
+	
+</main>

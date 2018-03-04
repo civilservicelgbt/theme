@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<main id="{{ page.layout }}">
+
+	<div id="publication-header">
+
+		<div id="page-title">		
+			<p class="page-type">{{ page.layout }}</p>
+			<h1 class="page-title">{{ page.title }}</h1>
+		</div>
+		
+	{% include layouts/meta.html %}
+		
+	</div>
+	
+	<div id="page-contents">
+		
+		{{ content }}
+		
+	</div>
+	
+</main>

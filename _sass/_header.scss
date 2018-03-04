@@ -1,0 +1,237 @@
+// Header styles
+
+nav#site-navigation {
+	
+	position: relative;
+	
+	z-index: 				1000000;
+	
+	top: 			0;
+	left: 			0;
+	right: 			0;
+	
+	height: 			auto;
+
+	padding: 		15px 0 15px 0;
+	margin: 			0;
+
+			
+	.container div#menu {
+		
+		@supports (display: grid) {
+			display: 					grid;
+			
+			grid-template-columns: 		5fr 1fr;
+			grid-template-rows: 			auto auto;
+			grid-template-areas: 		"title menu"
+										"navigation navigation";
+	
+			@include md-up {
+				grid-template-columns: 		1fr 2fr;
+				grid-template-rows: 			auto;
+				grid-template-areas: 		"title navigation";
+			}
+			
+		}
+
+		background: 				$black;
+		@include					box-shadow(5);
+	
+		padding: 		0 15px;
+		margin: 0;
+
+	}
+	
+	span.site-title {
+		
+		position: relative;
+		display: block;
+		
+		@supports (display: grid) {
+			grid-area:	title;
+			align-self: center;
+		}
+		@supports not (display: grid) {
+			float: left;
+			clear: left;
+		}
+		
+		padding: 	15px 0;						
+		@include md-up {
+			padding: 12px 0;
+		}
+		margin: 0;
+		
+		a {
+			display: inline-block;
+						
+			transition: 			all 0.5s ease;
+						
+			color: $white;
+			font-size: $font-size-base;
+			@include md-up {
+				font-size: $font-size-base + 4px;
+			}
+			font-weight: bold;
+			@supports not (display: grid) {
+				line-height: 55px;	
+				height: 55px;
+				vertical-align: middle;
+			}
+			@supports (display: grid) {
+				line-height: $font-line-height;
+				align-self: center;
+			}	
+			
+			text-decoration: none;
+			
+			&:hover,
+			&:focus {
+				transition: 			all 0.5s ease;
+				text-decoration: underline;
+				-webkit-text-decoration-color: $white;
+						text-decoration-color: $white;
+			}
+		}
+	}
+	
+	span.menu-button {
+		
+		position: relative;
+		display: block;
+		
+		@supports (display: grid) {
+			grid-area: menu;
+		}
+				
+		padding: 15px 0;
+		margin: 0;
+		
+		text-align: right;
+		
+		button#menu-toggle {
+			
+			position: relative;
+			display: block;
+			
+			height: 25px;
+			width: 30px;
+			
+			margin: 0;
+			margin-left: auto;
+			padding: 0;
+						
+			background: none;
+			border: none;	
+					
+			font-size: $font-size-base;
+			font-weight: bold;
+			line-height: $font-line-height;
+			
+			text-decoration: none;
+			
+			span.bar {
+				position: absolute;
+				display: block;
+				height: 5px;
+				width: 30px;
+				
+				margin-left: auto;
+				margin-right: 0px;
+
+				left: 0px;
+								
+				background: $white;
+				
+				&:nth-of-type(1) {
+					top: 0px;
+				}
+				&:nth-of-type(2) {
+					top: 10px;
+				}
+				&:nth-of-type(3) {
+					top: 20px;
+				}	
+
+				transition: all 0.5s ease;
+			}
+
+			&:hover,
+			&:focus {
+				span.bar {
+					transition: all 0.5s ease;
+				}				
+			}
+			
+			&.open {
+				span.bar {
+					
+					&:nth-of-type(1) {
+						transform: rotate(45deg) translate(5px, 8px);
+					}
+					&:nth-of-type(2) {
+						opacity: 0;
+					}
+					&:nth-of-type(3) {
+						transform: rotate(-45deg) translate(6px, -9px);
+					}
+					
+				}
+			}
+		}
+		
+		@include md-up {
+			display: none;
+		}
+	}
+
+	ul {
+		
+		&.closed {
+			display: none;
+			@include md-up {
+				display: block;	
+			}
+		}
+		
+		@supports (display: grid) {
+			grid-area:			navigation;
+		}
+						
+		list-style: none;
+		padding: 0;
+		margin: 0;
+				
+		@include md-up {
+			display: block;
+			text-align: right;
+		}
+				
+		li {
+			
+			display: block;
+			padding: 15px 0;
+			
+			@include md-up {
+				display: inline-block;
+				padding: 17px 0 17px 10px;
+			}
+			margin: 0;
+			
+			&:last-child {
+				padding-right: 0;
+			}
+						
+			a {
+				font-size: 			$font-size-base - 4px;
+				font-weight: 		bold;
+				color: 				$white;
+			}
+			
+			&.active a {
+				color: $cyan;
+			}
+		}
+		
+	}
+}

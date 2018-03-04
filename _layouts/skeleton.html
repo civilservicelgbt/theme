@@ -1,0 +1,15 @@
+<html>
+	
+	{% include head.html %}
+
+	<body class="{{ page.layout }}">
+		
+		{% if site.home-splash-h1 %}
+		{{ content }}
+		{% else %}
+		{% include error/set-up.html %}
+		{% endif %}
+		
+	</body>
+	
+</html>

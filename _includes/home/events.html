@@ -1,0 +1,44 @@
+<section id="posts-events">
+	
+	<h1 class="section-title"><a href="{{ site.url | append: site.baseurl | append: '/events/' }}" title="Go to the events page">Upcoming events</a></h1>
+
+	{% assign events = site.events | sort: "event-date" | reverse %}
+	{% assign today-date = 'now' | date: '%s' %}
+	
+	{% assign events-counter = 0 %}
+	{% for post in events %}
+	{% assign event-date = post.event-date | date: '%s' %}
+	{% if today-date < event-date %}
+		{% assign events-counter = events-counter | plus: 1 %}
+	{% endif %}
+	{% endfor %}
+	
+	{% if events-counter > 0 %}
+	
+	<ul>
+		{% for post in events limit: 3 %}
+		{% assign event-date = post.event-date | date: '%s' %}
+		{% if today-date < event-date %}
+		<li>
+			<article>
+				<h2>
+					<a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">
+						{{ post.title }}
+					</a>
+				</h2>
+				<p class="post-metadata">On <time datetime="{{ post.event-date | date: '%Y-%m-%d' }}">{{ post.event-date  | date:'%-d %B %Y' }}</time></p>
+			</article>
+		</li>
+		{% endif %}
+		{% endfor %}
+	</ul>
+	
+	{% else %}
+	
+		<p class="no-events"><strong>Sorry. We don't have any events planned at the moment.</strong>
+			<br>If you'd like to run an event, <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">contact us</a>.</p>
+		</p>
+	
+	{% endif %}
+	
+</section>

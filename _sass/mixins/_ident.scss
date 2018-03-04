@@ -1,0 +1,11 @@
+@mixin text-shadow($x) {
+	text-shadow: 	(-1px * $x) (-1px * $x) $cyan,
+					(0px * $x) (0px * $x) $magenta,
+					(1px * $x) (1px * $x) $yellow;
+}
+
+@mixin box-shadow($x) {
+	box-shadow: 		(-1px * $x) (-1px * $x) $magenta,
+					(1px * $x) (1px * $x) $cyan,
+					(2px * $x) (2px * $x) $yellow;
+}

@@ -1,0 +1,518 @@
+// Posts page styles
+
+main#news,
+main#consultation,
+main#publication,
+main#event {
+	padding: 45px 0;
+}
+
+main#news {
+	
+	@supports (display: grid) {
+		display: 					grid;
+	
+		grid-template-rows: 			auto auto auto auto auto;
+		grid-template-columns: 		1fr;
+		grid-template-areas: 		"page-title"
+									"page-lead-paragraph"
+									"page-metadata"
+									"page-content"
+									"page-related";
+		
+		@include md-up {
+			grid-template-rows: 			auto auto auto auto;
+			grid-template-columns: 		2fr 1fr;
+			grid-column-gap: 			30px;
+			grid-template-areas: 		"page-title ."
+										"page-lead-paragraph ."
+										"page-metadata page-metadata"
+										"page-content page-related";
+		}
+	}
+	
+	@supports not (display: grid) {
+		&::after {
+		    content: "";
+		    clear: both;
+		    display: table;
+		}
+	}
+	
+	div#page-title {
+		
+		width: 100%;
+		
+		@supports (display: grid) {
+			grid-area:					page-title;
+		}
+		
+		margin-top: 					45px;
+		margin-bottom: 				45px;
+		
+		p.page-type {
+			font-size: 				$font-size-base + 5px;
+			color:					$brand-gray;
+			text-transform: 			capitalize;
+			
+			margin-top: 				0;
+		}
+		h1.page-title {
+			margin: 0;
+			padding: 0;
+		}
+	}
+	
+	div#page-lead-paragraph {
+		
+		width: 100%;
+		
+		@supports (display: grid) {
+			grid-area:					page-lead-paragraph;
+		}
+		
+		margin-bottom: 				45px;
+		
+		p {
+			font-size: 				$font-size-base + 5px;
+		}
+	}
+	
+	div#page-metadata {
+		
+		@supports (display: grid) {
+			grid-area:					page-metadata;
+		}
+
+		margin-bottom: 				45px;
+		padding-top: 				15px;
+		
+		border-top: 					2px solid $light-gray;
+		
+		p {
+			font-size: 		$font-size-base - 3px;
+			margin:			0;
+		}
+	}
+	
+	div#page-content {
+		
+		@supports not (display: grid) {
+			@include md-up {
+				width: 67%;
+				float: left;
+				clear: left;
+			}
+		}
+		
+		@supports (display: grid) {
+			grid-area:					page-content;
+		}
+
+		margin-bottom: 				45px;
+		padding-top: 				15px;
+		
+		border-top: 					2px solid $light-gray;
+		
+		img.page-image {
+			width: 100%;
+			min-width: 100%;
+			min-height: 100px;
+		}
+		
+		div.footnotes {
+			
+			border-top: 					2px solid $light-gray;
+			
+			margin-top: 					45px;
+			padding: 					15px 0 0 0;
+			
+			&:before {
+				@extend h4;
+				display: inline-block;
+				width: 100%;
+				padding-bottom: 15px;
+				content:	 "Footnotes";
+			}
+		}
+	}
+	
+	div#page-related {
+		
+		@supports not (display: grid) {
+			@include md-up {
+				width: calc(33% - 30px);
+				float: right;
+				clear: none;
+				
+				margin-left: 30px;
+			}
+		}
+		
+		@supports (display: grid) {
+			grid-area:					page-related;
+		}
+
+		margin-bottom: 				45px;
+		padding-top: 				15px;
+		
+		border-top: 					2px solid $brand-primary;
+		
+		h2.page-related-title {
+			font-size: 		$font-size-base + 3px;
+			font-weight: 	bold;
+			padding: 0 0 15px 0;
+		}
+	}
+	
+}
+	
+main#consultation {
+	@extend #news;
+	
+	@supports (display: grid) {
+		grid-template-rows: 			auto auto auto auto auto;
+		grid-template-columns: 		1fr;
+		grid-template-areas: 		"page-title"
+									"page-metadata"
+									"page-lead-paragraph"
+									"page-content"
+									"page-related";
+		
+		@include md-up {
+			grid-template-rows: 			auto auto auto auto;
+			grid-template-columns: 		2fr 1fr;
+			grid-column-gap: 			30px;
+			grid-template-areas: 		"page-title ."
+										"page-metadata page-metadata"
+										"page-lead-paragraph page-related"
+										"page-content .";
+		}
+	}
+	
+	div#page-lead-paragraph {
+		
+		@supports not (display: grid) {
+			width: 67%;
+	 	}
+		
+		background: $black;
+
+		@include box-shadow(5);
+		
+		padding: 					30px;
+		margin-bottom: 				45px;
+		
+		p {
+			font-size: 				$font-size-base;
+			color:					$brand-inverse;
+			
+			padding: 				10px 0px 0px 0px;
+			margin: 					0;
+		}
+		code {
+			font-size: 				$font-size-base - 2px;
+			color:		$brand-inverse;
+			
+			padding: 10px 0px 0px 0px;
+			margin: 0;
+		}
+		a {
+			color: white;
+			text-decoration: underline;
+		}
+		time {
+			font-weight: bold;
+		}
+		h2 {
+			color:		$brand-inverse;
+			
+			padding: 0;
+			margin: 0 0 10px 0;
+		}
+	}
+
+	div#page-content {
+		
+		@supports not (display: grid) {
+			width: 67%;
+			float: left;
+			clear: left;
+	 	}
+	 	
+		border-top: 					none;
+		
+		h2 {
+			font-size:				$heading2-font-size-base;
+			margin:					0 0 30px 0;
+			padding: 				0;
+		}
+			
+	}
+	
+	div#page-related {
+		@supports not (display: grid) {
+			width: calc(33% - 30px);
+			float: right;
+			clear: none;
+			margin-left: 30px;
+	 	}
+	}
+	
+}
+
+main#publication {
+	
+	@supports (display: grid) {
+		display: grid;
+		
+		grid-template-rows: 			auto auto;
+		grid-template-columns: 		1fr;
+		grid-template-areas: 		"publication-header"
+									"page-contents";
+	}
+
+	div#publication-header {
+		
+		@supports (display: grid) {
+			grid-area:				publication-header;
+		}
+				
+		background: $black;
+
+		@include box-shadow(5);
+		
+		padding: 				45px;
+		margin: 					0 0 45px 0;
+
+		@supports (display: grid) {
+			margin: 					45px 0;
+		}
+		
+		div#page-title {
+			
+			margin-top: 					0;
+			margin-bottom: 				45px;
+			
+			p.page-type {
+				font-size: 				$font-size-base + 5px;
+				color:					$brand-inverse;
+				text-transform: 			capitalize;
+				
+				margin-top: 				0;
+			}
+			h1.page-title {
+				margin: 0;
+				padding: 0;				
+				color: 					$brand-inverse;
+			}
+		}
+		
+		div#page-metadata {
+	
+			margin-bottom: 				0;
+			padding-top: 				15px;
+			
+			border-top: 				none;
+			
+			p {
+				font-size: 		$font-size-base - 3px;
+				color:			$brand-inverse;
+				margin:			0;
+			}
+		}
+		
+	}
+		
+	div#page-contents {
+		
+		@supports not (display: grid) {
+			&::after {
+			    content: "";
+			    clear: both;
+			    display: table;
+			}	
+		}
+		
+		@supports (display: grid) {
+			grid-area:				page-contents;
+			
+			display: grid;
+
+			grid-template-rows: 			auto auto auto;
+			grid-template-columns: 		1fr;
+			grid-template-areas: 		"page-toc" 
+										"page-content"
+										"page-footnotes";
+			
+			@include md-up {
+				grid-template-rows: 			auto;
+				grid-template-columns: 		1fr 3fr;
+				grid-column-gap: 			30px;
+				grid-template-areas: 		"page-toc page-content"
+											"page-toc page-footnotes";
+			}
+		}
+		
+		margin-bottom: 				45px;
+		padding-top: 				15px;
+									
+		border-top: 				none;
+		
+		ul#markdown-toc {
+		
+			@supports not (display: grid) {
+				width: 25%;
+				float: left;
+				clear: left;
+			}
+			
+			@supports (display: grid) {
+				grid-area:					page-toc;
+			}
+			
+			padding: 0;
+			margin: 0 0 45px;
+			
+			list-style: none;
+			list-style-type: none;
+						
+			&:before {
+				@extend h4;
+				
+				padding-top: 0;
+				
+				display: inline-block;
+				content: "Contents";
+								
+				width: 100%;
+			}
+			
+			li {
+				margin: 0;
+				padding: 0 0 15px 0;
+				
+				font-size: $font-size-base - 2px;				
+			
+				> ul {
+					display: none;
+				}
+				
+			}
+		}
+		
+		div#page-content {		
+			
+			> h2:first-of-type {
+				padding-top: 0;
+				margin-top: 0;
+			}
+			
+			@supports not (display: grid) {
+				width: 75%;
+				float: left;
+				clear: none;
+			}
+			
+			@supports (display: grid) {
+				grid-area:					page-content;
+			}	
+			
+			margin-bottom: 				45px;
+		}
+		
+		div.footnotes {			
+			border-top: 					2px solid $light-gray;
+			padding: 					15px 0 0 0;
+			
+			&:before {
+				@extend h4;
+				display: inline-block;
+				width: 100%;
+				padding-bottom: 15px;
+				content:	 "Footnotes";
+			}
+		}
+
+	}
+
+}
+
+main#event {
+	@extend #news;
+	
+	@supports (display: grid) {
+		grid-template-rows: 			auto auto auto auto auto;
+		grid-template-columns: 		1fr;
+		grid-template-areas: 		"page-title"
+									"page-metadata"
+									"page-lead-paragraph"
+									"page-content"
+									"page-related";
+		
+		@include md-up {
+			grid-template-rows: 			auto auto auto auto;
+			grid-template-columns: 		2fr 1fr;
+			grid-column-gap: 			30px;
+			grid-template-areas: 		"page-title ."
+										"page-metadata page-metadata"
+										"page-lead-paragraph page-related"
+										"page-content .";
+		}
+	}
+		
+	div#page-lead-paragraph {
+		background: $black;
+
+		@include box-shadow(5);
+		
+		color: 		$brand-inverse;
+		
+		padding: 					30px;
+		margin-bottom: 				45px;
+		
+		p {
+			font-size: 				$font-size-base;
+			color:					$brand-inverse;
+			
+			padding: 				10px 0px 0px 0px;
+			margin: 					0;
+		}
+		ul {
+			padding-top: 15px;
+			padding-bottom: 15px;
+		}
+		code {
+			font-size: 				$font-size-base - 2px;
+			color:		$brand-inverse;
+			
+			padding: 10px 0px 0px 0px;
+			margin: 0;
+		}
+		a {
+			color: white;
+			text-decoration: underline;
+		}
+		time {
+
+		}
+		h2 {
+			color:		$brand-inverse;
+			
+			padding: 0;
+			margin: 0 0 10px 0;
+		}
+	}
+
+	div#page-content {
+		border-top: 					none;
+		
+		h2 {
+			font-size:				$heading2-font-size-base;
+			margin:					0 0 30px 0;
+			padding: 				0;
+		}
+			
+	}
+	
+}

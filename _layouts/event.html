@@ -1,0 +1,127 @@
+---
+layout: default
+---
+
+<main id="{{ page.layout }}">
+	
+	{% assign today-date = 'now' | date: '%s' %}
+	{% assign event-date = page.event-date | date: '%s' %}
+	{% assign reg-close-date = page.registration-close-date | date: '%s' %}
+
+	<div id="page-title">
+		<p class="page-type">{{ page.layout }}</p>
+		<h1 class="page-title">{{ page.title }}</h1>
+	</div>
+		
+	<div id="page-lead-paragraph">
+		
+		<h2>Event details</h2>		
+		
+		{% unless page.event-link or page.event-email %}
+			<p><strong>Error: No registration link or email found.</strong> Add a link or email address in post front matter using either of these formats:
+				<ol>
+					<li><code>event-link: https://www.example.com</code></li>
+					<li><code>event-email: info@example.com</code></li>
+				</ol></p>
+		{% endunless %}
+		
+		{% if page.registration-close-date %}
+		
+			{% if today-date < event-date and today-date < reg-close-date %}
+									
+				{% if page.event-date %}
+					<p><strong>Date and time</strong><br><time datetime="{{ page.event-date | date: '%Y-%m-%d' }}">{{ page.event-date | date:'%-d %B %Y at %H:%M' }}</time></p>
+				{% else %}
+					<p><strong>Error: No event date found.</strong> Add event date and time in post front matter using this format <code>event-date: 2018-01-30 18:30:00</code>.</p>
+				{% endif %}
+				
+				{% if page.event-location %}
+					<p><strong>Location</strong><br>{{ page.event-location}}</p>
+				{% endif %}
+				
+				<p><strong>Registration deadline</strong><br><time datetime="{{ page.registration-close-date | date: '%Y-%m-%d' }}">{{ page.registration-close-date  | date:'%-d %B %Y' }}</time></p>
+			
+				{% if page.event-link and page.event-email %}
+					<p>To attend this event, <a href="{{ page.event-link }}" title="Register for this event (opens in new window)" target="_blank">register online</a> or <a href="mailto:{{ page.event-email }}" title="Email {{ page.event-email }}">contact the organiser.</a></p>
+				{% elsif page.event-link %}
+					<p>To register for this event, <a href="{{ page.event-link }}" title="Register for this event (opens in new window)" target="_blank">register online.</a></p>
+				{% elsif page.event-email %}
+					<p>To register for this event, <a href="mailto:{{ page.event-email }}" title="Email {{ page.event-email }}">contact the organiser.</a></p>
+				{% endif %}
+			
+			{% elsif today-date < event-date and today-date > reg-close-date %}
+			
+				{% if page.event-date %}
+					<p><strong>Date and time</strong><br><time datetime="{{ page.event-date | date: '%Y-%m-%d' }}">{{ page.event-date | date:'%-d %B %Y at %H:%M' }}</time></p>
+				{% else %}
+					<p><strong>Error: No event date found.</strong> Add event date and time in post front matter using this format <code>event-date: 2018-01-30 18:30:00</code>.</p>
+				{% endif %}
+				
+				{% if page.event-location %}
+					<p><strong>Location</strong><br>{{ page.event-location}}</p>
+				{% endif %}
+	
+				<p><strong>Registrations for this event have now closed.</strong></p>
+				
+			{% elsif today-date > event-date %}
+			
+				<p><strong>This event has already taken place.</strong></p>
+	
+			{% endif %}
+			
+		{% else %}
+		
+			{% if today-date < event-date %}
+					
+				{% if page.event-date %}
+					<p><strong>Date and time</strong><br><time datetime="{{ page.event-date | date: '%Y-%m-%d' }}">{{ page.event-date | date:'%-d %B %Y at %H:%M' }}</time></p>
+				{% else %}
+					<p><strong>Error: No event date found.</strong> Add event date and time in post front matter using this format <code>event-date: 2018-01-30 18:30:00</code>.</p>
+				{% endif %}
+				
+				{% if page.event-location %}
+					<p><strong>Location</strong><br>{{ page.event-location}}</p>
+				{% endif %}
+			
+				{% if page.event-link and page.event-email %}
+					<p>To attend this event, <a href="{{ page.event-link }}" title="Register for this event (opens in new window)" target="_blank">register online</a> or <a href="mailto:{{ page.event-email }}" title="Email {{ page.event-email }}">contact the organiser.</a></p>
+				{% elsif page.event-link %}
+					<p>To register for this event, <a href="{{ page.event-link }}" title="Register for this event (opens in new window)" target="_blank">register online.</a></p>
+				{% elsif page.event-email %}
+					<p>To register for this event, <a href="mailto:{{ page.event-email }}" title="Email {{ page.event-email }}">contact the organiser.</a></p>
+				{% endif %}
+			
+			{% elsif today-date > event-date %}
+			
+				<p><strong>This event has already taken place.</strong></p>
+	
+			{% endif %}
+
+
+		{% endif %}
+		
+	</div>
+	
+	<div id="page-content">
+		{{ content }}
+	</div>
+	
+	{% assign counter = 0 %}
+	{% for event in site.events %}
+		{% if event.url != page.url %}
+			{% assign counter = counter | plus: 1 %}
+		{% endif %}
+	{% endfor %}	
+	
+	{% if counter > 0 %}
+	<div id="page-related">
+		<h2 class="page-related-title">Other events</h2>
+		{% for event in site.events limit: 3 %}
+			{% if event.url != page.url %}
+			<p><a href="{{ event.url }}" title="Go to {{ event.title }}">{{ event.title }}</a></p>
+			{% endif %}
+		{% endfor %}
+	</div>
+	{% endif %}
+	
+</main>
