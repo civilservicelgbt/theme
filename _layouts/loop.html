@@ -19,8 +19,11 @@ layout: default
 			<ul>
 			{% for post in site.posts %}
 				<li>
+					<article>
 					<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
-					<p><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time></p>
+					<p>{{ post.excerpt }}</p>
+					<p class="post-metadata">Published <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time> {% if post.author %}by {{ post.author }}{% endif %}</p>
+					</article>
 				</li>
 			{% endfor %}
 			</ul>

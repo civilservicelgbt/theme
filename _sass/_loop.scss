@@ -103,17 +103,25 @@ main#loop {
 					border: none;
 				}
 				
-				h2 {
-					@extend h4;
-					padding-top: 15px;
-					padding-bottom: 0;
-				}
-				
-				p {
-					padding-top: 	0;
-					padding-bottom: 10px;
+				article {
 					
-					font-size: $font-size-base - 4px;
+					padding-bottom: 15px;
+							
+					h2 {
+						@extend h4;
+						padding-top: 15px;
+						padding-bottom: 0;
+					}
+					
+					p {
+						font-size: 		$font-size-base - 2px;
+						margin:			5px 0 0 0;
+						
+						&.post-metadata {
+							font-size: 	$font-size-base - 4px;
+							color: 		$dark-gray;
+						}
+					}
 				}
 				
 			}
