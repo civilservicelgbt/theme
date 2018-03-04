@@ -139,7 +139,8 @@ body.home {
 										"join"
 										"publications"
 										"consutlations"
-										"social";
+										"social"
+										"manuals";
 
 				
 				@include md-up {
@@ -151,7 +152,8 @@ body.home {
 											"join social"
 											"events events"
 											"publications publications"
-											"consutlations consutlations";
+											"consutlations consutlations"
+											"manuals manuals";
 				}
 			}
 			
@@ -300,6 +302,10 @@ body.home {
 			section#posts-consultations {
 				@extend #posts-news;
 				grid-area:				consutlations;
+			}
+			section#posts-manuals {
+				@extend #posts-news;
+				grid-area:				manuals;
 			}
 			section#join {
 				

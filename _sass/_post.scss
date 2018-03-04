@@ -3,7 +3,8 @@
 main#news,
 main#consultation,
 main#publication,
-main#event {
+main#event,
+main#manual {
 	padding: 45px 0;
 }
 
@@ -261,7 +262,8 @@ main#consultation {
 	
 }
 
-main#publication {
+main#publication,
+main#manual {
 	
 	@supports (display: grid) {
 		display: grid;
