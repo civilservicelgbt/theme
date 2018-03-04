@@ -1,0 +1,177 @@
+#####################################################
+#####################################################
+#####											#####
+#####			SITE SET UP TEMPLATE				#####
+#####											#####
+#####################################################
+#####################################################
+
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+#####################################################
+#####################################################
+#####											#####
+#####			BASIC INFORMATION 				#####
+#####											#####
+#####################################################
+#####################################################
+
+title: "Site name here"
+short-title: "Short name here" # For use in the header
+author: "Site owner here"
+description: "Site description here."
+
+email: email@email.com # site administrator contact email
+
+#####################################################
+#####################################################
+#####											#####
+#####			CUSTOMISABLE VALUES 				#####
+#####											#####
+#####################################################
+#####################################################
+
+# HOME PAGE
+
+home-splash-h1:		"Heading 1"
+home-splash-h2:		"Heading 2."
+home-splash-p:		"Some kind of splash message."
+
+# Toggle home page blocks
+
+home-news:			true
+home-events:			true
+home-publications:	true
+home-consultations:	true
+
+# HEADER
+
+# To customise the navigation bar, edit 'menu.csv' in the '_data' folder
+
+# FOOTER
+
+created-by:			"Somebody"
+created-by-website:	"http://www.example.com"
+copyright-notice:	"Licensing information goes here."
+
+# To customise the other links in the footer, edit 'membership.csv' and 'disclaimer.csv' in the '_data' folder.
+
+# DEFAULT IMAGES
+
+# These images appear on social media and in web browsers.
+# The 'Pinned Colour' is for Safari Pinned Tabs and Windows 10 Start Menu, it will define the background colour for the site in those menus.
+
+social-media-image: "/assets/images/site/social-media.png"
+touch: "/assets/images/site/touch.png"
+pinned: "/assets/images/site/pinned.svg"
+pinned-colour: "#005ea5"
+logo-favicon-small: "/assets/images/site/favicon-16x16.png"
+logo-favicon-medium: "/assets/images/site/favicon-32x32.png"
+logo-favicon-large: "/assets/images/site/favicon-96x96.png"
+
+#####################################################
+#####################################################
+#####											#####
+#####		SOCIAL MEDIA + ANALYTICS INFO		#####
+#####											#####
+#####################################################
+#####################################################
+
+# Note - updating these values will update various links across the site.
+# If you don't want a certain website to appear, either:
+# -- delete the line starting 'website-url:'
+# -- put a '#' symbol in front of the link starting 'website-url:'
+
+facebook-app-id: "..." # For Facebook OpenGraph integration
+facebook-profile-id: "..." # For Facebook OpenGraph integration
+facebook-admin-id: "..." # For Facebook OpenGraph integration
+facebook-url:	"https://facebook.com/example"
+facebook-handle: "example" # Automatically pre-pends http://facebook.com/
+
+twitter-url: "https://twitter.com/example" # Twitter handle i.e. joebloggs
+twitter-handle: "example" # Twitter handle i.e. joebloggs
+
+flickr-url:  "https://www.flickr.com/photos/example"
+flickr-handle:  "example"
+
+instagram-url:  "https://www.instagram.com/example"
+instagram-handle:  "example"
+
+github-url:  "https://github.com/example"
+github-handle:  "example"
+
+# Adding this info will enable analytics on your site.
+
+# Google settings
+google-site-verification: "00000000000000"
+google-analytics: "00000000000000" # GA ID code
+
+#####################################################
+#####################################################
+#####											#####
+#####		COLLECTIONS + POST FORMATS			#####
+#####											#####
+#####################################################
+#####################################################
+
+permalink: /news/:year/:month/:day/:title:output_ext #This is the default permalink for the "_posts" folder.
+
+collections:
+  publications:
+    output: true
+    permalink: /publication/:title/
+    defaults:
+      values:
+        layout: publication
+  consultations:
+    output: true
+    permalink: /consultation/:title/
+    defaults:
+      values:
+        layout: consultation
+  events:
+    output: true
+    permalink: /event/:title/
+    defaults:
+      values:
+        layout: event
+  manuals:
+    output: true
+    permalink: /manual/:title/
+    defaults:
+      values:
+        layout: manual
+
+#####################################################
+#####################################################
+#####											#####
+#####			SITE + BUILD INFO				#####
+#####											#####
+#####################################################
+#####################################################
+
+url: "" # e.g. http://example.com
+baseurl: "" # e.g. /blog
+
+markdown: kramdown
+
+# theme: cslgbt-theme # If compiling locally (i.e. not on Github Pages)
+remote_theme: civilservicelgbt/cslgbt-theme # Github Pages specific
+
+plugins:
+  - jekyll-feed
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
