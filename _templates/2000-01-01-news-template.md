@@ -5,8 +5,6 @@ excerpt:  	"A brief excerpt of the post."
 image: 		/assets/images/posts/image.png
 image-alt:	"Alt text for the featured image."
 
-category: news
-
 layout: 		news
 ---
 
@@ -24,8 +22,6 @@ You will need to include the following information in the post's front matter.
 title: "News post template"
 excerpt: "A brief excerpt of the post."
 
-category: news
-
 layout: news
 ```
 
@@ -37,18 +33,6 @@ News posts can include a featured image. If you want to include a featured image
 image: /assets/images/posts/image.png
 image-alt: "Alt text for the featured image."
 ```
-
-#### Categories
-
-You should include **at least** one category in every news post. If more than one post exists with the same category, the template will show a "related content" box on each page with similar posts.
-
-Add this to your post:
-
-```
-category: news
-```
-
-Each category **must be one word only** and they **must be separated by a space**
 
 #### Post slug
 
