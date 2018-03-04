@@ -18,7 +18,7 @@ layout: default
 	<div id="page-content">
 		
 		{% if page.image %}
-			<img src="" class="page-image">
+			<img src="{{ page.image }}" alt="{{ page.image-alt }}" class="page-image">
 		{% endif %}
 		
 		{{ content }}
