@@ -55,6 +55,10 @@ h3 {
 	
 }
 
+h2 + h3 {
+	padding-top: 0 !important;
+}
+
 h4 {
 	
 	font-weight: 	bold;
@@ -64,6 +68,10 @@ h4 {
 	
 }
 
+h3 + h4 {
+	padding-top: 0 !important;
+}
+
 h5 {
 
 	font-weight:		bold; 
@@ -71,7 +79,11 @@ h5 {
 	
 	padding: 	10px 0;
 }
-	
+
+h4 + h5 {
+	padding-top: 0 !important;
+}
+
 h6 {
 
 	font-weight:		bold; 
