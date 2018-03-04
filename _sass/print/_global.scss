@@ -11,5 +11,13 @@
 
 header, 
 footer {
-	display: none;
+	display: none !important;
+	height: 0;
+	width: 0;
+	
+	&::after {
+	    content: none;
+	    clear: none;
+	    display: none;
+	}
 }
