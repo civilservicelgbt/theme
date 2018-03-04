@@ -85,7 +85,7 @@ p, li {
 	font-weight: 	$font-weight;
 	line-height: 	$font-line-height;
 	
-	margin-bottom: 	$font-size-base/1.75;
+	margin-bottom: 	$font-size-base;
 }
 
 sup {
@@ -136,6 +136,10 @@ code, kbd {
 	font-weight: 	normal;
 	font-size: 		inherit;
 	color: 			$code-color;
+}
+
+pre {
+	margin-bottom: 	30px;
 }
 
 blockquote {
