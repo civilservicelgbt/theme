@@ -139,7 +139,20 @@ code, kbd {
 }
 
 pre {
+	display: inline-block;
+	
+	width: 100%;
+	overflow-x: scroll;
+	white-space: pre-wrap;
+	
 	margin-bottom: 	30px;
+	padding: 		20px;
+	
+	background: 		$light-gray;
+	
+	code, kbd {
+		line-height: $font-line-height;
+	}
 }
 
 blockquote {
