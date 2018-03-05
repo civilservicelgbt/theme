@@ -4,13 +4,13 @@
 	
 	{% assign count = 0 %}
 	{% assign today-date = 'now' | date: '%s' %}
-	{% assign events = site.events | sort: "event-date" %}
+	{% assign events = site.events | sort: "date" %}
 		
 	<ul>
 		{% for post in events %}
 		{% if count < 3 %}
-		{% assign event-date = post.event-date | date: '%s' %}
-		{% if today-date < event-date %}
+		{% assign date = post.date | date: '%s' %}
+		{% if today-date < date %}
 		<li>
 			<article>
 				<h2>
@@ -18,7 +18,7 @@
 						{{ post.title }}
 					</a>
 				</h2>
-				<p class="post-metadata">On <time datetime="{{ post.event-date | date: '%Y-%m-%d' }}">{{ post.event-date  | date:'%-d %B %Y' }}</time></p>
+				<p class="post-metadata">On <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time></p>
 			</article>
 		</li>
 		{% assign count = count | plus: 1 %}

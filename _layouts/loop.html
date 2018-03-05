@@ -31,20 +31,20 @@ layout: default
 		{% elsif page.collection == "events" %}
 		
 			{% assign today-date = 'now' | date: '%s' %}
-			{% assign events = site.events | sort: "event-date" %}
+			{% assign events = site.events | sort: "date" %}
 			
 			<h2 class="loop-subheading">Upcoming events</h2>
 				
 			<ul>
 			{% for post in events %}
 			
-				{% assign event-date = post.event-date | date: '%s' %}
-				{% if today-date < event-date %}
+				{% assign date = post.date | date: '%s' %}
+				{% if today-date < date %}
 				
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
-						<p class="post-metadata"><time datetime="{{ post.event-date | date: '%Y-%m-%d %H:%M' }}">{{ post.event-date  | date:'%-d %B %Y at %H:%M' }}</time></p>
+						<p class="post-metadata"><time datetime="{{ post.date | date: '%Y-%m-%d %H:%M' }}">{{ post.date  | date:'%-d %B %Y at %H:%M' }}</time></p>
 					</article>
 				</li>
 				
@@ -53,30 +53,30 @@ layout: default
 			{% endfor %}
 			</ul>
 			
-			{% assign event-counter = 0 %}
+			{% assign counter = 0 %}
 			{% for post in events %}
-			{% assign event-date = post.event-date | date: '%s' %}
-			{% if today-date > event-date %}
-				{% assign event-counter = event-counter | plus: 1 %}
+			{% assign date = post.date | date: '%s' %}
+			{% if today-date > date %}
+				{% assign counter = counter | plus: 1 %}
 			{% endif %}
 			{% endfor %}
 			
-			{% if event-counter > 0 %}
+			{% if counter > 0 %}
 			
 			<h2 class="loop-subheading">Past events</h2>
 			
 			<ul>
-			{% assign events = site.events | sort: 'event-date' | reverse %}
+			{% assign events = site.events | sort: 'date' | reverse %}
 			
 			{% for post in events %}
 			
-				{% assign event-date = post.event-date | date: '%s' %}
-				{% if today-date > event-date %}
+				{% assign date = post.date | date: '%s' %}
+				{% if today-date > date %}
 				
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
-						<p class="post-metadata"><time datetime="{{ post.event-date | date: '%Y-%m-%d' }}">{{ post.event-date  | date:'%-d %B %Y' }}</time></p>
+						<p class="post-metadata"><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time></p>
 					</article>
 				</li>
 				{% endif %}
