@@ -8,7 +8,7 @@
 	{% assign events-counter = 0 %}
 	{% for post in events %}
 	{% assign event-date = post.event-date | date: '%s' %}
-	{% if today-date < event-date %}
+	{% if today-date > event-date %}
 		{% assign events-counter = events-counter | plus: 1 %}
 	{% endif %}
 	{% endfor %}
