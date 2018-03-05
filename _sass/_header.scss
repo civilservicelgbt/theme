@@ -39,6 +39,14 @@ nav#site-navigation {
 	
 		padding: 		0 15px;
 		margin: 0;
+					
+		@supports not (display: grid) {
+			&::after {
+			    content: "";
+			    clear: both;
+			    display: table;
+			}
+		}
 
 	}
 	
@@ -196,6 +204,10 @@ nav#site-navigation {
 		
 		@supports (display: grid) {
 			grid-area:			navigation;
+		}
+		@supports not (display: grid) {
+			float: right;
+			clear: none;
 		}
 						
 		list-style: none;
