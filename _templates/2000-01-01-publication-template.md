@@ -1,8 +1,9 @@
 ---
-title:  "Publication template"
-date:   2000-01-01
+title:  				"Publication template"
+date:   				2000-01-01
 
-layout: publication
+layout: 				publication
+slug:				/publication-template
 ---
 
 

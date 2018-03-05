@@ -1,11 +1,12 @@
 ---
-title:  		"News post template"
-excerpt:  	"A brief excerpt of the post."
+title:  				"News post template"
+excerpt:  			"A brief excerpt of the post."
 
-image: 		/assets/images/posts/image.png
-image-alt:	"Alt text for the featured image."
+image: 				/assets/images/posts/image.png
+image-alt:			"Alt text for the featured image."
 
-layout: 		news
+layout: 				news
+slug:				/news-template
 ---
 
 Use the "News" document template for blog posts and news articles. Store these posts in the `_posts` folder.

@@ -7,6 +7,7 @@ consultation-link: 	https://www.example.com
 end-date: 			2050-01-01
 
 layout: 				consultation
+slug:				/consultation-template
 ---
 
 ## Consultation description

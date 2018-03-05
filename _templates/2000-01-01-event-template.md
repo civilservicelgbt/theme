@@ -2,14 +2,14 @@
 title:  						"Event template"
 excerpt:	  					"A brief description of the event."
 
-event-date: 					2000-01-01 00:00:00
+date: 						2000-01-01 00:00:00
 registration-close-date: 	1999-12-01 # Optional
-event-location: 				"123 Example Road, Example City, EX1 X23"
-
-event-link: 					https://www.example.com
-event-email: 				info@example.com
+location: 					"123 Example Road, Example City, EX1 X23"
+link: 						https://www.example.com
+email: 						info@example.com
 
 layout: 						event
+slug:						/event-template
 ---
 
 Use the "Event" document template when you want to list an event. Store these posts in the `_events` folder.
@@ -25,25 +25,24 @@ Note, unlike our previous website, these events can be listed from anywhere - yo
 You will need to include the following information in the post's front matter.
 
 ``` liquid
-title: "Consultation title"
-excerpt: "A brief description of the consultation."
+title: "Event template"
+excerpt: "A brief description of the event."
 
-event-date: 2000-01-01 00:00:00
+date: 2000-01-01 00:00:00
 registration-close-date: 1999-12-01 # Optional
-event-location: 123 Example Road, Example City, EX1 X23
+location: "123 Example Road, Example City, EX1 X23"
+link: https://www.example.com
+email: info@example.com
 
-event-link: https://www.example.com
-event-email: info@example.com
-
-layout: event
+layout: 						event
 ```
 
-The `event-date` field is the date the event is happening.
+The `date` field is the date the event is happening.
 
-The `registration-close-date` should be **before** the `event-date`, and should be the date which registrations close. This field is **optional**
+The `registration-close-date` should be **before** the `date`, and should be the date which registrations close. This field is **optional**
 
 If you need to override the slug from the post's URL, add the following information to the post's front matter:
 
 ``` liquid
-slug: consultation-template
+slug: event-template
 ```

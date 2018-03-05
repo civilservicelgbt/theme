@@ -1,10 +1,11 @@
 ---
-title:  "Manual template"
-excerpt:	  "A brief description of the manual."
+title:  				"Manual template"
+excerpt:	  			"A brief description of the manual."
 
-categories: volunteers
+categories: 			volunteers
 
-layout: manual
+layout: 				manual
+slug:				/manual-template
 ---
 
 <!-- Include the following to generate a Table of Contents -->
