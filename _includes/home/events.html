@@ -18,7 +18,7 @@
 	<ul>
 		{% for post in events limit: 3 %}
 		{% assign event-date = post.event-date | date: '%s' %}
-		{% if today-date < event-date %}
+		{% if today-date > event-date %}
 		<li>
 			<article>
 				<h2>
