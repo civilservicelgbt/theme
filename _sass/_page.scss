@@ -21,12 +21,16 @@ main#page {
 		}
 	}
 	
-	@supports not (display: grid) {
-		&::after {
-		    content: "";
-		    clear: both;
-		    display: table;
-		}
+	&::after {
+	    content: "";
+	    clear: both;
+	    display: table;
+	    
+	    @supports (display: grid) {
+			content: 	none;
+			clear: 		inherit;
+			display: 	none;
+	    }
 	}
 	
 	padding: 45px 0;
@@ -74,16 +78,18 @@ main#page {
 	}
 	
 	div#page-content {
-		
-		@supports not (display: grid) {
-			@include md-up {
-				width: 67%;
-				float: left;
-				clear: left;
-			}
+
+		@include md-up {
+			width: 67%;
+			float: left;
+			clear: left;
 		}
+
 		@supports (display: grid) {
-			grid-area:					page-content;
+			width: 			100%;
+			float: 			none;
+			clear: 			none;
+			grid-area:		page-content;
 		}
 
 		margin-bottom: 				45px;
