@@ -326,10 +326,10 @@ main#manual {
 		@include box-shadow(5);
 		
 		padding: 				45px;
-		margin: 					0 0 45px 0;
+		margin: 					45px 0;
 
 		@supports (display: grid) {
-			margin: 					45px 0;
+			margin-top: 			0;
 		}
 		
 		div#page-title {
@@ -511,6 +511,13 @@ main#event {
 	}
 		
 	div#page-lead-paragraph {
+		
+		width: 67%; 
+		
+		@supports (display: grid) {
+			width: 100%;
+		}
+
 		background: $black;
 
 		@include box-shadow(5);
