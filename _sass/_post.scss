@@ -32,12 +32,16 @@ main#news {
 		}
 	}
 	
-	@supports not (display: grid) {
-		&::after {
-		    content: "";
-		    clear: both;
-		    display: table;
-		}
+	&::after {
+	    content: "";
+	    clear: both;
+	    display: table;
+	    
+	    @supports (display: grid) {
+			content: 	none;
+			clear: 		inherit;
+			display: 	none;
+	    }
 	}
 	
 	div#page-title {
@@ -98,15 +102,16 @@ main#news {
 	
 	div#page-content {
 		
-		@supports not (display: grid) {
-			@include md-up {
-				width: 67%;
-				float: left;
-				clear: left;
-			}
+		@include md-up {
+			width: 67%;
+			float: left;
+			clear: left;
 		}
 		
 		@supports (display: grid) {
+			width: 						auto;
+			float: 						none;
+			clear: 						none;
 			grid-area:					page-content;
 		}
 
@@ -140,17 +145,19 @@ main#news {
 	
 	div#page-related {
 		
-		@supports not (display: grid) {
-			@include md-up {
-				width: calc(33% - 30px);
-				float: right;
-				clear: none;
-				
-				margin-left: 30px;
-			}
+		@include md-up {
+			width: calc(33% - 30px);
+			float: right;
+			clear: none;
+			
+			margin-left: 30px;
 		}
 		
 		@supports (display: grid) {
+			width: 						auto;
+			float: 						none;
+			clear: 						none;
+			margin-left: 				0;
 			grid-area:					page-related;
 		}
 
@@ -214,9 +221,11 @@ main#consultation {
 	
 	div#page-lead-paragraph {
 		
-		@supports not (display: grid) {
-			width: 67%;
-	 	}
+		width: 67%;
+		
+		@supports (display: grid) {
+			width: 		auto;
+		}
 		
 		background: $black;
 
@@ -256,11 +265,17 @@ main#consultation {
 
 	div#page-content {
 		
-		@supports not (display: grid) {
+		@include md-up {
 			width: 67%;
 			float: left;
 			clear: left;
-	 	}
+		}
+
+		@supports (display: grid) {
+			width: 		auto;
+			float: 		none;
+			clear: 		none;
+		}
 	 	
 		border-top: 					none;
 		
@@ -273,12 +288,17 @@ main#consultation {
 	}
 	
 	div#page-related {
-		@supports not (display: grid) {
-			width: calc(33% - 30px);
-			float: right;
-			clear: none;
-			margin-left: 30px;
-	 	}
+		width: calc(33% - 30px);
+		float: right;
+		clear: none;
+		margin-left: 30px;
+		
+		@supports (display: grid) {
+			width: 		auto;
+			float: 		none;
+			clear: 		none;
+			margin-left: 	0;
+		}
 	}
 	
 }
@@ -349,13 +369,17 @@ main#manual {
 		
 	div#page-contents {
 		
-		@supports not (display: grid) {
-			&::after {
-			    content: "";
-			    clear: both;
-			    display: table;
-			}	
-		}
+		&::after {
+		    content: "";
+		    clear: both;
+		    display: table;
+
+		    @supports (display: grid) {
+				content: 	none;
+				clear: 		inherit;
+				display: 	none;
+		    }
+		}	
 		
 		@supports (display: grid) {
 			grid-area:				page-contents;
@@ -384,14 +408,15 @@ main#manual {
 		
 		ul#markdown-toc {
 		
-			@supports not (display: grid) {
-				width: 25%;
-				float: left;
-				clear: left;
-			}
+			width: 25%;
+			float: left;
+			clear: left;
 			
 			@supports (display: grid) {
-				grid-area:					page-toc;
+				grid-area:			page-toc;
+				width: 				auto;
+				float: 				none;
+				clear: 				none;
 			}
 			
 			padding: 0;
@@ -431,14 +456,15 @@ main#manual {
 				margin-top: 0;
 			}
 			
-			@supports not (display: grid) {
-				width: 75%;
-				float: left;
-				clear: none;
-			}
+			width: 75%;
+			float: left;
+			clear: none;
 			
 			@supports (display: grid) {
-				grid-area:					page-content;
+				width: 				auto;
+				float: 				none;
+				clear: 				none;
+				grid-area:			page-content;
 			}	
 			
 			margin-bottom: 				45px;
