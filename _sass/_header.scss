@@ -32,10 +32,17 @@ nav#site-navigation {
 	
 	span.site-title {
 		
-		width: 33%;
+		display: block;
+		height: 55px;
+
 		float: left;
 		clear: left;
 		
+		@include md-up {
+			width: 33%;
+		}
+		
+		box-sizing: border-box;
 		padding: 	15px 0;						
 		@include md-up {
 			padding: 12px 0;
@@ -70,7 +77,9 @@ nav#site-navigation {
 		
 		position: relative;
 		display: block;
-				
+		
+		float: right;
+						
 		padding: 15px 0;
 		margin: 0;
 		
@@ -156,9 +165,13 @@ nav#site-navigation {
 		
 		display: 			block;
 		
-		width: 67%;
-		float: right;
-		clear: none;
+		width: 100%;
+		
+		@include md-up {
+			width: 67%;
+			float: right;
+			clear: none;
+		}
 		
 		&.closed {
 			display: none;
@@ -168,7 +181,10 @@ nav#site-navigation {
 		}
 						
 		list-style: none;
-		padding: 0;
+		padding: 55px 0 0 0;
+		@include md-up {
+			padding: 0;
+		}
 		margin: 0;
 				
 		@include md-up {
