@@ -24,41 +24,41 @@ nav#site-navigation {
 		
 		div#menu {
 		
-		@supports (display: grid) {
-			display: 					grid;
-			
-			grid-template-columns: 		5fr 1fr;
-			grid-template-rows: 			auto auto;
-			grid-template-areas: 		"title menu"
-										"navigation navigation";
-	
-			@include md-up {
-				grid-template-columns: 		1fr 2fr;
-				grid-template-rows: 			auto;
-				grid-template-areas: 		"title navigation";
-			}
-			
-		}
+			@supports (display: grid) {
+				display: 					grid;
+				
+				grid-template-columns: 		5fr 1fr;
+				grid-template-rows: 			auto auto;
+				grid-template-areas: 		"title menu"
+											"navigation navigation";
 		
-		@supports not (display: grid) {
-			display: 		block;	
-		}
-
-		background: 				$black;
-		@include					box-shadow(5);
-	
-		padding: 		0 15px;
-		margin: 0;
-					
-		@supports not (display: grid) {
-			&::after {
-			    content: "";
-			    clear: both;
-			    display: table;
+				@include md-up {
+					grid-template-columns: 		1fr 2fr;
+					grid-template-rows: 			auto;
+					grid-template-areas: 		"title navigation";
+				}
+				
 			}
-		}
+			
+			@supports not (display: grid) {
+				display: 		block;	
+			}
+	
+			background: 				$black;
+			@include					box-shadow(5);
+		
+			padding: 		0 15px;
+			margin: 0;
+						
+			@supports not (display: grid) {
+				&::after {
+				    content: "";
+				    clear: both;
+				    display: table;
+				}
+			}
 
-	}
+		}
 		 
 	}
 	
@@ -217,13 +217,11 @@ nav#site-navigation {
 			}
 		}
 		
-		@supports not (display: grid) {
+		@supports (display: grid) {
 			grid-area:			navigation;
 		}
 		@supports not (display: grid) {
 			width: 67%;
-			float: right;
-			clear: none;
 		}
 						
 		list-style: none;
