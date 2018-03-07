@@ -16,7 +16,13 @@ nav#site-navigation {
 	margin: 			0;
 
 			
-	.container div#menu {
+	.container {
+	
+		@supports not (display: grid) {
+			display: 		block;	
+		}
+		
+		div#menu {
 		
 		@supports (display: grid) {
 			display: 					grid;
@@ -32,6 +38,10 @@ nav#site-navigation {
 				grid-template-areas: 		"title navigation";
 			}
 			
+		}
+		
+		@supports not (display: grid) {
+			display: 		block;	
 		}
 
 		background: 				$black;
@@ -49,6 +59,8 @@ nav#site-navigation {
 		}
 
 	}
+		 
+	}
 	
 	span.site-title {
 		
@@ -60,7 +72,7 @@ nav#site-navigation {
 			align-self: center;
 		}
 		@supports not (display: grid) {
-			display: inline-block;
+			width: 30%;
 			float: left;
 			clear: left;
 		}
@@ -196,7 +208,7 @@ nav#site-navigation {
 
 	ul {
 		
-		display: inline-block;
+		display: 			block;
 		
 		&.closed {
 			display: none;
@@ -205,11 +217,11 @@ nav#site-navigation {
 			}
 		}
 		
-		@supports (display: grid) {
-			display: 			block;
+		@supports not (display: grid) {
 			grid-area:			navigation;
 		}
 		@supports not (display: grid) {
+			width: 67%;
 			float: right;
 			clear: none;
 		}
