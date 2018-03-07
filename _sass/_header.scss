@@ -60,6 +60,7 @@ nav#site-navigation {
 			align-self: center;
 		}
 		@supports not (display: grid) {
+			display: inline-block;
 			float: left;
 			clear: left;
 		}
@@ -206,6 +207,7 @@ nav#site-navigation {
 			grid-area:			navigation;
 		}
 		@supports not (display: grid) {
+			display: inline-block;
 			float: right;
 			clear: none;
 		}
