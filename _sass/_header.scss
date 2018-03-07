@@ -196,6 +196,8 @@ nav#site-navigation {
 
 	ul {
 		
+		display: inline-block;
+		
 		&.closed {
 			display: none;
 			@include md-up {
@@ -204,10 +206,10 @@ nav#site-navigation {
 		}
 		
 		@supports (display: grid) {
+			display: 			block;
 			grid-area:			navigation;
 		}
 		@supports not (display: grid) {
-			display: inline-block;
 			float: right;
 			clear: none;
 		}
