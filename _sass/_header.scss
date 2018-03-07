@@ -5,57 +5,25 @@ nav#site-navigation {
 	position: relative;
 	
 	z-index: 				1000000;
-	
-	top: 			0;
-	left: 			0;
-	right: 			0;
-	
-	height: 			auto;
 
 	padding: 		15px 0 15px 0;
 	margin: 			0;
 
 			
 	.container {
-	
-		@supports not (display: grid) {
-			display: 		block;	
-		}
 		
 		div#menu {
-		
-			@supports (display: grid) {
-				display: 					grid;
 				
-				grid-template-columns: 		5fr 1fr;
-				grid-template-rows: 			auto auto;
-				grid-template-areas: 		"title menu"
-											"navigation navigation";
-		
-				@include md-up {
-					grid-template-columns: 		1fr 2fr;
-					grid-template-rows: 			auto;
-					grid-template-areas: 		"title navigation";
-				}
-				
-			}
-			
-			@supports not (display: grid) {
-				display: 		block;	
-			}
-	
 			background: 				$black;
 			@include					box-shadow(5);
 		
 			padding: 		0 15px;
 			margin: 0;
-						
-			@supports not (display: grid) {
-				&::after {
-				    content: "";
-				    clear: both;
-				    display: table;
-				}
+			
+			&::after {
+			    content: "";
+			    clear: both;
+			    display: table;
 			}
 
 		}
@@ -64,18 +32,9 @@ nav#site-navigation {
 	
 	span.site-title {
 		
-		position: relative;
-		display: block;
-		
-		@supports (display: grid) {
-			grid-area:	title;
-			align-self: center;
-		}
-		@supports not (display: grid) {
-			width: 30%;
-			float: left;
-			clear: left;
-		}
+		width: 33%;
+		float: left;
+		clear: left;
 		
 		padding: 	15px 0;						
 		@include md-up {
@@ -94,15 +53,6 @@ nav#site-navigation {
 				font-size: $font-size-base + 4px;
 			}
 			font-weight: bold;
-			@supports not (display: grid) {
-				line-height: 55px;	
-				height: 55px;
-				vertical-align: middle;
-			}
-			@supports (display: grid) {
-				line-height: $font-line-height;
-				align-self: center;
-			}	
 			
 			text-decoration: none;
 			
@@ -120,10 +70,6 @@ nav#site-navigation {
 		
 		position: relative;
 		display: block;
-		
-		@supports (display: grid) {
-			grid-area: menu;
-		}
 				
 		padding: 15px 0;
 		margin: 0;
@@ -210,18 +156,15 @@ nav#site-navigation {
 		
 		display: 			block;
 		
+		width: 67%;
+		float: right;
+		clear: none;
+		
 		&.closed {
 			display: none;
 			@include md-up {
 				display: block;	
 			}
-		}
-		
-		@supports (display: grid) {
-			grid-area:			navigation;
-		}
-		@supports not (display: grid) {
-			width: 67%;
 		}
 						
 		list-style: none;
