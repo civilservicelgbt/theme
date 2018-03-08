@@ -28,7 +28,7 @@ layout: default
 			{% endfor %}
 			</ul>
 		
-		{% if page.collection == "archives" %}
+		{% elsif page.collection == "archives" %}
 		
 			<ul>
 			{% for post in site.archives %}
@@ -212,6 +212,12 @@ layout: default
 	
 	<div id="page-share">
 
+		{% if page.collection == "news" %}
+
+			<h2 class="page-share-title">Got a story to tell?</h2>
+			
+			<p>If you'd like to write a news article or blog post for us, we'd love to hear from you. Just <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">get in touch</a>.
+			
 		{% if page.collection == "news" %}
 
 			<h2 class="page-share-title">Got a story to tell?</h2>
