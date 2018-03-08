@@ -17,11 +17,14 @@ footer#site-footer {
 		background: 			$black;
 		@include box-shadow(5);
 		
-		@supports not (display: grid) {
-			&::after {
-			    content: "";
-			    clear: both;
-			    display: table;
+		&::after {
+		    content: "";
+		    clear: both;
+		    display: table;
+			@supports (display: grid) {
+				content:		none;
+				clear: 		none;
+				display: 	none;
 			}
 		}
 		
@@ -52,16 +55,19 @@ footer#site-footer {
 		position: relative;
 		display: block;
 		
-		@supports not (display: grid) {
-			@include md-up {
-				width: 50%;
-				float: left;
-				clear: left;
-			}
+		width: 100%;
+		
+		@include md-up {
+			width: 50%;
+			float: left;
+			clear: left;
 		}
 		
 		@supports (display: grid) {
 			grid-area: title;
+			width: 100%;
+			float: none;
+			clear: none;
 		}
 		
 		margin: 0;
@@ -79,10 +85,14 @@ footer#site-footer {
 		display: block;
 		position: relative;
 		
-		@supports not (display: grid) {
-			@include md-up {
-				width: 25%;
-				float: left;
+		@include md-up {
+			width: 25%;
+			float: left;
+			clear: none;
+			
+			@supports (display: grid) {				
+				width: 100%;
+				float: none;
 				clear: none;
 			}
 		}
