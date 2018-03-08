@@ -43,11 +43,10 @@ nav#site-navigation {
 		}
 		
 		box-sizing: border-box;
-		padding: 	15px 0;						
-		@include md-up {
-			padding: 12px 0;
-		}
 		margin: 0;
+		
+		line-height: 	55px;
+		vertical-align: middle;
 		
 		a {
 			display: inline-block;

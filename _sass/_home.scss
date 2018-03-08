@@ -157,26 +157,32 @@ body.home {
 				}
 			}
 			
-			@supports not (display: grid) {
-				&::after {
-				    content: "";
-				    clear: both;
-				    display: table;
+			&::after {
+			    content: "";
+			    clear: both;
+			    display: table;
+			    @supports (display: grid) {				
+					content: none;
+					clear: none;
+					display: none;
 				}
 			}
 			
 			section#posts-news {
 				grid-area:				news;
 				
-				@supports not (display: grid) {
-					&::after {
-					    content: "";
-					    clear: both;
-					    display: table;
+				&::after {
+				    content: "";
+				    clear: both;
+				    display: table;
+				    @supports (display: grid) {				
+						content: none;
+						clear: none;
+						display: none;
 					}
-					
-					padding-bottom: 		45px;
 				}
+				
+				padding-bottom: 		45px;
 				
 				@supports (display: grid) {
 					display: grid;
@@ -206,15 +212,20 @@ body.home {
 						grid-area: 			title;
 					}
 					
-					@supports not (display: grid) {
-						@include md-up {
-							width: calc(40% - 50px);
-							float: left;
-							clear: left;
-							
-							margin-right: 50px;
-							padding-bottom: 30px;
-						}
+					@include md-up {
+						width: calc(40% - 50px);
+						float: left;
+						clear: left;
+						
+						margin-right: 50px;
+						padding-bottom: 30px;
+					}
+					
+				    @supports (display: grid) {				
+						width: 100%;
+						float: none;
+						clear: none;
+						margin-right: 0;
 					}
 										
 					font-size: 		$heading2-font-size-base;
@@ -236,18 +247,21 @@ body.home {
 				}
 
 				ul {
-					
-					@supports (display: grid) {
-						grid-area: 			posts;
-					}
-					
-					@supports not (display: grid) {
-						@include md-up {
-							width: 60%;
-							float: left;
+
+					@include md-up {
+						width: 60%;
+						float: left;
+						clear: none;
+					    @supports (display: grid) {							
+							width: 100%;
+							float: none;
 							clear: none;
 						}
 					}
+
+					@supports (display: grid) {
+						grid-area: 			posts;
+					}						
 					
 					list-style: none;
 					padding: 0;
@@ -309,14 +323,18 @@ body.home {
 			}
 			section#join {
 				
-				@supports not (display: grid) {
-					width: 65%;
-					float: left;
-					clear: left;
-					padding-top:				45px;
-				}
+				width: 65%;
+				float: left;
+				clear: left;
+				padding-top:				45px;
 				
 				@supports (display: grid) {
+					width: 100%;
+					float: none;
+					clear: none;
+					
+					padding-top: 0;
+					
 					grid-area:				join;
 				}
 				
@@ -354,14 +372,21 @@ body.home {
 			}
 			section#social {
 				
-				@supports not (display: grid) {
-					width: calc(35% - 30px);
-					float: left;
-					clear: none;
-					margin-left: 30px;
-				}
+				width: calc(35% - 30px);
+				float: left;
+				clear: none;
 				
-				@supports (display: grid) {
+				padding-top: 45px;
+				margin-left: 30px;
+				
+			    @supports (display: grid) {				
+					width: 100%;
+					float: none;
+					clear: none;
+					
+					margin-left: 0;
+					padding-top: 0;
+					
 					grid-area:				social;
 				}
 				
@@ -375,6 +400,7 @@ body.home {
 				}
 				
 				ul {
+					
 					padding: 	0px;
 					margin: 		0px;
 					
@@ -397,11 +423,14 @@ body.home {
 								grid-template-columns: 60px auto;
 							}
 				
-							@supports not (display: grid) {
-								&::after {
-								    content: "";
-								    clear: both;
-								    display: table;
+							&::after {
+							    content: "";
+							    clear: both;
+							    display: table;							    
+							    @supports (display: grid) {				
+									content: none;
+									clear: none;
+									display: none;
 								}
 							}
 						}
@@ -447,15 +476,16 @@ body.home {
 							padding: 		0;
 							margin-bottom: 	0;
 							
+							height: 40px;
+							line-height: 40px;
+							vertical-align: middle;
+							
 							@supports (display: grid) {
+								height: auto;
 								align-self: center;
 								line-height: $font-line-height;
 							}
-							@supports not (display: grid) {							
-								height: 40px;
-								line-height: 40px;
-								vertical-align: middle;
-							}
+								
 						}
 					}
 				}
