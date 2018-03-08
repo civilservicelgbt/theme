@@ -28,10 +28,10 @@ layout: default
 			{% endfor %}
 			</ul>
 		
-		{% if page.collection == "archive" %}
+		{% if page.collection == "archives" %}
 		
 			<ul>
-			{% for post in site.archive %}
+			{% for post in site.archives %}
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
