@@ -2,11 +2,14 @@
 
 main#loop {
 	
-	@supports not (display: grid) {
-		&::after {
-		    content: "";
-		    clear: both;
-		    display: table;
+	&::after {
+	    content: "";
+	    clear: both;
+	    display: table;
+	    	@supports (display: grid) {
+			content: 	none;
+			clear: 		none;
+			display: 	none;
 		}
 	}
 	
@@ -59,16 +62,19 @@ main#loop {
 	
 	div#page-content {
 		
-		@supports not (display: grid) {			
-			@include md-up {
-				width: 67%;
-				float: left;
-				clear: left;
-			}
+		width: 100%;
+		
+		@include md-up {
+			width: 67%;
+			float: left;
+			clear: left;
 		}
 		
 		@supports (display: grid) {
 			grid-area:					page-content;
+			width: 100%;
+			float: none;
+			clear: none;
 		}
 
 		margin-bottom: 				45px;
@@ -135,17 +141,21 @@ main#loop {
 	
 	div#page-share {
 		
-		@supports not (display: grid) {
-			@include md-up {
-				width: calc(33% - 30px);
-				float: left;
-				clear: none;
-				margin-left: 30px;
-			}
+		width: 100%;
+		
+		@include md-up {
+			width: calc(33% - 30px);
+			float: left;
+			clear: none;
+			margin-left: 30px;
 		}
 		
 		@supports (display: grid) {
-			grid-area:					page-share;
+			grid-area:		page-share;
+			width: 			100%;
+			float: 			none;
+			clear: 			none;
+			margin-left: 	0;
 		}
 		
 		margin-bottom: 				45px;
