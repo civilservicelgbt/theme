@@ -28,6 +28,20 @@ layout: default
 			{% endfor %}
 			</ul>
 		
+		{% if page.collection == "archive" %}
+		
+			<ul>
+			{% for post in site.archive %}
+				<li>
+					<article>
+						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<p>{{ post.excerpt }}</p>
+						<p class="post-metadata">Published <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time> {% if post.author %}by {{ post.author }}{% endif %}</p>
+					</article>
+				</li>
+			{% endfor %}
+			</ul>
+		
 		{% elsif page.collection == "events" %}
 		
 			{% assign today-date = 'now' | date: '%s' %}
