@@ -138,9 +138,24 @@ main#networks {
 			grid-template-rows: 			auto auto auto;
 			grid-template-columns: 		2fr 1fr;
 			grid-column-gap: 			30px;
-			grid-template-areas: 		"page-title ."
+			grid-template-areas: 		"page-title page-title"
 										"page-lead-paragraph ."
 										"page-content page-content";
+		}
+	}
+	
+	#page-title {
+		@supports (display: grid) {
+			grid-area:					page-title;
+		}
+
+		margin-top: 					45px;
+		margin-bottom: 				45px;
+		
+		h1.page-title {	
+			@include md-up {
+				font-size: 		$heading1-font-size-base * 2;
+			}
 		}
 	}
 	
