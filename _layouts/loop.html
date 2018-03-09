@@ -31,7 +31,8 @@ layout: default
 		{% elsif page.collection == "archives" %}
 		
 			<ul>
-			{% for post in site.archives %}
+			{% assign archives = site.archives | sort: 'date' | reverse %}
+			{% for post in archives %}
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
