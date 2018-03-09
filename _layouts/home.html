@@ -28,6 +28,10 @@ layout: skeleton
 			{% include home/news.html %}
 		{% endif %}
 		
+		{% include home/join.html %}
+		
+		{% include home/social.html %}
+		
 		{% if site.home-events == true %}
 			{% include home/events.html %}
 		{% endif %}
@@ -39,10 +43,6 @@ layout: skeleton
 		{% if site.home-consultations == true %}
 			{% include home/consultations.html %}
 		{% endif %}
-		
-		{% include home/join.html %}
-		
-		{% include home/social.html %}
 		
 		{% if site.home-manuals == true %}
 			{% include home/manuals.html %}
