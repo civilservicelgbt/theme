@@ -17,7 +17,7 @@ main#page {
 			grid-column-gap: 			30px;
 			grid-template-areas: 		"page-title ."
 										"page-lead-paragraph ."
-										"page-content.";
+										"page-content .";
 		}
 	}
 	
@@ -120,4 +120,54 @@ main#page {
 		}
 	}
 	
+}
+
+main#networks {
+	@extend #page;
+	
+	@supports (display: grid) {
+		display: 					grid;
+
+		grid-template-rows: 			auto auto auto;
+		grid-template-columns: 		1fr;
+		grid-template-areas: 		"page-title"
+									"page-lead-paragraph"
+									"page-content";
+		
+		@include md-up {
+			grid-template-rows: 			auto auto auto;
+			grid-template-columns: 		2fr 1fr;
+			grid-column-gap: 			30px;
+			grid-template-areas: 		"page-title ."
+										"page-lead-paragraph ."
+										"page-content page-content";
+		}
+	}
+	
+	#page-content {
+		@include md-up {
+			width: 100%;
+			float: left;
+			clear: left;
+		}
+
+		@supports (display: grid) {
+			width: 			100%;
+			float: 			none;
+			clear: 			none;
+			grid-area:		page-content;
+		}
+		
+		table {
+			
+			tr {
+				
+				td {
+					padding: 15px 0;
+				}
+				
+			}
+			
+		}
+	}
 }
