@@ -46,20 +46,20 @@ layout: default
 		{% elsif page.collection == "events" %}
 		
 			{% assign today-date = 'now' | date: '%s' %}
-			{% assign events = site.events | sort: "start-date" %}
+			{% assign events = site.events | sort: "date" %}
 			
 			<h2 class="loop-subheading">Upcoming events</h2>
 				
 			<ul>
 			{% for post in events %}
 			
-				{% assign date = post.start-date | date: '%s' %}
+				{% assign date = post.date | date: '%s' %}
 				{% if today-date < date %}
 				
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
-						<p class="post-metadata"><time datetime="{{ post.start-date | date: '%Y-%m-%d %H:%M' }}">{{ post.start-date  | date:'%-d %B %Y at %H:%M' }}</time></p>
+						<p class="post-metadata"><time datetime="{{ post.date | date: '%Y-%m-%d %H:%M' }}">{{ post.date  | date:'%-d %B %Y at %H:%M' }}</time></p>
 					</article>
 				</li>
 				
@@ -70,7 +70,7 @@ layout: default
 			
 			{% assign counter = 0 %}
 			{% for post in events %}
-			{% assign date = post.start-date | date: '%s' %}
+			{% assign date = post.date | date: '%s' %}
 			{% if today-date > date %}
 				{% assign counter = counter | plus: 1 %}
 			{% endif %}
@@ -85,13 +85,13 @@ layout: default
 			
 			{% for post in events %}
 			
-				{% assign date = post.start-date | date: '%s' %}
+				{% assign date = post.date | date: '%s' %}
 				{% if today-date > date %}
 				
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
-						<p class="post-metadata"><time datetime="{{ post.start-date | date: '%Y-%m-%d' }}">{{ post.start-date  | date: '%-d %B %Y' }}</time></p>
+						<p class="post-metadata"><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time></p>
 					</article>
 				</li>
 				{% endif %}
