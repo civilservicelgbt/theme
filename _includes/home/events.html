@@ -18,7 +18,7 @@
 						{{ post.title }}
 					</a>
 				</h2>
-				<p class="post-metadata">On <time datetime="{{ post.start-date | date: '%Y-%m-%d' }}">{{ post.start-date  | date: '%-d %B %Y' }}</time></p>
+				<p class="post-metadata">On <time datetime="{{ post.start-date | date: '%Y-%m-%d' }}">{{ post.start-date  | date:'%-d %B %Y' }}</time></p>
 			</article>
 		</li>
 		{% assign count = count | plus: 1 %}
