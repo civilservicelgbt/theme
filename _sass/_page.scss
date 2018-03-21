@@ -371,9 +371,7 @@ main#join-us {
 				
 				margin: 		15px 0;
 				padding: 0;
-				
-				height: 30px;
-				
+								
 				font-size: $font-size-base;
 
 				label {
@@ -528,6 +526,17 @@ main#join-us {
 				
 				span.asterisk {
 					color: 			$red;
+				}
+				
+				div.mce_inline_error {
+					
+					padding: 0;
+					margin: 5px 0 30px;
+					
+					background: 		white;
+					color: 			$red;
+					
+					text-align: right;
 				}
 				
 			}
