@@ -12,6 +12,4 @@ To complete the registration process, please click the link in the email we just
 
 By joining the Civil Service LGBT+ Network, you agree us sending you emails about our work and events you might be interested in.
 
-We may also use your information to help us develop better policy and our work. If you would like to learn more about how we manage and use your personal data, you can read our data and privacy policy.
-
-Read more about [how we manage and use your data](/about/your-data).
+We may also use your information to help us develop better policy and our work. If you would like to learn more about how we manage and use your personal data, you can read [our data and privacy policy](/about/your-data).
