@@ -186,3 +186,369 @@ main#networks {
 		}
 	}
 }
+
+main#networks {
+	@extend #page;
+	
+	@supports (display: grid) {
+		display: 					grid;
+
+		grid-template-rows: 			auto auto auto;
+		grid-template-columns: 		1fr;
+		grid-template-areas: 		"page-title"
+									"page-lead-paragraph"
+									"page-content";
+		
+		@include md-up {
+			grid-template-rows: 			auto auto auto;
+			grid-template-columns: 		2fr 1fr;
+			grid-column-gap: 			30px;
+			grid-template-areas: 		"page-title page-title"
+										"page-lead-paragraph ."
+										"page-content page-content";
+		}
+	}
+	
+	#page-title {
+		@supports (display: grid) {
+			grid-area:					page-title;
+		}
+
+		margin-top: 					45px;
+		margin-bottom: 				45px;
+		
+		h1.page-title {	
+			@include md-up {
+				font-size: 		$heading1-font-size-base * 2;
+			}
+		}
+	}
+	
+	#page-content {
+		@include md-up {
+			width: 100%;
+			float: left;
+			clear: left;
+		}
+
+		@supports (display: grid) {
+			width: 			100%;
+			float: 			none;
+			clear: 			none;
+			grid-area:		page-content;
+		}
+		
+		table {
+			
+			tr {
+				
+				td {
+					padding: 15px 0;
+				}
+				
+			}
+			
+		}
+	}
+}
+
+main#join-us {
+	
+	@supports (display: grid) {
+		display: 					grid;
+
+		grid-template-rows: 			auto auto auto;
+		grid-template-columns: 		1fr;
+		grid-template-areas: 		"page-title"
+									"page-lead-paragraph"
+									"page-content";
+		
+		@include md-up {
+			grid-template-rows: 			auto auto auto;
+			grid-template-columns: 		2fr 1fr;
+			grid-column-gap: 			30px;
+			grid-template-areas: 		"page-title ."
+										"page-lead-paragraph ."
+										"page-content .";
+		}
+	}
+	
+	&::after {
+	    content: "";
+	    clear: both;
+	    display: table;
+	    
+	    @supports (display: grid) {
+			content: 	none;
+			clear: 		inherit;
+			display: 	none;
+	    }
+	}
+	
+	padding: 45px 0;
+	
+	div#page-title {
+		@supports (display: grid) {
+			grid-area:					page-title;
+		}
+		
+		margin-top: 					45px;
+		margin-bottom: 				45px;
+		
+		h1.page-title {
+			margin: 0;
+			padding: 0;			
+		}
+	}
+	
+	div#page-lead-paragraph {
+		@supports (display: grid) {
+			grid-area:					page-lead-paragraph;
+		}
+		
+		margin-bottom: 				45px;
+		
+		p {
+			font-size: 				$font-size-base + 5px;
+		}
+	}
+	
+	div#page-metadata {
+		@supports (display: grid) {
+			grid-area:					page-metadata;
+		}
+
+		margin-bottom: 				45px;
+		padding-top: 				15px;
+		
+		border-top: 					2px solid $light-gray;
+		
+		p {
+			font-size: 		$font-size-base - 3px;
+			margin:			0;
+		}
+	}
+	
+	div#page-content {
+
+		@include md-up {
+			width: 67%;
+			float: left;
+			clear: left;
+		}
+
+		@supports (display: grid) {
+			width: 			100%;
+			float: 			none;
+			clear: 			none;
+			grid-area:		page-content;
+		}
+
+		margin-bottom: 				45px;
+		padding-top: 				15px;
+		
+		border-top: 					2px solid $light-gray;
+		
+		div#mc_embed_signup {
+			
+			div.indicates-required {
+				margin: 			15px 0;
+				width: 			100%;
+				text-align: 		left;
+				
+				font-size: $font-size-base;
+				font-weight: 	bold;
+				
+				span.asterisk {
+					color: 			$red;
+				}
+			}
+			
+			div.mc-field-group {
+				
+				display: 	block;
+				width: 		100%;
+				
+				margin: 		15px 0;
+				padding: 0;
+				
+				height: 30px;
+				
+				font-size: $font-size-base;
+
+				label {
+					display: inline-block;
+					width: 30%;
+					float: left;
+					
+					height: 30px;
+					
+					line-height: 30px;
+					vertical-align: middle;
+					
+				}
+
+				input[type='text'],
+				input[type='email'] {
+					display: inline-block;
+					width: 70%;
+					
+					height: 30px;
+					
+					border: 3px solid $black;
+					
+					font-size: $font-size-base;
+					
+					&:focus,
+					&:hover {
+						outline: none;
+						@include box-shadow(3);
+					}
+				}
+				
+				&.input-group {
+					
+					height: auto;
+
+					padding: 	0;
+					margin: 		0 0 45px 0;
+										
+					ul {
+						list-style: none;
+						padding: 	0;
+						margin: 		15px 0;
+						
+						li {
+							
+							height: 		30px;
+							padding: 		0;
+							margin: 		15px 0;
+							
+							line-height: 30px;
+							vertical-align: middle;
+							
+							input[type='checkbox'],
+							input[type='radio'] {
+
+								display: block;
+								position: absolute;
+								opacity: 0;
+								cursor: pointer;
+								
+								width: 30px;
+								height: 30px;
+								margin-right: 25px;
+								
+								z-index: 500;
+
+								&:focus,
+								&:hover {
+									&~span.checkbox,
+									&~span.radio {
+										outline: none;
+										@include box-shadow(3);
+										&~label {
+											border-bottom: 2px solid $magenta;
+										}
+									}
+								}
+							}
+							
+							span.checkbox,
+							span.radio {
+								display: inline-block;
+								position: relative;
+								
+								float: left;
+								
+								height: 30px;
+								width: 30px;
+								
+								margin-right: 25px;
+								
+								border: 3px solid $black;
+					
+								&:hover {
+									outline: none;
+									@include box-shadow(3);
+								}
+							}
+							
+							span.radio {
+								border-radius: 100%;
+							}
+
+							input:checked ~ span.checkbox {
+								&:after {
+									position: absolute;
+									top: 0;
+									left: 0;
+									
+									width: 24px;
+									height: 24px;
+									
+									line-height: 24px;
+									text-align: center;
+									vertical-align: middle;
+									font-size: 20px;
+									color: $magenta;
+									content: "\2714";
+								}
+							}
+							
+							input:checked ~ span.radio{
+								&:after {
+									position: absolute;
+									top: 0;
+									left: 0;
+									
+									width: 24px;
+									height: 20px;
+									
+									line-height: 24px;
+									text-align: center;
+									vertical-align: middle;
+									font-size: 30px;
+									color: $magenta;
+									content: "\25CF";
+								}
+							}
+							
+						}
+					}
+					
+					label {
+						float: inherit;
+						width: auto;
+						
+						
+					}
+					
+				}
+				
+				span.asterisk {
+					color: 			$red;
+				}
+				
+			}
+			
+			input[type='submit'] {
+				
+				min-width: 150px;
+				min-height: 40px;
+				
+				font-size: $font-size-base;
+				font-weight: bold;
+				vertical-align: middle;
+				line-height: 40px;
+				
+				background: 		$magenta;
+				color: 			$white;
+				border: 0;
+				
+			}
+			
+		}
+	}
+	
+}
