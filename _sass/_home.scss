@@ -61,7 +61,10 @@ body.home {
 					padding: 45px;
 				}
 				
-				@include box-shadow(15);
+				@include box-shadow(5);
+				@include sm-up {
+					@include box-shadow(10);
+				}
 				@include md-up {
 					@include box-shadow(20);
 				}
