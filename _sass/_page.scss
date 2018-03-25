@@ -555,6 +555,11 @@ main#join-us {
 				color: 			$white;
 				border: 0;
 				
+				&:hover,
+				&:focus {
+					background: 		$purple;
+				}
+				
 			}
 			
 		}
