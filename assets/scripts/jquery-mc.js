@@ -249,6 +249,7 @@
 		        $('.mc-field-group').hide();
 		        $('.indicates-required').hide();
 		        $('.section-title').hide();
+		        $('#terms').hide();
 		        $('#mc-embedded-subscribe-form').each(function(){
 		            this.reset();
 		    	});
