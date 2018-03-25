@@ -245,6 +245,10 @@
 		    if (resp.result == "success"){
 		        $('#mce-'+resp.result+'-response').show();
 		        $('#mce-'+resp.result+'-response').html(resp.msg);
+		        $('#mc-embedded-subscribe').hide();
+		        $('.mc-field-group').hide();
+		        $('.indicates-required').hide();
+		        $('.section-title').hide();
 		        $('#mc-embedded-subscribe-form').each(function(){
 		            this.reset();
 		    	});
