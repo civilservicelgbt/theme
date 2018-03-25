@@ -24,7 +24,11 @@ layout: default
 			{% for network in site.data.networks %}
 			<tr>
 				<td><strong>{{ network.Department }}</strong></td>
+				{% if network.Email %}
 				<td><a href="mailto:{{ network.Email }}" title="Email {{ network.Network }}">{{ network.Network }}</a></td>
+				{% else %}
+				<td>{{ network.Network }}</td>
+				{% endif %}
 			</tr>
 			{% endfor %}
 		</table>
