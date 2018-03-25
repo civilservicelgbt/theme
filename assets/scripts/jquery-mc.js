@@ -247,6 +247,7 @@
 		        $('#mce-'+resp.result+'-response').html(resp.msg);
 		        $('#mc-embedded-subscribe').hide();
 		        $('.mc-field-group').hide();
+		        $('#extra-questions').hide();
 		        $('.indicates-required').hide();
 		        $('.section-title').hide();
 		        $('#terms').hide();

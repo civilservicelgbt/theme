@@ -364,6 +364,16 @@ main#join-us {
 				}
 			}
 			
+			div#extra-questions {
+				margin-top: 60px;
+				margin-bottom: 0;
+				padding: 15px 15px 5px 15px;
+				
+				background: $black;
+				color: 		$white;
+				@include box-shadow(5);
+			}
+			
 			div.mc-field-group {
 				
 				display: 	block;
