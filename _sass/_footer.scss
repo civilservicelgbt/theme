@@ -6,6 +6,17 @@ footer#site-footer {
 	display: block;
 	
 	padding: 			45px 0;
+		
+		&::after {
+		    content: "";
+		    clear: both;
+		    display: table;
+			@supports (display: grid) {
+				content:		none;
+				clear: 		none;
+				display: 	none;
+			}
+		}
 	
 	.container div#footer {
 	
