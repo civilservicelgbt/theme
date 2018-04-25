@@ -388,9 +388,7 @@ main#join-us {
 					display: inline-block;
 					width: 30%;
 					float: left;
-					
-					height: 30px;
-					
+										
 					line-height: 30px;
 					vertical-align: middle;
 					
@@ -428,7 +426,6 @@ main#join-us {
 						
 						li {
 							
-							height: 		30px;
 							padding: 		0;
 							margin: 		15px 0;
 							
@@ -520,6 +517,10 @@ main#join-us {
 									color: $magenta;
 									content: "\25CF";
 								}
+							}	
+					
+							label {
+								margin-left: 55px;
 							}
 							
 						}
@@ -528,8 +529,6 @@ main#join-us {
 					label {
 						float: inherit;
 						width: auto;
-						
-						
 					}
 					
 				}
