@@ -385,7 +385,7 @@ main#join-us {
 				font-size: $font-size-base;
 
 				label {
-					display: block;
+					display: inline-block;
 					width: 30%;
 					float: left;
 					
@@ -428,7 +428,7 @@ main#join-us {
 						
 						li {
 							
-							height: 		auto !important;
+							height: 		30px;
 							padding: 		0;
 							margin: 		15px 0;
 							
@@ -466,7 +466,9 @@ main#join-us {
 							span.radio {
 								display: inline-block;
 								position: relative;
-																
+								
+								float: left;
+								
 								height: 30px;
 								width: 30px;
 								
@@ -524,8 +526,10 @@ main#join-us {
 					}
 					
 					label {
-						float: none;
-						height: auto !important;
+						float: inherit;
+						width: auto;
+						
+						
 					}
 					
 				}
