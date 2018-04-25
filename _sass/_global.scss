@@ -18,6 +18,11 @@ html {
   
   font-kerning: auto;
   letter-spacing: normal;
+  
+	input, textarea {
+	  -webkit-appearance: none;
+	  -webkit-border-radius: 0;
+	}
 }
 
 html {
