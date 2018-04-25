@@ -31,8 +31,10 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
 
 	font-weight: 	bold;
-	font-size: 		$heading1-font-size-base;
-	
+	font-size: 		$heading1-font-size-base * 0.8;
+	@include md-up {
+			font-size: 		$heading1-font-size-base;
+	}	
 	padding: 	45px 0 30px 0;
 	
 }
