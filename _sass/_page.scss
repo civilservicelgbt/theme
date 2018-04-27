@@ -391,7 +391,6 @@ main#join-us {
 										
 					line-height: 30px;
 					vertical-align: middle;
-					
 				}
 
 				input[type='text'],
@@ -401,14 +400,15 @@ main#join-us {
 					
 					height: 30px;
 					
-					border: 3px solid $black;
+					border: none;
+					border-bottom: 3px solid $black;
 					
 					font-size: $font-size-base;
 					
 					&:focus,
 					&:hover {
 						outline: none;
-						@include box-shadow(3);
+						border: 3px solid $magenta;
 					}
 				}
 				
@@ -445,6 +445,10 @@ main#join-us {
 								margin-right: 25px;
 								
 								z-index: 500;
+								
+								&~label {
+									border-bottom: 2px solid transparent;
+								}
 
 								&:focus,
 								&:hover {
@@ -521,6 +525,7 @@ main#join-us {
 					
 							label {
 								margin-left: 55px;
+								
 							}
 							
 						}
