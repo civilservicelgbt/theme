@@ -580,37 +580,51 @@ main#join-us {
 				
 			}
 			
-			div.response {
+			div#mce-responses {
+				margin: 30px 0;
+				
+				div.response {
 
-				padding: 15px;
-				
-				background: $black;
-				color: 		$white;
-				@include box-shadow(5);
-				
-				font-size: 	$font-size-base;
-				
-				&:before {
-					display: block;
-					position: relative;
+					padding: 15px 15px 25px;
 					
-					padding: 5px 0 15px 0;
+					background: $black;
+					color: 		$white;
+					@include box-shadow(5);
 					
-					font-size: $heading4-font-size-base;
-					font-weight: bold;
-				}
-				
-				&#mce-success-response {
-					&:before {
-						content: "Check your email";
+					font-size: 	$font-size-base;
+					
+					a {
+						color: 		$white;
+						text-decoration: underline;
+						
+						&:hover,
+						&:focus {
+							color: $cyan;
+						}
 					}
-				}
-				&#mce-error-response {
+					
 					&:before {
-						content: "Something went wrong";
+						display: block;
+						position: relative;
+						
+						padding: 5px 0 15px 0;
+						
+						font-size: $heading4-font-size-base;
+						font-weight: bold;
 					}
+					
+					&#mce-success-response {
+						&:before {
+							content: "Check your email";
+						}
+					}
+					&#mce-error-response {
+						&:before {
+							content: "Something went wrong";
+						}
+					}
+					
 				}
-				
 			}
 			
 		}
