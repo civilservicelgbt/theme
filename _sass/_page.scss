@@ -252,7 +252,8 @@ main#networks {
 	}
 }
 
-main#join-us {
+main#join-us,
+main#update-profile {
 	
 	@supports (display: grid) {
 		display: 					grid;
@@ -636,6 +637,33 @@ main#join-us {
 			border-top: 2px solid #DEE0E2;
 		}
 		
+		div#instructions {
+			display: block;
+			position: relative;
+			
+			padding: 15px 0 15px 0;
+			margin: 0 0 30px 0;			
+			border-bottom: 2px solid #DEE0E2;
+		}
+		
 	}
 	
+}
+
+main#profile-update {
+	div#mce-responses {		
+		div.response {
+			&#mce-success-response {
+				&:before {
+					content: "Check your email" !important;
+				}
+			}
+			&#mce-error-response {
+				&:before {
+					content: "Check your email" !important;
+				}
+			}
+			
+		}
+	}
 }
