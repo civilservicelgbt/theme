@@ -2,32 +2,29 @@
 
 nav#site-navigation {
 	
+	display: block;
 	position: relative;
 	
 	z-index: 				1000000;
 
-	padding: 		15px 0 15px 0;
+	padding: 		0 0 15px 0;
 	margin: 			0;
 
+					
+	div#menu {
 			
-	.container {
+		background: 				$black;
+		@include					header-shadow(3);
+	
+		padding: 		0 15px;
+		margin: 0;
 		
-		div#menu {
-				
-			background: 				$black;
-			@include					box-shadow(5);
-		
-			padding: 		0 15px;
-			margin: 0;
-			
-			&::after {
-			    content: "";
-			    clear: both;
-			    display: table;
-			}
-
+		&::after {
+		    content: "";
+		    clear: both;
+		    display: table;
 		}
-		 
+
 	}
 	
 	span.site-title {

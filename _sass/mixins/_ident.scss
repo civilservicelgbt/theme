@@ -9,3 +9,15 @@
 					(1px * $x) (1px * $x) $cyan,
 					(2px * $x) (2px * $x) $yellow;
 }
+
+@mixin header-shadow($x) {
+	box-shadow: 		(0 * $x) (1px * $x) $magenta,
+					(0 * $x) (2px * $x) $cyan,
+					(0 * $x) (3px * $x) $yellow;
+}
+
+@mixin footer-shadow($x) {
+	box-shadow: 		(0 * $x) (-1px * $x) $yellow,
+					(0 * $x) (-2px * $x) $cyan,
+					(0 * $x) (-3px * $x) $magenta;
+}

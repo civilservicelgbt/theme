@@ -6,6 +6,9 @@ div#site-footer {
 	display: block;
 	
 	padding: 			45px 0;
+
+		background: 			$black;
+		@include footer-shadow(3);
 	
 	footer#footer {
 	
@@ -13,9 +16,6 @@ div#site-footer {
 		position: relative;
 		
 		padding: 			30px;
-
-		background: 			$black;
-		@include box-shadow(5);
 		
 		&::after {
 		    content: "";
