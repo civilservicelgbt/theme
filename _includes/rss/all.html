@@ -60,6 +60,8 @@
 					{% endif %}
 				</author>
 		
+				<category term="{{ post.layout | xml_escape }}" />
+		
 				{% if post.category %}
 				<category term="{{ post.category | xml_escape }}" />
 				{% endif %}
