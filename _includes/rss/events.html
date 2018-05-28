@@ -30,8 +30,13 @@
 			{% endif %}
 		</author>
 	{% endif %}
-
-	{% for post in site.events %}
+	
+	{% assign today-date = 'now' | date: '%s' %}
+	{% assign events = site.events | sort: "date" %}
+	
+	{% for post in events %}
+		{% assign date = post.date | date: '%s' %}
+		{% if today-date < date %}
 		{% if post.preview != true %}
 		<entry{% if post.lang %}{{" "}}xml:lang="{{ post.lang }}"{% endif %}>
 			<title type="html">{{ post.title | smartify | strip_html | normalize_whitespace | xml_escape }}</title>
@@ -79,6 +84,7 @@
 				<media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="{{ post_image | xml_escape }}" />
 				{% endif %}
 		</entry>
+		{% endif %}
 		{% endif %}
 	{% endfor %}
 </feed>
