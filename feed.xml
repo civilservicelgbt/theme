@@ -33,7 +33,7 @@
 
 	{% assign alldocuments = site.documents | sort: 'date' | reverse %}
 	{% for post in alldocuments %}
-	{% if post.layout != "event" }
+	{% if post.layout != "event" %}
 	{% if post.draft != true %}
 	<entry{% if post.lang %}{{" "}}xml:lang="{{ post.lang }}"{% endif %}>
 		<title type="html">{{ post.title | smartify | strip_html | normalize_whitespace | xml_escape }}</title>
