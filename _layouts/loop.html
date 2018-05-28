@@ -18,7 +18,7 @@ layout: default
 		
 			<ul>
 			{% for post in site.posts %}
-				{% if post.draft != true %}
+				{% if post.preview != true %}
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
@@ -34,7 +34,7 @@ layout: default
 		
 			<ul>
 			{% for post in site.notices %}
-				{% if post.draft != true %}
+				{% if post.preview != true %}
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
@@ -51,7 +51,7 @@ layout: default
 			<ul>
 			{% assign archives = site.archives | sort: 'date' | reverse %}
 			{% for post in archives %}
-				{% if post.draft != true %}
+				{% if post.preview != true %}
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
@@ -76,7 +76,7 @@ layout: default
 				{% assign date = post.date | date: '%s' %}
 				{% if today-date < date %}
 				
-				{% if post.draft != true %}
+				{% if post.preview != true %}
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
@@ -110,7 +110,7 @@ layout: default
 				{% assign date = post.date | date: '%s' %}
 				{% if today-date > date %}
 				
-				{% if post.draft != true %}
+				{% if post.preview != true %}
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
@@ -132,7 +132,7 @@ layout: default
 
 			<ul>				
 			{% for post in publications %}
-				{% if post.draft != true %}
+				{% if post.preview != true %}
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
@@ -168,7 +168,7 @@ layout: default
 				{% assign end-date = post.end-date | date: '%s' %}
 				{% if today-date < end-date %}
 				
-				{% if post.draft != true %}
+				{% if post.preview != true %}
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
@@ -209,7 +209,7 @@ layout: default
 				{% assign end-date = post.end-date | date: '%s' %}
 				{% if today-date > end-date %}
 				
-				{% if post.draft != true %}
+				{% if post.preview != true %}
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
@@ -230,7 +230,7 @@ layout: default
 		
 			<ul>
 			{% for post in site.manuals %}
-				{% if post.draft != true %}
+				{% if post.preview != true %}
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
