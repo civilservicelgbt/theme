@@ -44,6 +44,7 @@ body {
 	&.preview {
 		background: url('../images/preview.png');
 		background-size: 250px;
+		background-repeat: repeat;
 	}
 	
 }
