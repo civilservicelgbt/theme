@@ -6,6 +6,7 @@
 
 	<ul>
 		{% for post in publications limit: 3 %}
+		{% if post.preview != true %}
 		<li>
 			<article>
 				<h2>
@@ -16,6 +17,7 @@
 				<p class="post-metadata">Published <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time> {% if post.author %}by {{ post.author }}{% else %}by Civil Service LGBT+{% endif %}</p>
 			</article>
 		</li>
+		{% endif %}
 		{% endfor %}
 	</ul>
 	

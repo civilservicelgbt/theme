@@ -11,6 +11,7 @@
 		{% if count < 3 %}
 		{% assign date = post.date | date: '%s' %}
 		{% if today-date < date %}
+		{% if post.preview != true %}
 		<li>
 			<article>
 				<h2>
@@ -21,6 +22,7 @@
 				<p class="post-metadata">On <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time></p>
 			</article>
 		</li>
+		{% endif %}
 		{% assign count = count | plus: 1 %}
 		{% endif %}
 		{% endif %}
