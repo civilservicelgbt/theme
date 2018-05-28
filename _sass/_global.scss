@@ -41,6 +41,11 @@ body {
 	background: 		$body-background;
 	color: 			$body-color;
 	
+	&.preview {
+		background: url('../images/preview.png');
+		background-size: 250px;
+	}
+	
 }
 
 body {
