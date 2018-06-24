@@ -1,5 +1,19 @@
 // Posts page styles
 
+main {
+	&::after {
+	    content: "";
+	    clear: both;
+	    display: table;
+	    
+	    @supports (display: grid) {
+			content: 	none;
+			clear: 		inherit;
+			display: 	none;
+	    }
+	}
+}
+
 main#news,
 main#consultation,
 main#publication,
@@ -30,18 +44,6 @@ main#news {
 										"page-metadata page-metadata"
 										"page-content page-related";
 		}
-	}
-	
-	&::after {
-	    content: "";
-	    clear: both;
-	    display: table;
-	    
-	    @supports (display: grid) {
-			content: 	none;
-			clear: 		inherit;
-			display: 	none;
-	    }
 	}
 	
 	div#page-title {

@@ -3,7 +3,6 @@
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-	<!-- ADD THIS WHEN MAX() SUPPORT IS MORE WIDESPREAD - meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"-->
 	
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<title>{% if page.title %}{{ page.title | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.title | strip_html | strip_newlines | truncate: 200 }}{% endif %}</title>
