@@ -32,5 +32,17 @@
 		max-width: $container-xl !important;
 	}
 
+	&::after {
+	    content: "";
+	    clear: both;
+	    display: table;
+	    
+	    @supports (display: grid) {
+			content: 	none;
+			clear: 		inherit;
+			display: 	none;
+	    }
+	}
+
 }
 
