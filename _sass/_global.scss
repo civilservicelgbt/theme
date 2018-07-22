@@ -16,7 +16,7 @@ html {
 *::after {
   box-sizing: border-box;
   
-  font-kerning: auto;
+  -webkit-font-smoothing: antialiased;
   letter-spacing: normal;
   
 	input, textarea {
