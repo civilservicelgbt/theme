@@ -23,7 +23,8 @@ main#manual {
 	padding: 45px 0;
 }
 
-main#news {
+main#news,
+main#notice {
 	
 	@supports (display: grid) {
 		display: 					grid;
