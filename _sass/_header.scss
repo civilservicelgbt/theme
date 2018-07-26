@@ -195,7 +195,7 @@ nav#site-navigation {
 			
 			@include md-up {
 				display: inline-block;
-				padding: 17px 0 17px 10px;
+				padding: 17px 0 17px 20px;
 			}
 			margin: 0;
 			
@@ -204,7 +204,7 @@ nav#site-navigation {
 			}
 						
 			a {
-				font-size: 			$font-size-base - 4px;
+				font-size: 			$font-size-base - 2px;
 				font-weight: 		bold;
 				color: 				$white;
 			}
