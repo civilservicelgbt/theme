@@ -4,7 +4,7 @@
 		<span class="site-title"><a href="{{ site.url | append: site.baseurl }}" title="go to the home page">{{ site.short-title }}</a></span>
 		
 		<span class="menu-button">
-			<button id="menu-toggle" onclick="toggleMenu()" value="Toggle menu">
+			<button id="menu-toggle" onclick="toggleMenu()"  aria-controls="navigation" aria-label="Show or hide Top Level Navigation" value="Toggle menu">
 				<span class="bar"></span>
 				<span class="bar"></span>
 				<span class="bar"></span>
@@ -12,7 +12,7 @@
 			</button>
 		</span>
 
-		<ul id="menu-items" class="closed">
+		<ul id="menu-items" class="closed" aria-label="Top Level Navigation">
 		{% for item in site.data.menu %}
 			{% if page.url contains item.url %}
 			<li class="active"><a href="{{ site.url | append: site.baseurl | append: item.url }}" title="{{ item.link-title }}">{{ item.name }}</a></li>

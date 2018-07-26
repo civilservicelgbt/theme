@@ -39,3 +39,12 @@
 .sr-only-focusable {
   @include sr-only-focusable;
 }
+
+.skip-link {
+  @include sr-only;
+  @include sr-only-focusable;
+  
+  display: block;
+  width: 100%;
+  padding: 10px;
+}

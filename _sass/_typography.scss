@@ -12,12 +12,19 @@ a {
 	outline: 				$link-outline;
 	font-weight: 			inherit;
 	
-	&:hover,
-	&:focus {
+	&:hover {
 		color: 					$link-hover-color;
 		text-decoration: 		$link-text-decoration-hover;
 		text-decoration-skip: 	ink;
 		text-decoration-skip-ink: auto;
+	}
+	
+	&:focus {
+  	  color: $black !important;
+    background: $yellow;
+    text-decoration: none !important;
+    box-sizing:  content-box;
+    outline:  3px solid $yellow;
 	}
 	
 }
