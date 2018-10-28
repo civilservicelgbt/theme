@@ -9,7 +9,7 @@
 	<ul>
 		{% for post in events %}
 		{% if count < 3 %}
-		{% assign date = post.date | date: '%s' %}
+		{% assign date = post.event-date | date: '%s' %}
 		{% if today-date < date %}
 		{% if post.preview != true %}
 		<li>
@@ -19,7 +19,7 @@
 						{{ post.title }}
 					</a>
 				</h2>
-				<p class="post-metadata">On <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time></p>
+				<p class="post-metadata">On <time datetime="{{ post.event-date | date: '%Y-%m-%d' }}">{{ post.event-date  | date:'%-d %B %Y' }}</time></p>
 			</article>
 		</li>
 		{% endif %}
