@@ -2,15 +2,8 @@
 	
 	<h1 class="section-title"><a href="{{ site.url | append: site.baseurl | append: '/news/' }}" title="Go to the news page">Latest news</a></h1>
 
-	{% assign publishedposts = ''|split:''%}
-	{% for post in site.posts %}
-	    {% unless post.preview == "false"%}
-	    {% assign publishedposts = publishedposts|push:post%}
-	    {% endunless %}
-	{% endfor %}
-
 	<ul>
-		{% for post in publishedposts limit: 3%}
+		{% for post in site.posts limit: 3%}
 		{% if post.preview != true %}
 		<li>
 			<article>
