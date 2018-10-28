@@ -130,6 +130,47 @@ main#notice {
 			min-height: 100px;
 		}
 		
+		ul.loop {
+			list-style: none;
+			
+			padding: 0;
+			padding-bottom: 30px;
+			margin: 0;
+			
+			li {
+				padding: 0;
+				margin: 0;
+				
+				border-bottom: 1px solid $light-gray;
+				
+				&:last-child {
+					border: none;
+				}
+				
+				article {
+					
+					padding-bottom: 15px;
+							
+					h2 {
+						@extend h5;
+						padding-top: 15px;
+						padding-bottom: 0;
+					}
+					
+					p {
+						font-size: 		$font-size-base - 2px;
+						margin:			5px 0 0 0;
+						
+						&.post-metadata {
+							font-size: 	$font-size-base - 4px;
+							color: 		$dark-gray;
+						}
+					}
+				}
+				
+			}
+		}
+		
 		div.footnotes {
 			
 			border-top: 					2px solid $light-gray;

@@ -125,14 +125,12 @@ layout: default
 
 			<ul>				
 			{% for post in publications %}
-				{% if post.preview != true %}
 				<li>
 					<article>
 						<h2 class="page-subheading"><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
 						<p class="post-metadata"><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time> {% if post.author %}by {{ post.author }}{% endif %}</p>
 					</article>
 				</li>
-				{% endif %}
 			{% endfor %}
 			</ul>
 		
