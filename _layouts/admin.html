@@ -41,22 +41,7 @@ layout: default
 				</li>
 			{% endfor %}
 			</ul>
-		
-			<h2 class="page-subheading">Archives</h2>
-		
-			<ul>
-			{% assign archives = site.archives | sort: 'date' | reverse %}
-			{% for post in archives %}
-				<li>
-					<article>
-						<h2 class="page-subheading"><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
-						<p>{{ post.excerpt }}</p>
-						<p class="post-metadata">Published <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time> {% if post.author %}by {{ post.author }}{% endif %}</p>
-					</article>
-				</li>
-			{% endfor %}
-			</ul>
-		
+				
 			<h2 class="page-subheading">Events</h2>
 		
 			<h3>Upcoming events</h3>
@@ -222,6 +207,22 @@ layout: default
 				</li>
 			{% endfor %}
 			</ul>
+			
+			<h2 class="page-subheading">Archives</h2>
+		
+			<ul>
+			{% assign archives = site.archives | sort: 'date' | reverse %}
+			{% for post in archives %}
+				<li>
+					<article>
+						<h2 class="page-subheading"><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<p>{{ post.excerpt }}</p>
+						<p class="post-metadata">Published <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time> {% if post.author %}by {{ post.author }}{% endif %}</p>
+					</article>
+				</li>
+			{% endfor %}
+			</ul>
+
 		
 		
 	</div>
