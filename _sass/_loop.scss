@@ -1,6 +1,7 @@
 // Loop page styles
 
-main#loop {
+main#loop,
+main#admin {
 	
 	&::after {
 	    content: "";

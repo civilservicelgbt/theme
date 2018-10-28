@@ -14,13 +14,13 @@ layout: default
 	
 	<div id="page-content" class="loop-{{ page.collection }}">
 		
-			<h2>News</h2>
+			<h2 class="page-subheading">News</h2>
 		
 			<ul>
 			{% for post in site.posts %}
 				<li>
 					<article>
-						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<h2 class="page-subheading"><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
 						<p>{{ post.excerpt }}</p>
 						<p class="post-metadata">Published <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time> {% if post.author %}by {{ post.author }}{% endif %}</p>
 					</article>
@@ -28,13 +28,13 @@ layout: default
 			{% endfor %}
 			</ul>
 
-			<h2>Notices</h2>
+			<h2 class="page-subheading">Notices</h2>
 		
 			<ul>
 			{% for post in site.notices %}
 				<li>
 					<article>
-						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<h2 class="page-subheading"><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
 						<p>{{ post.excerpt }}</p>
 						<p class="post-metadata">Published <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time> {% if post.author %}by {{ post.author }}{% endif %}</p>
 					</article>
@@ -42,14 +42,14 @@ layout: default
 			{% endfor %}
 			</ul>
 		
-			<h2>Archives</h2>
+			<h2 class="page-subheading">Archives</h2>
 		
 			<ul>
 			{% assign archives = site.archives | sort: 'date' | reverse %}
 			{% for post in archives %}
 				<li>
 					<article>
-						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<h2 class="page-subheading"><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
 						<p>{{ post.excerpt }}</p>
 						<p class="post-metadata">Published <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time> {% if post.author %}by {{ post.author }}{% endif %}</p>
 					</article>
@@ -57,7 +57,7 @@ layout: default
 			{% endfor %}
 			</ul>
 		
-			<h2>Events</h2>
+			<h2 class="page-subheading">Events</h2>
 		
 			<h3>Upcoming events</h3>
 			
@@ -74,7 +74,7 @@ layout: default
 				
 				<li>
 					<article>
-						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<h2 class="page-subheading"><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
 						<p class="post-metadata"><time datetime="{{ post.date | date: '%Y-%m-%d %H:%M' }}">{{ post.date  | date:'%-d %B %Y at %H:%M' }}</time></p>
 					</article>
 				</li>
@@ -108,7 +108,7 @@ layout: default
 				{% if post.preview != true %}
 				<li>
 					<article>
-						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<h2 class="page-subheading"><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
 						<p class="post-metadata"><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time></p>
 					</article>
 				</li>
@@ -121,7 +121,7 @@ layout: default
 			
 			{% endif %}
 		
-			<h2>Publications</h2>
+			<h2 class="page-subheading">Publications</h2>
 		
 			{% assign publications = site.publications | sort: "date" | reverse %}
 
@@ -130,7 +130,7 @@ layout: default
 				{% if post.preview != true %}
 				<li>
 					<article>
-						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<h2 class="page-subheading"><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
 						<p class="post-metadata"><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time> {% if post.author %}by {{ post.author }}{% endif %}</p>
 					</article>
 				</li>
@@ -138,7 +138,7 @@ layout: default
 			{% endfor %}
 			</ul>
 		
-			<h2>Consultations</h2>						
+			<h2 class="page-subheading">Consultations</h2>						
 			
 			{% assign consultations = site.consultations | sort: "end-date" | reverse %}
 			{% assign today-date = 'now' | date: '%s' %}
@@ -164,7 +164,7 @@ layout: default
 				{% if today-date < end-date %}
 				<li>
 					<article>
-						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<h2 class="page-subheading"><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
 						<p class="post-metadata">Closes <time datetime="{{ post.end-date | date: '%Y-%m-%d' }}">{{ post.end-date  | date:'%-d %B %Y' }}</time></p>
 					</article>
 				</li>				
@@ -202,7 +202,7 @@ layout: default
 				
 				<li>
 					<article>
-						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<h2 class="page-subheading"><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
 						<p class="post-metadata">Closed <time datetime="{{ post.end-date | date: '%Y-%m-%d' }}">{{ post.end-date  | date:'%-d %B %Y' }}</time></p>
 					</article>
 				</li>
@@ -214,13 +214,13 @@ layout: default
 			
 			{% endif %}
 			
-			<h2>Manuals</h2>
+			<h2 class="page-subheading">Manuals</h2>
 		
 			<ul>
 			{% for post in site.manuals %}
 				<li>
 					<article>
-						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<h2 class="page-subheading"><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
 						<p class="post-metadata"><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time></p>
 					</article>
 				</li>
