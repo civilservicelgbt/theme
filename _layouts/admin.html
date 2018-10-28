@@ -63,9 +63,7 @@ layout: default
 			
 			{% assign today-date = 'now' | date: '%s' %}
 			{% assign events = site.events | sort: "date" %}
-			
-			<h2 class="loop-subheading">Upcoming events</h2>
-				
+							
 			<ul>
 			{% for post in events %}
 			
