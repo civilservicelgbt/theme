@@ -5,7 +5,7 @@ layout: default
 <main id="{{ page.layout }}">
 	
 	{% assign today-date = 'now' | date: '%s' %}
-	{% assign date = page.event-date | date: '%s' %}
+	{% assign date = page.date | date: '%s' %}
 	{% assign reg-close-date = page.registration-close-date | date: '%s' %}
 
 	<div id="page-title">
@@ -29,8 +29,8 @@ layout: default
 		
 			{% if today-date < date and today-date < reg-close-date %}
 									
-				{% if page.event-date %}
-					<p><strong>Date and time</strong><br><time datetime="{{ page.event-date | date: '%Y-%m-%d' }}">{{ page.event-date | date:'%-d %B %Y at %H:%M' }}</time></p>
+				{% if page.date %}
+					<p><strong>Date and time</strong><br><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date:'%-d %B %Y at %H:%M' }}</time></p>
 				{% else %}
 					<p><strong>Error: No event date found.</strong> Add event date and time in post front matter using this format <code>date: 2018-01-30 18:30:00</code>.</p>
 				{% endif %}
@@ -51,8 +51,8 @@ layout: default
 			
 			{% elsif today-date < date and today-date > reg-close-date %}
 			
-				{% if page.event-date %}
-					<p><strong>Date and time</strong><br><time datetime="{{ page.event-date | date: '%Y-%m-%d' }}">{{ page.event-date | date:'%-d %B %Y at %H:%M' }}</time></p>
+				{% if page.date %}
+					<p><strong>Date and time</strong><br><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date:'%-d %B %Y at %H:%M' }}</time></p>
 				{% else %}
 					<p><strong>Error: No event date found.</strong> Add event date and time in post front matter using this format <code>date: 2018-01-30 18:30:00</code>.</p>
 				{% endif %}
@@ -73,8 +73,8 @@ layout: default
 		
 			{% if today-date < date %}
 					
-				{% if page.event-date %}
-					<p><strong>Date and time</strong><br><time datetime="{{ page.event-date | date: '%Y-%m-%d' }}">{{ page.event-date | date:'%-d %B %Y at %H:%M' }}</time></p>
+				{% if page.date %}
+					<p><strong>Date and time</strong><br><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date:'%-d %B %Y at %H:%M' }}</time></p>
 				{% else %}
 					<p><strong>Error: No event date found.</strong> Add event date and time in post front matter using this format <code>date: 2018-01-30 18:30:00</code>.</p>
 				{% endif %}
@@ -106,5 +106,31 @@ layout: default
 		{{ content }}
 	</div>
 	
+	{% assign count = 0 %}
+	{% assign today-date = 'now' | date: '%s' %}
+	{% assign events = site.events | sort: "date" %}
+	
+	<div id="page-related">
+		<h2 class="page-related-title">Other upcoming events</h2>
 		
+		<ul>
+		{% for post in events %}
+		{% if count < 3 %}
+		{% assign date = post.date | date: '%s' %}
+		{% if today-date < date %}
+			{% if post.url != page.url %}
+			<li>
+				<article>
+					<p><a href="{{ post.url }}" title="Go to {{ post.title }}">{{ post.title }}</a></p>
+					<p class="post-metadata"><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time></p>
+				</article>
+			</li>
+			{% assign count = count | plus: 1 %}
+			{% endif %}
+		{% endif %}
+		{% endif %}
+		{% endfor %}
+		</ul>
+	</div>
+	
 </main>
