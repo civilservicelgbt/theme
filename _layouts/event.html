@@ -116,7 +116,7 @@ layout: default
 		<ul>
 		{% for post in events %}
 		{% if count < 3 %}
-		{% assign date = post.date | date: '%s' %}
+		{% assign date = post.event-date | date: '%s' %}
 		{% if today-date < date %}
 			{% if post.url != page.url %}
 			<li>
