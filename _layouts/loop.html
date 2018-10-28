@@ -75,16 +75,12 @@ layout: default
 			
 				{% assign date = post.event-date | date: '%s' %}
 				{% if today-date < date %}
-				
-				{% if post.preview != true %}
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
 						<p class="post-metadata"><time datetime="{{ post.event-date | date: '%Y-%m-%d %H:%M' }}">{{ post.event-date  | date:'%-d %B %Y at %H:%M' }}</time></p>
 					</article>
-				</li>
-				{% endif %}
-				
+				</li>				
 				{% endif %}
 				
 			{% endfor %}
