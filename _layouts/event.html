@@ -108,7 +108,7 @@ layout: default
 	
 	{% assign count = 0 %}
 	{% assign today-date = 'now' | date: '%s' %}
-	{% assign events = site.events | sort: "date" %}
+	{% assign events = site.events | sort: "event-date" %}
 	
 	<div id="page-related">
 		<h2 class="page-related-title">Other upcoming events</h2>

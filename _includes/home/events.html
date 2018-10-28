@@ -4,7 +4,7 @@
 	
 	{% assign count = 0 %}
 	{% assign today-date = 'now' | date: '%s' %}
-	{% assign events = site.events | sort: "date" %}
+	{% assign events = site.events | sort: "event-date" %}
 		
 	<ul>
 		{% for post in events %}
