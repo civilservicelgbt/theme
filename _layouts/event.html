@@ -106,31 +106,5 @@ layout: default
 		{{ content }}
 	</div>
 	
-	{% assign count = 0 %}
-	{% assign today-date = 'now' | date: '%s' %}
-	{% assign events = site.events | sort: "event-date" %}
-	
-	<div id="page-related">
-		<h2 class="page-related-title">Other upcoming events</h2>
 		
-		<ul>
-		{% for post in events %}
-		{% if count < 3 %}
-		{% assign date = post.event-date | date: '%s' %}
-		{% if today-date < date %}
-			{% if post.url != page.url %}
-			<li>
-				<article>
-					<p><a href="{{ post.url }}" title="Go to {{ post.title }}">{{ post.title }}</a></p>
-					<p class="post-metadata"><time datetime="{{ post.event-date | date: '%Y-%m-%d' }}">{{ post.event-date  | date:'%-d %B %Y' }}</time></p>
-				</article>
-			</li>
-			{% assign count = count | plus: 1 %}
-			{% endif %}
-		{% endif %}
-		{% endif %}
-		{% endfor %}
-		</ul>
-	</div>
-	
 </main>
