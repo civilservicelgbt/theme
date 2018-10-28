@@ -73,7 +73,7 @@ layout: default
 			<ul>
 			{% for post in events %}
 			
-				{% assign date = post.date | date: '%s' %}
+				{% assign date = post.event-date | date: '%s' %}
 				{% if today-date < date %}
 				
 				{% if post.preview != true %}
