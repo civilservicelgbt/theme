@@ -17,7 +17,7 @@ layout: default
 		
 		<h2>Event details</h2>		
 		
-		{% unless page.link or page.email %}
+		{% unless page.link or page.email or page.no-register %}
 			<p><strong>Error: No registration link or email found.</strong> Add a link or email address in post front matter using either of these formats:
 				<ol>
 					<li><code>link: https://www.example.com</code></li>
@@ -91,6 +91,8 @@ layout: default
 					<p>To register for this event, <a href="{{ page.link }}" title="Register for this event (opens in new window)" target="_blank">register online.</a></p>
 				{% elsif page.email %}
 					<p>To register for this event, <a href="mailto:{{ page.email }}" title="Email {{ page.email }}">contact the organiser.</a></p>
+				{% elsif page.no-register %}
+					<p>{{ page.no-register }}</p>
 				{% endif %}
 			
 			{% elsif today-date > date %}
