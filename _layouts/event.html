@@ -47,6 +47,8 @@ layout: default
 					<p>To register for this event, <a href="{{ page.link }}" title="Register for this event (opens in new window)" target="_blank">register online.</a></p>
 				{% elsif page.email %}
 					<p>To register for this event, <a href="mailto:{{ page.email }}" title="Email {{ page.email }}">contact the organiser.</a></p>
+				{% elsif page.no-register %}
+					<p>{{ page.no-register }}</p>
 				{% endif %}
 			
 			{% elsif today-date < date and today-date > reg-close-date %}
