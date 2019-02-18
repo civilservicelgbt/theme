@@ -33,8 +33,7 @@
 
 	{% assign alldocuments = site.documents | sort: 'date' | reverse %}
 	{% for post in alldocuments %}
-		{% if post.layout != "event" %}
-		{% if post.layout != "notice" %}
+		{% if post.layout == "news" OR post.layout == "publication" %}
 		{% if post.preview != true %}
 		<entry{% if post.lang %}{{" "}}xml:lang="{{ post.lang }}"{% endif %}>
 			<title type="html">{{ post.title | smartify | strip_html | normalize_whitespace | xml_escape }}</title>
@@ -82,7 +81,6 @@
 				<media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="{{ post_image | xml_escape }}" />
 				{% endif %}
 		</entry>
-		{% endif %}
 		{% endif %}
 		{% endif %}
 	{% endfor %}
