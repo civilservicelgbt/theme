@@ -1,0 +1,66 @@
+// Global styles
+
+@at-root {
+  @-ms-viewport {
+    width: device-width;
+  } // stylelint-disable-line at-rule-no-vendor-prefix
+}
+
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+  background: $html-background;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: normal;
+
+  input,
+  textarea {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+  }
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-family: $font-family-sans-serif;
+  background: $body-background;
+  color: $body-color;
+  box-sizing: border-box;
+
+  &.preview {
+    background: url('../images/preview.png');
+    background-size: 250px;
+    background-repeat: repeat;
+  }
+
+  @supports (padding: max(0)) {
+    // iOS 11.0 - 11.1
+    @supports (padding-top: constant(safe-area-inset-top)) {
+      padding-top: unquote('max(0px, constant(safe-area-inset-top))');
+      padding-bottom: unquote('max(0px, constant(safe-area-inset-bottom))');
+      padding-left: unquote('max(0px, constant(safe-area-inset-left))');
+      padding-right: unquote('max(0px, constant(safe-area-inset-right))');
+    }
+    // iOS 11.2
+    @supports (padding-top: env(safe-area-inset-top)) {
+      padding-top: unquote('max(0px, env(safe-area-inset-top))');
+      padding-bottom: unquote('max(0px, env(safe-area-inset-bottom))');
+      padding-left: unquote('max(0px, env(safe-area-inset-left))');
+      padding-right: unquote('max(0px, env(safe-area-inset-right))');
+    }
+  }
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  margin: 20px 0;
+}

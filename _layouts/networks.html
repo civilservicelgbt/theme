@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<main id="{{ page.layout }}">
+	
+	<div id="page-title">		
+		<h1 class="page-title">{{ page.title }}</h1>
+	</div>
+	
+	<div id="page-lead-paragraph">
+		<p>{{ page.excerpt }}</p>
+	</div>
+	
+	<div id="page-content">
+		
+		{{ content }}
+		
+		<table>
+			<thead>
+				<th>Department</th>
+				<th>Network</th>
+			</thead>
+			{% for network in site.data.networks %}
+			<tr>
+				<td><strong>{{ network.Department }}</strong></td>
+				{% if network.Email %}
+				<td><a href="mailto:{{ network.Email }}" title="Email {{ network.Network }}">{{ network.Network }}</a></td>
+				{% else %}
+				<td>{{ network.Network }}</td>
+				{% endif %}
+			</tr>
+			{% endfor %}
+		</table>
+		
+	</div>
+	
+</main>

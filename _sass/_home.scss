@@ -1,0 +1,453 @@
+// Home page styles
+
+body.home {
+  section#header {
+    div.container {
+      @supports (display: grid) {
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr;
+        grid-template-areas: "header";
+
+        @include md-up {
+          grid-template-rows: auto;
+          grid-template-columns: 5fr 1fr;
+          grid-template-areas: "header .";
+        }
+      }
+
+      padding: 50px 15px;
+
+      @include sm {
+        padding: 75px 15px;
+      }
+
+      @include md {
+        padding: 100px 15px;
+      }
+
+      @include lg {
+        padding: 100px 15px;
+      }
+
+      @include xl {
+        padding: 100px 15px;
+      }
+
+      header#home-header {
+        @supports not (display: grid) {
+          width: 100%;
+          margin: 50px 0 0 0;
+
+          @include md-up {
+            width: 80%;
+            padding: 45px;
+            margin: 100px 0 0 15px;
+          }
+        }
+
+        @supports (display: grid) {
+          grid-area: header;
+          align-self: center;
+
+          @include md-up {
+            margin-left: 15px;
+          }
+        }
+
+        padding: 30px 15px;
+
+        @include md-up {
+          padding: 45px;
+        }
+
+        @include box-shadow(5);
+
+        @include sm-up {
+          @include box-shadow(10);
+        }
+
+        @include md-up {
+          @include box-shadow(20);
+        }
+
+        background: $black;
+        box-sizing: border-box !important;
+
+        h1 {
+          position: relative;
+          margin: 0;
+          padding: 0 0 15px 0;
+          font-size: $heading1-font-size-base * 1;
+
+          @include lg-up {
+            font-size: $heading1-font-size-base * 2.5;
+          }
+
+          color: $white;
+        }
+
+        h2 {
+          position: relative;
+          margin: 0;
+          padding: 0 0 25px 0;
+          font-size: $heading2-font-size-base * 0.8;
+
+          @include lg-up {
+            font-size: $heading2-font-size-base * 1.75;
+          }
+
+          line-height: 1.1;
+          color: $white;
+        }
+
+        p {
+          font-size: $font-size-base - 2px;
+
+          @include lg-up {
+            font-size: $font-size-base + 4px;
+          }
+
+          color: $white;
+        }
+      }
+    }
+  }
+
+  section#content {
+    min-height: 50vh;
+    padding: 30px 0;
+
+    div.container {
+      @supports (display: grid) {
+        display: grid;
+        grid-template-rows: auto auto auto auto auto auto;
+        grid-row-gap: 30px;
+        grid-template-columns: 1fr;
+        grid-column-gap: 30px;
+        grid-template-areas:
+          "news"
+          "events"
+          "join"
+          "publications"
+          "consutlations"
+          "social"
+          "manuals";
+
+        @include md-up {
+          grid-template-rows: auto auto auto auto auto;
+          grid-row-gap: 30px;
+          grid-template-columns: 2fr 1fr;
+          grid-column-gap: 45px;
+          grid-template-areas:
+            "news news"
+            "join social"
+            "events events"
+            "publications publications"
+            "consutlations consutlations"
+            "manuals manuals";
+        }
+      }
+
+      &::after {
+        content: "";
+        clear: both;
+        display: table;
+
+        @supports (display: grid) {
+          content: none;
+          clear: none;
+          display: none;
+        }
+      }
+
+      section#posts-news {
+        grid-area: news;
+
+        &::after {
+          content: "";
+          clear: both;
+          display: table;
+
+          @supports (display: grid) {
+            content: none;
+            clear: none;
+            display: none;
+          }
+        }
+
+        padding-bottom: 45px;
+
+        @supports (display: grid) {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-rows: auto auto;
+          grid-row-gap: 30px;
+          grid-template-areas:
+            "title"
+            "posts";
+
+          @include md-up {
+            grid-template-columns: 4fr 7fr;
+            grid-column-gap: 30px;
+            grid-template-rows: auto;
+            grid-template-areas: "title posts";
+          }
+
+          padding-bottom: 15px;
+        }
+
+        h1.section-title {
+          padding: 30px 0 0 0;
+
+          @supports (display: grid) {
+            grid-area: title;
+          }
+
+          @include md-up {
+            width: calc(40% - 50px);
+            float: left;
+            clear: left;
+            margin-right: 50px;
+            padding-bottom: 30px;
+          }
+
+          @supports (display: grid) {
+            width: 100%;
+            float: none;
+            clear: none;
+            margin-right: 0;
+          }
+
+          font-size: $heading2-font-size-base;
+          border-top: 2px solid $magenta;
+
+          a {
+            color: $black;
+            text-decoration: none;
+
+            &:hover,
+            &:focus {
+              color: $black;
+              text-decoration: underline;
+              -webkit-text-decoration-color: $magenta;
+              text-decoration-color: $magenta;
+            }
+          }
+        }
+
+        ul {
+          @include md-up {
+            width: 60%;
+            float: left;
+            clear: none;
+
+            @supports (display: grid) {
+              width: 100%;
+              float: none;
+              clear: none;
+            }
+          }
+
+          @supports (display: grid) {
+            grid-area: posts;
+          }
+
+          list-style: none;
+          padding: 0;
+
+          li {
+            padding: 15px 0;
+            border-top: 1px solid $light-gray;
+
+            &:first-of-type {
+              border-top: 2px solid $light-gray;
+            }
+
+            article {
+              h2 {
+                padding: 0;
+                font-size: $heading4-font-size-base;
+              }
+
+              p {
+                font-size: $font-size-base - 2px;
+                margin: 5px 0 0 0;
+
+                &.post-metadata {
+                  font-size: $font-size-base - 4px;
+                  color: $dark-gray;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      section#posts-events {
+        @extend #posts-news;
+
+        grid-area: events;
+
+        p.no-events {
+          padding-top: 30px;
+          border-top: 1px solid $light-gray;
+        }
+      }
+
+      section#posts-publications {
+        @extend #posts-news;
+
+        grid-area: publications;
+      }
+
+      section#posts-consultations {
+        @extend #posts-news;
+
+        grid-area: consutlations;
+      }
+
+      section#posts-manuals {
+        @extend #posts-news;
+
+        grid-area: manuals;
+      }
+
+      section#join {
+        width: 65%;
+        float: left;
+        clear: left;
+        padding-top: 45px;
+
+        @supports (display: grid) {
+          width: 100%;
+          float: none;
+          clear: none;
+          padding-top: 0;
+          grid-area: join;
+        }
+
+        padding-bottom: 45px;
+
+        article {
+          padding: 30px;
+          background: $black;
+
+          @include box-shadow(5);
+
+          color: $white;
+
+          h1 {
+            padding: 0;
+            padding-bottom: 15px;
+            color: $white;
+            font-size: $heading2-font-size-base;
+          }
+
+          p a {
+            color: $white;
+            text-decoration: underline;
+            font-weight: bold;
+
+            &:hover,
+            &:focus {
+              color: $cyan;
+            }
+          }
+        }
+      }
+
+      section#social {
+        width: calc(35% - 30px);
+        float: left;
+        clear: none;
+        padding-top: 45px;
+        margin-left: 30px;
+
+        @supports (display: grid) {
+          width: 100%;
+          float: none;
+          clear: none;
+          margin-left: 0;
+          padding-top: 0;
+          grid-area: social;
+        }
+
+        padding-bottom: 45px;
+
+        h1 {
+          padding: 30px 0 15px 0;
+          font-size: $heading4-font-size-base;
+          border-top: 2px solid $magenta;
+        }
+
+        ul {
+          padding: 0;
+          margin: 0;
+          list-style: none;
+
+          li {
+            padding: 0 0 15px 0;
+
+            &:first-of-type {
+              padding-top: 15px;
+            }
+
+            margin: 0;
+
+            a {
+              display: block;
+
+              &::after {
+                content: "";
+                clear: both;
+                display: table;
+              }
+            }
+
+            span.icon {
+              display: block;
+              max-height: 40px;
+              max-width: 40px;
+              float: left;
+              clear: left;
+              padding: 8px;
+              margin-right: 20px;
+
+              &.twitter {
+                background: #1da1f2;
+              }
+
+              &.facebook {
+                background: #3b5998;
+              }
+
+              &.instagram {
+                background: #e4405f;
+              }
+
+              svg {
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                margin: 0;
+                padding: 0;
+                fill: $white;
+              }
+            }
+
+            p {
+              float: left;
+              clear: none;
+              padding: 0;
+              margin-bottom: 0;
+              height: 40px;
+              line-height: 40px;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+    }
+  }
+}

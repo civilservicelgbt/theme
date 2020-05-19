@@ -1,0 +1,313 @@
+---
+layout: default
+---
+
+<main id="{{ page.layout }}">
+	
+	<div id="page-title">		
+		<h1 class="page-title">{{ page.title }}</h1>
+	</div>
+	
+	<div id="page-lead-paragraph">
+		<p>{{ page.excerpt }}</p>
+	</div>
+	
+	<div id="page-content" class="loop-{{ page.collection }}">
+		
+		{% if page.collection == "news" %}
+		
+			<ul>
+			{% for post in site.posts %}
+				{% if post.preview != true %}
+				<li>
+					<article>
+						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<p>{{ post.excerpt }}</p>
+						<p class="post-metadata">Published <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time> {% if post.author %}by {{ post.author }}{% endif %}</p>
+					</article>
+				</li>
+				{% endif %}
+			{% endfor %}
+			</ul>
+			
+		{% elsif page.collection == "notices" %}
+		
+			<ul>
+			{% for post in site.notices %}
+				{% if post.preview != true %}
+				<li>
+					<article>
+						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<p>{{ post.excerpt }}</p>
+						<p class="post-metadata">Published <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time> {% if post.author %}by {{ post.author }}{% endif %}</p>
+					</article>
+				</li>
+				{% endif %}
+			{% endfor %}
+			</ul>
+		
+		{% elsif page.collection == "archives" %}
+		
+			<ul>
+			{% assign archives = site.archives | sort: 'date' | reverse %}
+			{% for post in archives %}
+				{% if post.preview != true %}
+				<li>
+					<article>
+						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<p>{{ post.excerpt }}</p>
+						<p class="post-metadata">Published <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time> {% if post.author %}by {{ post.author }}{% endif %}</p>
+					</article>
+				</li>
+				{% endif %}
+			{% endfor %}
+			</ul>
+		
+		{% elsif page.collection == "events" %}
+		
+			{% assign today-date = 'now' | date: '%s' %}
+			{% assign events = site.events | sort: "date" %}
+			
+			<h2 class="loop-subheading">Upcoming events</h2>
+				
+			<ul>
+			{% for post in events %}
+			
+				{% assign date = post.event-date | date: '%s' %}
+				{% if today-date < date %}
+				<li>
+					<article>
+						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<p class="post-metadata"><time datetime="{{ post.event-date | date: '%Y-%m-%d %H:%M' }}">{{ post.event-date  | date:'%-d %B %Y at %H:%M' }}</time></p>
+					</article>
+				</li>				
+				{% endif %}
+				
+			{% endfor %}
+			</ul>
+			
+		{% elsif page.collection == "past-events" %}
+			
+			{% assign counter = 0 %}
+			{% for post in events %}
+			{% assign date = post.date | date: '%s' %}
+			{% if today-date > date %}
+				{% assign counter = counter | plus: 1 %}
+			{% endif %}
+			{% endfor %}
+			
+			{% if counter > 0 %}
+			
+			<h2 class="loop-subheading">Past events</h2>
+			
+			<ul>
+			{% assign events = site.events | sort: 'date' | reverse %}
+			
+			{% for post in events %}
+			
+				{% assign date = post.event-date | date: '%s' %}
+				{% if today-date > date %}
+				<li>
+					<article>
+						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<p class="post-metadata"><time datetime="{{ post.event-date | date: '%Y-%m-%d' }}">{{ post.event-date  | date:'%-d %B %Y' }}</time></p>
+					</article>
+				</li>
+				{% endif %}
+				
+			{% endfor %}
+			</ul>
+			
+			{% endif %}
+		
+		{% elsif page.collection == "publications" %}
+		
+			{% assign publications = site.publications | sort: "date" | reverse %}
+
+			<ul>				
+			{% for post in publications %}
+				{% if post.preview != true %}
+				<li>
+					<article>
+						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<p class="post-metadata"><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time> {% if post.author %}by {{ post.author }}{% endif %}</p>
+					</article>
+				</li>
+				{% endif %}
+			{% endfor %}
+			</ul>
+		
+		{% elsif page.collection == "consultations" %}
+						
+			{% assign consultations = site.consultations | sort: "end-date" | reverse %}
+			{% assign today-date = 'now' | date: '%s' %}
+			
+			{% assign consultation-counter = 0 %}
+			{% for post in consultations %}
+			{% assign end-date = post.end-date | date: '%s' %}
+			{% if today-date < end-date %}
+				{% assign consultation-counter = consultation-counter | plus: 1 %}
+			{% endif %}
+			{% endfor %}
+
+			<h2 class="loop-subheading">Open consultations</h2>
+							
+			{% if consultation-counter > 0 %}
+
+			<ul>
+			{% assign consultations = site.consultations | sort: "end-date" %}
+			
+			{% for post in consultations %}
+			
+				{% assign end-date = post.end-date | date: '%s' %}
+				{% if today-date < end-date %}
+				
+				{% if post.preview != true %}
+				<li>
+					<article>
+						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<p class="post-metadata">Closes <time datetime="{{ post.end-date | date: '%Y-%m-%d' }}">{{ post.end-date  | date:'%-d %B %Y' }}</time></p>
+					</article>
+				</li>
+				{% endif %}
+				
+				{% endif %}
+				
+			{% endfor %}
+			</ul>
+			
+			{% else %}
+			
+				<p>There are currently no open consultations.</p>
+				<p>If you have a consultation that affects LGBT+ civil servants, and you'd like us to share it, <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">contact us</a>.</p>
+			
+			{% endif %}
+			
+			{% assign consultation-counter = 0 %}
+			{% for post in consultations %}
+			{% assign end-date = post.end-date | date: '%s' %}
+			{% if today-date > end-date %}
+				{% assign consultation-counter = consultation-counter | plus: 1 %}
+			{% endif %}
+			{% endfor %}
+			
+			{% if consultation-counter > 0 %}
+			
+			<h2 class="loop-subheading">Closed consultations</h2>
+			
+			<ul>
+			{% assign consultations = site.consultations | sort: 'end-date' | reverse %}
+			
+			{% for post in consultations %}
+			
+				{% assign end-date = post.end-date | date: '%s' %}
+				{% if today-date > end-date %}
+				
+				{% if post.preview != true %}
+				<li>
+					<article>
+						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<p class="post-metadata">Closed <time datetime="{{ post.end-date | date: '%Y-%m-%d' }}">{{ post.end-date  | date:'%-d %B %Y' }}</time></p>
+					</article>
+				</li>
+				{% endif %}
+
+				{% endif %}
+				
+			{% endfor %}
+			</ul>
+			
+			{% endif %}
+			
+		
+		{% elsif page.collection == "manuals" %}
+		
+			<ul>
+			{% for post in site.manuals %}
+				{% if post.preview != true %}
+				<li>
+					<article>
+						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						<p class="post-metadata"><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time></p>
+					</article>
+				</li>
+				{% endif %}
+			{% endfor %}
+			</ul>
+		
+		{% endif %}		
+		
+		
+	</div>
+	
+	<div id="page-share">
+
+		{% if page.collection == "news" %}
+
+			<h2 class="page-share-title">Got a story to tell?</h2>
+			
+			<p>If you'd like to write a news article or blog post for us, we'd love to hear from you. Just <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">get in touch</a>.</p>
+
+		{% elsif page.collection == "notices" %}
+
+			<h2 class="page-share-title">Got a story to tell?</h2>
+			
+			<p>If you'd like to write a news article or blog post for us, we'd love to hear from you. Just <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">get in touch</a>.</p>
+			
+		{% elsif page.collection == "archives" %}
+
+			<h2 class="page-share-title">Got a story to tell?</h2>
+			
+			<p>If you'd like to write a news article or blog post for us, we'd love to hear from you. Just <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">get in touch</a>.</p>
+			
+		{% elsif page.collection == "events" %}
+		
+			<h2 class="page-share-title">Share your event</h2>
+			
+			<p>If you are running an event, and you'd like us to share it too, please <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">contact us</a>.</p>
+			
+			<h2 class="page-share-title">Who can attend</h2>
+			
+			<p>Our events are open to anyone working in the UK Civil Service, unless otherwise stated.</p>
+			
+			<p>This includes anyone working in an organisation listed on <a href="https://www.gov.uk/government/organisations" title="Visit the organisations list on GOV.UK (opens in new window)" target="_blank">GOV.UK</a> and any other organisations listed in our constutiton.</p>
+			
+		{% elsif page.collection == "past-events" %}
+		
+			<h2 class="page-share-title">Share your event</h2>
+			
+			<p>If you are running an event, and you'd like us to share it too, please <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">contact us</a>.</p>
+			
+			<h2 class="page-share-title">Who can attend</h2>
+			
+			<p>Our events are open to anyone working in the UK Civil Service, unless otherwise stated.</p>
+			
+			<p>This includes anyone working in an organisation listed on <a href="https://www.gov.uk/government/organisations" title="Visit the organisations list on GOV.UK (opens in new window)" target="_blank">GOV.UK</a> and any other organisations listed in our constutiton.</p>
+		
+		{% elsif page.collection == "publications" %}
+		
+			<h2 class="page-share-title">Share your publications</h2>
+			
+			<p>If you've produced publications, guidance or policy that you're happy to share with other Civil Service organisations, <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">let us know</a>.</p>
+		
+		{% elsif page.collection == "consultations" %}
+		
+			<h2 class="page-share-title">Who can respond</h2>
+			
+			<p>Our consultations are open to anyone working in the UK Civil Service.</p>
+			
+			<p>This includes anyone working in an organisation listed on <a href="https://www.gov.uk/government/organisations" title="Visit the organisations list on GOV.UK (opens in new window)" target="_blank">GOV.UK</a> and any other organisations listed in our constutiton.</p>
+			
+			<h2 class="page-share-title">Do you need a cross-government view?</h2>
+			
+			<p>If you are running a consultation that affects LGBT+ civil servants, and you'd like us to help you promote it, <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">get in touch</a>.</p>
+
+		{% elsif page.collection == "manuals" %}
+
+			<h2 class="page-share-title">Volunteer with us</h2>
+
+		{% endif %}
+		
+	</div>
+	
+</main>

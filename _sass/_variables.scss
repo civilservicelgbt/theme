@@ -1,0 +1,87 @@
+// Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+//
+// Color system
+//
+
+// stylelint-disable
+$white:         #ffffff !default;
+$light-gray:    #DEE0E2 !default;
+$gray:          #BFC1C3 !default;
+$dark-gray:     #6F777B !default;
+$black:         #0B0C0C !default;
+
+$blue:          #2f3590 !default;
+$magenta:       #e6007e !default;
+$red:           #e30613 !default;
+$yellow:        #ffed00 !default;
+$green:         #00853e !default;
+$cyan:          #009fe3 !default;
+$purple:        #312783 !default;
+
+// Default colors
+
+$brand-primary:                 $magenta;
+$brand-inverse:                 $white;
+$brand-gray:                    $dark-gray;
+
+$html-background:               $black;
+$body-background:               $black;
+$wrapper-background:            $white;
+$body-color:                    $black;
+
+$link-color:                    $blue;
+$link-hover-color:              $cyan;
+$link-font-weight:              400;
+$link-outline:                  none;
+$link-text-decoration:          none;
+$link-text-decoration-hover:    underline;
+
+$heading-color:                 $black;
+
+$code-color:                    darken($magenta, 10%);
+
+$font-size-base:                19px;
+$font-line-height:              1.35;
+$font-weight:                   normal;
+
+$heading1-font-size-base:       48px;
+$heading2-font-size-base:       36px;
+$heading3-font-size-base:       $heading2-font-size-base - 6px;
+$heading4-font-size-base:       $heading3-font-size-base - 6px;
+$heading5-font-size-base:       $font-size-base;
+$heading6-font-size-base:       $font-size-base;
+
+
+// BREAKPOINT VALUES
+
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1400px;
+
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-xs: 300px;
+$container-sm: 540px;
+$container-md: 720px;
+$container-lg: 960px;
+$container-xl: 960px;
+
+$container-padding: 15px;
+
+// Fonts
+//
+// Font, line-height, and color for body text, headings, and more.
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif:        "Helvetica Neue", "Helvetica", Arial, sans-serif !default;
+$font-family-monospace:         SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:              $font-family-sans-serif !default;

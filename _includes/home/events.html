@@ -1,0 +1,31 @@
+<section id="posts-events">
+	
+	<h1 class="section-title"><a href="{{ site.url | append: site.baseurl | append: '/events/' }}" title="Go to the events page">Upcoming events</a></h1>
+	
+	{% assign count = 0 %}
+	{% assign today-date = 'now' | date: '%s' %}
+	{% assign events = site.events | sort: "date" %}
+		
+	<ul>
+		{% for post in events %}
+		{% if count < 3 %}
+		{% assign date = post.event-date | date: '%s' %}
+		{% if today-date < date %}
+		<li>
+			<article>
+				<h2>
+					<a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">
+						{{ post.title }}
+					</a>
+				</h2>
+				<p class="post-metadata">On <time datetime="{{ post.event-date | date: '%Y-%m-%d' }}">{{ post.event-date  | date:'%-d %B %Y' }}</time></p>
+			</article>
+		</li>
+		{% assign count = count | plus: 1 %}
+		{% endif %}
+		{% endif %}
+		{% endfor %}
+	</ul>
+		
+</section>
+

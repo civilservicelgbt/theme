@@ -1,0 +1,24 @@
+<section id="posts-manuals">
+	
+	<h1 class="section-title"><a href="{{ site.url | append: site.baseurl | append: '/manuals/' }}" title="Go to the publications page">Latest manuals</a></h1>
+
+	{% assign manuals = site.manuals | sort: "date" | reverse %}
+
+	<ul>
+		{% for post in manuals limit: 3 %}
+		{% if post.preview != true %}
+		<li>
+			<article>
+				<h2>
+					<a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">
+						{{ post.title }}
+					</a>
+				</h2>
+				<p class="post-metadata">Published <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time> {% if post.author %}by {{ post.author }}{% else %}by Civil Service LGBT+{% endif %}</p>
+			</article>
+		</li>
+		{% endif %}
+		{% endfor %}
+	</ul>
+	
+</section>

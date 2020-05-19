@@ -1,0 +1,58 @@
+<noscript>
+  <div class="cookie-banner" id="cookie-notice-nojs">
+    <div class="container">
+      <p>We use <a href="/about/your-data">cookies to collect information</a> about how you use this website to improve the functionality.</p>
+    </div>
+  </div>
+</noscript>
+
+<div class="cookie-banner" id="cookie-notice">
+  <div class="container">
+    <div id="cookie-choice">
+      <p><strong>Tell us whether you accept cookies</strong></p>
+      <p>We use <a href="/about/your-data#cookies">cookies to collect information</a> about how you use this website to improve the functionality.</p>
+      <button class="cookie-button" id="cookie-choice-accept">Accept</button>
+      <button class="cookie-button" id="cookie-choice-decline">Decline</button>
+    </div>
+
+    <div id="cookie-choice-confirmation">
+      <p>You've accepted cookies. You can <a href="/about/your-data">change your cookie options</a> and get more information on how they're used at any time.</p>
+      <button class="cookie-button" id="cookie-choice-hide">Hide</button>
+    </div>
+  </div>
+</div>
+
+<script>
+if (getCookie("cookie-policy") == "true") {
+  startGA("{{ site.google-analytics }}", "{{ site.google-analytics-domain }}");
+} else if (getCookie("cookie-policy") == "false") {
+  stopGA("{{ site.google-analytics }}", "{{ site.google-analytics-domain }}");
+} else {
+  stopGA("{{ site.google-analytics }}", "{{ site.google-analytics-domain }}");
+  document.getElementById("cookie-notice").style.display = "block";
+  document.getElementById("cookie-choice").style.display = "block";
+  document.getElementById("cookie-choice-confirmation").style.display = "none";
+}
+
+document
+  .getElementById("cookie-choice-accept")
+  .addEventListener("click", function () {
+    setCookie("cookie-policy", "true", 31);
+    document.getElementById("cookie-choice").style.display = "none";
+    document.getElementById("cookie-choice-confirmation").style.display = "block";
+  });
+
+document
+  .getElementById("cookie-choice-decline")
+  .addEventListener("click", function () {
+    setCookie("cookie-policy", "false", 31);
+    document.getElementById("cookie-notice").style.display = "none";
+  });
+
+document
+  .getElementById("cookie-choice-hide")
+  .addEventListener("click", function () {
+    document.getElementById("cookie-notice").style.display = "none";
+    location.reload();
+  });
+</script>

@@ -1,0 +1,55 @@
+<div id="site-footer">
+	
+	<footer id="footer" class="container">
+
+		<h1>{{ site.title }}</h1>
+		
+		<div id="footer-membership">
+			
+			<ul>
+				{% for membership in site.data.membership %}
+				<li><a href="{{ membership.url }}" title="{{ membership.link-title }}">{{ membership.name }}</a></li>
+				{% endfor %}
+			</ul>
+			
+		</div>
+		
+		<div id="footer-share">
+			
+			<ul>
+				{% if site.twitter-url %}
+				<li><a href="{{ site.twitter-url }}" title="Follow {{ site.title }} on Twitter (Opens in new window)" target="_blank">Follow us on Twitter</a></li>
+				{% endif %}
+				{% if site.facebook-url %}
+				<li><a href="{{ site.facebook-url }}" title="Like {{ site.title }} on Facebook (Opens in new window)" target="_blank">Like us on Facebook</a></li>
+				{% endif %}
+				{% if site.instagram-url %}
+				<li><a href="{{ site.instagram-url }}" title="Follow {{ site.title }} on Instagram (Opens in new window)" target="_blank">Follow us on Instagram</a></li>
+				{% endif %}
+				{% if site.flickr-url %}
+				<li><a href="{{ site.flickr-url }}" title="Find {{ site.title }} on Flickr (Opens in new window)" target="_blank">Find us on Flickr</a></li>
+				{% endif %}
+				{% if site.github-url %}
+				<li><a href="{{ site.github-url }}" title="Find {{ site.title }} on Github (Opens in new window)" target="_blank">Find us on Github</a></li>
+				{% endif %}
+			</ul>
+			
+		</div>
+		
+		<div id="footer-disclaimer">
+							
+			<ul>
+				{% for disclaimer in site.data.disclaimer %}
+				<li><a href="{{ disclaimer.url }}" title="{{ disclaimer.link-title }}">{{ disclaimer.name }}</a></li>
+				{% endfor %}
+			</ul>
+			
+			<p>Website created by <a href="{{ site.created-by-website }}" title="Visit {{ site.created-by }}'s website (Opens in new window)" target="_blank">{{ site.created-by }}</a>.</p>
+			
+			<p>{{ site.copyright-notice }}</p>
+			
+		</div>
+
+	</footer>
+	
+</div>

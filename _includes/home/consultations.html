@@ -1,0 +1,33 @@
+<section id="posts-consultations">
+	
+	<h1 class="section-title"><a href="{{ site.url | append: site.baseurl | append: '/consultations/' }}" title="Go to the consultations page">Latest consultations</a></h1>
+	
+	{% assign today-date = 'now' | date: '%s' %}
+	{% assign consultations = site.consultations | sort: "end-date" | reverse %}
+
+	<ul>
+		{% for post in consultations limit: 3 %}
+		
+		{% assign end-date = post.end-date | date: '%s' %}
+						
+		{% if post.preview != true %}
+		<li>
+			<article>
+				<h2>
+					<a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">
+						{{ post.title }}
+					</a>
+				</h2>
+				{% if today-date < end-date %}
+				<p class="post-metadata">Closes <time datetime="{{ post.end-date | date: '%Y-%m-%d' }}">{{ post.end-date  | date:'%-d %B %Y' }}</time></p>
+				{% elsif today-date > end-date %}
+				<p class="post-metadata">Closed <time datetime="{{ post.end-date | date: '%Y-%m-%d' }}">{{ post.end-date  | date:'%-d %B %Y' }}</time></p>
+				{% endif %}
+			</article>
+		</li>
+		{% endif %}
+							
+		{% endfor %}
+	</ul>
+	
+</section>

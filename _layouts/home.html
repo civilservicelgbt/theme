@@ -1,0 +1,59 @@
+---
+layout: skeleton
+---
+
+{% include header.html %}
+
+<main id="{{ page.layout }}">
+
+<section id="header">
+	
+	<div class="container">
+
+		<header id="home-header">
+			
+			<h1>{{ site.home-splash-h1 }}</h1>
+			<h2>{{ site.home-splash-h2 }}</h2>
+			<p>{{ site.home-splash-p }}</p>
+			
+		</header>
+		
+	</div>
+
+</section>
+
+<section id="content">
+	
+	<div class="container">
+		
+		{% if site.home-news == true %}
+			{% include home/news.html %}
+		{% endif %}
+		
+		{% include home/join.html %}
+		
+		{% include home/social.html %}
+		
+		{% if site.home-events == true %}
+			{% include home/events.html %}
+		{% endif %}
+		
+		{% if site.home-publications == true %}
+			{% include home/publications.html %}
+		{% endif %}
+		
+		{% if site.home-consultations == true %}
+			{% include home/consultations.html %}
+		{% endif %}
+		
+		{% if site.home-manuals == true %}
+			{% include home/manuals.html %}
+		{% endif %}
+		
+	</div>
+	
+</section>
+
+</main>
+
+{% include footer.html %}

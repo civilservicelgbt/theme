@@ -1,0 +1,41 @@
+<div class="radio-group">
+  <div class="radio-item">
+    <input type="radio" id="enable-measurement-cookies" name="measurement-cookies" value="on">
+    <label for="enable-measurement-cookies">Use cookies that measure my website use</label>
+  </div>
+  <div class="radio-item">
+    <input type="radio" id="disable-measurement-cookies" name="measurement-cookies" value="off">
+    <label for="disable-measurement-cookies">Do not use cookies that measure my website use</label>
+  </div>
+</div>
+
+<noscript>
+<p>We use JavaScript to set our cookies. Unfortunately Javascript is not running on your browser, so you cannot change your settings. You can try:</p>
+
+<ul>
+<li>reloading the page</li>
+<li>turning on JavaScript in your browser</li>
+</ul>
+</noscript>
+
+<script>
+if (getCookie("cookie-policy") == "true") {
+  document.getElementById("enable-measurement-cookies").checked = true;
+} else {
+  document.getElementById("disable-measurement-cookies").checked = true;
+}
+
+
+document
+  .getElementById("enable-measurement-cookies")
+  .addEventListener("click", function () {
+    setCookie("cookie-policy", "true", 31);
+  });
+
+document
+  .getElementById("disable-measurement-cookies")
+  .addEventListener("click", function () {
+    setCookie("cookie-policy", "false", 31);
+    stopGA("{{ site.google-analytics }}", "{{ site.google-analytics-domain }}");
+  });
+</script>

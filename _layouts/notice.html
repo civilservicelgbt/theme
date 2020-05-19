@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<main id="{{ page.layout }}">
+	
+	<div id="page-title">		
+		<p class="page-type">{{ page.layout }}</p>
+		<h1 class="page-title">{{ page.title }}</h1>
+	</div>
+	
+	<div id="page-lead-paragraph">
+		<p>{{ page.excerpt }}</p>
+	</div>
+	
+	{% include layouts/meta.html %}
+	
+	<div id="page-content">
+		
+		{% if page.image %}
+			<img src="{{ page.image }}" alt="{{ page.image-alt }}" class="page-image">
+		{% endif %}
+		
+		{% if page.video %}
+			<div class="embed-responsive embed-responsive-16by9">
+				<iframe width="560" height="315" src="{{ page.video }}" frameborder="0" allowfullscreen></iframe>
+			</div>
+		{% endif %}
+		
+		{{ content }}
+	</div>
+	
+</main>

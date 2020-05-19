@@ -1,0 +1,45 @@
+// Grid containers
+
+.wrapper {
+  background: $wrapper-background;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  clear: both;
+  float: none;
+
+  @include sm {
+    max-width: $container-sm !important;
+  }
+
+  @include md {
+    max-width: $container-md !important;
+  }
+
+  @include lg {
+    max-width: $container-lg !important;
+  }
+
+  @include xl {
+    max-width: $container-xl !important;
+  }
+
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+
+    @supports (display: grid) {
+      content: none;
+      clear: inherit;
+      display: none;
+    }
+  }
+}

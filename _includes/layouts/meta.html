@@ -1,0 +1,4 @@
+<div id="page-metadata">
+	<p>Published <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date  | date:'%d %B %Y' }}</time></p>
+	<p>By {% if page.author %}{{ page.author }}{% else %}{{ site.author }}{% endif %}</p>
+</div>
