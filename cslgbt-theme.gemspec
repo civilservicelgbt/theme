@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "cslgbt-theme"
-  spec.version       = "0.1.0"
+  spec.version       = "1.0"
   spec.authors       = ["John Peart"]
   spec.email         = ["info@civilservice.lgbt"]
 
