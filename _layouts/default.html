@@ -4,10 +4,12 @@ layout: skeleton
 
 {% include header.html %}
 
+{% if page.container != false %}
 <div class="container">
-
+{% endif %}
 	{{ content }}
-			
+{% if page.container != false %}
 </div>
-
+{% endif %}
+	
 {% include footer.html %}
