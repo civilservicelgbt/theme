@@ -2,7 +2,7 @@
 	
 	{% include head.html %}
 
-	<body  {% if page.onload %}>onload="{{ page.onload }}"{% endif %} class="{{ page.layout }}{% if page.preview == true %} preview{% endif %}">
+	<body  {% if page.onload %}>{{ page.onload }}{% endif %} class="{{ page.layout }}{% if page.preview == true %} preview{% endif %}">
 		
 		<div class="wrapper">
 		
