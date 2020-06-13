@@ -5,3 +5,4 @@ _site
 /_config.yml
 index.md
 Gemfile.lock
+*.DS_Store
