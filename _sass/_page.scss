@@ -598,6 +598,11 @@ header#pride-2020 {
   color: $white;
 }
 
+header#podcast {
+  background: $magenta;
+  color: $white;
+}
+
 header#pride-2019 {
   background: $magenta;
   color: $white;
@@ -646,6 +651,14 @@ main#topic {
         font-size: $heading1-font-size-base * 1.25;
       }
     }
+  }
+  
+    div#page-lead-paragraph {
+    @supports (display: grid) {
+      grid-area: page-lead-paragraph;
+    }
+    
+    margin-bottom: 0px;
   }
   
   #page-social {
