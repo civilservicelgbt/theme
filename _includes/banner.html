@@ -1,0 +1,11 @@
+<div id="site-banner">
+  {% for banner in site.data.global-banner %}
+ <div id="banner" class="{{ banner.background }}">
+ <div class="container">
+  <ul id="banner-items">
+  <li>{{ banner.content | markdownify }}</li>
+  {% endfor %}
+  </ul>
+ </div>
+ </div>
+</div>

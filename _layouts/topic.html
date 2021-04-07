@@ -19,6 +19,7 @@ layout: skeleton
 
     <div id="page-lead-paragraph">
       <p>{{ page.excerpt }}</p>
+      <p>{{ content }}</p>
     </div>
 
     {% if page.social-links == true %}
@@ -78,13 +79,22 @@ layout: skeleton
     {% endif %}
       
     <div id="page-content">
-      {{ content }}
+
+      <!-- Blog posts / news updates --> 
+
+      {% assign today-date = 'now' | date: '%Y' %}
+      {% assign posts = site.posts | where: 'category', page.category %}
+      {% assign not-empty = 0 %}
+
+      {% for post in posts %}
+      {% assign not-empty = not-empty | plus: 1 %}
+      {% endfor %}
+
+      {% if not-empty != 0 %}
+
       <section id="topic-section">
         <h2 class="section-title">Updates</h2>
-        <ul>
-          {% assign today-date = 'now' | date: '%Y' %}
-          {% assign posts = site.posts | where: 'category', page.category %}
-
+        <ul>     
           {% for post in posts %}
             <li>
               <article>
@@ -96,39 +106,57 @@ layout: skeleton
         </ul>
       </section>
 
+      {% endif %}
+
+      <!-- Events --> 
+
+      {% assign today-date = 'now' | date: '%Y-%m-%d' %}
+      {% assign events = site.events | where: 'category', page.category %}
+      {% assign not-empty = 0 %}
+
+      {% for post in events %}
+      {% assign date = post.event-date | date: '%Y-%m-%d' %}
+      {% if today-date <= date %}
+      {% assign not-empty = not-empty | plus: 1 %}		
+      {% endif %}
+      {% endfor %}
+
+      {% if not-empty != 0 %}
+
       <section id="topic-section">
         <h2 class="section-title">Events</h2>
         <ul>
-        {% assign today-date = 'now' | date: '%Y-%m-%d' %}
-        {% assign events = site.events | where: 'category', page.category %}
-
-        {% assign not-empty = 0 %}
-
         {% for post in events %}
           {% assign date = post.event-date | date: '%Y-%m-%d' %}
           {% if today-date <= date %}
             <li>
               <article>
                 <h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
-                <p class="post-metadata"><time datetime="{{ post.event-date | date: '%Y-%m-%d %H:%M' }}">{{ post.event-date  | date:'%-d %B %Y' }}</time></p>
+                <p class="post-metadata"><time datetime="{{ post.event-date | date: '%Y-%m-%d %H:%M' }}">{{ post.event-date  | date:'%-d %B %Y at %H:%M' }}</time></p>
               </article>
             </li>		
-          {% assign not-empty = not-empty | plus: 1 %}
           {% endif %}
         {% endfor %}
-
-        {% if not-empty == 0 %}
-          <li><article><h2>No upcoming events</h2></article></li>
-        {% endif %}
         </ul>
       </section>
+
+      {% endif %}
+
+      <!-- Publications --> 
+
+      {% assign today-date = 'now' | date: '%Y' %}
+      {% assign publications = site.publications | where: 'category', page.category %}
+      {% assign not-empty = 0 %}
+
+      {% for post in publications reversed %}
+      {% assign not-empty = not-empty | plus: 1 %}
+      {% endfor %}
+
+      {% if not-empty != 0 %}
 
       <section id="topic-section">
         <h2 class="section-title">Publications</h2>
         <ul>
-          {% assign today-date = 'now' | date: '%Y' %}
-          {% assign publications = site.publications | where: 'category', page.category %}
-
           {% for post in publications reversed %}
             <li>
               <article>
@@ -136,14 +164,12 @@ layout: skeleton
                 <p class="post-metadata"><time datetime="{{ post.date | date: '%Y-%m-%d %H:%M' }}">{{ post.date  | date:'%-d %B %Y' }}</time></p>
               </article>
             </li>
-            {% assign not-empty = not-empty | plus: 1 %}
           {% endfor %}
-
-          {% if not-empty == 0 %}
-            <li><article><h2>No publications</h2></article></li>
-          {% endif %}
         </ul>
       </section>
+
+      {% endif %}
+
     </div>
   </main>
 </div>
