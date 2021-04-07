@@ -121,7 +121,7 @@ body.home {
     div.container {
       @supports (display: grid) {
         display: grid;
-        grid-template-rows: auto auto auto auto auto auto;
+        grid-template-rows: auto auto auto auto auto auto auto;
         grid-row-gap: 30px;
         grid-template-columns: 1fr;
         grid-column-gap: 30px;
@@ -131,11 +131,12 @@ body.home {
           "join"
           "publications"
           "consutlations"
+          "topics"
           "social"
           "manuals";
 
         @include md-up {
-          grid-template-rows: auto auto auto auto auto;
+          grid-template-rows: auto auto auto auto auto auto;
           grid-row-gap: 30px;
           grid-template-columns: 2fr 1fr;
           grid-column-gap: 45px;
@@ -145,6 +146,7 @@ body.home {
             "events events"
             "publications publications"
             "consutlations consutlations"
+            "topics topics"
             "manuals manuals";
         }
       }
@@ -311,6 +313,12 @@ body.home {
         @extend #posts-news;
 
         grid-area: manuals;
+      }
+      
+      section#posts-topics {
+        @extend #posts-news;
+
+        grid-area: topics;
       }
 
       section#join {
