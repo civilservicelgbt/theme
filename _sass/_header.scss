@@ -236,3 +236,110 @@ nav#site-navigation {
     }
   }
 }
+
+// Global banner style
+
+body.global-banner nav#site-navigation {
+  padding: 0 0 9px 0;
+
+}
+
+div#site-banner {
+  display: block;
+  position: relative;
+  z-index: 1000000;
+  padding: 0px;
+  margin: 0;
+
+  div#banner {   
+    padding: 0 15px;
+    margin: 0;
+    
+    &.magenta {
+      background: $magenta;
+    }
+    
+    &.cyan {
+      background: $cyan;
+    }
+    
+    &.black {
+      background: $black;
+    }
+
+    &::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+  }
+
+
+  ul {
+    display: block;
+    width: 100%;
+
+    @include md-up {
+      width: 100%;
+      float: left;
+      clear: none;
+    }
+
+    &.closed {
+      display: none;
+
+      @include md-up {
+        display: block;
+      }
+    }
+
+    list-style: none;
+    padding: 15px 0;
+
+    @include md-up {
+      padding: 0;
+    }
+
+    margin: 0;
+
+    @include md-up {
+      display: block;
+      text-align: left;
+    }
+
+    li {
+      padding: 0px;
+    
+    p {
+      display: block;
+      padding: inherit;
+      font-size: $font-size-base - 2px;
+      color: $white;
+      font-weight: bold;
+
+      @include md-up {
+        display: inline-block;
+        padding: 10px 0 10px 0px;
+      }
+
+      margin: 0;
+
+      &:last-child {
+        padding-right: 0;
+      }
+
+      a {
+        color: $white;
+        text-decoration: underline;
+      
+      
+      &:hover,
+      &:focus  {
+        -webkit-color: $light-gray;
+        color: $light-gray;
+      }
+    }
+    }
+  }
+  }
+}
