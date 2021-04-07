@@ -219,6 +219,11 @@ hr {
   margin: 30px 0;
 }
 
+iframe {
+  width: 100%;
+  margin: 10px 0 20px;
+}
+
 div.embed-responsive {
   position: relative;
   display: block;
@@ -239,6 +244,7 @@ div.embed-responsive {
   }
 }
 
-iframe.twitter-tweet {
-  margin: 0 auto;
+iframe.twitter-tweet,
+twitter-widget {
+  margin: 20px auto 40px !important;
 }
