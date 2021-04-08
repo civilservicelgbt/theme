@@ -83,7 +83,7 @@ layout: skeleton
       <!-- Blog posts / news updates --> 
 
       {% assign today-date = 'now' | date: '%Y' %}
-      {% assign posts = site.posts | where: 'category', page.category %}
+      {% assign posts = site.news | where: 'category', page.category %}
       {% assign not-empty = 0 %}
 
       {% for post in posts %}
