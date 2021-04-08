@@ -33,7 +33,6 @@ home-news:			true
 home-events:		true
 home-publications:	true
 home-consultations:	true
-home-manuals:		false
 home-topics:		true
 
 ###############
