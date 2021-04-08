@@ -176,9 +176,21 @@ unsubscribe-form: "https://us17.admin.mailchimp.com/lists/designer/?id=118945"
 # Collections #
 ###############
 #This is the default permalink for the "_posts" folder.
-permalink: /news/:year/:month/:day/:title:output_ext 
+permalink: /:year/:month/:day/:title:output_ext 
 
 collections:
+  pages:
+    output: true
+    permalink: /:path/
+    defaults:
+      values:
+        layout: page
+  news:
+    output: true
+    permalink: /news/:year/:month/:day/:title/
+    defaults:
+      values:
+        layout: news
   archives:
     output: true
     permalink: /archive/:title/
