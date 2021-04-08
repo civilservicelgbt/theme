@@ -1,0 +1,40 @@
+<meta property="og:url" 	content="{{ site.url | append: site.baseurl | append: page.url | replace: 'index.html','' }}">
+
+<meta property="og:site_name" content="{{ site.title }}">
+
+{% if page.layout == "post" %}
+<meta property="og:type" content="article" />
+{% else %}
+<meta property="og:type" content="website" />
+{% endif %}
+
+{% if page.title %}
+<meta property="og:title" content="{{ page.title | strip_html | strip_newlines | truncate: 160 }}">
+{% else %}
+<meta property="og:title" content="{{ site.title | strip_html | strip_newlines | truncate: 160 }}">
+{% endif %}
+
+{% if page.excerpt %}
+<meta property="og:description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}">
+{% else %}
+<meta property="og:description" content="{{ site.description | strip_html | strip_newlines | truncate: 160 }}">
+{% endif %}
+
+{% if page.author %}
+<meta property="article:author" content="{{ page.author }}{{ site.organisation }}" />
+{% else %}
+<meta property="article:author" content="{{ site.organisation }}" />
+{% endif %}
+<meta property="article:publisher" content="{{ site.organisation }}" />
+
+{% if page.image %}
+<meta property="og:image" content="{{ site.url | append: site.baseurl | append: site.image-path | append: page.image }}">
+{% else %}
+<meta property="og:image" content="{{ site.url | append: site.baseurl | append: site.social-media-image }}">
+{% endif %}
+
+<meta property="og:rich_attachment" content="true" />
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta property="og:locale" 	content="en_GB">

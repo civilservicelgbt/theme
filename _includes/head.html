@@ -3,16 +3,20 @@
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<title>{% if page.title %}{{ page.title | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.title | strip_html | strip_newlines | truncate: 200 }}{% endif %}</title>
+
+	{% if page.title %}
+	<title>{{ page.title | strip_html | strip_newlines | truncate: 200 }}</title>
+	{% else %}
+	<title>{{ site.title | strip_html | strip_newlines | truncate: 200 }}</title>
+	{% endif %}	
 
 	<!-- Short description of the page (limit to 150 characters) -->
 	<!-- In *some* situations this description is used as a part of the snippet shown in the search results. -->
-	<meta name="description" content="{{ site.description | strip_html }}" />
-	<meta name="author" content="{{ site.author }}" />
+	<meta name="description" content="{{ site.description | strip_html | strip_newlines | truncate: 150 }}" />
+	<meta name="author" content="{{ site.organisation }}" />
 
-	<!-- Control the behavior of search engine crawling and indexing -->
+	<!-- Control the behaviour of search engine crawling and indexing -->
 	<meta name="robots" content="index,follow"><!-- All Search Engines -->
 	<meta name="googlebot" content="index,follow"><!-- Google Specific -->
 
@@ -27,74 +31,34 @@
 	<link rel="canonical" href="{{ site.url | append: site.baseurl | append: page.url | replace: '/index.html','' }}">
 	<link rel="alternate" href="{{ site.url | append: '/feed.xml' }}" type="application/rss+xml" title="{{ site.title }}">
 	<!-- Links to a document that describes a collection of records, documents, or other materials of historical interest. -->
-	<link rel="archives" href="{{ site.url | append: '/archives' }}">
+	<link rel="archives" href="{{ site.url | append: site.baseurl | append: '/archives' }}">
 
 	<!-- Gives information about the author -->
-	<link rel="me" href="{{ site.twitter-url }}" type="text/html">
-	<link rel="me" href="{{ site.facebook-url }}" type="text/html">
-	<link rel="me" href="{{ site.github-url }}" type="text/html">
-	<link rel="me" href="{{ site.flickr-url }}" type="text/html">
-	<link rel="me" href="{{ site.instagram-url }}" type="text/html">
-
+	{% include head/rel-me.html %}
+	
 	<!-- Facebook Open Graph settings -->
-	<meta property="fb:app_id" 			content="{{ site.facebook-app-id }}">
-	<meta property="fb:profile_id" 		content="{{ site.facebook-profile-id }}" />
-	<meta property="fb:admins" 			content="{{ site.facebook-admin-id }}" />
-	<meta property="og:url" 				content="{{ site.url | append: site.baseurl | append: page.url | replace: '/index.html','' }}">
-	<meta property="og:type" 			content="{% if page.layout == 'post' %}article{% else %}website{% endif %}" />
-	<meta property="og:title" 			content="{% if page.title %}{{ page.title | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.title }}{% endif %}">
-	<meta property="og:image" 			content="{% if page.image %}{{ site.url | append: site.baseurl | append: page.image }}{% else %}{{ site.url | append: site.baseurl | append: site.social-media-image }}{% endif %}">
-	<meta property="og:rich_attachment" content="true" />
-	<meta property="og:description" 		content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description  | strip_html | strip_newlines | truncate: 200 }}{% endif %}">
-	<meta property="og:site_name" 		content="{{ site.title }}">
-	<meta property="og:locale" 			content="en_GB">
-	<meta property="article:author" 		content="{{ site.facebook-url }}" />
-	<meta property="article:publisher" 	content="{{ site.facebook-url }}" />
-
+	{% include head/facebook-opengraph.html %}
+	
 	<!-- Twitter Cards settings -->
-	<meta name="twitter:card" 			content="summary_large_image">
-	<meta name="twitter:site" 			content="{{ '@' | append: site.twitter-handle }}">
-	<meta name="twitter:creator" 		content="{{ '@' | append: site.twitter-handle }}">
-	<meta name="twitter:url" 			content="{{ site.url | append: site.baseurl | append: page.url | replace: 'index.html','' }}">
-	<meta name="twitter:title" 			content="{% if page.title %}{{ page.title | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.title }}{% endif %}">
-	<meta name="twitter:description" 	content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description  | strip_html | strip_newlines | truncate: 200 }}{% endif %}">
-	<meta name="twitter:image" 			content="{% if page.image %}{{ site.url | append: site.baseurl | append: page.image }}{% else %}{{ site.url | append: site.baseurl | append: site.social-media-image }}{% endif %}">
-	<meta name="twitter:image:alt" 		content="{% if page.image-description %}{{ page.image-description | strip_html }}{% else %}{{ page.title }}{% endif %}">
-
+	{% include head/twitter-cards.html %}
+	
 	<!-- Schema.org settings -->
-	<meta itemprop="name" content="{% if page.title %}{{ page.title | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.title }}{% endif %}">
-	<meta itemprop="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description  | strip_html | strip_newlines | truncate: 200 }}{% endif %}">
-	<meta itemprop="image" content="{% if page.image %}{{ site.url | append: site.baseurl | append: page.image }}{% else %}{{ site.url | append: site.baseurl | append: site.social-media-image }}{% endif %}">
+	{% include head/schema-org.html %}
 
-	<!-- For IE 10 and below -->
-	<!-- Place favicon.ico in the root directory - no tag necessary -->
-
-	<!-- For IE 11, Chrome, Firefox, Safari, Opera -->
-	<link rel="icon" type="image/png" sizes="16x16" href="{{ site.url | append: site.baseurl | site.logo-favicon-small }}">
-	<link rel="icon" type="image/png" sizes="32x32" href="{{ site.url | append: site.baseurl | site.logo-favicon-medium }}">
-	<link rel="icon" type="image/png" sizes="96x96" href="{{ site.url | append: site.baseurl | site.logo-favicon-large }}">
-
-	<!-- iOS -->
-	<link rel="apple-touch-icon" href="{{ site.url | append: site.baseurl | append: site.touch }}">
-
-	<!-- MacOS Safari Pinned Site -->
-	<link rel="mask-icon" href="{{ site.url | append: site.baseurl | append: site.pinned }}" color="{{ site.pinned-colour }}">
-
-	<!-- Android -->
-	<meta name="theme-color" content="{{ site.pinned-colour }}">
-	<link rel="icon" sizes="192x192" href="{{ site.url | append: site.baseurl | append: site.touch }}">
+	<!-- Favicons -->
+	{% include head/favicons.html %}
 
 	<!-- CSS -->
-	<link rel="stylesheet" media="screen" href="{{ site.url | append: site.baseurl | append: '/assets/styles/styles.css' }}">
+	<link rel="stylesheet" media="screen" href="{{ site.url | append: site.baseurl | append: site.css-path | append: '/styles.css' }}">
 
 	<!-- Print styles -->
-	<link rel="stylesheet" media="print" href="{{ site.url | append: site.baseurl | append: '/assets/styles/print.css' }}">
+	<link rel="stylesheet" media="print" href="{{ site.url | append: site.baseurl | append: site.css-path | append: '/print.css' }}">
 
 	{% if jekyll.environment == 'production' %}
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google-analytics }}"></script>
 	{% endif %}
 
-	<script type="text/javascript" src="{{ site.url | append: site.baseurl | append: '/assets/scripts/scripts.js' }}"></script>
+	<script type="text/javascript" src="{{ site.url | append: site.baseurl | append: site.js-path | append: '/scripts.js' }}"></script>
 
 </head>
