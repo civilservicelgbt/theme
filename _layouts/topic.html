@@ -72,10 +72,10 @@ layout: skeleton
       <!-- Blog posts / news updates --> 
 
       {% assign today-date = 'now' | date: '%Y' %}
-      {% assign posts = site.news | where: 'category', page.category %}
+      {% assign news = site.news | where: 'category', page.category %}
       {% assign not-empty = 0 %}
 
-      {% for post in posts %}
+      {% for post in news %}
       {% assign not-empty = not-empty | plus: 1 %}
       {% endfor %}
 
@@ -84,7 +84,7 @@ layout: skeleton
       <section id="topic-section">
         <h2 class="section-title">Updates</h2>
         <ul>     
-          {% for post in posts %}
+          {% for post in news reversed %}
             <li>
               <article>
                 <h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
@@ -137,7 +137,7 @@ layout: skeleton
       {% assign publications = site.publications | where: 'category', page.category %}
       {% assign not-empty = 0 %}
 
-      {% for post in publications reversed %}
+      {% for post in publications %}
       {% assign not-empty = not-empty | plus: 1 %}
       {% endfor %}
 
