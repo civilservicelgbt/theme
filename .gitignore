@@ -4,8 +4,6 @@ _site/
 .jekyll-metadata
 *DS_Store
 rebuild.sh
-_config.yml
-
 # Files and folders for local testing
 _posts/
 _data/

@@ -1,0 +1,168 @@
+### This file acts as the global config across the website.
+### Any variables in this file can be accessed in other files using
+###    `{{ site.variable }}`
+
+
+######################
+# Site configuration #
+######################
+# This title will display across the website
+title: "Civil Service LGBT+ Network"
+# This title will show in the main menu bar
+domain-title: "Civil Service LGBT+"
+# If this theme is being used for a subdomain (i.e. blog.civilservice.lgbt) then change `false` to be the name of the 'service' you're creating; it will show next to the `domain-title` in the menu bar.
+subdomain-title: false 
+# This description is predominantly for Search Engine Optimisation
+description: "The Civil Service LGBT+ Network helps to create a more diverse, inclusive and equal place to work for lesbian, gay, bisexual and trans civil servants."
+author: "Civil Service LGBT+ Network"
+organisation: "Civil Service LGBT+ Network"
+
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://www.civilservice.lgbt"
+
+####################
+# Feature settings #
+####################
+menu-subdomain: true
+analytics: true
+
+# Toggle home page blocks
+home-news:			true
+home-events:		true
+home-publications:	true
+home-consultations:	true
+home-manuals:		false
+home-topics:		true
+
+###############
+# Asset paths #
+###############
+image-path: "/assets/images"
+css-path: "/assets/styles"
+js-path: "/assets/scripts"
+
+social-media-image: "/assets/images/site/social-media.png"
+favicon: "/favicon.ico"
+favicon-svg: "/assets/images/site/favicon.svg"
+favicon-pinned-svg: "/assets/images/site/favicon-pinned-svg.svg"
+favicon-large-png: "/assets/images/site/favicon-large-png.png"
+theme-colour: "#e6007e"
+
+#######################
+# <link rel="me" ...> #
+#######################
+# Facebook
+facebook-url:	"https://facebook.com/civilservicelgbt"
+facebook-handle: "civilservicelgbt" # Automatically pre-pends http://facebook.com/
+# Twitter
+twitter-url: "https://twitter.com/cslgbt" # Twitter handle i.e. joebloggs
+twitter-handle: "cslgbt" # Twitter handle i.e. joebloggs
+# Flickr
+flickr-url:  "https://www.flickr.com/photos/civilservicelgbt/"
+flickr-handle:  "civilservicelgbt"
+# Instagram
+instagram-url:  "https://www.instagram.com/civilservicelgbt"
+instagram-handle:  "civilservicelgbt"
+# Github
+github-url:  "https://github.com/civilservicelgbt"
+github-handle:  "civilservicelgbt"
+# Youtube
+youtube-url: ""
+youtube-handle: ""
+
+##################################
+# Analytics and domain ownership #
+##################################
+# Google settings
+google-site-verification: "RA-YBjxyRYVSuSFAYLKkufs6gjme6kMcihoB2KgKrTA"
+google-analytics: "UA-47423042-2" # GA ID code
+google-analytics-domain: ".www.civilservice.lgbt"
+
+##############
+# Newsletter #
+##############
+# Mailchimp
+unsubscribe-form: "https://us17.admin.mailchimp.com/lists/designer/?id=118945"
+
+###############
+# Collections #
+###############
+#This is the default permalink for the "_posts" folder.
+permalink: /news/:year/:month/:day/:title:output_ext 
+
+collections:
+  archives:
+    output: true
+    permalink: /archive/:title/
+    defaults:
+      values:
+        layout: news
+  publications:
+    output: true
+    permalink: /publication/:title/
+    defaults:
+      values:
+        layout: publication
+  consultations:
+    output: true
+    permalink: /consultation/:title/
+    defaults:
+      values:
+        layout: consultation
+  events:
+    output: true
+    permalink: /event/:title/
+    defaults:
+      values:
+        layout: event
+  past-events:
+    output: true
+    permalink: /event/:title/
+    defaults:
+      values:
+        layout: event
+  manuals:
+    output: true
+    permalink: /manual/:title/
+    defaults:
+      values:
+        layout: manual
+  notices:
+    output: true
+    permalink: /notices/:title/
+    defaults:
+      values:
+        layout: news
+  topics:
+    output: true
+    permalink: /:title/
+        
+##################
+# Build settings #
+##################
+permalink: pretty
+markdown: kramdown
+future: false
+highlighter: rouge
+sass:
+  sass_dir: _sass
+
+plugins:
+- jekyll-remote-theme
+- jekyll-sitemap
+- jekyll-feed
+- jekyll-redirect-from
+
+remote_theme: civilservicelgbt/cslgbt-theme
+    
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
