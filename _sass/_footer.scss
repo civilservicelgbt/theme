@@ -138,13 +138,12 @@ div#site-footer {
     clear: both;
     width: 100%;
     border-top: 1px solid $white;
-    padding: 0;
+    padding: 30px 0 0 0;
     font-size: $font-size-base - 4px;
 
     p {
       font-size: $font-size-base - 4px;
       color: $white;
-      padding: 15px 0 0 0;
 
       a {
         color: white;
