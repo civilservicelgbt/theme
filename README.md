@@ -21,7 +21,7 @@ This theme requires the following information to be added to that file to functi
 
 #### Home page section toggles
 
-There are 4 sections that display on the homepage: news, events, publications and consultations.
+There are 5 sections that display on the homepage: news, events, publications, topics and consultations.
 
 By default, they do not appear. You need to manually enable them. To do that add:
 
