@@ -8,6 +8,7 @@ Gemfile.lock
 
 # Files and folders for local testing
 _posts/
+_news/
 _data/
 _archives/
 _consultations/
