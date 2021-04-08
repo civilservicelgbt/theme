@@ -5,10 +5,9 @@
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
-
     "_reset",
-    
-    "variables",
+    "variables/_default",
+	"variables/_override",
 
     "helpers/_screenreaders",
     "helpers/_clearfix",
@@ -17,19 +16,17 @@
     "mixins/_breakpoints",
     "mixins/_ident",
 		
-		"_animations",
-		
-		"_global",
-		"_header",
-		"_footer",
-		"_containers",
-		"_typography",
-		"_radios",
-        "_cookie_banner",
+	"_global",
+	"_header",
+	"_footer",
+	"_containers",
+	"_typography",
+	"_radios",
+    "_cookie_banner",
 
-		"_home",
-		"_four_oh_four",
-		"_loop",
-		"_page",
-		"_post"
+	"_home",
+	"_four_oh_four",
+	"_loop",
+	"_page",
+	"_post"
 ;

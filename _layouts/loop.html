@@ -2,6 +2,8 @@
 layout: default
 ---
 
+{% assign collection = page.loop %}
+
 <main id="{{ page.layout }}">
 	
 	<div id="page-title">		
@@ -12,12 +14,13 @@ layout: default
 		<p>{{ page.excerpt }}</p>
 	</div>
 	
-	<div id="page-content" class="loop-{{ page.collection }}">
+	<div id="page-content" class="loop-{{ page.loop }}">
 		
-		{% if page.collection == "news" %}
+		{% if collection == "news" %}
 		
 			<ul>
-			{% for post in site.posts %}
+			{% assign news = site.news | sort: 'date' | reverse %}
+			{% for post in news %}
 				{% if post.preview != true %}
 				<li>
 					<article>
@@ -30,7 +33,7 @@ layout: default
 			{% endfor %}
 			</ul>
 			
-		{% elsif page.collection == "notices" %}
+		{% elsif collection == "notices" %}
 		
 			<ul>
 			{% for post in site.notices %}
@@ -46,7 +49,7 @@ layout: default
 			{% endfor %}
 			</ul>
 		
-		{% elsif page.collection == "archives" %}
+		{% elsif collection == "archives" %}
 		
 			<ul>
 			{% assign archives = site.archives | sort: 'date' | reverse %}
@@ -63,10 +66,10 @@ layout: default
 			{% endfor %}
 			</ul>
 		
-		{% elsif page.collection == "events" %}
+		{% elsif collection == "events" %}
 		
 			{% assign today-date = 'now' | date: '%s' %}
-			{% assign events = site.events | sort: "date" %}
+			{% assign events = site.events | sort: "date" | reverse %}
 			
 			<h2 class="loop-subheading">Upcoming events</h2>
 				
@@ -85,42 +88,8 @@ layout: default
 				
 			{% endfor %}
 			</ul>
-			
-		{% elsif page.collection == "past-events" %}
-			
-			{% assign counter = 0 %}
-			{% for post in events %}
-			{% assign date = post.date | date: '%s' %}
-			{% if today-date > date %}
-				{% assign counter = counter | plus: 1 %}
-			{% endif %}
-			{% endfor %}
-			
-			{% if counter > 0 %}
-			
-			<h2 class="loop-subheading">Past events</h2>
-			
-			<ul>
-			{% assign events = site.events | sort: 'date' | reverse %}
-			
-			{% for post in events %}
-			
-				{% assign date = post.event-date | date: '%s' %}
-				{% if today-date > date %}
-				<li>
-					<article>
-						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
-						<p class="post-metadata"><time datetime="{{ post.event-date | date: '%Y-%m-%d' }}">{{ post.event-date  | date:'%-d %B %Y' }}</time></p>
-					</article>
-				</li>
-				{% endif %}
-				
-			{% endfor %}
-			</ul>
-			
-			{% endif %}
 		
-		{% elsif page.collection == "publications" %}
+		{% elsif collection == "publications" %}
 		
 			{% assign publications = site.publications | sort: "date" | reverse %}
 
@@ -137,7 +106,7 @@ layout: default
 			{% endfor %}
 			</ul>
 		
-		{% elsif page.collection == "consultations" %}
+		{% elsif collection == "consultations" %}
 						
 			{% assign consultations = site.consultations | sort: "end-date" | reverse %}
 			{% assign today-date = 'now' | date: '%s' %}
@@ -220,7 +189,7 @@ layout: default
 			{% endif %}
 			
 		
-		{% elsif page.collection == "manuals" %}
+		{% elsif collection == "manuals" %}
 		
 			<ul>
 			{% for post in site.manuals %}
@@ -236,7 +205,7 @@ layout: default
 			</ul>
 
 		
-		{% elsif page.collection == "topics" %}
+		{% elsif collection == "topics" %}
 				
 			<ul>
 			{% for topic in site.topics reversed %}
@@ -258,25 +227,25 @@ layout: default
 	
 	<div id="page-share">
 
-		{% if page.collection == "news" %}
+		{% if collection == "news" %}
 
 			<h2 class="page-share-title">Got a story to tell?</h2>
 			
 			<p>If you'd like to write a news article or blog post for us, we'd love to hear from you. Just <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">get in touch</a>.</p>
 
-		{% elsif page.collection == "notices" %}
+		{% elsif collection == "notices" %}
 
 			<h2 class="page-share-title">Got a story to tell?</h2>
 			
 			<p>If you'd like to write a news article or blog post for us, we'd love to hear from you. Just <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">get in touch</a>.</p>
 			
-		{% elsif page.collection == "archives" %}
+		{% elsif collection == "archives" %}
 
 			<h2 class="page-share-title">Got a story to tell?</h2>
 			
 			<p>If you'd like to write a news article or blog post for us, we'd love to hear from you. Just <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">get in touch</a>.</p>
 			
-		{% elsif page.collection == "events" %}
+		{% elsif collection == "events" %}
 		
 			<h2 class="page-share-title">Share your event</h2>
 			
@@ -288,7 +257,7 @@ layout: default
 			
 			<p>This includes anyone working in an organisation listed on <a href="https://www.gov.uk/government/organisations" title="Visit the organisations list on GOV.UK (opens in new window)" target="_blank">GOV.UK</a> and any other organisations listed in our constutiton.</p>
 			
-		{% elsif page.collection == "past-events" %}
+		{% elsif collection == "past-events" %}
 		
 			<h2 class="page-share-title">Share your event</h2>
 			
@@ -300,13 +269,13 @@ layout: default
 			
 			<p>This includes anyone working in an organisation listed on <a href="https://www.gov.uk/government/organisations" title="Visit the organisations list on GOV.UK (opens in new window)" target="_blank">GOV.UK</a> and any other organisations listed in our constutiton.</p>
 		
-		{% elsif page.collection == "publications" %}
+		{% elsif collection == "publications" %}
 		
 			<h2 class="page-share-title">Share your publications</h2>
 			
 			<p>If you've produced publications, guidance or policy that you're happy to share with other Civil Service organisations, <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">let us know</a>.</p>
 		
-		{% elsif page.collection == "consultations" %}
+		{% elsif collection == "consultations" %}
 		
 			<h2 class="page-share-title">Who can respond</h2>
 			
@@ -318,11 +287,11 @@ layout: default
 			
 			<p>If you are running a consultation that affects LGBT+ civil servants, and you'd like us to help you promote it, <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">get in touch</a>.</p>
 
-		{% elsif page.collection == "manuals" %}
+		{% elsif collection == "manuals" %}
 
 			<h2 class="page-share-title">Volunteer with us</h2>
 			
-		{% elsif page.collection == "topics" %}
+		{% elsif collection == "topics" %}
 
 			<h2 class="page-share-title">Become a member</h2>
 			

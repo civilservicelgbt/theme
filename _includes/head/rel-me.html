@@ -1,0 +1,5 @@
+{% for item in site.social-media-accounts %}
+{% if item.hidden != true %}
+<link rel="me" href="{{ item.url }}" type="text/html">
+{% endif %}
+{% endfor %}

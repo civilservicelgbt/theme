@@ -3,7 +3,7 @@
 <nav id="site-navigation" role="navigation" class="{{ page.layout }}">
 	<div id="menu">
 	<div class="container">
-		<span class="site-title"><a href="{{ site.url | append: site.baseurl }}" title="go to the home page">{{ site.short-title }}</a></span>
+		<span class="site-title"><a href="{{ site.url | append: site.baseurl }}" title="go to the home page">{{ site.header-menu--title--display-text }}</a></span>
 
 		<span class="menu-button">
 			<button id="menu-toggle" onclick="toggleMenu()"  aria-controls="navigation" aria-label="Show or hide Top Level Navigation" value="Toggle menu">
@@ -15,12 +15,14 @@
 		</span>
 
 		<ul id="menu-items" class="closed" aria-label="Top Level Navigation">
-		{% for item in site.data.menu %}
+		{% for item in site.header-menu--links %}
+		{% if item.hidden != true %}
 			{% if page.url contains item.url %}
-			<li class="active"><a href="{{ site.url | append: site.baseurl | append: item.url }}" title="{{ item.link-title }}">{{ item.name }}</a></li>
+			<li class="active"><a href="{{ site.url | append: site.baseurl | append: item.url }}" title="{{ item.alt-text }}">{{ item.display-text }}</a></li>
 			{% else %}
-			<li><a href="{{ site.url | append: site.baseurl | append: item.url }}" title="{{ item.link-title }}">{{ item.name }}</a></li>
+			<li><a href="{{ site.url | append: site.baseurl | append: item.url }}" title="{{ item.alt-text }}">{{ item.display-text }}</a></li>
 			{% endif %}
+		{% endif %}
 		{% endfor %}
 		</ul>
 		</div>
