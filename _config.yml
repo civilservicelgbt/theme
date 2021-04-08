@@ -14,6 +14,7 @@ domain-title: "Civil Service LGBT+"
 subdomain-title: false 
 # This description is predominantly for Search Engine Optimisation
 description: "The Civil Service LGBT+ Network helps to create a more diverse, inclusive and equal place to work for lesbian, gay, bisexual and trans civil servants."
+# Instead of "author", have the organisation name as the default
 author: "Civil Service LGBT+ Network"
 organisation: "Civil Service LGBT+ Network"
 email: "info@civilservice.lgbt"
