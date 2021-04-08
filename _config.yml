@@ -16,6 +16,7 @@ subdomain-title: false
 description: "The Civil Service LGBT+ Network helps to create a more diverse, inclusive and equal place to work for lesbian, gay, bisexual and trans civil servants."
 author: "Civil Service LGBT+ Network"
 organisation: "Civil Service LGBT+ Network"
+email: "info@civilservice.lgbt"
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://www.civilservice.lgbt"
