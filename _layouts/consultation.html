@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<main id="{{ page.layout }}">
+<main id="{{ page.layout | slugify }}">
 	
 	{% assign today-date = 'now' | date: '%s' %}
 	{% assign end-date = page.end-date | date: '%s' %}

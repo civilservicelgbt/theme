@@ -1,6 +1,6 @@
 {% include cookies/cookie-consent.html %}
 
-<nav id="site-navigation" role="navigation" class="{{ page.layout }}">
+<nav id="site-navigation" role="navigation" class="{{ page.layout | slugify }}">
 	<div id="menu">
 	<div class="container">
 		<span class="site-title"><a href="{{ site.url | append: site.baseurl }}" title="go to the home page">{{ site.header-menu--title--display-text }}</a></span>

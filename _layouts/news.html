@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<main id="{{ page.layout }}">
+<main id="{{ page.layout | slugify }}">
 	
 	<div id="page-title">		
 		<p class="page-type">{{ page.layout }}</p>
