@@ -6,14 +6,12 @@
 @import 
 
 	"_reset",
-    
-	"variables",
+	"variables/_default",
+	"variables/_override",
     		        
     "mixins/_backgrounds",
     "mixins/_breakpoints",
     "mixins/_ident",
-	
-	"_animations",
 	
 	"_global",
 	"print/_global",
