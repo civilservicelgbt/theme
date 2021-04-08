@@ -8,10 +8,6 @@
 ######################
 # This title will display across the website
 title: "Civil Service LGBT+ Network"
-# This title will show in the main menu bar
-domain-title: "Civil Service LGBT+"
-# If this theme is being used for a subdomain (i.e. blog.civilservice.lgbt) then change `false` to be the name of the 'service' you're creating; it will show next to the `domain-title` in the menu bar.
-subdomain-title: false 
 # This description is predominantly for Search Engine Optimisation
 description: "The Civil Service LGBT+ Network helps to create a more diverse, inclusive and equal place to work for lesbian, gay, bisexual and trans civil servants."
 # Instead of "author", have the organisation name as the default
@@ -20,13 +16,121 @@ organisation: "Civil Service LGBT+ Network"
 email: "info@civilservice.lgbt"
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://www.civilservice.lgbt"
+url: "http://localhost:4000"
 
-####################
-# Feature settings #
-####################
-menu-subdomain: true
-analytics: true
+#########################
+# Social media accounts #
+#########################
+social-media-accounts:
+  - account: "Facebook"
+    url: "//facebook.com/civilservicelgbt"
+    display-text: "Like us on Facebook"
+    alt-text: "Visit our Facebook profile page"
+    handle: "civilservicelgbt" # Automatically pre-pends http://facebook.com/
+    hidden: false
+  - account: "Twitter"
+    url: "//twitter.com/cslgbt" # Twitter handle i.e. joebloggs
+    display-text: "Follow us on Twitter"
+    alt-text: "Visit our Twitter profile page"
+    handle: "cslgbt" # Twitter handle i.e. joebloggs
+    hidden: false
+  - account: "Flickr"
+    url:  "//www.flickr.com/photos/civilservicelgbt/"
+    display-text: "Find us on Flickr"
+    alt-text: "Visit our Flickr profile page"
+    handle:  "civilservicelgbt"
+    hidden: false
+  - account: "Instagram"
+    url:  "//www.instagram.com/civilservicelgbt"
+    display-text: "Follow us on Instagram"
+    alt-text: "Visit our Instagram profile page"
+    handle:  "civilservicelgbt"
+    hidden: false
+  - account: "Youtube"
+    url: "//youtube.com/"
+    display-text: "Subscribe to us on Youtube"
+    alt-text: "Visit our Youtube profile page"
+    handle: ""
+    hidden: true
+
+###################
+# Header settings #
+###################
+# This title will show in the main menu bar
+header-menu--title--display-text: "Civil Service LGBT+"
+# If this theme is being used for a subdomain (i.e. blog.civilservice.lgbt) then set
+# - `header-menu--subdomain-title` to 'true'
+# - `header-menu--subdomain-title--display-text` to any string value (i.e. "Image maker")
+header-menu--subdomain-title: true
+header-menu--subdomain-title--display-text: false 
+
+# Header menu links
+header-menu--links:
+  - display-text: "Home"
+    alt-text: "Visit the home page"
+    url: "/"
+    hidden: true
+  - display-text: "News"
+    alt-text: "Visit the News page"
+    url: "/news"
+    hidden: false
+  - display-text: "Events"
+    alt-text: "Visit the Events page"
+    url: "/events"
+    hidden: false
+  - display-text: "Publications"
+    alt-text: "Visit the Publications page"
+    url: "/publications"
+    hidden: false
+  - display-text: "Networks"
+    alt-text: "Visit the Networks page"
+    url: "/networks"
+    hidden: false
+  - display-text: "About"
+    alt-text: "Learn more about us"
+    url: "/about"
+    hidden: false
+  - display-text: "Join us"
+    alt-text: "Visit the membership registration page"
+    url: "/join-us"
+    hidden: false
+
+###################
+# Footer settings #
+###################
+# This title will show in the main menu bar
+footer--title--display-text: "Civil Service LGBT+ Network"
+
+# This text will be displayed at the bottom of the website.
+footer--production-notice: "Website created by <a href='//www.johnpe.art' title='Visit John Peart’s website (Opens in new window)' target='_blank' rel='noopener noreferrer'>John Peart</a>."
+footer--copyright-notice: "All content is released under the <a href='https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/' title='Read more about the Open Government License. (Opens in new window)' target='_blank'>Open Government License</a> unless otherwise stated. Please attribute our work."
+
+# Footer menu links
+footer-menu--links:
+  - display-text: "Become a member"
+    alt-text: "Join the Civil Service LGBT+ Network as a member"
+    url: "/join-us"
+    hidden: false
+  - display-text: "Update your profile"
+    alt-text: "Update your contact details and preferences" 
+    url: "/update-profile"
+    hidden: false
+  - display-text: "Contact us"
+    alt-text: "Get our contact details" 
+    url: "/about/contact-us"
+    hidden: false
+  - display-text: "About"
+    alt-text: "Learn more about us"
+    url: "/about"
+    hidden: true
+  - display-text: "Your data"
+    alt-text: "Read our data and privacy policy" 
+    url: "/about/your-data"
+    hidden: false
+  - display-text: "Archived posts"
+    alt-text: "View archived news posts" 
+    url: "/archives"
+    hidden: false
 
 # Toggle home page blocks
 home-news:			true
@@ -34,6 +138,7 @@ home-events:		true
 home-publications:	true
 home-consultations:	true
 home-topics:		true
+
 
 ###############
 # Asset paths #
@@ -49,27 +154,7 @@ favicon-pinned-svg: "/assets/images/site/favicon-pinned-svg.svg"
 favicon-large-png: "/assets/images/site/favicon-large-png.png"
 theme-colour: "#e6007e"
 
-#######################
-# <link rel="me" ...> #
-#######################
-# Facebook
-facebook-url:	"https://facebook.com/civilservicelgbt"
-facebook-handle: "civilservicelgbt" # Automatically pre-pends http://facebook.com/
-# Twitter
-twitter-url: "https://twitter.com/cslgbt" # Twitter handle i.e. joebloggs
-twitter-handle: "cslgbt" # Twitter handle i.e. joebloggs
-# Flickr
-flickr-url:  "https://www.flickr.com/photos/civilservicelgbt/"
-flickr-handle:  "civilservicelgbt"
-# Instagram
-instagram-url:  "https://www.instagram.com/civilservicelgbt"
-instagram-handle:  "civilservicelgbt"
-# Github
-github-url:  "https://github.com/civilservicelgbt"
-github-handle:  "civilservicelgbt"
-# Youtube
-youtube-url: ""
-youtube-handle: ""
+
 
 ##################################
 # Analytics and domain ownership #
@@ -141,6 +226,7 @@ collections:
 ##################
 # Build settings #
 ##################
+# remote_theme: civilservicelgbt/cslgbt-theme
 permalink: pretty
 markdown: kramdown
 future: false
@@ -154,7 +240,6 @@ plugins:
 - jekyll-feed
 - jekyll-redirect-from
 
-remote_theme: civilservicelgbt/cslgbt-theme
     
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

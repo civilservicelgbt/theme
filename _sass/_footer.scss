@@ -32,7 +32,7 @@ div#site-footer {
       grid-template-rows: auto auto auto auto;
       grid-template-areas:
         "title"
-        "membership"
+        "links"
         "share"
         "disclaimer";
 
@@ -42,7 +42,7 @@ div#site-footer {
         grid-template-rows: auto auto;
         grid-row-gap: 30px;
         grid-template-areas:
-          "title membership share"
+          "title links share"
           "disclaimer disclaimer disclaimer";
       }
     }
@@ -74,7 +74,7 @@ div#site-footer {
     line-height: $font-line-height;
   }
 
-  div#footer-membership {
+  div#footer-links {
     display: block;
     position: relative;
 
@@ -91,7 +91,7 @@ div#site-footer {
     }
 
     @supports (display: grid) {
-      grid-area: membership;
+      grid-area: links;
     }
 
     padding: 0 0 45px 0;
@@ -121,7 +121,7 @@ div#site-footer {
   }
 
   div#footer-share {
-    @extend #footer-membership;
+    @extend #footer-links;
 
     @supports (display: grid) {
       grid-area: share;
@@ -129,7 +129,7 @@ div#site-footer {
   }
 
   div#footer-disclaimer {
-    @extend #footer-membership;
+    @extend #footer-links;
 
     @supports (display: grid) {
       grid-area: disclaimer;

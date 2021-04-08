@@ -2,13 +2,15 @@
 	
 	<footer id="footer" class="container">
 
-		<h1>{{ site.title }}</h1>
+		<h1>{{ site.footer--title--display-text }}</h1>
 		
-		<div id="footer-membership">
+		<div id="footer-links">
 			
 			<ul>
-				{% for membership in site.data.membership %}
-				<li><a href="{{ membership.url }}" title="{{ membership.link-title }}">{{ membership.name }}</a></li>
+				{% for item in site.footer-menu--links %}
+				{% if item.hidden != true %}
+				<li><a href="{{ item.url }}" title="{{ item.alt-text }}">{{ item.display-text }}</a></li>
+				{% endif %}
 				{% endfor %}
 			</ul>
 			
@@ -17,36 +19,19 @@
 		<div id="footer-share">
 			
 			<ul>
-				{% if site.twitter-url %}
-				<li><a href="{{ site.twitter-url }}" title="Follow {{ site.title }} on Twitter (Opens in new window)" target="_blank">Follow us on Twitter</a></li>
+				{% for item in site.social-media-accounts %}
+				{% if item.hidden != true %}
+				<li><a href="{{ item.url }}" title="{{ item.alt-text }} (Opens in new window)" target="_blank">{{ item.display-text }}</a></li>
 				{% endif %}
-				{% if site.facebook-url %}
-				<li><a href="{{ site.facebook-url }}" title="Like {{ site.title }} on Facebook (Opens in new window)" target="_blank">Like us on Facebook</a></li>
-				{% endif %}
-				{% if site.instagram-url %}
-				<li><a href="{{ site.instagram-url }}" title="Follow {{ site.title }} on Instagram (Opens in new window)" target="_blank">Follow us on Instagram</a></li>
-				{% endif %}
-				{% if site.flickr-url %}
-				<li><a href="{{ site.flickr-url }}" title="Find {{ site.title }} on Flickr (Opens in new window)" target="_blank">Find us on Flickr</a></li>
-				{% endif %}
-				{% if site.github-url %}
-				<li><a href="{{ site.github-url }}" title="Find {{ site.title }} on Github (Opens in new window)" target="_blank">Find us on Github</a></li>
-				{% endif %}
+				{% endfor %}
 			</ul>
 			
 		</div>
 		
 		<div id="footer-disclaimer">
-							
-			<ul>
-				{% for disclaimer in site.data.disclaimer %}
-				<li><a href="{{ disclaimer.url }}" title="{{ disclaimer.link-title }}">{{ disclaimer.name }}</a></li>
-				{% endfor %}
-			</ul>
 			
-			<p>Website created by <a href="{{ site.created-by-website }}" title="Visit {{ site.created-by }}'s website (Opens in new window)" target="_blank">{{ site.created-by }}</a>.</p>
-			
-			<p>{{ site.copyright-notice }}</p>
+			{{ site.footer--production-notice | markdownify }}
+			{{ site.footer--copyright-notice | markdownify }}
 			
 		</div>
 
