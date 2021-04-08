@@ -4,6 +4,8 @@ _site/
 .jekyll-metadata
 *DS_Store
 rebuild.sh
+Gemfile.lock
+
 # Files and folders for local testing
 _posts/
 _data/
