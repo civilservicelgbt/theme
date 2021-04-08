@@ -143,10 +143,12 @@ home-topics:		true
 ###############
 # Asset paths #
 ###############
+# General paths
 image-path: "/assets/images"
 css-path: "/assets/styles"
 js-path: "/assets/scripts"
 
+# Favicons and social graph
 social-media-image: "/assets/images/site/social-media.png"
 favicon: "/favicon.ico"
 favicon-svg: "/assets/images/site/favicon.svg"
