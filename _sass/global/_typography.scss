@@ -28,10 +28,11 @@ a {
   }
   &:focus {
     color: $black !important;
-    background: $yellow;
-    outline: 3px solid $yellow;
+    background: $link-focus-background;
+    outline: 3px solid $link-focus-background;
   }
   &:active {
+    color: $white !important;
     background: $link-active-background;
     outline: 3px solid $link-active-background;
   }

@@ -206,15 +206,6 @@ body.home {
 
           a {
             color: $black;
-            text-decoration: none;
-
-            &:hover,
-            &:focus {
-              color: $black;
-              text-decoration: underline;
-              -webkit-text-decoration-color: $magenta;
-              text-decoration-color: $magenta;
-            }
           }
         }
 
@@ -334,13 +325,7 @@ body.home {
 
           p a {
             color: $white;
-            text-decoration: underline;
             font-weight: bold;
-
-            &:hover,
-            &:focus {
-              color: $cyan;
-            }
           }
         }
       }
@@ -375,6 +360,8 @@ body.home {
           list-style: none;
 
           li {
+            display: block;
+            position: relative;
             padding: 0 0 15px 0;
 
             &:first-of-type {
@@ -384,9 +371,41 @@ body.home {
             margin: 0;
 
             a {
-              display: block;
-
+              display: inline-block;
+              
+              &:link,
+              &:visited {
+                color: $link-color;
+                text-decoration: unset;
+              }
+              &:hover {
+                color: $link-hover-color;
+                text-decoration: underline !important;
+                text-decoration-skip: ink;
+                text-decoration-skip-ink: auto;
+              }
+              &:focus {
+                color: $black !important;
+                background: $yellow;
+                box-sizing: content-box;
+                outline: 3px solid $yellow;
+              }
+              &:active {
+                color: $white;
+                background: $brand-primary;
+                outline: 3px solid $brand-primary;
+              }
+              
               @include clearfix;
+              
+              &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+              }
             }
 
             span.icon {

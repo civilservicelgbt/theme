@@ -35,8 +35,8 @@ header#site-navigation a {
   }
   &:active {
     color: $white;
-    background: $brand-primary;
-    outline: 3px solid $brand-primary;
+    background: $link-active-background;
+    outline: 3px solid $link-active-background;
   }
 }
 
