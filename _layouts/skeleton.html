@@ -1,12 +1,12 @@
 <html lang="en">
 	
-	{% include head.html %}
+	{% include global/head/head.html %}
 
 	<body class="{{ page.layout | slugify }}{% if page.preview == true %} preview{% endif %}{% for banner in site.data.global-banner %}{% assign today-date = site.time | date: "%Y-%m-%d" %}{% assign end-date = banner.end-date | date: "%Y-%m-%d" %}{% if banner.show == true and today-date < end-date %} global-banner{% endif %}{% endfor %}">
 		
 		<div class="wrapper">
 		
-		{% include skiplink.html %}
+		{% include global/skiplink.html %}
 		{{ content }}
 		
 		</div>

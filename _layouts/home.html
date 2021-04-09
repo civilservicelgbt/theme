@@ -2,7 +2,7 @@
 layout: skeleton
 ---
 
-{% include header.html %}
+{% include global/header/header.html %}
 
 <main id="{{ page.layout | slugify }}">
 
@@ -27,27 +27,27 @@ layout: skeleton
 	<div class="container">
 		
 		{% if site.home-news == true %}
-			{% include home/news.html %}
+			{% include layouts/home/news.html %}
 		{% endif %}
 		
-		{% include home/join.html %}
+		{% include layouts/home/join.html %}
 		
-		{% include home/social.html %}
+		{% include layouts/home/social.html %}
 		
 		{% if site.home-events == true %}
-			{% include home/events.html %}
+			{% include layouts/home/events.html %}
 		{% endif %}
 		
 		{% if site.home-publications == true %}
-			{% include home/publications.html %}
+			{% include layouts/home/publications.html %}
 		{% endif %}
 		
 		{% if site.home-consultations == true %}
-			{% include home/consultations.html %}
+			{% include layouts/home/consultations.html %}
 		{% endif %}
 		
 		{% if site.home-topics == true %}
-			{% include home/topics.html %}
+			{% include layouts/home/topics.html %}
 		{% endif %}
 		
 	</div>
@@ -56,4 +56,4 @@ layout: skeleton
 
 </main>
 
-{% include footer.html %}
+{% include global/footer/footer.html %}

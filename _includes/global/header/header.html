@@ -1,4 +1,4 @@
-{% include cookies/cookie-consent.html %}
+{% include global/cookies/cookie-consent.html %}
 
 <nav id="site-navigation" role="navigation" class="{{ page.layout | slugify }}">
 	<div id="menu">
@@ -34,7 +34,7 @@
 {% assign end-date = banner.end-date | date: "%Y-%m-%d" %}
 {% if today-date < end-date %}
 {% if banner.show == true and page.url != banner.exclude %}
-{% include banner.html %}
+{% include global/header/banner.html %}
 {% endif %}
 {% endif %}
 {% endfor %}
