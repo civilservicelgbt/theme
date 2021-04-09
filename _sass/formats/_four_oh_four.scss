@@ -24,11 +24,7 @@ main#four-oh-four {
   }
 
   @supports not (display: grid) {
-    &::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
+    @include clearfix;
   }
 
   padding: 45px 0;

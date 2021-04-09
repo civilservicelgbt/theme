@@ -1,237 +1,202 @@
 // Header styles
-
-nav#site-navigation {
+header#site-navigation {
   display: block;
   position: relative;
-  z-index: 1000000;
-  padding: 0 0 15px 0;
-  margin: 0;
+  background: $black;
+  
+  @include header-shadow(3);
+  @include clearfix;
+}
 
-  div#menu {
-    background: $black;
+nav#header-menu {
+  @include clearfix;
+}
 
-    @include header-shadow(3);
-
-    padding: 0 15px;
-    margin: 0;
-
-    &::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
+header#site-navigation a {
+  
+  display: inline-block;
+  
+  &:link,
+  &:visited {
+    color: $white;
+    text-decoration: none;  
   }
+  &:hover {
+    color: $white;
+    text-decoration: underline !important;
+    text-decoration-skip: ink;
+    text-decoration-skip-ink: auto;
+  }
+  &:focus {
+    color: $black !important;
+    background: $yellow;
+    box-sizing: content-box;
+    outline: 3px solid $yellow;
+  }
+  &:active {
+    color: $white;
+    background: $brand-primary;
+    outline: 3px solid $brand-primary;
+  }
+}
 
-  span.site-title {
-    display: block;
-    height: 35px;
+header#site-navigation p.site-title {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+  margin: 0;
+  @include md-up {
     float: left;
     clear: left;
-
-    @include md-up {
-      width: 33%;
-    }
-
-    box-sizing: border-box;
-    margin: 10px 0;
-    line-height: 35px;
-    vertical-align: middle;
-
-    a {
-      display: inline-block;
-      color: $white;
-      font-size: $font-size-base;
-
-      @include md-up {
-        font-size: $font-size-base + 4px;
-      }
-
-      font-weight: bold;
-      text-decoration: none;
-
-      &:hover,
-      &:focus {
-        text-decoration: underline;
-        -webkit-text-decoration-color: $white;
-        text-decoration-color: $white;
-      }
-    }
+    width: 33%;
+  }  
+  font-size: $font-size-base;
+  @include md-up {
+    font-size: $font-size-base + 4px;
   }
+  font-weight: 600;
+}
 
-  span.service-title {
-		display: block;
-		height: 55px;
-
-		float: left;
-		clear: none;
-		
-		@include md-up {
-			width: auto;
-		}
-		
-		box-sizing: border-box;
-		margin: 0;
-		
-		line-height: 	55px;
-		vertical-align: middle;
-		
-		a {
-			display: inline-block;
-						
-			transition: 			all 0.5s ease;
-						
-			color: $white;
-			font-size: $font-size-base;
-			@include md-up {
-				font-size: $font-size-base + 4px;
-			}
-			font-weight: bold;
-			
-			text-decoration: none;
-			
-			&:hover,
-			&:focus {
-				transition: 			all 0.5s ease;
-				text-decoration: underline;
-				-webkit-text-decoration-color: $white;
-						text-decoration-color: $white;
-			}
-		}
-
-	}
-
-  span.menu-button {
-    position: relative;
-    display: block;
-    float: right;
-    padding: 15px 0;
-    margin: 0;
-    text-align: right;
-
-    button#menu-toggle {
-      position: relative;
-      display: block;
-      height: 25px;
-      width: 30px;
-      margin: 0;
-      margin-left: auto;
-      padding: 0;
-      background: none;
-      border: none;
-      font-size: $font-size-base;
-      font-weight: bold;
-      line-height: $font-line-height;
-      text-decoration: none;
-
-      span.bar {
-        position: absolute;
-        display: block;
-        height: 5px;
-        width: 30px;
-        margin-left: auto;
-        margin-right: 0;
-        left: 0;
-        background: $white;
-
-        &:nth-of-type(1) {
-          top: 0;
-        }
-
-        &:nth-of-type(2) {
-          top: 10px;
-        }
-
-        &:nth-of-type(3) {
-          top: 20px;
-        }
-
-        transition: all 0.5s ease;
-      }
-
-      &:hover,
-      &:focus {
-        span.bar {
-          transition: all 0.5s ease;
-        }
-      }
-
-      &.open {
-        span.bar {
-          &:nth-of-type(1) {
-            transform: rotate(45deg) translate(5px, 8px);
-          }
-
-          &:nth-of-type(2) {
-            opacity: 0;
-          }
-
-          &:nth-of-type(3) {
-            transform: rotate(-45deg) translate(6px, -9px);
-          }
-        }
-      }
-    }
-
-    @include md-up {
-      display: none;
-    }
+header#site-navigation p.service-title {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding: 0 0 10px 0;
+  margin: 0;
+  @include md-up {
+    float: left;
+    clear: none;
+    width: 67%;
+    padding: 10px 0;
+  }  
+  font-size: $font-size-base;
+  @include md-up {
+    font-size: $font-size-base + 4px;
   }
+  font-weight: 500;		
+}
 
-  ul {
+header#site-navigation ul#menu-items {
+  
+  float: none;
+  clear: both;
+  
+  // For small screen sizes
+  &.open {
     display: block;
-    width: 100%;
-
-    @include md-up {
-      width: 67%;
-      float: right;
-      clear: none;
-    }
-
+  }
+  &.closed {
+    display: none;
+  }
+  
+  width: 100%;
+  padding: 0;
+  
+  @include md-up {
+    &.open,
     &.closed {
-      display: none;
-
-      @include md-up {
-        display: block;
-      }
-    }
-
-    list-style: none;
-    padding: 55px 0 0 0;
-
-    @include md-up {
-      padding: 0;
-    }
-
-    margin: 0;
-
-    @include md-up {
-      display: block;
-      text-align: right;
-    }
-
-    li {
-      display: block;
-      padding: 15px 0;
-
-      @include md-up {
-        display: inline-block;
-        padding: 17px 0 17px 20px;
-      }
-
+      display: inline-block;
       margin: 0;
+    }
+  }
+  
 
-      &:last-child {
-        padding-right: 0;
+  li {
+    
+    position: relative;
+    
+    font-size: $font-size-base;
+    font-weight: normal;
+    
+    @include sm-down {
+      display: block;
+      width: 100%;
+      padding: 10px 0;
+    }
+    
+    @include md-up {
+      display: inline-block;
+      width: auto;
+      padding: 0 15px 10px;
+      
+      &:first-of-type {
+        padding-left: 0;
+      }
+    }
+    
+  }
+  
+  a::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+  }
+}
+  
+button#menu-toggle {
+  position: absolute;
+  display: block;
+  top: $container-padding;
+  right: $container-padding;
+  left: auto;
+  height: $font-size-base + 4px;
+  width: $font-size-base + 4px;
+  margin: 0;
+  margin-left: auto;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: $font-size-base;
+  font-weight: bold;
+  text-decoration: none;
+  
+  @include md-up {
+    display: none;
+  }
+
+  span.bar {
+    position: absolute;
+    display: block;
+    height: 6px;
+    width: $font-size-base + 4px;
+    margin-left: auto;
+    margin-right: 0;
+    left: 0;
+    background: $white;
+
+    &:nth-of-type(1) {
+      top: 0;
+      bottom: auto;
+    }
+
+    &:nth-of-type(2) {
+      top: auto;
+      bottom: 6px;
+    }
+
+    transition: all 0.5s ease;
+  }
+
+  &:hover,
+  &:focus {
+    span.bar {
+      transition: all 0.5s ease;
+    }
+  }
+
+  &.open {
+    span.bar {
+      transform-origin: center;
+      &:nth-of-type(1) {
+        transform: rotate(45deg) translate(5px, 5px);
       }
 
-      a {
-        font-size: $font-size-base - 2px;
-        font-weight: bold;
-        color: $white;
-      }
-
-      &.active a {
-        color: $cyan;
+      &:nth-of-type(2) {
+        transform: rotate(-45deg) translate(3px, -3px);
       }
     }
   }
@@ -241,7 +206,6 @@ nav#site-navigation {
 
 body.global-banner nav#site-navigation {
   padding: 0 0 9px 0;
-
 }
 
 div#site-banner {
@@ -267,11 +231,7 @@ div#site-banner {
       background: $black;
     }
 
-    &::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
+    @include clearfix
   }
 
 

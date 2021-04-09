@@ -35,10 +35,7 @@ $body-color:                    $black;
 
 $link-color:                    $blue;
 $link-hover-color:              $cyan;
-$link-font-weight:              400;
-$link-outline:                  none;
-$link-text-decoration:          none;
-$link-text-decoration-hover:    underline;
+$link-active-background:		$link-hover-color;				
 
 $heading-color:                 $black;
 

@@ -22,17 +22,7 @@ main#update-profile {
     }
   }
 
-  &::after {
-    content: "";
-    clear: both;
-    display: table;
-
-    @supports (display: grid) {
-      content: none;
-      clear: inherit;
-      display: none;
-    }
-  }
+  @include clearfix;
 
   padding: 45px 0;
 

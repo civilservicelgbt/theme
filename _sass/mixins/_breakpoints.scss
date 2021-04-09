@@ -79,3 +79,33 @@
     @content;
   }
 }
+
+// AND DOWN
+
+@mixin sm-down {
+  @media 	only screen
+    and (max-width: $sm) {
+    @content;
+  }
+}
+
+@mixin md-down {
+  @media 	only screen
+    and (max-width: $md) {
+    @content;
+  }
+}
+
+@mixin lg-down {
+  @media 	only screen
+    and (max-width: $lg) {
+    @content;
+  }
+}
+
+@mixin xl-down {
+  @media 	only screen
+    and (max-width: $xl) {
+    @content;
+  }
+}

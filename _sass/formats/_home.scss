@@ -151,32 +151,12 @@ body.home {
         }
       }
 
-      &::after {
-        content: "";
-        clear: both;
-        display: table;
-
-        @supports (display: grid) {
-          content: none;
-          clear: none;
-          display: none;
-        }
-      }
+      @include clearfix;
 
       section#posts-news {
         grid-area: news;
 
-        &::after {
-          content: "";
-          clear: both;
-          display: table;
-
-          @supports (display: grid) {
-            content: none;
-            clear: none;
-            display: none;
-          }
-        }
+        @include clearfix;
 
         padding-bottom: 45px;
 
@@ -406,11 +386,7 @@ body.home {
             a {
               display: block;
 
-              &::after {
-                content: "";
-                clear: both;
-                display: table;
-              }
+              @include clearfix;
             }
 
             span.icon {

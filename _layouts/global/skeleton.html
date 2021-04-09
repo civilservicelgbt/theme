@@ -2,7 +2,10 @@
 	
 	{% include global/head/head.html %}
 
-	<body class="{{ page.layout | slugify }}{% if page.preview == true %} preview{% endif %}{% for banner in site.data.global-banner %}{% assign today-date = site.time | date: "%Y-%m-%d" %}{% assign end-date = banner.end-date | date: "%Y-%m-%d" %}{% if banner.show == true and today-date < end-date %} global-banner{% endif %}{% endfor %}">
+	<body class="{{ page.layout | slugify }}
+		{% if page.preview == true %} preview{% endif %}
+		{% for banner in site.data.global-banner %}{% assign today-date = site.time | date: "%Y-%m-%d" %}{% assign end-date = banner.end-date | date: "%Y-%m-%d" %}{% if banner.show == true and today-date < end-date %} global-banner{% endif %}{% endfor %}
+		{% if site.header-menu--subdomain-title == true %} subdomain{% else %} no-subdomain{% endif %}">
 		
 		<div class="wrapper">
 		
