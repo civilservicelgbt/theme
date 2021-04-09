@@ -93,6 +93,10 @@ header#site-navigation ul#menu-items {
   width: 100%;
   padding: 0;
   
+  
+  @include sm-down {
+    padding-bottom: 20px;
+  }
   @include md-up {
     &.open,
     &.closed {
