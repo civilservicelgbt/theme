@@ -4,8 +4,7 @@
 @charset "utf-8";
 
 @import 
-
-	"_reset",
+	"global/_reset",
 	"variables/_default",
 	"variables/_override",
     		        
@@ -13,20 +12,19 @@
     "mixins/_breakpoints",
     "mixins/_ident",
 	
-	"_global",
+	"global/_global",
+	"global/_header",
+	"global/_footer",
+	"global/_containers",
+	"global/_typography",
+    "global/_cookie_banner",
 	"print/_global",
-	"_header",
 	"print/_header",
-	"_footer",
-	"_containers",
 	"print/_containers",
-	"_typography",
-    "_cookie_banner",
 
-	"_home",
-	"_four_oh_four",
-	"_page",
-	"_post",
-	"print/_post"
-
+	"layouts/_four_oh_four",
+	"layouts/_home",
+	"layouts/_page",
+	"layouts/_post",
+	"layouts/print/_post"
 ;
