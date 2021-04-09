@@ -97,11 +97,7 @@ main#topic {
         a {
           display: block;
 
-          &::after {
-            content: "";
-            clear: both;
-            display: table;
-          }
+          @include clearfix;
         }
 
         span.icon {
@@ -169,17 +165,7 @@ main#topic {
     border-top: none !important;
 
     section#topic-section {
-      &::after {
-        content: "";
-        clear: both;
-        display: table;
-
-        @supports (display: grid) {
-          content: none;
-          clear: none;
-          display: none;
-        }
-      }
+      @include clearfix;
 
       padding-bottom: 45px;
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: global/default
 ---
 
 <main id="{{ page.layout | slugify }}">
@@ -13,7 +13,7 @@ layout: default
 		<p>{{ page.excerpt }}</p>
 	</div>
 	
-	{% include layouts/meta.html %}
+	{% include formats/meta.html %}
 	
 	<div id="page-content">
 		

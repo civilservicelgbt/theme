@@ -1,8 +1,6 @@
-// Home page styles
-
 // Page styles
 
-main#four-oh-four {
+main#page {
   @supports (display: grid) {
     display: grid;
     grid-template-rows: auto auto auto;
@@ -19,17 +17,11 @@ main#four-oh-four {
       grid-template-areas:
         "page-title ."
         "page-lead-paragraph ."
-        "page-content.";
+        "page-content .";
     }
   }
 
-  @supports not (display: grid) {
-    &::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
-  }
+  @include clearfix;
 
   padding: 45px 0;
 
@@ -75,15 +67,16 @@ main#four-oh-four {
   }
 
   div#page-content {
-    @supports not (display: grid) {
-      @include md-up {
-        width: 67%;
-        float: left;
-        clear: left;
-      }
+    @include md-up {
+      width: 67%;
+      float: left;
+      clear: left;
     }
 
     @supports (display: grid) {
+      width: 100%;
+      float: none;
+      clear: none;
       grid-area: page-content;
     }
 
@@ -109,6 +102,31 @@ main#four-oh-four {
         width: 100%;
         padding-bottom: 15px;
         content: "Footnotes";
+      }
+    }
+  }
+
+  tr {
+    td {
+      &:first-child {
+        min-width: 75px;
+        vertical-align: top;
+
+        @include md-up {
+          min-width: 150px;
+        }
+      }
+
+      &:nth-child(2) {
+        h2 {
+          padding-top: 0;
+          padding-bottom: 10px;
+        }
+      }
+
+      img {
+        margin-top: 10px;
+        max-width: 150px !important;
       }
     }
   }

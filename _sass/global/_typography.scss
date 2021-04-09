@@ -12,26 +12,29 @@ sup {
 
 a {
   display: inline;
-  color: $link-color;
-  text-decoration: $link-text-decoration;
+  box-sizing: content-box;
   text-decoration-skip: ink;
   text-decoration-skip-ink: auto;
-  outline: $link-outline;
-  font-weight: inherit;
-
+  font-weight: inherit;  
+  
+  &:link,
+  &:visited {
+    color: $link-color;
+    text-decoration: none;    
+  }
   &:hover {
     color: $link-hover-color;
-    text-decoration: $link-text-decoration-hover;
-    text-decoration-skip: ink;
-    text-decoration-skip-ink: auto;
+    text-decoration: underline !important;
   }
-
   &:focus {
     color: $black !important;
-    background: $yellow;
-    text-decoration: none !important;
-    box-sizing: content-box;
-    outline: 3px solid $yellow;
+    background: $link-focus-background;
+    outline: 3px solid $link-focus-background;
+  }
+  &:active {
+    color: $white !important;
+    background: $link-active-background;
+    outline: 3px solid $link-active-background;
   }
 }
 

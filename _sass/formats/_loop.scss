@@ -2,17 +2,7 @@
 
 main#loop,
 main#admin {
-  &::after {
-    content: "";
-    clear: both;
-    display: table;
-
-    @supports (display: grid) {
-      content: none;
-      clear: none;
-      display: none;
-    }
-  }
+  @include clearfix;
 
   @supports (display: grid) {
     display: grid;

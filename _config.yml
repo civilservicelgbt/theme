@@ -62,8 +62,9 @@ header-menu--title--display-text: "Civil Service LGBT+"
 # - `header-menu--subdomain-title` to 'true'
 # - `header-menu--subdomain-title--display-text` to any string value (i.e. "Image maker")
 header-menu--subdomain-title: true
-header-menu--subdomain-title--display-text: false 
+header-menu--subdomain-title--display-text: "Website Theme" 
 
+header-menu--links--hidden: false
 # Header menu links
 header-menu--links:
   - display-text: "Home"
@@ -81,6 +82,10 @@ header-menu--links:
   - display-text: "Publications"
     alt-text: "Visit the Publications page"
     url: "/publications"
+    hidden: false
+  - display-text: "Consultations"
+    alt-text: "Visit the Consultations page"
+    url: "/consultations"
     hidden: false
   - display-text: "Networks"
     alt-text: "Visit the Networks page"
@@ -236,6 +241,9 @@ collections:
   topics:
     output: true
     permalink: /:title/
+    defaults:
+      values:
+        layout: topics
         
 ##################
 # Build settings #

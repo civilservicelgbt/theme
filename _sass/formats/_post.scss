@@ -1,17 +1,7 @@
 // Posts page styles
 
 main {
-  &::after {
-    content: "";
-    clear: both;
-    display: table;
-
-    @supports (display: grid) {
-      content: none;
-      clear: inherit;
-      display: none;
-    }
-  }
+  @include clearfix;
 }
 
 main#news,
@@ -391,17 +381,7 @@ main#manual {
   }
 
   div#page-contents {
-    &::after {
-      content: "";
-      clear: both;
-      display: table;
-
-      @supports (display: grid) {
-        content: none;
-        clear: inherit;
-        display: none;
-      }
-    }
+    @include clearfix;
 
     @supports (display: grid) {
       grid-area: page-contents;

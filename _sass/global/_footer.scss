@@ -13,17 +13,7 @@ div#site-footer {
     position: relative;
     padding: 30px;
 
-    &::after {
-      content: "";
-      clear: both;
-      display: table;
-
-      @supports (display: grid) {
-        content: none;
-        clear: none;
-        display: none;
-      }
-    }
+    @include clearfix;
 
     @supports (display: grid) {
       display: grid;
@@ -106,16 +96,6 @@ div#site-footer {
         font-size: $font-size-base - 4px;
         padding: 0;
         margin: 0;
-
-        a {
-          color: $white;
-          font-weight: bold;
-
-          &:hover,
-          &:focus {
-            text-decoration: underline;
-          }
-        }
       }
     }
   }
@@ -144,11 +124,6 @@ div#site-footer {
     p {
       font-size: $font-size-base - 4px;
       color: $white;
-
-      a {
-        color: white;
-        font-weight: bold;
-      }
     }
 
     ul {
@@ -157,5 +132,30 @@ div#site-footer {
         margin-right: 30px;
       }
     }
+  }
+}
+
+div#site-footer a {
+  &:link,
+  &:visited {
+    color: $white;
+    font-weight: bold;
+    text-decoration: none;  
+  }
+  &:hover {
+    color: $white;
+    text-decoration: underline !important;
+    text-decoration-skip: ink;
+    text-decoration-skip-ink: auto;
+  }
+  &:focus {
+    color: $black !important;
+    background: $yellow;
+    box-sizing: content-box;
+    outline: 3px solid $yellow;
+  }
+  &:active {
+    background: $brand-primary;
+    outline: 3px solid $brand-primary;
   }
 }

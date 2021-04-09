@@ -1,0 +1,42 @@
+{% include global/cookies/cookie-consent.html %}
+
+<header id="site-navigation">
+	<nav id="header-menu" role="navigation" class="{{ page.layout | slugify }} container">
+		<p class="site-title"><a href="//www.civilservice.lgbt" title="go to the home page">{{ site.header-menu--title--display-text }}</a></p>
+		{% if site.header-menu--subdomain-title == true %}
+		<p class="service-title"><a href="{{ site.url | append: site.baseurl }}" title="go to the home page">{{ site.header-menu--subdomain-title--display-text }}</a></p>
+		{% elsif page.service-title != "" %}
+		<p class="service-title"><a href="{{ site.url | append: site.baseurl }}" title="go to the home page">{{ page.service-title }}</a></p>
+		{% endif %}
+		
+		{% if site.header-menu--links--hidden != true %}
+		<button id="menu-toggle" class="menu-button" onclick="toggleMenu()"  aria-controls="navigation" aria-label="Show or hide Top Level Navigation" value="Toggle menu">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="sr-only">Menu</span>
+		</button>
+
+		<ul id="menu-items" class="closed" aria-label="Top Level Navigation">
+		{% for item in site.header-menu--links %}
+		{% if item.hidden != true %}
+			{% if page.url contains item.url %}
+			<li class="active menu-item"><a href="{{ site.url | append: site.baseurl | append: item.url }}" title="{{ item.alt-text }}">{{ item.display-text }}</a></li>
+			{% else %}
+			<li class="menu-item"><a href="{{ site.url | append: site.baseurl | append: item.url }}" title="{{ item.alt-text }}">{{ item.display-text }}</a></li>
+			{% endif %}
+		{% endif %}
+		{% endfor %}
+		</ul>
+		{% endif %}
+	</nav>
+</header>
+
+{% assign today-date = site.time | date: "%Y-%m-%d" %}
+{% for banner in site.data.global-banner %}
+{% assign end-date = banner.end-date | date: "%Y-%m-%d" %}
+{% if today-date < end-date %}
+{% if banner.show == true and page.url != banner.exclude %}
+{% include global/header/banner.html %}
+{% endif %}
+{% endif %}
+{% endfor %}
