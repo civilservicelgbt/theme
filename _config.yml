@@ -83,6 +83,10 @@ header-menu--links:
     alt-text: "Visit the Publications page"
     url: "/publications"
     hidden: false
+  - display-text: "Consultations"
+    alt-text: "Visit the Consultations page"
+    url: "/consultations"
+    hidden: false
   - display-text: "Networks"
     alt-text: "Visit the Networks page"
     url: "/networks"
