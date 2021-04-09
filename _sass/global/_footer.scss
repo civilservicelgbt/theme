@@ -11,7 +11,7 @@ div#site-footer {
   footer#footer {
     display: block;
     position: relative;
-    padding: 30px;
+    padding: $container-padding;
 
     @include clearfix;
 
@@ -94,8 +94,11 @@ div#site-footer {
 
       li {
         font-size: $font-size-base - 4px;
-        padding: 0;
-        margin: 0;
+        padding: 10px 0 0 0;
+        @include md-up {
+          padding: 0;
+          margin: 0;
+        }
       }
     }
   }
