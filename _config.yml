@@ -184,58 +184,61 @@ collections:
     permalink: /:path/
     defaults:
       values:
-        layout: page
+        layout: formats/page
   news:
     output: true
     permalink: /news/:year/:month/:day/:title/
     defaults:
       values:
-        layout: news
+        layout: formats/news
   archives:
     output: true
     permalink: /archive/:title/
     defaults:
       values:
-        layout: news
+        layout: formats/news
   publications:
     output: true
     permalink: /publication/:title/
     defaults:
       values:
-        layout: publication
+        layout: formats/publication
   consultations:
     output: true
     permalink: /consultation/:title/
     defaults:
       values:
-        layout: consultation
+        layout: formats/consultation
   events:
     output: true
     permalink: /event/:title/
     defaults:
       values:
-        layout: event
+        layout: formats/event
   past-events:
     output: true
     permalink: /event/:title/
     defaults:
       values:
-        layout: event
+        layout: formats/event
   manuals:
     output: true
     permalink: /manual/:title/
     defaults:
       values:
-        layout: manual
+        layout: formats/manual
   notices:
     output: true
     permalink: /notices/:title/
     defaults:
       values:
-        layout: news
+        layout: formats/news
   topics:
     output: true
     permalink: /:title/
+    defaults:
+      values:
+        layout: formats/topics
         
 ##################
 # Build settings #

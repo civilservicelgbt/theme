@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: global/default
 ---
 
 <main id="{{ page.layout | slugify }}">
@@ -13,7 +13,7 @@ layout: default
 		<p>{{ page.excerpt }}</p>
 	</div>
 	
-	{% include layouts/meta.html %}
+	{% include formats/meta.html %}
 	
 	<div id="page-content">
 		
@@ -28,6 +28,18 @@ layout: default
 		{% endif %}
 		
 		{{ content }}
+	</div>
+	
+	<div id="page-related">
+		<h2 class="page-related-title">Latest news</h2>
+	
+		{% for post in site.news limit: 5 %}
+			{% if post.url != page.url %}
+				{% if post.preview != true %}
+					<p><a href="{{ post.url }}">{{ post.title }}</a></p>
+				{% endif %}
+			{% endif %}
+		{% endfor %}
 	</div>
 	
 </main>

@@ -1,5 +1,5 @@
 ---
-layout: skeleton
+layout: global/skeleton
 ---
 
 {% include global/header/header.html %}
@@ -27,27 +27,27 @@ layout: skeleton
 	<div class="container">
 		
 		{% if site.home-news == true %}
-			{% include layouts/home/news.html %}
+			{% include formats/home/news.html %}
 		{% endif %}
 		
-		{% include layouts/home/join.html %}
+		{% include formats/home/join.html %}
 		
-		{% include layouts/home/social.html %}
+		{% include formats/home/social.html %}
 		
 		{% if site.home-events == true %}
-			{% include layouts/home/events.html %}
+			{% include formats/home/events.html %}
 		{% endif %}
 		
 		{% if site.home-publications == true %}
-			{% include layouts/home/publications.html %}
+			{% include formats/home/publications.html %}
 		{% endif %}
 		
 		{% if site.home-consultations == true %}
-			{% include layouts/home/consultations.html %}
+			{% include formats/home/consultations.html %}
 		{% endif %}
 		
 		{% if site.home-topics == true %}
-			{% include layouts/home/topics.html %}
+			{% include formats/home/topics.html %}
 		{% endif %}
 		
 	</div>
