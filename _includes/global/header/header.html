@@ -5,7 +5,7 @@
 		<p class="site-title"><a href="//www.civilservice.lgbt" title="go to the home page">{{ site.header-menu--title--display-text }}</a></p>
 		{% if site.header-menu--subdomain-title == true %}
 		<p class="service-title"><a href="{{ site.url | append: site.baseurl }}" title="go to the home page">{{ site.header-menu--subdomain-title--display-text }}</a></p>
-		{% elsif page.service-title != "" %}
+		{% elsif page.service-title %}
 		<p class="service-title"><a href="{{ site.url | append: site.baseurl }}" title="go to the home page">{{ page.service-title }}</a></p>
 		{% endif %}
 		
