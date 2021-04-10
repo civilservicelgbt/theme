@@ -268,6 +268,15 @@ input[type="checkbox"] {
         box-shadow: 0 0 0 3px $magenta;
         background: $light-gray;
     }
+    
+    &:hover + label {
+        text-decoration: underline;
+        text-decoration-color: $brand-primary;
+        text-decoration-thickness: 3px;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: auto;
+        text-underline-offset: 6px;
+    }
 
     &:checked + label::after {
         opacity: 1;
@@ -354,6 +363,15 @@ input[type="radio"] {
         border-width: 2px;
         box-shadow: 0 0 0 3px $magenta;
         background: $light-gray;
+    }
+    
+    &:hover + label {
+        text-decoration: underline;
+        text-decoration-color: $brand-primary;
+        text-decoration-thickness: 3px;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: auto;
+        text-underline-offset: 6px;
     }
 
     &:checked + label::after {
