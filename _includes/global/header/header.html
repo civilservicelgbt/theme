@@ -6,7 +6,7 @@
 		{% if site.header-menu--subdomain-title == true %}
 		<p class="service-title"><a href="{{ site.url | append: site.baseurl }}" title="go to the home page">{{ site.header-menu--subdomain-title--display-text }}</a></p>
 		{% elsif page.service-title %}
-		<p class="service-title"><a href="{{ site.url | append: site.baseurl }}" title="go to the home page">{{ page.service-title }}</a></p>
+		<p class="service-title"><a href="{{ site.url | append: site.baseurl | append: page.service-url }}" title="go to the home page">{{ page.service-title }}</a></p>
 		{% endif %}
 		
 		{% if site.header-menu--links--hidden != true %}
