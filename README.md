@@ -41,7 +41,7 @@ There are 2 menus in this theme. Each is controlled with YAML set in the site's 
 
 ---
 
-## Installation (for Github pages)
+## Installation (for GitHub pages)
 
 add this line to your Jekyll site's `_config.yml`:
 
@@ -71,7 +71,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install cslgbt-theme
+    $ gem install theme
     
 ---
 
