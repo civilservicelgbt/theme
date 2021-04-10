@@ -303,6 +303,9 @@ details {
   }
   border-top: 2px solid $light-gray;  
   &[open] {
+    > summary {
+      margin-bottom: $container-padding;
+    }    
   }  
   blockquote {
     display: block;
