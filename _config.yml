@@ -239,7 +239,7 @@ collections:
     permalink: /notices/:title/
     defaults:
       values:
-        layout: news
+        layout: notice
   topics:
     output: true
     permalink: /:title/
