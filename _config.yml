@@ -17,6 +17,8 @@ email: "info@civilservice.lgbt"
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://localhost:4000"
+code-repo: "https://github.com/civilservicelgbt/civilservicelgbt.github.io"
+code-repo--branch: "master"
 
 #########################
 # Social media accounts #
@@ -61,7 +63,7 @@ header-menu--title--display-text: "Civil Service LGBT+"
 # If this theme is being used for a subdomain (i.e. blog.civilservice.lgbt) then set
 # - `header-menu--subdomain-title` to 'true'
 # - `header-menu--subdomain-title--display-text` to any string value (i.e. "Image maker")
-header-menu--subdomain-title: true
+header-menu--subdomain-title: false
 header-menu--subdomain-title--display-text: "Website Theme" 
 
 header-menu--links--hidden: false

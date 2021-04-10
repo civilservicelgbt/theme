@@ -1,0 +1,68 @@
+---
+layout: global/default
+---
+
+<main id="{{ page.layout | slugify }}">
+	
+	<div id="page-title">		
+		<h1 class="page-title">{{ page.title }}</h1>
+	</div>
+	
+	<div id="page-lead-paragraph">
+		{{ page.excerpt | markdownify }}
+		{{ content }}
+	</div>
+	
+	<div id="page-content">
+				
+		{% assign collections = site.collections | where_exp: "collections", "collections.label != 'archives' and collections.label != 'manuals' and collections.label != 'past-events' and collections.label != 'posts'" %}
+		{% for collection in collections %}
+			<details class="collection">
+				<summary class="collection--label">{{ collection.label }}</summary>
+				<section class="collection--meta-data">
+					<p><strong>Folder:</strong> {{ collection.relative_directory }}</p>
+					{% assign count = 0 %}
+					{% for post in collection.docs %}
+						{% assign count = count | plus: 1 %}
+					{% endfor %}
+					<p><strong>Entries:</strong> {{ count }}
+				</section>
+				<section class="collections--posts">
+					{% for post in collection.docs reversed %}
+					<details class="collection--posts--item">
+						<summary class="collection--posts--item--label">
+							{% if post.layout == 'news'
+								or post.layout == 'consultation'
+								or post.layout == 'event' %}
+							<span class="date">{{ post.date | date:'%Y-%m-%d' }}</span>
+							{% endif %}
+							<span class="title">{{ post.title }}</span>
+						</summary>
+						<section class="collections--posts--item--details">
+							<p><strong>{{ post.title }}</strong></p>
+							<p>{{ post.excerpt | truncate: 100 }}</p>
+							<p>
+								<a href="{{ post.url }}" class="button">View this post</a>
+								<a href="{{ site.code-repo }}/edit/{{ site.code-repo--branch }}/{{ post.path }}" class="button">Edit this post</a>								
+							</p>
+						</section>
+					</details>
+					{% endfor %}
+				</section>
+			</details>
+		{% endfor %}
+		
+	</div>
+	
+	<div id="page-related">
+		<h2 class="page-related-title">ℹ️ Information</h2>
+	
+		<p>These pages provide an easy interface to add and edit posts on this website.</p>
+		
+		<p>You will require a <a href="//github.com/" title="Go to the Github website" target="_blank" rel="noopener noreferrer">GitHub</a> account and relevant permissions to <a href="{{ site.code-repo }}" title="Visit the Github repository for this site">the repository</a> for this site in order to add or amend its content.</p>
+		
+		<p>Archived content (in the <code>_archives</code> or <code>_past-events</code> folders) is excluded from these lists. If you need to access this content, you can still do so through GitHub.</p>
+			
+	</div>
+	
+</main>

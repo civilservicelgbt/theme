@@ -1,0 +1,210 @@
+// Page styles
+
+main#admin,
+main#admin-new,
+main#admin-edit {
+  @supports (display: grid) {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "page-title"
+      "page-lead-paragraph"
+      "page-content"
+      "page-related";
+
+    @include md-up {
+      grid-template-rows: auto auto auto;
+      grid-template-columns: 2fr 1fr;
+      grid-column-gap: 30px;
+      grid-template-areas:
+        "page-title ."
+        "page-lead-paragraph ."
+        "page-content page-related";
+    }
+  }
+
+  @include clearfix;
+
+  padding: 45px 0;
+
+  div#page-title {
+    @supports (display: grid) {
+      grid-area: page-title;
+    }
+
+    margin-top: 45px;
+    margin-bottom: 45px;
+
+    h1.page-title {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  div#page-lead-paragraph {
+    @supports (display: grid) {
+      grid-area: page-lead-paragraph;
+    }
+
+    margin-bottom: 45px;
+
+    p:first-child {
+      font-size: $font-size-base + 5px;
+    }
+  }
+
+  div#page-content {
+    @include md-up {
+      width: 67%;
+      float: left;
+      clear: left;
+    }
+
+    @supports (display: grid) {
+      width: 100%;
+      float: none;
+      clear: none;
+      grid-area: page-content;
+    }
+
+    margin-bottom: 45px;
+    padding-top: 0;
+
+  }
+  
+  div#page-related {
+    @include md-up {
+      width: calc(33% - 30px);
+      float: right;
+      clear: none;
+      margin-left: 30px;
+    }
+
+    @supports (display: grid) {
+      width: auto;
+      float: none;
+      clear: none;
+      margin-left: 0;
+      grid-area: page-related;
+    }
+
+    margin-bottom: 45px;
+    padding-top: 15px;
+    border-top: 2px solid $brand-primary;
+
+    h2.page-related-title {
+      font-size: $font-size-base + 3px;
+      font-weight: bold;
+      padding: 0 0 15px 0;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      li {
+        padding: 0 0 15px 0;
+
+        p {
+          font-size: $font-size-base;
+          margin: 0;
+
+          &.post-metadata {
+            font-size: $font-size-base - 4px;
+            color: $dark-gray;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+details {
+  &.collection {
+    border-top: 2px solid $light-gray;    
+  }
+  &.collection--posts--item {
+    border-top: 1px solid $light-gray;
+    &:first-of-type {
+      border: none;
+    }
+  }
+  &[open] {
+    summary.collection--label {
+      
+    }
+  }
+  section {
+    padding: $container-padding;
+    &.collection--meta-data {
+      padding: 0;
+      p {
+        background: $light-gray;
+        padding: 3px ($container-padding * 2);
+        margin: 0;
+        &:first-child {
+          padding-top: $container-padding;
+        }
+        &:last-child {
+          padding-bottom: $container-padding;
+        }  
+      }
+    }
+    &.collections--posts {
+      padding: 0;
+      p {
+        margin: 0 0 3px 0;
+        &:last-child {
+          margin-top: $container-padding;
+        }  
+      }
+    }
+  }
+}
+
+summary {
+  font-size: $font-size-base;
+  line-height: $font-line-height;
+  text-transform: capitalize;
+  
+  &.collection--label {
+    padding: $container-padding;
+    font-weight: bold;
+  }
+  &.collection--posts--item--label {
+    padding: ($container-padding * 0.5);
+    font-weight: normal;
+    max-width: 100%;
+    span.title {
+      display: inline-block;
+      max-width: 40ch;
+      white-space: nowrap; 
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    span.date {
+      color: $dark-gray;
+    }
+  }
+  
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: underline !important;
+    cursor: pointer;
+  }
+  &:focus {
+    color: $black !important;
+    background: $link-focus-background;
+    outline: 3px solid $link-focus-background;
+  }
+  &:active {
+    color: $white !important;
+    background: $link-active-background;
+    outline: 3px solid $link-active-background;
+  }
+}
+

@@ -1,0 +1,28 @@
+---
+layout: global/default
+---
+
+<main id="{{ page.layout | slugify }}">
+	
+	<div id="page-title">		
+		<h1 class="page-title">{{ page.title }}</h1>
+	</div>
+	
+	<div id="page-lead-paragraph">
+		<p>{{ page.excerpt }}</p>
+	</div>
+	
+	<div id="page-content">
+		{{ content }}
+	</div>
+	
+	<div id="page-related">
+		<h2 class="page-related-title">ℹ️ Information</h2>
+	
+		<p>These pages provide an easy interface to add and edit posts on this website.</p>
+		
+		<p>You will require a <a href="//github.com/" title="Go to the Github website" target="_blank" rel="noopener noreferrer">Github</a> account and relevant permissions to <a href="{{ site.github-repo }}" title="Visit the Github repository for this site">the repository</a> for this site in order to add or amend its content.</p>
+			
+	</div>
+	
+</main>

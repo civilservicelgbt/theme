@@ -53,6 +53,20 @@ $heading4-font-size-base:       $heading3-font-size-base - 6px;
 $heading5-font-size-base:       $font-size-base;
 $heading6-font-size-base:       $font-size-base;
 
+// Forms
+
+$touch-target-size:                 44px;
+
+$input-size:                       40px;
+$border-width-form-element:         3px;
+$border-focus-width:                1px;
+$input-border-color:                $black;
+$input-error-color:                 $red;
+$input-focus-color:                 $yellow;
+$input-padding:                     5px;
+
+$radios-size:                       40px;
+$radios-label-padding-left-right:   20px;
 
 // BREAKPOINT VALUES
 
