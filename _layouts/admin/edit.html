@@ -32,9 +32,12 @@ layout: global/default
 					<details class="collection--posts--item">
 						<summary class="collection--posts--item--label">
 							{% if post.layout == 'news'
-								or post.layout == 'consultation'
-								or post.layout == 'event' %}
+							or post.layout == 'consultation'
+							or post.layout == 'notice'
+							or post.layout == 'publication' %}
 							<span class="date">{{ post.date | date:'%Y-%m-%d' }}</span>
+							{% elsif post.layout == 'event' %}
+							<span class="date">{{ post.event-date | date:'%Y-%m-%d' }}</span>
 							{% endif %}
 							<span class="title">{{ post.title }}</span>
 						</summary>
