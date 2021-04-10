@@ -1,28 +1,70 @@
 ---
-layout: global/default
+layout: admin/admin
 ---
 
-<main id="{{ page.layout | slugify }}">
+<div id="page-help">
 	
-	<div id="page-title">		
-		<h1 class="page-title">{{ page.title }}</h1>
-	</div>
+	<h2>Help</h2>
 	
-	<div id="page-lead-paragraph">
-		<p>{{ page.excerpt }}</p>
-	</div>
+	<details>
+		<summary>
+			<h2>🏁 Getting started</h2>
+		</summary>
+	{{ content }}
 	
-	<div id="page-content">
-		{{ content }}
-	</div>
+	</details>
 	
-	<div id="page-related">
-		<h2 class="page-related-title">ℹ️ Information</h2>
-	
-		<p>These pages provide an easy interface to add and edit posts on this website.</p>
+	<details>
 		
-		<p>You will require a <a href="//github.com/" title="Go to the Github website" target="_blank" rel="noopener noreferrer">Github</a> account and relevant permissions to <a href="{{ site.github-repo }}" title="Visit the Github repository for this site">the repository</a> for this site in order to add or amend its content.</p>
-			
-	</div>
+		<summary>
+		<h2>✏️ How to add a new post</h2>
+		</summary>
+		
+		<ol>
+			<li>Enter the information and then select 'Create post'. This will open a new GitHub window.</li>
+			<li>Paste (<kbd>Ctrl + V</kbd> or <kbd>⌘ + V</kbd>) into the “Edit new file” textbox on the GitHub page.</li>
+			<li>In the text field at the top of the GitHub page, give the file a name in the correct format (see below).</li>
+			<li>Select “Commit new file” on the GitHub page.</li>
+		</ol>		
+		
+		<p>The post will usually take up to 5 minutes to appear. You will usually receive an email if there is an error.</p>
+	</details>
 	
-</main>
+	<details>
+		<summary>
+		<h2>📁 File name formats</h2>
+		</summary>
+		<p><strong>All post file names should end in <code>.md</code>, <code>.markdown</code>.</strong> Users who are confident in HTML coding can produce more complex pages and end their file names in <code>.html</code>.</p>
+		<p><strong>Some file names have a date at the start or the posts won't show up.</strong></p>
+		<ul>
+			<li>For <strong>news</strong>, <strong>publications</strong>, <strong>consultations</strong>, and <strong>notices</strong>, file names must start with a date in the format <code>YYYY-MM-DD-</code>.</li>
+			<li>For <strong>events</strong>, file names must start with a date in the format <code>YYYYMMDD-</code>.</li>
+			<li>All other posts do not require a date in the file name, but this can be helpful for forcing a specific order.</li>
+		</ul>	
+	</details>
+	
+	
+	<details>
+		<summary>
+		<h2>👠 Formatting and styles</h2>
+		</summary>
+		<p>Most formatting, like page layouts, is done automatically for you when the site is generated.</p>
+		<p>You can format the “body text” of your post using <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" title="See the Markdown style guide">Markdown</a> syntax.</p>
+					
+	</details>
+	
+	<details>
+		<summary>
+			<h3>👾 Using GitHub</h3>
+		</summary>
+				
+		<p>You will require a <a href="//github.com/" title="Go to the GitHub website" target="_blank" rel="noopener noreferrer">GitHub</a> account and relevant permissions to <a href="{{ site.code-repo }}" title="Visit the GitHub repository for this site">the repository</a> for this site in order to add or amend its content.</p>
+	</details>
+	
+</div>
+
+<div id="page-content">
+	
+	
+	
+</div>

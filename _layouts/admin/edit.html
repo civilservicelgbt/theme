@@ -1,80 +1,75 @@
 ---
-layout: global/default
+layout: admin/admin
 ---
 
-<main id="{{ page.layout | slugify }}">
+<div id="page-help">
 	
-	<div id="page-title">		
-		<h1 class="page-title">{{ page.title }}</h1>
-	</div>
+	<h2>Help</h2>
 	
-	<div id="page-lead-paragraph">
-		{{ page.excerpt | markdownify }}
-		{{ content }}
-	</div>
+	<details>
+		<summary>
+			<h3>🏁 Getting started</h3>
+		</summary>
+		{{ content }}	
+	</details>
 	
-	<div id="page-content">
+	<details>
+		<summary>
+			<h3>👾 Using GitHub</h3>
+		</summary>
 				
-		{% assign collections = site.collections | where_exp: "collections", "collections.label != 'archives' and collections.label != 'past-events' and collections.label != 'posts'" %}
-		{% for collection in collections %}
-			<details class="collection">
-				<summary class="collection--label">{{ collection.label }}</summary>
-				<section class="collection--meta-data">
-					<p><strong>Folder:</strong> {{ collection.relative_directory }}</p>
-					{% assign count = 0 %}
-					{% for post in collection.docs %}
-						{% assign count = count | plus: 1 %}
-					{% endfor %}
-					<p><strong>Entries:</strong> {{ count }}
-				</section>
-				<section class="collections--posts">
-					{% for post in collection.docs reversed %}
-					<details class="collection--posts--item">
-						<summary class="collection--posts--item--label">
-							{% if post.layout == 'news'
-							or post.layout == 'consultation'
-							or post.layout == 'notice'
-							or post.layout == 'publication' %}
-							<span class="date">{{ post.date | date:'%Y-%m-%d' }}</span>
-							{% elsif post.layout == 'event' %}
-							<span class="date">{{ post.event-date | date:'%Y-%m-%d' }}</span>
-							{% endif %}
-							<span class="title">{{ post.title }}</span>
-						</summary>
-						<section class="collections--posts--item--details">
-							<p><strong>{{ post.title }}</strong></p>
-							<p>{{ post.excerpt | truncate: 100 }}</p>
-							<p>
-								<a href="{{ post.url }}" class="button">View this post</a>
-								<a href="{{ site.code-repo }}/edit/{{ site.code-repo--branch }}/{{ post.path }}" class="button">Edit this post</a>								
-							</p>
-						</section>
-					</details>
-					{% endfor %}
-				</section>
-			</details>
-		{% endfor %}
-		
-	</div>
+		<p>You will require a <a href="//github.com/" title="Go to the GitHub website" target="_blank" rel="noopener noreferrer">GitHub</a> account and relevant permissions to <a href="{{ site.code-repo }}" title="Visit the GitHub repository for this site">the repository</a> for this site in order to add or amend its content.</p>
+	</details>
 	
-	<div id="page-related">
-		
-		<nav class="admin-navigation">
-			
-			<p><a href="/admin/new/" class="button">New post</a></p>
-
-		</nav>
-
-		<aside class="info">
-			
-			<h2 class="page-related-title">ℹ️ Information</h2>
-					
-			<p>You will require a <a href="//github.com/" title="Go to the Github website" target="_blank" rel="noopener noreferrer">GitHub</a> account and relevant permissions to <a href="{{ site.code-repo }}" title="Visit the Github repository for this site">the repository</a> for this site in order to add or amend its content.</p>
-			
-			<p>Archived content may be excluded from these lists. If you need to access this content, you can still do so through GitHub.</p>
-			
-		</aside>
-			
-	</div>
+	<details>
+		<summary>
+			<h3>🔍 Finding archived content</h3>
+		</summary>	
+		<p>Archived content may be excluded from these lists. If you need to access this content, you can still do so through GitHub.</p>
+	</details>
 	
-</main>
+</div>
+
+<div id="page-content">
+	
+	<h2>Posts</h2>
+			
+	{% assign collections = site.collections | where_exp: "collections", "collections.label != 'archives' and collections.label != 'past-events' and collections.label != 'posts'" %}
+	{% for collection in collections %}
+		<details class="collection">
+			<summary class="collection--label">{{ collection.label }}</summary>
+			<blockquote class="collection--meta-data">
+				<p><strong>Folder:</strong> {{ collection.relative_directory }}</p>
+				{% assign count = 0 %}
+				{% for post in collection.docs %}
+					{% assign count = count | plus: 1 %}
+				{% endfor %}
+				<p><strong>Entries:</strong> {{ count }}
+			</blockquote>
+			<section class="collections--posts">
+				{% for post in collection.docs reversed %}
+				<details class="collection--posts--item">
+					<summary class="collection--posts--item--label">
+						{% if post.layout == 'news'
+						or post.layout == 'consultation'
+						or post.layout == 'notice'
+						or post.layout == 'publication' %}
+						<span class="date">{{ post.date | date:'%Y-%m-%d' }}</span>
+						{% elsif post.layout == 'event' %}
+						<span class="date">{{ post.event-date | date:'%Y-%m-%d' }}</span>
+						{% endif %}
+						<span class="title">{{ post.title }}</span>
+					</summary>
+					<p><strong>{{ post.title }}</strong></p>
+					<p>{{ post.excerpt | truncate: 100 }}</p>
+					<p>
+						<a href="{{ post.url }}" class="button">View this post</a>
+						<a href="{{ site.code-repo }}/edit/{{ site.code-repo--branch }}/{{ post.path }}" class="button">Edit this post</a>								
+					</p>
+				</details>
+				{% endfor %}
+			</section>
+		</details>
+	{% endfor %}
+	
+</div>
