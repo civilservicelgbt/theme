@@ -12,7 +12,8 @@ main#admin-edit {
       "page-lead-paragraph"
       "page-help"
       "page-content"
-      "page-admin-nav";
+      "page-admin-nav"
+      "page-preview";
 
     @include md-up {
       grid-template-rows: auto auto auto auto auto;
@@ -22,7 +23,7 @@ main#admin-edit {
         "page-title ."
         "page-lead-paragraph ."
         "page-help page-admin-nav"
-        "page-content page-content";
+        "page-content page-preview";
     }
   }
 
@@ -42,6 +43,15 @@ main#admin-edit {
       margin: 0;
       padding: 0;
     }
+  }
+  div#page-preview {
+    @supports (display: grid) {
+      grid-area: page-preview;
+    }
+    
+    font-size: $font-size-base * 0.6;
+    font-weight: normal;
+    font-family: $font-family-monospace;
   }
 
   div#page-lead-paragraph {

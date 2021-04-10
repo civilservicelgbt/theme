@@ -1,0 +1,333 @@
+// Page styles
+
+input[type='submit'],
+button,
+a.button {
+  -webkit-appearance: none;
+  border-radius: 0;
+  display: inline-block;
+  cursor: pointer;
+  min-width: 150px;
+  min-height: 40px;
+  font-weight: bold;
+  vertical-align: middle;
+  line-height: 40px;
+  padding: ($container-padding * 0.5) ($container-padding * 2);
+  text-align: center;
+  margin-bottom: 10px;
+  text-decoration: none;
+  box-sizing: border-box !important;
+  background: $magenta;
+  color: $white;
+  border: none;
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-base;
+  
+  &:link,
+  &:visited {
+    background: $magenta;
+    color: $white;
+  }
+  &:hover {
+      background: $purple;
+      color: $white;
+      text-decoration: underline;
+      cursor: pointer;
+  }
+  &:focus {
+      background: $link-focus-background;
+      outline: 3px solid $link-focus-background;
+      color: $black !important;
+      cursor: pointer;
+  }
+  &:active {
+    color: $white !important;
+    background: $link-active-background;
+    outline: 3px solid $link-active-background;    
+  }
+}
+
+
+legend {
+    text-align: left;
+}
+
+span.sub-legend {
+    @extend h3;
+    display: block;
+    text-align: left;
+    padding: 36px 0 30px;
+}
+
+legend > span.sub-legend {
+    padding-top: 0 !important;
+}
+
+.text-input,
+.radio-input,
+.checkbox-input {
+    display: block;
+    position: relative;
+
+    min-height: $input-size;
+
+    @extend p;
+    padding: 0;
+
+    margin-bottom: 30px;
+
+    clear: left;
+}
+
+.radio-input,
+.checkbox-input {
+    padding-left: $radios-size;
+
+    &:last-child,
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+label {
+    @extend p;
+    display: block;
+    font-weight: 400;
+    padding-bottom: 0;
+    padding-top: ($input-size - $font-size-base) * 0.5 !important;
+    min-height: $input-size;
+    line-height: 1;
+    &.hidden {
+        @include sr-only;
+    }
+
+    &.hidden ~ input {
+        margin: 0;
+    }
+}
+
+.label-hint {
+    @extend p;
+    color:  darken($dark-gray, 5%);
+    padding-bottom: 0;
+    display: block;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    @extend p;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 40px;
+    
+    margin-top: 15px;
+    padding: $input-padding;
+
+    border: $border-width-form-element solid $input-border-color;
+    border-radius: 0;
+
+    background: $white;
+    color:      $black;
+
+    // Disable inner shadow and remove rounded corners
+    -webkit-appearance: none;
+    appearance: none;
+
+    &:focus {
+        outline: $border-width-form-element solid $input-focus-color;
+        outline-offset: 0;
+        box-shadow: inset 0 0 0 $border-focus-width;
+    }
+
+    &:invalid {
+        border: $border-width-form-element solid $input-error-color;
+    }
+
+    &:hover {
+        box-shadow: 0 0 0 3px $magenta;
+    }
+
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="checkbox"] {
+    $input-offset: ($touch-target-size - $radios-size) / 2;
+    cursor: pointer;
+
+    position: absolute;
+
+    z-index: 1;
+    top: $input-offset * -1;
+    left: $input-offset * -1;
+
+    width: $touch-target-size;
+    height: $touch-target-size;
+    margin: 0;
+
+    opacity: 0;
+
+    ~ label {
+        display: inline-block;
+        margin-bottom: 0;
+        padding: 0px $radios-label-padding-left-right;
+        cursor: pointer;
+        // remove 300ms pause on mobile
+        touch-action: manipulation;
+    
+        font-weight:    400;
+
+        &::before {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: $radios-size;
+            height: $radios-size;
+
+            border: 2px solid $black;
+            border-radius: 0;
+            background: transparent;
+        }
+
+        &::after {
+            content: "";
+
+            position: absolute;
+            top: 7px;
+            left: 13px;
+
+            width: $radios-size / 3;
+            height: $radios-size / 2;
+
+            opacity: 0;
+            background: none;
+            border-bottom: 5px solid $brand-primary;
+            border-right: 5px solid $brand-primary;
+            
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+    
+    }
+
+    &:focus + label::before {
+        border-width: 4px;
+        box-shadow: 0 0 0 3px $magenta;
+    }
+
+    &:hover + label::before {
+        border-width: 2px;
+        box-shadow: 0 0 0 3px $magenta;
+        background: $light-gray;
+    }
+
+    &:checked + label::after {
+        opacity: 1;
+    }
+
+    ~ .label-hint,  {
+        padding-right: $radios-label-padding-left-right;
+        padding-left: $radios-label-padding-left-right;
+    }
+
+    ~ input[type="text"],
+    ~ input[type="email"]  {
+        margin-left: $radios-label-padding-left-right;
+        width: calc(100% - #{$radios-label-padding-left-right});
+    }
+
+}
+
+input[type="radio"] {
+    $input-offset: ($touch-target-size - $radios-size) / 2;
+    cursor: pointer;
+
+    position: absolute;
+
+    z-index: 1;
+    top: $input-offset * -1;
+    left: $input-offset * -1;
+
+    width: $touch-target-size;
+    height: $touch-target-size;
+    margin: 0;
+
+    opacity: 0;
+
+    ~ label {
+        display: inline-block;
+        margin-bottom: 0;
+        padding: 0px $radios-label-padding-left-right;
+        cursor: pointer;
+        // remove 300ms pause on mobile
+        touch-action: manipulation;
+    
+        font-weight:    400;
+
+        &::before {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: $radios-size;
+            height: $radios-size;
+
+            border: 2px solid $black;
+            border-radius: 50%;
+            background: transparent;
+        }
+
+        &::after {
+            content: "";
+
+            position: absolute;
+            top: 10px;
+            left: 10px;
+
+            width: 0;
+            height: 0;
+
+            border: 10px solid $magenta;
+            border-radius: 50%;
+            opacity: 0;
+            background: $black;
+        }
+    
+    }
+
+    &:focus + label::before {
+        border-width: 4px;
+        box-shadow: 0 0 0 3px $magenta;
+    }
+
+    &:hover + label::before {
+        border-width: 2px;
+        box-shadow: 0 0 0 3px $magenta;
+        background: $light-gray;
+    }
+
+    &:checked + label::after {
+        opacity: 1;
+    }
+
+    ~ .label-hint,  {
+        padding-right: $radios-label-padding-left-right;
+        padding-left: $radios-label-padding-left-right;
+    }
+
+    ~ input[type="text"],
+    ~ input[type="email"]  {
+        margin-left: $radios-label-padding-left-right;
+        width: calc(100% - #{$radios-label-padding-left-right});
+    }
+
+}
