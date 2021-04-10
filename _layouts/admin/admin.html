@@ -24,4 +24,18 @@ layout: global/default
 	
 	{{ content }}
 	
+	{% if page.layout == "admin/new" %}
+	
+	<div id="page-preview">
+		<h2>Preview</h2>
+		<div id="post-output">
+			A preview of your output will display here if you select 'Copy content to clipboard'.
+			<br>
+			<br>
+			Only an excerpt of the output will be displayed.
+		</div>
+	</div>
+	
+	{% endif %}
+	
 </main>

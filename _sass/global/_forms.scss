@@ -14,7 +14,7 @@ a.button {
   line-height: 40px;
   padding: ($container-padding * 0.5) ($container-padding * 2);
   text-align: center;
-  margin-bottom: 10px;
+  margin: 0;
   text-decoration: none;
   box-sizing: border-box !important;
   background: $magenta;
@@ -47,21 +47,29 @@ a.button {
   }
 }
 
-
-legend {
+fieldset details[open] {
+    margin-bottom: $container-padding * 2;
+    summary {
+        margin-bottom: $container-padding * 2;
+    }
+}
+legend,
+.legend {
+    display: inline-block;
     text-align: left;
+    font-weight: bold;
 }
 
-span.sub-legend {
-    @extend h3;
+.sub-legend {
     display: block;
     text-align: left;
-    padding: 36px 0 30px;
+    color: $dark-gray;
 }
 
 legend > span.sub-legend {
     padding-top: 0 !important;
 }
+
 
 .text-input,
 .radio-input,
@@ -89,14 +97,15 @@ legend > span.sub-legend {
     }
 }
 
-label {
+label,
+.label {
     @extend p;
     display: block;
-    font-weight: 400;
+    font-weight: 600;
     padding-bottom: 0;
-    padding-top: ($input-size - $font-size-base) * 0.5 !important;
+    padding-top: 7px !important;
+    margin-bottom: 0;
     min-height: $input-size;
-    line-height: 1;
     &.hidden {
         @include sr-only;
     }
@@ -104,6 +113,10 @@ label {
     &.hidden ~ input {
         margin: 0;
     }
+}
+
+.label {
+    font-weight: normal;
 }
 
 .label-hint {
@@ -141,6 +154,7 @@ textarea {
     }
 
     &:invalid {
+        background: $light-gray;
         border: $border-width-form-element solid $input-error-color;
     }
 
@@ -148,6 +162,33 @@ textarea {
         box-shadow: 0 0 0 3px $magenta;
     }
 
+}
+
+div.date {
+    position: relative;
+    display: inline-block;
+    
+    width: auto;
+    margin-right: $container-padding * 0.25;
+    
+    &.year input[type="text"] {
+        max-width: 8ch;
+    }
+    &.month input[type="text"] {
+        max-width: 6ch;
+    }
+    &.day input[type="text"] {
+        max-width: 6ch;
+    }
+    &.day {
+        margin-right: $container-padding * 2;
+    }
+    &.hour input[type="text"] {
+        max-width: 6ch;
+    }
+    &.minute input[type="text"] {
+        max-width: 6ch;
+    }
 }
 
 textarea {

@@ -49,9 +49,24 @@ main#admin-edit {
       grid-area: page-preview;
     }
     
-    font-size: $font-size-base * 0.6;
-    font-weight: normal;
-    font-family: $font-family-monospace;
+    div#post-output {
+      position: -webkit-sticky;
+      position: sticky;
+      top: $container-padding;
+      
+      font-size: $font-size-base * 0.6;
+      font-weight: normal;
+      font-family: $font-family-monospace;
+      
+      border: 1px solid $light-gray;
+      padding: $container-padding;
+      
+      min-height: 375px;
+      max-height: 600px;
+      overflow-y: hidden;
+      
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
   }
 
   div#page-lead-paragraph {
@@ -110,7 +125,9 @@ main#admin-edit {
 
   }
     
-  div#new-post--buttons {
+  div#post-buttons {
+    padding-top: $container-padding;
+    border-top: 2px solid $light-gray;
     p {
       @include clearfix;
     }
@@ -159,6 +176,7 @@ main#admin-edit {
       }
     }
   }
+  
 
 }
 

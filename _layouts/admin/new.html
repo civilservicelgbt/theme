@@ -65,6 +65,341 @@ layout: admin/admin
 
 <div id="page-content">
 	
+	<h2>Post content</h2>
 	
+	<fieldset id="post-collection">
+	<details open>
+		
+		<summary>
+			<h3><legend>Collection</legend></h3>
+		</summary>
+		
+		{% assign collections = site.collections | where_exp: "collections", "collections.label != 'archives' and collections.label != 'past-events' and collections.label != 'posts'" %}
+		{% for collection in collections %}
+		<div class="radio-input">
+			<input type="radio" name="post-collection" id="post-collection--{{ collection.label }}" value="{{ collection.relative_directory }}"{% if collection.label == "news" %} checked{% endif %}>
+			<label for="post-collection--{{ collection.label }}">
+				{{ collection.label | capitalize }} 
+			</label>
+		</div>
+		{% endfor %}
+		
+	</details>
+	</fieldset>
 	
+	<fieldset id="post-format">
+	<details>
+		
+		<summary>
+			<h3><legend>Post format</legend></h3>
+		</summary>
+		
+		{% assign collections = site.collections | where_exp: "collections", "collections.label != 'archives' and collections.label != 'past-events' and collections.label != 'posts'" %}
+		{% for collection in collections %}
+			{% for default in collection.defaults %}
+				{% for value in default[1].layout %}
+					{% assign post-layout = value %}	
+				{% endfor %}
+			{% endfor %}
+		<div class="radio-input">
+			<input type="radio" name="post-format" id="post-format--{{ post-layout }}" value="{{ post-layout }}" onChange="toggleFieldSets();" {% if collection.label == "news" %} checked{% endif %}>
+			<label for="post-format--{{ post-layout }}">
+				{{ post-layout | capitalize }} format
+			</label>
+		</div>
+		{% endfor %}
+		
+	</details>
+	</fieldset>
+	
+	<fieldset id="post-title-and-excerpt">
+		<details>
+			
+			<summary>
+				<h3><legend>Title and excerpt</legend></h3>
+			</summary>
+			
+			<div class="text-input">
+				<label for="post-title">Post title</label>
+				<input id="post-title" name="post-title" type="text" placeholder="Enter post title">
+			</div>
+			
+			<div class="text-input">
+				<label for="post-excerpt">Post excerpt</label>
+				<textarea id="post-excerpt" name="post-excerpt" placeholder="Enter a short excerpt here" cols="30" rows="3"></textarea>
+			</div>
+		</details>
+	</fieldset>
+	
+	<fieldset id="post-categories-topics">
+		<details>
+			
+			<summary>
+				<h3><legend>Topics</legend></h3>
+			</summary>
+			<div class="text-input">
+				<label for="post-categories">Topics</label>
+				<p class="label">Used to generate topic pages.</p>
+				<p class="label">If a post is tagged with a topic, it will show up on the corresponding topic page. One or more items in a comma separated list.</p>
+				<p class="label-hint">For example – "Topic 1", "Topic 2", "Topic 3"</p>
+				<input id="post-categories" name="post-categories" type="text" placeholder="Enter post title">
+			</div>
+			
+		</details>
+		
+	</fieldset>
+	
+	<fieldset id="post-author">
+		<details>
+			
+			<summary>
+				<h3><legend>Author</legend></h3>
+			</summary>
+			
+			<div class="text-input">
+				<label for="post-author-name">Post author</label>
+				<input id="post-author-name" name="post-author-name" type="text" placeholder="Enter author’s name">
+			</div>
+			
+			<div class="text-input">
+				<label for="post-author-url">Author URL</label>
+				<p class="label">Makes the author's name a link in some templates. You could link to a profile on the website or a social media profile.</p>
+				<p class="label-hint">For example – https://www.twitter.com/cslgbt</p>
+				<input id="post-author-url" name="post-author-url" type="text" placeholder="Enter author’s URL">
+			</div>
+			
+		</details>
+		
+	</fieldset>
+	
+	<fieldset id="post-dates">
+		<details>
+			<summary>
+				<h3><legend>Dates</legend></h3>
+			</summary>
+			
+			<p class="label">On what date is the post meant to be published?</p>
+			<p class="sub-legend">For example – 2021 12 31</p>
+			<div class="text-input date year">
+				<label for="post-year">Year</label>
+				<input id="post-year" inputmode="numeric" name="post-year" type="text" placeholder="YYYY" minlength="4" maxlength="4">
+			</div>
+			<div class="text-input date month">
+				<label for="post-month">Month</label>
+				<input id="post-month" inputmode="numeric" name="post-month" type="text" placeholder="MM" minlength="2" maxlength="2">
+			</div>
+			<div class="text-input date day">
+				<label for="post-day">Day</label>
+				<input id="post-day" inputmode="numeric" name="post-day" type="text" placeholder="DD" minlength="2" maxlength="2">
+			</div>
+		</details>
+	</fieldset>
+	
+	<fieldset id="post-images-and-videos">
+		<details>
+			
+			<summary>
+				<h3><legend>Hero images and videos</legend></h3>
+			</summary>
+			
+			<div class="text-input">
+				<label for="post-image">Post hero image</label>
+				<p class="label">Sets the hero image for the post.</p>
+				<p class="label">Must be an image file already uploaded to the website (you can't upload images through this tool).</p>
+				<p class="label-hint">For example – /assets/images/posts/name-of-image.png</p>
+				<input id="post-image" name="post-image" type="text" placeholder="Enter image path">
+			</div>
+			
+			<div class="text-input">
+				<label for="post-video">Post video</label>
+				<p class="label">Shows a video at the top of the post.</p>
+				<p class="label">Must be a YouTube URL.</p>
+				<p class="label-hint">For example – https://www.youtube.com/embed/ZQtfWH89gjQ</p>
+				<input id="post-video" name="post-video" type="text" placeholder="Enter YouTube URL">
+			</div>
+			
+		</details>
+		
+	</fieldset>
+	
+	<fieldset id="post-event">
+		<details>
+			
+			<summary>
+				<h3><legend>Event details</legend></h3>
+			</summary>
+			
+			<p class="label"><strong>Event start date and time</strong></p>
+			<p class="label">On what date and at what time is the event taking place?</p>
+			<p class="sub-legend">For example – 2021 12 31 13 00</p>
+			<div class="text-input date year">
+				<label for="post-event-date-year">Year</label>
+				<input id="post-event-date-year" inputmode="numeric" name="post-event-date-year" type="text" placeholder="YYYY" minlength="4" maxlength="4">
+			</div>
+			<div class="text-input date month">
+				<label for="post-event-date-month">Month</label>
+				<input id="post-event-date-month" inputmode="numeric" name="post-event-date-month" type="text" placeholder="MM" minlength="2" maxlength="2">
+			</div>
+			<div class="text-input date day">
+				<label for="post-event-date-day">Day</label>
+				<input id="post-event-date-day" inputmode="numeric" name="post-event-date-day" type="text" placeholder="DD" minlength="2" maxlength="2">
+			</div>
+			<div class="text-input date hour">
+				<label for="post-event-date-hour">Hour</label>
+				<input id="post-event-date-hour" inputmode="numeric" name="post-event-date-hour" type="text" placeholder="hh" minlength="2" maxlength="2">
+			</div>
+			<div class="text-input date minute">
+				<label for="post-event-date-minute">Minute</label>
+				<input id="post-event-date-minute" inputmode="numeric" name="post-event-date-minute" type="text" placeholder="mm" minlength="2" maxlength="2">
+			</div>
+			
+			<p class="label"><strong>Event registration closing date and time</strong></p>
+			<p class="label">When do registrations for the event stop?</p>
+			<p class="sub-legend">For example – 2021 12 31 13 00</p>
+			<div class="text-input date year">
+				<label for="post-registration-close-date-year">Year</label>
+				<input id="post-registration-close-date-year" inputmode="numeric" name="post-registration-close-date-year" type="text" placeholder="YYYY" minlength="4" maxlength="4">
+			</div>
+			<div class="text-input date month">
+				<label for="post-registration-close-date-month">Month</label>
+				<input id="post-registration-close-date-month" inputmode="numeric" name="post-registration-close-date-month" type="text" placeholder="MM" minlength="2" maxlength="2">
+			</div>
+			<div class="text-input date day">
+				<label for="post-registration-close-date-day">Day</label>
+				<input id="post-registration-close-date-day" inputmode="numeric" name="post-registration-close-date-day" type="text" placeholder="DD" minlength="2" maxlength="2">
+			</div>
+			<div class="text-input date hour">
+				<label for="post-registration-close-date-hour">Hour</label>
+				<input id="post-registration-close-date-hour" inputmode="numeric" name="post-registration-close-date-hour" type="text" placeholder="hh" minlength="2" maxlength="2">
+			</div>
+			<div class="text-input date minute">
+				<label for="post-registration-close-date-minute">Minute</label>
+				<input id="post-registration-close-date-minute" inputmode="numeric" name="post-registration-close-date-minute" type="text" placeholder="mm" minlength="2" maxlength="2">
+			</div>
+			
+			<div class="text-input">
+				<label for="post-event-location">Event location</label>
+				<p class="label">If this is an in-person event, where is it taking place?</p>
+				<p class="label-hint">For example – 1 Horseguards Parade, London</p>
+
+				<p class="label">If this is a digital event, what platform is being used?</p>
+				<p class="label-hint">For example – Google Meet</p>
+				<input id="post-event-location" name="post-event-location" type="text" placeholder="Enter location">
+			</div>
+			
+			<div class="text-input">
+				<label for="post-event-link">Event link</label>
+				<p class="label">What is the link to the registration form?</p>
+				<p class="label-hint">For example – https://www.surveymonkey.com/aBcDeFg123/</p>
+				<input id="post-event-link" name="post-event-link" type="text" placeholder="Enter URL">
+			</div>
+			
+			<div class="text-input">
+				<label for="post-event-email">Event email</label>
+				<p class="label">What is the email address people can contact to register?</p>
+				<p class="label-hint">For example – events@example.com</p>
+				<input id="post-event-email" name="post-event-email" type="email" placeholder="Enter email address">
+			</div>
+			
+			<div class="text-input">
+				<label for="post-event-no-register">No registration message</label>
+				<p class="label">If the event does not require registration, what message do you want to display instead?</p>
+				<p class="label-hint">For example – "No need to register. Just turn up."</p>
+				<input id="post-event-no-register" name="post-event-no-register" type="text" placeholder="Enter message">
+			</div>
+			
+		</details>
+		
+	</fieldset>
+	
+	<fieldset id="post-consultation">
+		<details>
+			
+			<summary>
+				<h3><legend>Consultation details</legend></h3>
+			</summary>
+			
+			<div class="text-input">
+				<label for="post-consultation-link">Consultation link</label>
+				<p class="label">What is the web address for the consultation?</p>
+				<p class="label-hint">For example – https://www.surveymonkey.com/aBcDeFg123/</p>
+				<input id="post-consultation-link" name="post-consultation-link" type="text" placeholder="Enter URL">
+			</div>
+			
+			<p class="label"><strong>Closing date</strong></p>
+			<p class="label">On what date does the consultation close?</p>
+			<p class="sub-legend">For example – 2021 12 31</p>
+			<div class="text-input date year">
+				<label for="post-consultation-end-year">Year</label>
+				<input id="post-consultation-end-year" inputmode="numeric" name="post-consultation-end-year" type="text" placeholder="YYYY" minlength="4" maxlength="4">
+			</div>
+			<div class="text-input date month">
+				<label for="post-consultation-end-month">Month</label>
+				<input id="post-consultation-end-month" inputmode="numeric" name="post-consultation-end-month" type="text" placeholder="MM" minlength="2" maxlength="2">
+			</div>
+			<div class="text-input date day">
+				<label for="post-consultation-end-day">Day</label>
+				<input id="post-consultation-end-day" inputmode="numeric" name="post-consultation-end-day" type="text" placeholder="DD" minlength="2" maxlength="2">
+			</div>
+			
+		</details>
+		
+	</fieldset>
+	
+	<fieldset id="post-permalinks-and-redirects">
+		<details>
+			
+			<summary>
+				<h3><legend>Permalinks and redirects</legend></h3>
+			</summary>
+			
+			<div class="text-input">
+				<label for="post-permalink">Permalink</label>
+				<p class="label">Overrides the default permalink.</p>
+				<p class="label-hint">For example – /2021/12/31/name-of-your-post/</p>
+				<input id="post-permalink" name="post-permalink" type="text" placeholder="Enter post permalink">
+			</div>
+			
+			<div class="text-input">
+				<label for="post-redirect_from">Redirect from</label>
+				<p class="label">Use this to redirect from another page to this page. Enter one url only.</p>
+				<p class="label-hint">For example – /2021/12/31/name-of-your-post/</p>
+				<input id="post-redirect_from" name="post-redirect_from" type="text" placeholder="Enter URL to redirect from">
+			</div>
+			
+			<div class="text-input">
+				<label for="post-redirect_to">Redirect to</label>
+				<p class="label">Use this to redirect to another URL from this page. Enter one url only.</p>
+				<p class="label-hint">For example – /2021/12/31/name-of-your-post/</p>
+				<input id="post-redirect_to" name="post-redirect_to" type="text" placeholder="Enter URL to redirect to">
+			</div>
+			
+		</details>
+		
+	</fieldset>
+		
+	<fieldset id="post-content">
+	
+		<details>
+				
+			<summary>
+				<h3><legend>Post content</legend></h3>
+			</summary>
+	
+			<div class="text-input">
+				<label for="post-body">Body text</label>
+				<textarea id="post-body" name="post-body" placeholder="Enter your post content here" cols="30" rows="20"></textarea>
+			</div>
+			
+		</details>
+	
+	</fieldset>
+	
+	<div id="post-buttons">
+		<p>
+			<button onclick="createNewPost()">Create post</button>
+			<button onclick="copyToClipboard()">Copy content to clipboard</button>
+		</p>
+	</div>
+			
 </div>
