@@ -142,13 +142,21 @@ header#site-navigation ul#menu-items {
 }
   
 button#menu-toggle {
-  position: absolute;
-  display: block;
+  -webkit-appearance: none;
+  border-radius: 0;
+  
+  position: absolute !important;
+  display: block !important;
+  
   top: $container-padding;
   right: $container-padding;
   left: auto;
+  
   height: $font-size-base + 4px;
   width: $font-size-base + 4px;
+  min-height: unset !important;
+  min-width: unset !important;
+  
   margin: 0;
   margin-left: auto;
   padding: 0;
