@@ -88,10 +88,20 @@ main#admin-edit {
       margin-left: 0;
       grid-area: page-related;
     }
-
-    margin-bottom: 45px;
-    padding-top: 15px;
-    border-top: 2px solid $brand-primary;
+    
+    nav.admin-navigation {
+      margin-bottom: 45px;
+      
+      a.button {
+        width: 100%;
+      }
+      
+    }
+    aside.info {
+      padding-top: 15px;
+      border-top: 2px solid $brand-primary;
+      margin-bottom: 45px;
+    }
 
     h2.page-related-title {
       font-size: $font-size-base + 3px;
