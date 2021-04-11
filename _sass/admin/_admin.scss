@@ -49,23 +49,79 @@ main#admin-edit {
       grid-area: page-preview;
     }
     
-    div#post-output {
+    div#post-preview { 
+      display: grid;
+      
       position: -webkit-sticky;
       position: sticky;
+      
       top: $container-padding;
+      
+      grid-template-rows: auto 1fr auto;
       
       font-size: $font-size-base * 0.6;
       font-weight: normal;
       font-family: $font-family-monospace;
-      
-      border: 1px solid $light-gray;
-      padding: $container-padding;
       
       min-height: 375px;
       max-height: 600px;
       overflow-y: hidden;
       
       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+    
+    header#post-preview-header {
+      padding: $container-padding;
+      font-weight: 900;
+      color: $white;
+      background: $brand-gray;
+    }
+    
+    article#post-preview-output {
+      padding: $container-padding;
+    }
+    
+    footer#post-preview-footer {
+      padding: $container-padding;
+      text-align: right;
+      
+      button {
+        background: unset;
+        padding: unset;
+        min-width: unset;
+        min-height: unset;
+        box-sizing: content-box;
+        text-decoration-skip: ink;
+        text-decoration-skip-ink: auto;
+        
+        display: inline;
+        line-height: 1;
+        font-size: $font-size-base * 0.6;
+        font-weight: bold;
+        font-family: $font-family-monospace;
+        color: $cyan;
+        
+        &:link,
+        &:visited {
+          color: $link-color;
+          text-decoration: none;    
+        }
+        &:hover {
+          color: $link-hover-color;
+          text-decoration: underline !important;
+          cursor: pointer;
+        }
+        &:focus {
+          color: $black !important;
+          background: $link-focus-background;
+          outline: 3px solid $link-focus-background;
+        }
+        &:active {
+          color: $white !important;
+          background: $link-active-background;
+          outline: 3px solid $link-active-background;
+        }
+      }
     }
   }
 
@@ -104,6 +160,13 @@ main#admin-edit {
     }
 
     margin-bottom: 45px;
+    
+    ul,ol {
+      li {
+        padding-bottom: $container-padding * 0.5;
+      }
+    }
+    
   }
 
   div#page-content {
@@ -122,7 +185,26 @@ main#admin-edit {
 
     margin-bottom: 45px;
     padding-top: 0;
-
+    
+    button,
+    a.button {
+      margin-bottom: 0;
+      margin-right: $container-padding;
+      padding: ($container-padding * 0.5) ($container-padding * 2);
+    }
+    
+    button + label,
+    button + p {
+      margin-top: $container-padding * 2;
+    }
+    
+    span.optional {
+      color: $dark-gray;
+      font-weight: normal;
+      font-style: italic;
+      margin-left: $container-padding;
+    }
+    
   }
     
   div#post-buttons {
@@ -130,19 +212,6 @@ main#admin-edit {
     border-top: 2px solid $light-gray;
     p {
       @include clearfix;
-    }
-    button,
-    a.button {
-      margin-bottom: 0;
-      padding: ($container-padding * 0.5) ($container-padding * 2);
-      &:first-of-type {
-        float: left;
-        clear: left;
-      }
-      &:nth-of-type(2) {
-        margin-left: $container-padding * 2;
-        float: left;
-      }
     }
   }
 

@@ -72,7 +72,8 @@ function stopGA(trackingId, domain) {
 
 
 // ========================== //
-// CREATE A NEW POST
+// ADMIN PAGES
+// GENERATE POST CONTENT
 // ========================== //
 
 // The purpose of the functions below is to take form fields and 
@@ -90,7 +91,8 @@ function toggleFieldSets() {
   var fieldSetPostImagesAndVideos = document.getElementById('post-images-and-videos');
   var fieldSetPostEvent = document.getElementById('post-event');
   var fieldSetPostConsultation = document.getElementById('post-consultation');
-  var fieldSetPostPermalinksAndRedirects = document.getElementById('post-permalinks-and-redirects');
+  var fieldSetPostPermalinkSetup = document.getElementById('post-permalink-setup');
+  var fieldSetPostRedirects = document.getElementById('post-redirects');
   var fieldSetPostContent = document.getElementById('post-content');  
   
   var postFormat = document.getElementsByName('post-format');
@@ -112,13 +114,13 @@ function toggleFieldSets() {
   fieldSetPostImagesAndVideos.hidden = false;
   fieldSetPostEvent.hidden = false;
   fieldSetPostConsultation.hidden = false;
-  fieldSetPostPermalinksAndRedirects.hidden = false;
+  fieldSetPostPermalinkSetup.hidden = false;
   fieldSetPostContent.hidden = false;
   
   if (postFormat == "event" || postFormat == "topics" || postFormat == "page" || postFormat == "manual" ) {
     fieldSetPostDates.hidden = true;
   } 
-  if (postFormat == "event" || postFormat == "topics" || postFormat == "consultation" ) {
+  if (postFormat == "event" || postFormat == "topics" || postFormat == "consultation" || postFormat == "manual" ) {
     fieldSetPostImagesAndVideos.hidden = true;
   } 
   if (postFormat == "page" || postFormat == "topics" ) {
@@ -132,7 +134,7 @@ function toggleFieldSets() {
   }
 }
 
-function generateJekyllPost() {
+function generateJekyllPostContent() {
   
   var postFormat = document.getElementsByName('post-format');
   for (var i = 0, length = postFormat.length; i < length; i++) {
@@ -199,6 +201,8 @@ function generateJekyllPost() {
   var postConsultationEndDate = postConsultationEndYear + "-" + postConsultationEndMonth + "-" +  postConsultationEndDay;
   
   var postPermalink = document.getElementById("post-permalink").value;
+  var postRedirectFrom = document.getElementById("post-redirect_from").value;
+  var postRedirectTo = document.getElementById("post-redirect_to").value;
   
   var jekyllpost = "";
   
@@ -244,6 +248,12 @@ function generateJekyllPost() {
     jekyllpost += "end-date: " + postConsultationEndDate + " \# YYYY-MM-DD \n";
   }
   jekyllpost += "permalink: \"" + postPermalink + "\"\n";
+  if (postRedirectFrom != "") {
+    jekyllpost += "redirect_from: \n- " + postRedirectFrom + "\n";
+  }
+  if (postRedirectTo != "") {
+    jekyllpost += "redirect_to: \n- " + postRedirectTo + "\n";
+  }
       
   jekyllpost += "---\n\n" // Do not remove – must be present
   
@@ -272,19 +282,182 @@ function generateJekyllPost() {
 
 }
 
-function copyToClipboard(){
+function generateJekyllPostFileName() {
+  
+  // Post file names should usually be in the format:
+  //   2021-12-31-filename.md
+  //
+  // Unless they are events, pages, topics or manuals, in which
+  // case they should omit the date:
+  //   filename.md
+  //
+  // Instead of dates in the file name, events should be nested in 
+  // folders reflecting their respective dates; this will be reflected
+  // in the permalink structure.
+  
+  var postCollection = getCollection();
+  
+  if (
+    postCollection == "_events" || 
+    postCollection == "_topics" || 
+    postCollection == "_pages" || 
+    postCollection == "_manuals"
+  ) {
+    // Does not have a post date
+    var postDate = "";
+  } else {
     
-    var textToCopy = generateJekyllPost();
-    navigator.clipboard.writeText(textToCopy);
+    var postPublishYear = document.getElementById("post-year").value;
+    var postPublishMonth = document.getElementById("post-month").value;
+    var postPublishDay = document.getElementById("post-day").value;
+    if (postPublishYear == "" || postPublishMonth == "" || postPublishDay == "") {
+      var date = new Date();
+      
+      var postPublishYear = date.getFullYear();
+      var postPublishMonth = ("00" + (date.getMonth() + 1)).slice(-2);
+      var postPublishDay = ("00" + date.getDate()).slice(-2);
+      
+      console.info("No date was set so the publish date was set to today's date");
+    }
     
-    document.getElementById("post-output").innerText = textToCopy;
+    var postDate = postPublishYear + "-" + postPublishMonth + "-" +  postPublishDay+ "-";
+  }
+
+  var postTitle = document.getElementById("post-title").value;
+  var postTitle = postTitle.toLowerCase();
     
+  if (postTitle != "") {
+    var postFilename = postDate + postTitle.replace(/([^a-z0-9]+)/gi, '-') + '.md';
+  } else {
+    var postFilename = null;
+  }
+  
+  return postFilename;
 }
 
-function createNewPost() {
+function generateJekyllPostPermalink() {
   
-  copyToClipboard();
+  // Post permalinks should usually be in either of these formats:
+  //   /collection/2021/12/31/filename 
+  //   /collection/filename/
+  //
+  // Permalinks should be prepended by the page layout name unless 
+  // they are in the _pages collection.
+  
+  var postCollection = getCollection();
 
+  if ( postCollection == "_consultations" ) {
+    var postCollectionPermalink = "/consultation/";
+  } else if ( postCollection == "_events" ) {
+    var postCollectionPermalink = "/event/";
+  } else if ( postCollection == "_manuals" ) {
+    var postCollectionPermalink = "/manual/";
+  } else if ( postCollection == "_news" ) {
+    var postCollectionPermalink = "/news/";
+  } else if ( postCollection == "_notices" ) {
+    var postCollectionPermalink = "/notice/";
+  } else if ( postCollection == "_pages" ) {
+    var postCollectionPermalink = "/";
+  } else if ( postCollection == "_publications" ) {
+    var postCollectionPermalink = "/publication/";
+  } else if ( postCollection == "_topics" ) {
+    var postCollectionPermalink = "/topic/";
+  } else {
+    var postCollectionPermalink = "/";
+  }
+  
+  if ( postCollection == "_events" ) {
+    // If it's an event, it will have a date set by the event start date, not the post date
+    var postEventDateYear = document.getElementById("post-event-date-year").value;
+    var postEventDateMonth = document.getElementById("post-event-date-month").value;
+    var postEventDateDay = document.getElementById("post-event-date-day").value;
+    var postDate  = postEventDateYear + "/" + postEventDateMonth + "/" +  postEventDateDay + "/";
+    if (postEventDateYear == "" || postEventDateMonth == "" || postEventDateDay == "") {
+      alert("ERROR\n\nNo date was set for the event.\n\nAll events require a date.\n\nSet the date in the “Add the event details” section");
+    }
+  } else if (
+    postCollection == "_topics" || 
+    postCollection == "_pages" || 
+    postCollection == "_manuals"
+  ) {
+    // Does not have a post date
+    var postDate = "";
+  } else {
+    // All other posts will likely be dated
+    var postPublishYear = document.getElementById("post-year").value;
+    var postPublishMonth = document.getElementById("post-month").value;
+    var postPublishDay = document.getElementById("post-day").value;
+    if (postPublishYear == "" || postPublishMonth == "" || postPublishDay == "") {
+      var date = new Date();
+      
+      var postPublishYear = date.getFullYear();
+      var postPublishMonth = ("00" + (date.getMonth() + 1)).slice(-2);
+      var postPublishDay = ("00" + date.getDate()).slice(-2);
+      
+      console.info("No date was set so the publish date was set to today's date");
+    }
+    
+    var postDate = postPublishYear + "/" + postPublishMonth + "/" +  postPublishDay+ "/";
+  }
+  
+  var postTitle = document.getElementById("post-title").value;
+  var postTitle = postTitle.toLowerCase();
+    
+  if (postTitle != "") {
+    var postPermalink = postCollectionPermalink + postDate + postTitle.replace(/([^a-z0-9]+)/gi, '-');
+  } else {
+    var postPermalink = null;
+  }
+  
+  
+  
+  return postPermalink;
+  
+}
+
+// ========================== //
+// ADMIN: PREVIEW
+// ========================== //
+
+function updatePostPreview() {
+  var headerText = generateJekyllPostFileName();
+  var bodyText = generateJekyllPostContent();
+  // Show a preview
+  updatePostPreviewHeader(headerText);
+  // Show a preview
+  updatePostPreviewBody(bodyText);
+  
+}
+
+function updatePostPreviewHeader(previewtext) {
+  // Show a preview
+  document.getElementById("post-preview-header").innerText = previewtext;
+}
+
+function updatePostPreviewBody(previewtext) {
+  // Show a preview
+  document.getElementById("post-preview-output").innerText = previewtext;
+}
+
+// ========================== //
+// ADMIN: GENERATE URL
+// ========================== //
+
+function getFormat() {
+  var postFormat = document.getElementsByName('post-format');
+  for (var i = 0, length = postFormat.length; i < length; i++) {
+    if (postFormat[i].checked) {
+      // do whatever you want with the checked radio
+      postFormat = postFormat[i].value;
+      // only one radio can be logically checked, don't check the rest
+      break;
+    }
+  }
+  
+  return postFormat;
+}
+
+function getCollection() {
   var postCollection = document.getElementsByName('post-collection');
   for (var i = 0, length = postCollection.length; i < length; i++) {
     if (postCollection[i].checked) {
@@ -294,8 +467,70 @@ function createNewPost() {
       break;
     }
   }
-  var createPostURL = "{{ site.code-repo }}/new/{{ site.code-repo--branch }}/" + postCollection;
-  window.open(
-    createPostURL, "_blank");
   
+  return postCollection;
+}
+
+function createPostURL() {
+  var postCollection = getCollection();
+  var postURL = "{{ site.code-repo }}/new/{{ site.code-repo--branch }}/" + postCollection;
+  
+  return postURL;
+}
+
+// ========================== //
+// ADMIN: SHOW OUTPUTS
+// ========================== //
+
+function getFileName() {
+  var filename = generateJekyllPostFileName();
+  var filenameTextField = document.getElementById("post-recommended-filename");
+  filenameTextField.value = filename;
+  updatePostPreview()
+}
+
+function getPermalink() {
+  var filename = generateJekyllPostPermalink();
+  var filenameTextField = document.getElementById("post-permalink");
+  filenameTextField.value = filename;
+  updatePostPreview()
+}
+
+// ========================== //
+// ADMIN: OPEN / FOCUS GITHUB 
+// ========================== //
+
+function openGitHub() {
+  var postURL = createPostURL();
+  var GitHubWindow = window.GitHub = window.open(postURL, "GitHub");
+}
+
+function focusGitHub() {
+  var postURL = createPostURL();
+  if (!window.GitHub || window.GitHub.closed) {
+      window.GitHub = window.open(postURL, "GitHub");
+  }
+  window.GitHub.focus();
+}
+
+// ========================== //
+// ADMIN: COPY TEXT FUNCS
+// ========================== //
+
+function copyPostContentToClipboard(){
+  var textToCopy = generateJekyllPostContent();
+  navigator.clipboard.writeText(textToCopy);
+  // Show a preview
+  updatePostPreviewBody(textToCopy)
+}
+
+function copyFieldContentToClipboard(el){
+  /* Get the text field */
+  var textToCopy = document.getElementById(el).value;
+  if (textToCopy == "") {
+    alert("ERROR\n\nCannot copy.\n\nThe text field you are trying to copy is empty.\n\nTry using the “Generate” button first.");
+  } else {
+    /* Copy the text inside the text field */
+    navigator.clipboard.writeText(textToCopy);
+  }
 }
