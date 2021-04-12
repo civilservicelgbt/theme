@@ -334,11 +334,11 @@ details {
       line-height: 1;
     }
   }
-  &[open] summary::-webkit-details-marker {
+  &[open] > summary::-webkit-details-marker {
     display: none;
   }
   
-  &[open] summary:before {
+  &[open] > summary:before {
     content: '–';
   }
 }
@@ -351,6 +351,7 @@ summary {
     line-height: $font-line-height;
     padding: 0;
     color: unset;
+    max-width: calc(100% - (#{$container-padding} * 2))
   }
   font-size: $font-size-base;
   line-height: $font-line-height;
@@ -371,4 +372,6 @@ summary {
     background: $link-active-background;
     outline: 3px solid $link-active-background;
   }
+  
+  @include clearfix;
 }

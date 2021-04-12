@@ -230,6 +230,7 @@ main#admin-edit {
       text-transform: capitalize;
     }
     &.collection--posts--item--label {
+      display: block;
       text-transform: capitalize;
       font-weight: normal;
       max-width: 100%;
@@ -244,6 +245,11 @@ main#admin-edit {
         color: $dark-gray;
       }
     }
+  }
+  
+  
+  details > details {
+    margin-left: $container-padding * 2;
   }
   
 

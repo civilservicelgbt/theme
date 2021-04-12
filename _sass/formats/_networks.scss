@@ -1,27 +1,28 @@
 // Page styles
 
-
-
 main#networks {
   @extend #page;
 
   @supports (display: grid) {
     display: grid;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto auto auto auto;
     grid-template-columns: 1fr;
     grid-template-areas:
       "page-title"
       "page-lead-paragraph"
-      "page-content";
+      "page-content"
+      "page-networks"
+      "page-dept-aside";
 
     @include md-up {
-      grid-template-rows: auto auto auto;
+      grid-template-rows: auto auto auto auto;
       grid-template-columns: 2fr 1fr;
       grid-column-gap: 30px;
       grid-template-areas:
-        "page-title page-title"
+        "page-title ."
         "page-lead-paragraph ."
-        "page-content page-content";
+        "page-content page-aside"
+        "page-networks page-dept-aside";
     }
   }
 
@@ -39,8 +40,9 @@ main#networks {
       }
     }
   }
-
+  
   #page-content {
+    
     @include md-up {
       width: 100%;
       float: left;
@@ -54,12 +56,59 @@ main#networks {
       grid-area: page-content;
     }
 
-    table {
-      tr {
-        td {
-          padding: 15px 0;
-        }
-      }
+  }
+  
+  
+  
+  #page-networks {
+    @include md-up {
+      width: 100%;
+      float: left;
+      clear: left;
+    }
+
+    @supports (display: grid) {
+      width: 100%;
+      float: none;
+      clear: none;
+      grid-area: page-networks;
     }
   }
+  
+  #page-dept-aside {
+    @include md-up {
+      width: calc(33% - 30px);
+      float: right;
+      clear: none;
+      margin-left: 30px;
+    }
+
+    @supports (display: grid) {
+      width: auto;
+      float: none;
+      clear: none;
+      margin-left: 0;
+      grid-area: page-dept-aside;
+    }
+
+    margin-bottom: 45px;
+    padding-top: 15px;
+    border-top: 2px solid $brand-primary;
+
+    h2.page-aside-title {
+      font-size: $font-size-base + 3px;
+      font-weight: bold;
+      padding: 0 0 15px 0;
+    }
+  }
+  
+  details > details {
+    margin-left: $container-padding * 2;
+  }
+
+  details a.button {
+    box-sizing: border-box;
+    margin: 0 ($container-padding / 2) $container-padding 0;
+  }
+
 }
