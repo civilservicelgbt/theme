@@ -312,6 +312,35 @@ details {
     display: block;
     padding: $container-padding;
   }
+  summary {
+    /* Hide the marker completely. */
+    list-style-image: none;
+    &::-webkit-details-marker {
+      display: none;
+    }
+    
+    &:before {
+      display: block;
+      position: relative;
+      top: 0;
+      right: auto;
+      left: 0;
+      content: '+';
+      width: $container-padding * 2;
+      float: left;
+      
+      text-align: left;
+      font-weight: bold;
+      line-height: 1;
+    }
+  }
+  &[open] summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  &[open] summary:before {
+    content: '–';
+  }
 }
 
 summary {
