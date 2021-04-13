@@ -315,6 +315,7 @@ details {
   summary {
     /* Hide the marker completely. */
     list-style-image: none;
+    :marker,
     &::-webkit-details-marker {
       display: none;
     }
@@ -334,7 +335,8 @@ details {
       line-height: 1;
     }
   }
-  &[open] > summary::-webkit-details-marker {
+  &[open] > summary::-webkit-details-marker,
+  &[open] > summary::marker {
     display: none;
   }
   
