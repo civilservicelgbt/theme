@@ -319,6 +319,9 @@ details {
     &::-webkit-details-marker {
       display: none;
       list-style-image: none;
+      content: '';
+      width: 0;
+      height: 0;
     }
     
     &:before {
@@ -340,6 +343,7 @@ details {
   &[open] > summary::marker {
     display: none;
     list-style-image: none;
+    content: '';
   }
   
   &[open] > summary:before {
