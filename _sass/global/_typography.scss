@@ -353,7 +353,7 @@ details {
 
 summary {
   h1, h2, h3, h4, h5, h6, legend {
-    display: inline-block;
+    display: block;
     position: relative;
     font-size: $font-size-base;
     line-height: $font-line-height;

@@ -50,6 +50,7 @@ layout: admin/admin
 				{% for post in collection.docs reversed %}
 				<details class="collection--posts--item">
 					<summary class="collection--posts--item--label">
+						<header>
 						{% if post.layout == 'news'
 						or post.layout == 'consultation'
 						or post.layout == 'notice'
@@ -59,6 +60,7 @@ layout: admin/admin
 						<span class="date">{{ post.event-date | date:'%Y-%m-%d' }}</span>
 						{% endif %}
 						<span class="title">{{ post.title }}</span>
+						</header>
 					</summary>
 					<p><strong>{{ post.title }}</strong></p>
 					<p>{{ post.excerpt | truncate: 100 }}</p>

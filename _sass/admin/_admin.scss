@@ -234,9 +234,13 @@ main#admin-edit {
       text-transform: capitalize;
       font-weight: normal;
       max-width: 100%;
-      span.title {
+      header {
         display: inline-block;
-        max-width: 40ch;
+        width: calc(100% - (#{$container-padding} * 2));
+      }
+      span.title {
+        display: block;
+        max-width: 50ch;
         white-space: nowrap; 
         overflow: hidden;
         text-overflow: ellipsis;
@@ -245,6 +249,14 @@ main#admin-edit {
         color: $dark-gray;
       }
     }
+  }
+  
+  details > summary:hover span.date {
+    color: inherit;
+  }
+  
+  details > summary:active span.date {
+    color: $white;
   }
   
   
