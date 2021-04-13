@@ -352,7 +352,16 @@ details {
 }
 
 summary {
-  h1, h2, h3, h4, h5, h6, legend {
+  h1, h2, h3, h4, h5, h6 {
+    display: inline-block;
+    position: relative;
+    font-size: $font-size-base;
+    line-height: $font-line-height;
+    padding: 0;
+    color: unset;
+    width: calc(100% - (#{$container-padding} * 2))
+  }
+  legend {
     display: block;
     position: relative;
     font-size: $font-size-base;
