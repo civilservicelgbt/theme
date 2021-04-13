@@ -49,23 +49,6 @@ layout: global/default
 			{% endfor %}
 			</ul>
 		
-		{% elsif collection == "archives" %}
-		
-			<ul>
-			{% assign archives = site.archives | sort: 'date' | reverse %}
-			{% for post in archives %}
-				{% if post.preview != true %}
-				<li>
-					<article>
-						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
-						<p>{{ post.excerpt }}</p>
-						<p class="post-metadata">Published <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time> {% if post.author %}by {{ post.author }}{% endif %}</p>
-					</article>
-				</li>
-				{% endif %}
-			{% endfor %}
-			</ul>
-		
 		{% elsif collection == "events" %}
 		
 			{% assign today-date = 'now' | date: '%s' %}
