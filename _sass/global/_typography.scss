@@ -315,9 +315,10 @@ details {
   summary {
     /* Hide the marker completely. */
     list-style-image: none;
-    :marker,
+    &::marker,
     &::-webkit-details-marker {
       display: none;
+      list-style-image: none;
     }
     
     &:before {
@@ -338,6 +339,7 @@ details {
   &[open] > summary::-webkit-details-marker,
   &[open] > summary::marker {
     display: none;
+    list-style-image: none;
   }
   
   &[open] > summary:before {
