@@ -42,7 +42,7 @@ layout: admin/admin
 		<p><strong>Some file names have a date at the start or the posts won't show up.</strong></p>
 		<ul>
 			<li>For <strong>news</strong>, <strong>publications</strong>, <strong>consultations</strong>, and <strong>notices</strong>, file names must start with a date in the format <code>YYYY-MM-DD-</code>.</li>
-			<li>For <strong>events</strong>, file names must start with a date in the format <code>YYYYMMDD-</code>.</li>
+			<li>For <strong>events</strong>, file names <strong>must not</strong> start with a date but instead should be put in nested folders in the format <code>/YYYY/MM/DD/</code>.</li>
 			<li>All other posts do not require a date in the file name, but this can be helpful for forcing a specific order.</li>
 		</ul>	
 	</details>
@@ -383,9 +383,16 @@ layout: admin/admin
 					<p class="label-hint">For example – <code>/2021/12/31/name-of-your-post/</code></p>
 				</label>
 				<input id="post-permalink" name="post-permalink" type="text" placeholder="/2021/12/31/name-of-your-post/">
-				<button onClick="copyFieldContentToClipboard('post-permalink')">Copy permalink</button>
-				<button onClick="focusGitHub()">Go to GitHub</button>
 			</div>
+			
+			<label for="post-test-permalink">
+				Test the permalink
+				<p class="label-hint">Permalinks <strong>must</strong> be unique across the site.</p>
+				<p class="label-hint">Use this button to open the suggested permalink, above, in a new window.</p>
+				<p class="label-hint">If you get a “404: Page not found” page, then it is safe to use the permalink. If it loads a pre-existing page, you should change the permalink, either for this page or for the page that it loads.</p>
+			</label>
+			
+			<button id="post-test-permalink" onClick="testPermalink();">Test this link</button>
 			
 		</details>
 	</fieldset>
