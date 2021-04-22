@@ -1,4 +1,29 @@
 main#admin-documents {
+  
+  @supports (display: grid) {
+    display: grid;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "page-title"
+      "page-lead-paragraph"
+      "page-help"
+      "page-content"
+      "page-preview";
+
+    @include md-up {
+      grid-template-rows: auto auto auto auto;
+      grid-template-columns: 2fr 1fr;
+      grid-column-gap: 30px;
+      grid-template-areas:
+        "page-title ."
+        "page-lead-paragraph ."
+        "page-help ."
+        "page-content page-preview";
+    }
+  }
+  
+  
   .foldername {
     text-transform: capitalize !important;
   }
