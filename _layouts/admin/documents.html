@@ -14,9 +14,16 @@ layout: global/default
 	
 	<div id="page-help">
 		
-		<p>You can add documents to the repository by <a href="{{ site.github-repo | append: 'tree/main/documents' }}">uploading them to GitHub</a>.</p>
-		<p>All files are grouped by their parent folder. Any files not placed into folders will display under “unfiled”.</p>
-		<p>If you have recently uploaded a new file to the directory, it can take several minutes to appear in this list.</p>
+		<details open>
+			<summary>
+				<h3>🏁 Getting started</h3>
+			</summary>
+			
+			{{ content }}
+			
+		</details>
+		
+		
 		
 	</div>
 	
