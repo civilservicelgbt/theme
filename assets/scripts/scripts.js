@@ -528,7 +528,8 @@ function testPermalink() {
 // ========================== //
 
 function copyURL(url){
-  navigator.clipboard.writeText(url);
+  var copiedText = url;
+  navigator.clipboard.writeText(copiedText);
 }
 
 function copyPostContentToClipboard(){
