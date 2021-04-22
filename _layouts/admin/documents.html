@@ -1,0 +1,80 @@
+---
+layout: global/default
+---
+
+<main id="{{ page.layout | slugify }}">
+	
+	<div id="page-title">		
+		<h1 class="page-title">{{ page.title }}</h1>
+	</div>
+	
+	<div id="page-lead-paragraph">
+		<p>{{ page.excerpt }}</p>
+	</div>
+	
+	<div id="page-admin-nav">
+		<h2>Menu</h2>
+		<ul class="admin-nav">
+			{% assign adminpages = site.pages | where_exp: "page", "page.url contains '/admin'" %}
+			{% for page in adminpages %}
+			<li><a href="{{ page.url }}">{{ page.title }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	
+	<p>You can add documents to the repository by <a href="{{ site.github-repo | append: 'tree/main/documents' }}">uploading them to GitHub</a>.</p>
+	<p>All files are grouped by their parent folder. Any files not placed into folders will display under “unfiled”.</p>
+	<p>If you have recently uploaded a new file to the directory, it can take several minutes to appear in this list.</p>
+	
+	{% assign documents = site.static_files | where: "document", true %}
+	{% for doc in documents %}	
+	
+		{% assign file = doc.basename | prepend: '/' | append: doc.extname %}
+		{% assign currentfolder = doc.path | remove: '/documents/' | remove: file %}
+		{% assign nofolder = doc.path | remove: '/documents/' | remove: doc.basename | remove: doc.extname %}
+		{% assign foldername = doc.path | remove: '/documents/' | remove: '/' | remove: doc.basename | remove: doc.extname | replace: "-", " " %}
+		{% assign filename = doc.basename | remove: doc.extname | replace: "-", " " %}
+		
+		{% if currentfolder != folder %}
+			
+		{% unless forloop.first %}
+		</details>
+		{% endunless %}
+		
+		<details class="folder">
+			{% if nofolder == "" %}
+			<summary class="foldername"><h2>Unfiled</h2></summary>
+			{% else %}
+			<summary class="foldername"><h2>{{ foldername }}</h2></summary>
+			{% endif %}
+			
+			<blockquote>
+				<p><strong>Folder path:</strong> {{ doc.path | remove: file }}</p>
+			</blockquote>
+			
+			<div class="buttons">
+				<a href="{{ site.github-repo | append: 'tree/main' | append: doc.path | remove: file }}" class="button" title="Open the “{{ foldername }}” folder on Github" target="_blank">Open this folder</a>
+				<a href="{{ site.github-repo | append: 'upload/main' | append: doc.path | remove: file }}" class="button" title="Open GitHub and upload to the “{{ foldername }}” folder" target="_blank">Upload to this folder</a>
+			</div>
+		
+			<h3 class="filesheading">Files</h3>
+		{% assign folder = currentfolder %}
+		{% endif %}
+		
+			
+			<details class="file">
+				<summary><h4 class="filename">{{ filename }}</h4></summary>
+				<p><strong>File name:</strong> <span class="filepath">{{ doc.basename }}</span></p>
+				<p><strong>File type:</strong> {{ doc.extname }}</p>
+				<p><strong>File modified:</strong> {{ doc.modified_time | date:'%-d %B %Y, %H:%M' }}</p>
+				<a href="{{ site.url | append: site.baseurl | append: doc.path }}" class="button" title="Open “{{ filename }}” on Github" target="_blank">Open this file</a>
+				<button onclick="copyURL({{ site.url | append: site.baseurl | append: doc.path }});" title="Copy “{{ filename }}” URL to clipboard" target="_blank">Copy file URL</button>
+			</details>
+		
+		{% if forloop.last %}
+		</details>
+		{% endif %}
+	
+	{% endfor %}
+	
+</main>
