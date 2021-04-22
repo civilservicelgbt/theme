@@ -210,24 +210,12 @@ layout: global/default
 	
 	<div id="page-share">
 
-		{% if collection == "news" %}
+		{% if collection == "news" OR collection == "archives" OR collection == "notices" %}
 
 			<h2 class="page-share-title">Got a story to tell?</h2>
 			
 			<p>If you'd like to write a news article or blog post for us, we'd love to hear from you. Just <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">get in touch</a>.</p>
-
-		{% elsif collection == "notices" %}
-
-			<h2 class="page-share-title">Got a story to tell?</h2>
-			
-			<p>If you'd like to write a news article or blog post for us, we'd love to hear from you. Just <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">get in touch</a>.</p>
-			
-		{% elsif collection == "archives" %}
-
-			<h2 class="page-share-title">Got a story to tell?</h2>
-			
-			<p>If you'd like to write a news article or blog post for us, we'd love to hear from you. Just <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">get in touch</a>.</p>
-			
+	
 		{% elsif collection == "events" %}
 		
 			<h2 class="page-share-title">Share your event</h2>
@@ -240,18 +228,6 @@ layout: global/default
 			
 			<p>This includes anyone working in an organisation listed on <a href="https://www.gov.uk/government/organisations" title="Visit the organisations list on GOV.UK (opens in new window)" target="_blank">GOV.UK</a> and any other organisations listed in our constutiton.</p>
 			
-		{% elsif collection == "past-events" %}
-		
-			<h2 class="page-share-title">Share your event</h2>
-			
-			<p>If you are running an event, and you'd like us to share it too, please <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">contact us</a>.</p>
-			
-			<h2 class="page-share-title">Who can attend</h2>
-			
-			<p>Our events are open to anyone working in the UK Civil Service, unless otherwise stated.</p>
-			
-			<p>This includes anyone working in an organisation listed on <a href="https://www.gov.uk/government/organisations" title="Visit the organisations list on GOV.UK (opens in new window)" target="_blank">GOV.UK</a> and any other organisations listed in our constutiton.</p>
-		
 		{% elsif collection == "publications" %}
 		
 			<h2 class="page-share-title">Share your publications</h2>
@@ -273,6 +249,8 @@ layout: global/default
 		{% elsif collection == "manuals" %}
 
 			<h2 class="page-share-title">Volunteer with us</h2>
+		
+			<p>The Civil Service LGBT+ Network is run entirely by civil servants who volunteer their spare time. If you'd like to get involved, please <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">contact us</a>.</p>
 			
 		{% elsif collection == "topics" %}
 
