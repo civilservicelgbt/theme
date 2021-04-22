@@ -46,13 +46,10 @@ layout: global/default
 				
 				<blockquote>
 					<p><strong>Folder path:</strong> {{ doc.path | remove: file }}</p>
-				</blockquote>
-				
-				<div class="buttons">
 					<a href="{{ site.github-repo | append: 'tree/main' | append: doc.path | remove: file }}" class="button" title="Open the “{{ foldername }}” folder on Github" target="_blank">Open this folder</a>
 					<a href="{{ site.github-repo | append: 'upload/main' | append: doc.path | remove: file }}" class="button" title="Open GitHub and upload to the “{{ foldername }}” folder" target="_blank">Upload to this folder</a>
-				</div>
-			
+				</blockquote>
+				
 				<h3 class="filesheading">Files</h3>
 			{% assign folder = currentfolder %}
 			{% endif %}
