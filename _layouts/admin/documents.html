@@ -61,7 +61,7 @@ layout: global/default
 					<p><strong>File type:</strong> {{ doc.extname }}</p>
 					<p><strong>File modified:</strong> {{ doc.modified_time | date:'%-d %B %Y, %H:%M' }}</p>
 					<a href="{{ site.url | append: site.baseurl | append: doc.path }}" class="button" title="Open “{{ filename }}” on Github" target="_blank">Open this file</a>
-					<button onclick="copyURL({{ site.url | append: site.baseurl | append: doc.path }});" title="Copy “{{ filename }}” URL to clipboard" target="_blank">Copy file URL</button>
+					<button onclick="copyURL('{{ site.url | append: site.baseurl | append: doc.path }}');" title="Copy “{{ filename }}” URL to clipboard" target="_blank">Copy file URL</button>
 				</details>
 			
 			{% if forloop.last %}
