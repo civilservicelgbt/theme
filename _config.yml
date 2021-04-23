@@ -246,7 +246,16 @@ collections:
     defaults:
       values:
         layout: topics
-        
+
+defaults:
+  - scope:
+      path: "documents"
+    values:
+      document: true
+  - scope:
+      path: "images"
+    values:
+      image: true    
 ##################
 # Build settings #
 ##################

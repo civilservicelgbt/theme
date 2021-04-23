@@ -274,5 +274,49 @@ main#admin-edit-document {
     padding: 0;
   }
 
+  .foldername {
+    text-transform: capitalize !important;
+  }
+  .filename {
+    text-transform: capitalize !important;
+  }
+  .filepath,
+  .filedate,
+  .filetype {
+    display: block;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    &.filesheading {
+      display: inline-block;
+      position: relative;
+      font-size: $font-size-base;
+      line-height: $font-line-height;
+      padding: $container-padding 0 $container-padding ($container-padding * 2);
+      color: unset;
+      width: calc(100% - (#{$container-padding} * 2))
+    }
+  }
+  
+  details.folder[open] {
+    padding-bottom: $container-padding * 4;
+  }
+  
+  details.file {
+    margin-left: $container-padding * 2;
+  }
+  
+  details div.fileinfo,
+  details div.folderinfo {
+    max-width: calc(100% - #{$container-padding * 2});
+    margin-left: $container-padding * 2;
+  }
+  
+  div.meta a.button,
+  div.meta button  {
+    margin-right: $container-padding * 0.5 !important;
+    margin-bottom: $container-padding * 0.5 !important;
+  }
+
 }
 
