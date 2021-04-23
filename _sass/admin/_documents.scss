@@ -127,7 +127,7 @@ main#admin-documents {
   
   div.meta a.button,
   div.meta button  {
-    margin-right: $container-padding * 0.5;
-    margin-bottom: $container-padding * 0.5;
+    margin-right: $container-padding * 0.5 !important;
+    margin-bottom: $container-padding * 0.5 !important;
   }
 }
