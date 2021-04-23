@@ -1,7 +1,9 @@
 // Page styles
 
 main#admin,
-main#admin-new,
+main#admin-new-post,
+main#admin-new-image,
+main#admin-new-document,
 main#admin-edit {
   @supports (display: grid) {
     display: grid;
