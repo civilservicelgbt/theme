@@ -1,0 +1,78 @@
+---
+layout: admin/admin
+---
+	
+<div id="page-help">
+	
+	<h2>Help</h2>
+	
+	<details open>
+		<summary>
+			<h3>🏁 Getting started</h3>
+		</summary>
+		
+		<div class="container">
+		{{ content }}
+		</div>
+		
+	</details>
+	
+	
+	
+</div>
+
+<div id="page-content">
+	
+	<h2>All images</h2>
+	
+	{% assign images = site.static_files | where: "image", true %}
+	{% for doc in images %}	
+	
+		{% assign file = doc.basename | prepend: '/' | append: doc.extname %}
+		{% assign currentfolder = doc.path | remove: '/images/' | remove: file %}
+		{% assign nofolder = doc.path | remove: '/images/' | remove: doc.basename | remove: doc.extname %}
+		{% assign foldername = doc.path | remove: '/images/' | remove: '/' | remove: doc.basename | remove: doc.extname | replace: "-", " " %}
+		{% assign filename = doc.basename | remove: doc.extname | replace: "-", " " %}
+		
+		{% if currentfolder != folder %}
+			
+		{% unless forloop.first %}
+		</details>
+		{% endunless %}
+		
+		<details class="folder">
+			{% if nofolder == "" %}
+			<summary class="foldername"><h2>🗂 Unfiled</h2></summary>
+			{% else %}
+			<summary class="foldername"><h2>🗂 {{ foldername }}</h2></summary>
+			{% endif %}
+			
+			<div class="container">
+				<p><strong>Folder path:</strong> {{ doc.path | remove: file }}</p>
+				<a href="{{ site.github-repo | append: 'tree/main' | append: doc.path | remove: file }}" class="button" title="Open the “{{ foldername }}” folder on Github" target="_blank">Open this folder</a>
+				<a href="{{ site.github-repo | append: 'upload/main' | append: doc.path | remove: file }}" class="button" title="Open GitHub and upload to the “{{ foldername }}” folder" target="_blank">Upload to this folder</a>
+			</div>
+			
+			<h3 class="filesheading">📄 Files</h3>
+		{% assign folder = currentfolder %}
+		{% endif %}
+		
+			
+			<details class="file">
+				<summary><h4 class="filename">{{ filename }}</h4></summary>
+				<div class="container">
+					<p><strong>File name:</strong> <span class="filepath">{{ doc.basename }}</span></p>
+					<p><strong>File type:</strong> <span class="filetype">{{ doc.extname }}</span></p>
+					<p><strong>File modified:</strong> <span class="filedate">{{ doc.modified_time | date:'%-d %B %Y, %H:%M' }}</span></p>
+					<a href="{{ site.url | append: site.baseurl | append: doc.path }}" class="button" title="Open “{{ filename }}” on Github" target="_blank">Open this file</a>
+					<button onclick="copyURL('{{ site.url | append: site.baseurl | append: doc.path }}');" title="Copy “{{ filename }}” URL to clipboard" target="_blank">Copy file URL</button>
+				</div>
+			</details>
+		
+		{% if forloop.last %}
+		</details>
+		{% endif %}
+	
+	{% endfor %}
+	
+</div>
