@@ -264,6 +264,11 @@ main#admin-edit {
     margin-left: $container-padding * 2;
   }
   
+  details > div.container {
+    width: calc(100% - (#{$container-padding} * 2));
+    margin: 0 0 0 ($container-padding * 2);
+    padding: 0;
+  }
 
 }
 
