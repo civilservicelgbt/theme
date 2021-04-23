@@ -19,7 +19,9 @@ layout: global/default
 				<h3>🏁 Getting started</h3>
 			</summary>
 			
+			<div class="container">
 			{{ content }}
+			</div>
 			
 		</details>
 		
@@ -51,7 +53,7 @@ layout: global/default
 				<summary class="foldername"><h2>🗂 {{ foldername }}</h2></summary>
 				{% endif %}
 				
-				<div class="folderinfo">
+				<div class="container">
 					<p><strong>Folder path:</strong> {{ doc.path | remove: file }}</p>
 					<a href="{{ site.github-repo | append: 'tree/main' | append: doc.path | remove: file }}" class="button" title="Open the “{{ foldername }}” folder on Github" target="_blank">Open this folder</a>
 					<a href="{{ site.github-repo | append: 'upload/main' | append: doc.path | remove: file }}" class="button" title="Open GitHub and upload to the “{{ foldername }}” folder" target="_blank">Upload to this folder</a>
@@ -64,7 +66,7 @@ layout: global/default
 				
 				<details class="file">
 					<summary><h4 class="filename">{{ filename }}</h4></summary>
-					<div class="fileinfo">
+					<div class="container">
 						<p><strong>File name:</strong> <span class="filepath">{{ doc.basename }}</span></p>
 						<p><strong>File type:</strong> <span class="filetype">{{ doc.extname }}</span></p>
 						<p><strong>File modified:</strong> <span class="filedate">{{ doc.modified_time | date:'%-d %B %Y, %H:%M' }}</span></p>

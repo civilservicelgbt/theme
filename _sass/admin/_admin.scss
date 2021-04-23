@@ -306,12 +306,6 @@ main#admin-edit-document {
     margin-left: $container-padding * 2;
   }
   
-  details div.fileinfo,
-  details div.folderinfo {
-    max-width: calc(100% - #{$container-padding * 2});
-    margin-left: $container-padding * 2;
-  }
-  
   div.meta a.button,
   div.meta button  {
     margin-right: $container-padding * 0.5 !important;
