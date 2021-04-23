@@ -51,11 +51,11 @@ layout: global/default
 				<summary class="foldername"><h2>{{ foldername }}</h2></summary>
 				{% endif %}
 				
-				<blockquote>
+				<div class="meta">
 					<p><strong>Folder path:</strong> {{ doc.path | remove: file }}</p>
 					<a href="{{ site.github-repo | append: 'tree/main' | append: doc.path | remove: file }}" class="button" title="Open the “{{ foldername }}” folder on Github" target="_blank">Open this folder</a>
 					<a href="{{ site.github-repo | append: 'upload/main' | append: doc.path | remove: file }}" class="button" title="Open GitHub and upload to the “{{ foldername }}” folder" target="_blank">Upload to this folder</a>
-				</blockquote>
+				</div>
 				
 				<h3 class="filesheading">Files</h3>
 			{% assign folder = currentfolder %}

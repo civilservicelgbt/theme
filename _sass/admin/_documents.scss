@@ -116,11 +116,6 @@ main#admin-documents {
     padding-bottom: $container-padding * 4;
   }
   
-  details.folder blockquote {
-    width: calc(100% - #{$container-padding * 2});
-    margin-left: $container-padding * 2;
-  }
-  
   details.file {
     margin-left: $container-padding * 2;
   }
