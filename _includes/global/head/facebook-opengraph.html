@@ -28,7 +28,7 @@
 <meta property="article:publisher" content="{{ site.organisation }}" />
 
 {% if page.image %}
-<meta property="og:image" content="{{ site.url | append: site.baseurl | append: site.image-path | append: page.image }}">
+<meta property="og:image" content="{{ page.image }}">
 {% else %}
 <meta property="og:image" content="{{ site.url | append: site.baseurl | append: site.social-media-image }}">
 {% endif %}
