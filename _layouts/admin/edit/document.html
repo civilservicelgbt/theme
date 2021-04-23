@@ -17,6 +17,19 @@ layout: admin/admin
 		
 	</details>
 	
+	<details>
+		<summary>
+			<h3>👾 Using GitHub</h3>
+		</summary>
+		
+		<div class="container">
+				
+			<p>You will require a <a href="//github.com/" title="Go to the GitHub website" target="_blank" rel="noopener noreferrer">GitHub</a> account and relevant permissions to <a href="{{ site.code-repo }}" title="Visit the GitHub repository for this site">the repository</a> for this site in order to add or amend its content.</p>
+			
+		</div>
+		
+	</details>
+	
 	
 	
 </div>
@@ -31,8 +44,8 @@ layout: admin/admin
 		{% assign file = doc.basename | prepend: '/' | append: doc.extname %}
 		{% assign currentfolder = doc.path | remove: '/documents/' | remove: file %}
 		{% assign nofolder = doc.path | remove: '/documents/' | remove: doc.basename | remove: doc.extname %}
-		{% assign foldername = doc.path | remove: '/documents/' | remove: '/' | remove: doc.basename | remove: doc.extname | replace: "-", " " %}
-		{% assign filename = doc.basename | remove: doc.extname | replace: "-", " " %}
+		{% assign foldername = doc.path | remove: '/documents' | remove: doc.basename | remove: doc.extname %}
+		{% assign filename = doc.basename | remove: doc.extname | replace: "-", " " | replace: "lgbt", "LGBT" | replace: "lgbti", "LGBTI" %}
 		
 		{% if currentfolder != folder %}
 			
@@ -48,9 +61,9 @@ layout: admin/admin
 			{% endif %}
 			
 			<div class="container">
-				<p><strong>Folder path:</strong> {{ doc.path | remove: file }}</p>
-				<a href="{{ site.github-repo | append: 'tree/main' | append: doc.path | remove: file }}" class="button" title="Open the “{{ foldername }}” folder on Github" target="_blank">Open this folder</a>
-				<a href="{{ site.github-repo | append: 'upload/main' | append: doc.path | remove: file }}" class="button" title="Open GitHub and upload to the “{{ foldername }}” folder" target="_blank">Upload to this folder</a>
+				<a href="{{ site.github-repo | append: 'tree/main' | append: doc.path | remove: file }}" class="button" title="Open the “{{ foldername }}” folder on Github" target="_blank">Open folder</a>
+				<a href="{{ site.github-repo | append: 'upload/main' | append: doc.path | remove: file }}" class="button" title="Open GitHub and upload to the “{{ foldername }}” folder" target="_blank">Upload here</a>
+				<button onclick="copyURL('{{ site.github-repo | append: 'tree/main' | append: doc.path | remove: file }}');" title="Copy “{{ filename }}” URL to clipboard" target="_blank">Copy URL</button>
 			</div>
 			
 			<h3 class="filesheading">📄 Files</h3>
