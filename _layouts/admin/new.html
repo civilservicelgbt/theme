@@ -6,15 +6,15 @@ layout: admin/admin
 	
 	<h2>Help</h2>
 	
-	<details open>
+	<details>
 		<summary>
-			<h2>🏁 Getting started</h2>
+			<h3>👾 Using GitHub</h3>
 		</summary>
 		
-		<div class="container">
-			{{ content }}
+		<div class="container">	
+			<p>You will require a <a href="//github.com/" title="Go to the GitHub website" target="_blank" rel="noopener noreferrer">GitHub</a> account and relevant permissions to <a href="{{ site.code-repo }}" title="Visit the GitHub repository for this site">the repository</a> for this site in order to add or amend its content.</p>
 		</div>
-	
+		
 	</details>
 	
 	<details>
@@ -41,6 +41,62 @@ layout: admin/admin
 		</div>	
 		
 	</details>
+		
+	<details>
+		<summary>
+			<h2>👠 Formatting and styles</h2>
+		</summary>
+		
+		<div class="container">
+			<p>Most formatting, like page layouts, is done automatically for you when the site is generated.</p>
+			<p>You can format the “body text” of your post using <a href="https://kramdown.gettalong.org/quickref.html" title="See the Markdown style guide">Markdown</a> syntax.</p>
+		</div>
+					
+	</details>
+	
+	<details>
+		
+		<summary>
+			<h2>📸 Uploading images</h2>
+		</summary>
+		
+		<div class="container">
+		
+			<p>This tool does not allow you to upload images directly. Instead, you have to upload them to GitHub and then include Markdown to refer to them.</p>
+			<p>If you need to include an image as part of your post, first you will need to upload the image to the <a href="https://github.com/civilservicelgbt/civilservicelgbt.github.io/tree/master/assets/images">image folder</a>.</p>
+			<p>Then, if you want to display the image:</p>
+			
+			<ol>
+				<li>at the very start of a post, enter the URL for the image in this tool's “post hero image” field</li>
+				<li>in the body of a post, in the “body text” textarea include the URL for the image in Markdown format like this:
+					<br><pre><code>![image description](imageURL)</code></pre>
+			</ol>
+			
+		</div>	
+		
+	</details>
+	
+	<details>
+		
+		<summary>
+			<h2>🗂 Uploading files</h2>
+		</summary>
+		
+		<div class="container">
+		
+			<p>This tool does not allow you to upload files directly. Instead, you have to upload them to GitHub and then include Markdown to refer to them.</p>
+			<p>If you need to include a file as part of your post, you will need to:
+				
+			
+			<ol>
+				<li>upload the file to the <a href="https://github.com/civilservicelgbt/documents/tree/main/documents">document store</a></li>
+				<li>in the body of a post, in the “body text” textarea include the URL for the image in Markdown format like this:
+					<br><pre><code>[text to display](fileURL)</code></pre>
+			</ol>
+			
+		</div>	
+		
+	</details>
 	
 	<details>
 		<summary>
@@ -55,30 +111,6 @@ layout: admin/admin
 				<li>For <strong>events</strong>, file names <strong>must not</strong> start with a date but instead should be put in nested folders in the format <code>/YYYY/MM/DD/</code>.</li>
 				<li>All other posts do not require a date in the file name, but this can be helpful for forcing a specific order.</li>
 			</ul>	
-		</div>
-		
-	</details>
-	
-	
-	<details>
-		<summary>
-			<h2>👠 Formatting and styles</h2>
-		</summary>
-		
-		<div class="container">
-			<p>Most formatting, like page layouts, is done automatically for you when the site is generated.</p>
-			<p>You can format the “body text” of your post using <a href="https://kramdown.gettalong.org/quickref.html" title="See the Markdown style guide">Markdown</a> syntax.</p>
-		</div>
-					
-	</details>
-	
-	<details>
-		<summary>
-			<h3>👾 Using GitHub</h3>
-		</summary>
-		
-		<div class="container">	
-			<p>You will require a <a href="//github.com/" title="Go to the GitHub website" target="_blank" rel="noopener noreferrer">GitHub</a> account and relevant permissions to <a href="{{ site.code-repo }}" title="Visit the GitHub repository for this site">the repository</a> for this site in order to add or amend its content.</p>
 		</div>
 		
 	</details>
