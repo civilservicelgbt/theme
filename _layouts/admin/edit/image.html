@@ -31,7 +31,7 @@ layout: admin/admin
 		{% assign file = doc.basename | prepend: '/' | append: doc.extname %}
 		{% assign currentfolder = doc.path | remove: '/images/' | remove: file %}
 		{% assign nofolder = doc.path | remove: '/images/' | remove: doc.basename | remove: doc.extname %}
-		{% assign foldername = doc.path | remove: '/images/' | remove: '/' | remove: doc.basename | remove: doc.extname | replace: "-", " " %}
+		{% assign foldername = doc.path | remove: '/images/' | remove: doc.basename | remove: doc.extname | replace: "-", " " | replace: '/', ' ' %}
 		{% assign filename = doc.basename | remove: doc.extname | replace: "-", " " %}
 		
 		{% if currentfolder != folder %}
@@ -53,7 +53,7 @@ layout: admin/admin
 				<a href="{{ site.github-repo | append: 'upload/main' | append: doc.path | remove: file }}" class="button" title="Open GitHub and upload to the “{{ foldername }}” folder" target="_blank">Upload to this folder</a>
 			</div>
 			
-			<h3 class="filesheading">📄 Files</h3>
+			<h3 class="filesheading">🏞 Image files</h3>
 		{% assign folder = currentfolder %}
 		{% endif %}
 		
