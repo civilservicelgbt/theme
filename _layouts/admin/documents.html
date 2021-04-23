@@ -46,9 +46,9 @@ layout: global/default
 			
 			<details class="folder">
 				{% if nofolder == "" %}
-				<summary class="foldername"><h2>Unfiled</h2></summary>
+				<summary class="foldername"><h2>🗂 Unfiled</h2></summary>
 				{% else %}
-				<summary class="foldername"><h2>{{ foldername }}</h2></summary>
+				<summary class="foldername"><h2>🗂 {{ foldername }}</h2></summary>
 				{% endif %}
 				
 				<div class="folderinfo">
@@ -63,7 +63,7 @@ layout: global/default
 			
 				
 				<details class="file">
-					<summary><h4 class="filename">{{ filename }}</h4></summary>
+					<summary><h4 class="filename">📄 {{ filename }}</h4></summary>
 					<div class="fileinfo">
 						<p><strong>File name:</strong> <span class="filepath">{{ doc.basename }}</span></p>
 						<p><strong>File type:</strong> <span class="filetype">{{ doc.extname }}</span></p>
