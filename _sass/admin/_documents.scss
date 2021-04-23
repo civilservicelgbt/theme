@@ -126,4 +126,8 @@ main#admin-documents {
   details.file {
     margin-left: $container-padding * 2;
   }
+  
+  details.file button {
+    margin-left: $container-padding * 0.5;
+  }
 }
