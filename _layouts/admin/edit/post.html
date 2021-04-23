@@ -32,7 +32,7 @@ layout: admin/admin
 
 <div id="page-content">
 	
-	<h2>Posts</h2>
+	<h2>All posts</h2>
 			
 	{% assign collections = site.collections | where_exp: "collections", "collections.label != 'archives' and collections.label != 'past-events' and collections.label != 'posts'" %}
 	{% for collection in collections %}

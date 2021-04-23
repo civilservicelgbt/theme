@@ -288,11 +288,11 @@ main#admin-edit-document {
   
   h1, h2, h3, h4, h5, h6 {
     &.filesheading {
-      display: inline-block;
+      display: block;
       position: relative;
       font-size: $font-size-base;
       line-height: $font-line-height;
-      padding: $container-padding 0 $container-padding ($container-padding * 2);
+      padding: ($container-padding * 3) 0 $container-padding ($container-padding * 2);
       color: unset;
       width: calc(100% - (#{$container-padding} * 2))
     }
