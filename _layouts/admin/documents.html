@@ -65,8 +65,8 @@ layout: global/default
 				<details class="file">
 					<summary><h4 class="filename">{{ filename }}</h4></summary>
 					<p><strong>File name:</strong> <span class="filepath">{{ doc.basename }}</span></p>
-					<p><strong>File type:</strong> {{ doc.extname }}</p>
-					<p><strong>File modified:</strong> {{ doc.modified_time | date:'%-d %B %Y, %H:%M' }}</p>
+					<p><strong>File type:</strong> <span class="filetype">{{ doc.extname }}</span></p>
+					<p><strong>File modified:</strong> <span class="filedate">{{ doc.modified_time | date:'%-d %B %Y, %H:%M' }}</span></p>
 					<a href="{{ site.url | append: site.baseurl | append: doc.path }}" class="button" title="Open “{{ filename }}” on Github" target="_blank">Open this file</a>
 					<button onclick="copyURL('{{ site.url | append: site.baseurl | append: doc.path }}');" title="Copy “{{ filename }}” URL to clipboard" target="_blank">Copy file URL</button>
 				</details>
