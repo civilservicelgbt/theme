@@ -125,6 +125,11 @@ main#admin-documents {
     margin-left: $container-padding * 2;
   }
   
+  details.file div.meta {
+    max-width: calc(100% - #{$container-padding * 2});
+    margin-left: $container-padding * 2;
+  }
+  
   details.file a.button {
     margin-right: $container-padding * 0.5;
     margin-bottom: $container-padding * 0.5;
