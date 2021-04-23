@@ -4,7 +4,9 @@ main#admin,
 main#admin-new-post,
 main#admin-new-image,
 main#admin-new-document,
-main#admin-edit {
+main#admin-edit-post,
+main#admin-edit-image,
+main#admin-edit-document {
   @supports (display: grid) {
     display: grid;
     grid-template-rows: auto auto auto auto auto;
