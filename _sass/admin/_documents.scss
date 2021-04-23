@@ -89,9 +89,11 @@ main#admin-documents {
   
   
   .foldername {
+    display: block;
     text-transform: capitalize !important;
   }
   .filename {
+    display: block;
     text-transform: capitalize !important;
   }
   .filepath {
