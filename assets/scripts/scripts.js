@@ -522,10 +522,44 @@ function testPermalink() {
   var postWindow = window.open(postURL, "Civil Service LGBT+ Network");
 }
 
+function createGitHubDirectory(id, repo, rootdir) {
+  
+  // URL needs to be in this format:
+  // https://github.com/civilservicelgbt/REPO/upload/main/ROOT-DIRECTORY
+  
+  var id = id;
+  var repo = repo;
+  var dir = rootdir;
+  
+  var field = document.getElementById(id)
+  var fieldvalue = field.value;
+  if (fieldvalue == "") {
+    var fieldvalue = "/";
+  } else {
+    var fieldvalue = '/' + field.value;
+  }
+  var postURL = '{{ site.git-repos }}' + '/' + repo + '/upload/main/' + dir + fieldvalue;
+  var GitHubWindow = window.GitHub = window.open(postURL, "GitHub – New file in folder");
+}
 
 // ========================== //
 // ADMIN: COPY TEXT FUNCS
 // ========================== //
+
+function cleanFieldInput(id) {
+  var field = document.getElementById(id)
+  var fieldvalue = field.value;
+  var clean = fieldvalue.replace(/([^a-z0-9]+)/gi, '-');
+  var clean = clean.toLowerCase();
+  console.log("Input “" + fieldvalue + "” cleaned to “" + clean + "”" )
+  field.value = clean;
+}
+
+function copyFieldInput(id) {
+  var field = document.getElementById(id)
+  var fieldvalue = field.value;
+  navigator.clipboard.writeText(fieldvalue);
+}
 
 function copyURL(url){
   var copiedText = url;

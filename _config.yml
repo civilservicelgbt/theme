@@ -22,9 +22,9 @@ git-repos: "https://github.com/civilservicelgbt"
 site-repo: "/civilservicelgbt.github.io"
 site-repo--branch: "master"
 images-repo: "/images"
-images-repo--branch: "master"
+images-repo--branch: "main"
 documents-repo: "/documents"
-documents-repo--branch: "master"
+documents-repo--branch: "main"
 
 #########################
 # Social media accounts #

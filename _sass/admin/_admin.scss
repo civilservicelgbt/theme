@@ -276,10 +276,6 @@ main#admin-edit-document {
     margin: 0 0 0 ($container-padding * 2);
     padding: 0;
   }
-
-  .foldername {
-    
-  }
   .filename {
     text-transform: capitalize !important;
   }
@@ -296,6 +292,15 @@ main#admin-edit-document {
       font-size: $font-size-base;
       line-height: $font-line-height;
       padding: ($container-padding * 3) 0 $container-padding ($container-padding * 2);
+      color: unset;
+      width: calc(100% - (#{$container-padding} * 2))
+    }
+    &.smallheading {
+      display: block;
+      position: relative;
+      font-size: $font-size-base;
+      line-height: $font-line-height;
+      padding: ($container-padding * 3) 0 $container-padding;
       color: unset;
       width: calc(100% - (#{$container-padding} * 2))
     }
@@ -318,6 +323,11 @@ main#admin-edit-document {
         width: 100%;
       }
     }
+  }
+  
+  details.newfile,
+  details.folder:last-of-type {
+    border-bottom: 2px solid $light-gray;  
   }
 
 }

@@ -92,6 +92,98 @@ layout: admin/admin
 	
 	<h2>All images</h2>
 	
+	<h2 class="smallheading">New folder</h2>
+	
+	<details class="newfile">
+		<summary class="foldername"><h2>🆕 Add an image</h2></summary>
+		
+		<div class="container">
+			
+			<fieldset id="rename-file">
+				<details>
+					
+					<summary>
+						<h3><legend>1. Set a file name <span class="optional">(optional)</span></legend></h3>
+					</summary>
+					
+					<div class="container">	
+						
+						<div class="text-input">
+							<label for="new-file-name">File name</label>
+							<p class="label">File names must be in lowercase and contain no spaces or special characters.</p>
+							<p class="label"> Use dashes instead of spaces. Do not use special characters like apostrophes, <kbd>&</kbd>, <kbd>@</kbd> or <kbd>#</kbd>.</p>
+							<p class="label-hint">For example – <code>file-name</code> not <code>File name</code></p>
+							
+							<p class="label">If you're not sure, enter your proposed file name in this text field; it will remove invalid characters.</p>
+							<input id="new-file-name" name="new-file-name" type="text" placeholder="Enter file name" onfocusout="cleanFieldInput('new-file-name');">
+						</div>
+						
+						<label for="new-file-name-copy-button">
+							Copy clean file name to clipboard
+						</label>
+						<p class="label-hint">This button will copy a valid file name to your clipboard.</p>
+						<p class="label-hint">Rename your file, and paste the clean file name using <kbd>Ctrl + V</kbd> (Windows) or <kbd>Cmd + V</kbd> (MacOS)</p>
+						
+						<button id="new-file-name-copy-button" onclick="copyFieldInput('new-file-name')">Copy file name</button>
+						
+					</div>
+					
+				</details>
+			</fieldset>
+			
+			<fieldset id="new-folder">
+				<details>
+					
+					<summary>
+						<h3><legend>2. Set a folder name <span class="optional">(optional)</span></legend></h3>
+					</summary>
+					
+					<div class="container">	
+						
+						<div class="text-input">
+							<label for="new-folder-name">Folder name</label>
+							<p class="label">Folder names must be in lowercase and contain no spaces or special characters.</p>
+							<p class="label"> Use dashes instead of spaces. Do not use special characters like apostrophes, <kbd>&</kbd>, <kbd>@</kbd> or <kbd>#</kbd>.</p>
+							<p class="label-hint">For example – <code>folder-name</code> not <code>Folder Name</code></p>
+							<input id="new-folder-name" name="new-folder-name" type="text" placeholder="Enter folder name" onfocusout="cleanFieldInput('new-folder-name');">
+						</div>
+						
+					</div>
+					
+				</details>
+				
+			</fieldset>
+			
+			<fieldset id="open-new-folder">
+				<details>
+					
+					<summary>
+						<h3><legend>3. Open folder on Github and upload file(s)</legend></h3>
+					</summary>
+					
+					<div class="container">	
+						
+						<label for="open-new-folder-button">
+							Open GitHub in a new window
+							<p class="label-hint">The button will open GitHub at the correct directory to create the new folder.</p>
+							<p class="label-hint">Upload your file in that window.</p>
+						</label>
+						<button id="open-new-folder-button" onclick="createGitHubDirectory('new-folder-name', 'images', 'store');">Open GitHub</button>
+						
+						<p class="label">Once your file is processed, it will be listed under the “Existing folders” below. You may need to wait several minutes, and then refresh this window.</p>
+						
+					</div>
+					
+				</details>
+				
+			</fieldset>
+			
+		</div>
+		
+	</details>
+	
+	<h2 class="smallheading">Existing folders</h2>
+	
 	{% assign images = site.static_files | where: "image", true %}
 	{% for doc in images %}	
 	
@@ -110,11 +202,11 @@ layout: admin/admin
 		<details class="folder">
 			{% if nofolder == "" %}
 			<summary class="foldername">
-				<h2>🗂 Unfiled</h2>
+				<h3>🗂 Unfiled</h3>
 			</summary>
 			{% else %}
 			<summary class="foldername">
-				<h2>🗂  {{ foldername }}</h2>
+				<h3>🗂  {{ foldername }}</h3>
 			</summary>
 			{% endif %}
 			
