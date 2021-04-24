@@ -306,10 +306,15 @@ main#admin-edit-document {
     margin-left: $container-padding * 2;
   }
   
-  div.meta a.button,
-  div.meta button  {
-    margin-right: $container-padding * 0.5 !important;
-    margin-bottom: $container-padding * 0.5 !important;
+  details div.container {
+    a.button, button  {
+      margin-right: $container-padding * 0.5 !important;
+      margin-bottom: $container-padding * 0.5 !important;
+      @include xs {
+        display: block;
+        width: 100%;
+      }
+    }
   }
 
 }

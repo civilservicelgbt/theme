@@ -53,14 +53,14 @@ layout: admin/admin
 	{% for collection in collections %}
 		<details class="collection">
 			<summary class="collection--label">{{ collection.label }}</summary>
-			<blockquote class="collection--meta-data">
+			<div class="container">
 				<p><strong>Folder:</strong> {{ collection.relative_directory }}</p>
 				{% assign count = 0 %}
 				{% for post in collection.docs %}
 					{% assign count = count | plus: 1 %}
 				{% endfor %}
 				<p><strong>Entries:</strong> {{ count }}
-			</blockquote>
+				</p>
 			<section class="collections--posts">
 				{% for post in collection.docs reversed %}
 				<details class="collection--posts--item">
@@ -77,12 +77,14 @@ layout: admin/admin
 						<span class="title">{{ post.title }}</span>
 						</header>
 					</summary>
-					<p><strong>{{ post.title }}</strong></p>
-					<p>{{ post.excerpt | truncate: 100 }}</p>
-					<p>
-						<a href="{{ post.url }}" class="button">View this post</a>
-						<a href="{{ site.code-repo }}/edit/{{ site.code-repo--branch }}/{{ post.path }}" class="button">Edit this post</a>		
-					</p>
+					<div class="container">
+						<p><strong>{{ post.title }}</strong></p>
+						<p>{{ post.excerpt | truncate: 100 }}</p>
+						<p>
+							<a href="{{ post.url }}" class="button">View this post</a>
+							<a href="{{ site.code-repo }}/edit/{{ site.code-repo--branch }}/{{ post.path }}" class="button">Edit this post</a>		
+						</p>
+					</div>
 				</details>
 				{% endfor %}
 			</section>
