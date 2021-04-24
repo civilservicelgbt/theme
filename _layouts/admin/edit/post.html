@@ -6,26 +6,69 @@ layout: admin/admin
 	
 	<h2>Help</h2>
 	
-	<details open>
+	<details>
 		<summary>
 			<h3>🏁 Getting started</h3>
 		</summary>
 		
 		<div class="container">
-			{{ content }}	
+			<p>All posts that have been uploaded to the <a href="{{ site.git-repos | append: site.site-repo }}" title="Visit the GitHub repository for this site">main site repository</a> are listed on this page.</p>
+			
+			<p>The posts are arranged by their “Collection” – the folder in the repository that they are stored in. All folders for collections start with an underscore (for example <code>_news</code>).</p>
+			
+			<p>Selecting the name of the collection will reveal a list of all the posts in that collection.</p>
+			
+			<p>Any post not placed into an existing collection will fail to publish to the site.</p>
+			
+			<p>If you have recently uploaded a new post to the repository, it can take several minutes to appear in this list.</p>
+			
 		</div>
 		
 	</details>
 	
 	<details>
 		<summary>
-			<h3>🔐 GitHub permissions</h3>
+			<h3>⚠️ Important</h3>
 		</summary>
 		
 		<div class="container">
-				
-			<p>You will require a <a href="//github.com/" title="Go to the GitHub website" target="_blank" rel="noopener noreferrer">GitHub</a> account and relevant permissions to <a href="{{ site.git-repos | append: site.site-repo }}" title="Visit the GitHub repository for this site">the repository</a> for this site in order to add or amend its content.</p>
+			<p>All posts <strong>must</strong> be placed inside their correct collection folder. For example, news posts must be placed in the <code>_news</code> folder.</p>
+			<p>If they are:</p>
+			<ul>
+				<li>placed in the wrong folder, they may not publish to the site correctly or may not publish at all</li>
+				<li>not placed in a collection folder at all, they will not publish on the site at all and will not be publicly accessible</li>
+			</ul>
+			<p>Links to posts will always start with <code>https://www.civilservice.lgbt/</code>. Always include the <code>https://</code> or your link might not work.</p>
+		</div>
+		
+	</details>
+	
+	<details>
+		<summary>
+			<h3>🆕 Upload new posts</h3>
+		</summary>
+		
+		<div class="container">
+			<p>To add a post to the site, you should use the <a href="{{ site.url | append: "/admin/new/post" }}">add posts</a> tool. This will guide you through the process step by step.</p>
+		</div>
+		
+	</details>
+	
+	<details>
+		<summary>
+			<h3>📝 Edit an existing post</h3>
+		</summary>
+		
+		<div class="container">
+			<p>You can only edit an existing post on GitHub. This tool will allow you to find the right file to edit, linking you straight to the page you need.
+			<p>To edit a post:</p>
+			<ol>
+				<li>find and select the collection the post is infrom the list below</li>
+				<li>find and select the name of the post you want to edit</li>
+				<li>select the “Edit” button; this will open the correct file on Github in an editor window</li> 
+			</ol>
 			
+			<p>Once you have edited the file on GitHub, it will take several minutes to appear in its edited form on the rest of the site.</p>
 		</div>
 		
 	</details>
@@ -38,6 +81,19 @@ layout: admin/admin
 		<div class="container">
 			
 			<p>Archived content may be excluded from these lists. If you need to access this content, you can still do so through GitHub.</p>
+			
+		</div>
+		
+	</details>
+	
+	<details>
+		<summary>
+			<h3>🔐 GitHub permissions</h3>
+		</summary>
+		
+		<div class="container">
+				
+			<p>You will require a <a href="//github.com/" title="Go to the GitHub website" target="_blank" rel="noopener noreferrer">GitHub</a> account and relevant permissions to <a href="{{ site.git-repos | append: site.site-repo }}" title="Visit the GitHub repository for this site">the repository</a> for this site in order to add or amend its content.</p>
 			
 		</div>
 		
