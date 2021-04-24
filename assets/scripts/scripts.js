@@ -474,9 +474,9 @@ function getCollection() {
   return postCollection;
 }
 
-function createGitHubURL() {
+function createGitHubPostURL() {
   var postCollection = getCollection();
-  var postURL = "{{ site.code-repo }}/new/{{ site.code-repo--branch }}/" + postCollection;
+  var postURL = "{{ site.git-repos | append: site.site-repo }}/new/{{ site.site-repo--branch }}/" + postCollection;
   
   return postURL;
 }
@@ -504,12 +504,12 @@ function getPermalink() {
 // ========================== //
 
 function openGitHub() {
-  var postURL = createGitHubURL();
+  var postURL = createGitHubPostURL();
   var GitHubWindow = window.GitHub = window.open(postURL, "GitHub");
 }
 
 function focusGitHub() {
-  var postURL = createGitHubURL();
+  var postURL = createGitHubPostURL();
   if (!window.GitHub || window.GitHub.closed) {
       window.GitHub = window.open(postURL, "GitHub");
   }

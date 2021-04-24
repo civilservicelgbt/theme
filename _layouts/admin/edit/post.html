@@ -24,7 +24,7 @@ layout: admin/admin
 		
 		<div class="container">
 				
-			<p>You will require a <a href="//github.com/" title="Go to the GitHub website" target="_blank" rel="noopener noreferrer">GitHub</a> account and relevant permissions to <a href="{{ site.code-repo }}" title="Visit the GitHub repository for this site">the repository</a> for this site in order to add or amend its content.</p>
+			<p>You will require a <a href="//github.com/" title="Go to the GitHub website" target="_blank" rel="noopener noreferrer">GitHub</a> account and relevant permissions to <a href="{{ site.git-repos | append: site.site-repo }}" title="Visit the GitHub repository for this site">the repository</a> for this site in order to add or amend its content.</p>
 			
 		</div>
 		
@@ -82,7 +82,7 @@ layout: admin/admin
 						<p>{{ post.excerpt | truncate: 100 }}</p>
 						<p>
 							<a href="{{ post.url }}" class="button">View this post</a>
-							<a href="{{ site.code-repo }}/edit/{{ site.code-repo--branch }}/{{ post.path }}" class="button">Edit this post</a>		
+							<a href="{{ site.git-repos | append: site.site-repo }}/edit/{{ site.site-repo--branch }}/{{ post.path }}" class="button">Edit this post</a>		
 						</p>
 					</div>
 				</details>
