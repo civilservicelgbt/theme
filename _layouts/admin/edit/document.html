@@ -26,13 +26,25 @@ layout: admin/admin
 	
 	<details>
 		<summary>
+			<h3>⚠️ Important</h3>
+		</summary>
+		
+		<div class="container">
+			<p>All files <strong>must</strong> be placed inside the top level <a href="{{ site.git-repos | append: site.documents-repo | append: '/tree/' | append: site.documents-repo--branch | append: "/store" }}" title="Visit the GitHub repository for this site">“/store”</a> folder. If they are not, they will not show up in this list and may fail to be publicly accessible.</p>
+			<p>Links to files should start with <code>https://www.civilservice.lgbt/</code>. Always include the <code>https://</code> or your link might not work.</p>
+		</div>
+		
+	</details>
+	
+	<details>
+		<summary>
 			<h3>🔗 Getting the link to a document</h3>
 		</summary>
 		
 		<div class="container">
 			<p>This tool will allow you to get link to files stored in the documents repository.</p>
 			<p>Find the file you want to link to and use the “Copy file URL” button to copy the link to your clipboard. Paste the link using <kbd>Ctrl + V</kbd> (Windows) or <kbd>Cmd + V</kbd> (MacOS).</p>
-			<p>Links should start with <code>www.civilservice.lgbt</code>.</p>
+			<p>Links should start with <code>https://www.civilservice.lgbt/documents/store/</code></p>
 		</div>
 		
 	</details>
@@ -43,9 +55,7 @@ layout: admin/admin
 		</summary>
 		
 		<div class="container">
-			<p>You can upload a new document to an existing folder by selecting the folder you want to use and using the ”Upload here” button. This will take you to the correct page to the correct page on Github.</p>
-			
-			<p>Once you have uploaded the file on GitHub, it will take several minutes to appear in this list. You can then link to it once it's listed on this page.</p>
+			<p>Coming soon.</p>
 		</div>
 		
 	</details>
@@ -59,8 +69,6 @@ layout: admin/admin
 			<p>You can upload a new document to an existing folder by selecting the folder you want to use and using the ”Upload here” button. This will take you to the correct page to the correct page on Github.</p>
 			
 			<p>Once you have uploaded the file on GitHub, it will take several minutes to appear in this list. You can then link to it once it's listed on this page.</p>
-			
-			<p><strong>Important:</strong> All files must be placed inside the top level “/store” folder. If they are not, they will not show up in this list and may fail to be publicly accessible.</p>
 		</div>
 		
 	</details>
@@ -107,9 +115,9 @@ layout: admin/admin
 			{% endif %}
 			
 			<div class="container">
-				<a href="{{ site.github-repo | append: 'tree/main' | append: doc.path | remove: file }}" class="button" title="Open the “{{ foldername }}” folder on Github" target="_blank">Open folder</a>
-				<a href="{{ site.github-repo | append: 'upload/main' | append: doc.path | remove: file }}" class="button" title="Open GitHub and upload to the “{{ foldername }}” folder" target="_blank">Upload here</a>
-				<button onclick="copyURL('{{ site.git-repos | append: site.documents-repo | append: 'tree/main' | append: doc.path | remove: file }}');" title="Copy “{{ filename }}” URL to clipboard" target="_blank">Copy URL</button>
+				<a href="{{ site.git-repos | append: site.documents-repo | append: '/tree/main' | append: doc.path | remove: file }}" class="button" title="Open the “{{ foldername }}” folder on Github" target="_blank">Open folder</a>
+				<a href="{{ site.git-repos | append: site.documents-repo | append: '/upload/main' | append: doc.path | remove: file }}" class="button" title="Open GitHub and upload to the “{{ foldername }}” folder" target="_blank">Upload here</a>
+				<button onclick="copyURL('{{ site.git-repos | append: site.documents-repo | append: '/tree/main' | append: doc.path | remove: file }}');" title="Copy “{{ filename }}” URL to clipboard" target="_blank">Copy URL</button>
 			</div>
 			
 			<h3 class="filesheading">📄 Files</h3>
