@@ -17,6 +17,7 @@ email: "info@civilservice.lgbt"
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://localhost:4000"
+
 git-repos: "https://github.com/civilservicelgbt"
 site-repo: "/civilservicelgbt.github.io"
 site-repo--branch: "master"
@@ -254,11 +255,11 @@ collections:
 
 defaults:
   - scope:
-      path: "documents"
+      path: "store"
     values:
       document: true
   - scope:
-      path: "images"
+      path: "store"
     values:
       image: true    
 ##################
