@@ -242,12 +242,15 @@ main#admin-edit-document {
         display: inline-block;
         width: calc(100% - (#{$container-padding} * 2));
       }
-      span.title {
+      span.post-title {
         display: block;
         max-width: 50ch;
         white-space: nowrap; 
         overflow: hidden;
         text-overflow: ellipsis;
+        @include xs {
+          max-width: 20ch;
+        }
       }
       span.date {
         color: $dark-gray;
