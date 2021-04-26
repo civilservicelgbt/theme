@@ -8,7 +8,7 @@ body.topic nav#site-navigation {
   }
 }
 
-header#pride-2020 {
+header[id^='pride'] {
   background: $magenta;
   color: $white;
 }
