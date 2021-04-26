@@ -474,13 +474,6 @@ function getCollection() {
   return postCollection;
 }
 
-function createGitHubPostURL() {
-  var postCollection = getCollection();
-  var postURL = "{{ site.git-repos | append: site.site-repo }}/new/{{ site.site-repo--branch }}/" + postCollection;
-  
-  return postURL;
-}
-
 // ========================== //
 // ADMIN: SHOW OUTPUTS
 // ========================== //
@@ -502,6 +495,20 @@ function getPermalink() {
 // ========================== //
 // ADMIN: OPEN / FOCUS GITHUB 
 // ========================== //
+
+
+function createGitHubPostURL() {
+  var postCollection = getCollection();
+  var postURL = "{{ site.git-repos | append: site.site-repo }}/new/{{ site.site-repo--branch }}/" + postCollection;
+  if (postCollection == "_events") {
+    var postEventDateYear = document.getElementById("post-event-date-year").value;
+    var postEventDateMonth = document.getElementById("post-event-date-month").value;
+    var postEventDateDay = document.getElementById("post-event-date-day").value;
+    var postEventDate = "/" + postEventDateYear + "/" + postEventDateMonth + "/" +  postEventDateDay;
+    postURL += postEventDate ;  
+  }
+  return postURL;
+}
 
 function openGitHub() {
   var postURL = createGitHubPostURL();
