@@ -18,7 +18,7 @@ header#podcast {
   color: $white;
 }
 
-header#pride-2019 {
+header[id*='lesbian'] {
   background: $magenta;
   color: $white;
 }
