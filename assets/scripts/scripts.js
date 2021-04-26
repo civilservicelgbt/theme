@@ -220,7 +220,7 @@ function generateJekyllPostContent() {
     jekyllpost += "author-url: \"" + postAuthorURL + "\"\n";
   }
   if (postCategories != "") {
-    jekyllpost += "categories: \[" + postCategories + "\]\n";
+    jekyllpost += "category: \[" + postCategories + "\]\n";
   }
   if (postImageURL != "") {
     jekyllpost += "image: \"" + postImageURL + "\"\n";
