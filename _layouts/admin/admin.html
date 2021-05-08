@@ -12,6 +12,7 @@ layout: global/default
 		<p>{{ page.excerpt }}</p>
 	</div>
 	
+	{% if page.hide-menu != true %}
 	<div id="page-admin-nav">
 		<h2>Menu</h2>
 		<ul class="admin-nav">
@@ -21,6 +22,7 @@ layout: global/default
 			{% endfor %}
 		</ul>
 	</div>
+	{% endif %}
 	
 	{{ content }}
 	
