@@ -3,12 +3,32 @@
 	<h1 class="section-title"><a href="{{ site.url | append: site.baseurl | append: '/events/' }}" title="Go to the events page">Upcoming events</a></h1>
 	
 	{% assign count = 0 %}
+	{% assign future-events = 0 %}
 	{% assign today-date = 'now' | date: '%s' %}
-	{% assign events = site.events | sort: "date" %}
-		
+	{% assign events = site.events | sort: "date" | limit: 3 %}
+	
+	{% for post in events %}
+	{% assign date = post.event-date | date: '%s' %}
+	{% if today-date < date %}
+	{% assign future-events = future-events | plus: 1 %}
+	{% endif %}
+	{% endfor %}
+	
 	<ul>
+	{% if future-events == 0 %}
+	
+		<li>
+			<article>
+				<h2>
+					No upcoming events
+				</h2>
+				<p class="post-metadata">We don't currently have any events scheduled. Check back again soon.</p>
+			</article>
+		</li>
+	
+	{% else %}
+	
 		{% for post in events %}
-		{% if count < 3 %}
 		{% assign date = post.event-date | date: '%s' %}
 		{% if today-date < date %}
 		<li>
@@ -23,9 +43,12 @@
 		</li>
 		{% assign count = count | plus: 1 %}
 		{% endif %}
-		{% endif %}
 		{% endfor %}
+	
+	{% endif %}
 	</ul>
+	
+	
 		
 </section>
 
