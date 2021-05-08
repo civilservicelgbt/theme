@@ -132,16 +132,9 @@ layout: admin/admin
 			<div class="container">	
 			
 				<div class="text-input">
-					<label for="event-author-name">Who is hosting the event?</label>
+					<label for="event-host-name">Who is hosting the event?</label>
 					<p class="label-hint">For example – the Civil Service LGBT+ Network</p>
-					<input id="event-author-name" name="event-author-name" type="text" placeholder="Enter author’s name" value="Civil Service LGBT+ Network">
-				</div>
-				
-				<div class="text-input">
-					<label for="event-author-url">Author URL</label>
-					<p class="label">Makes the author's name a link in some templates. You could link to a profile on the website or a social media profile.</p>
-					<p class="label-hint">For example – https://www.twitter.com/cslgbt</p>
-					<input id="event-author-url" name="event-author-url" type="text" placeholder="Enter author’s URL">
+					<input id="event-host-name" name="event-host-name" type="text" placeholder="Enter host’s name" value="Civil Service LGBT+ Network">
 				</div>
 				
 			</div>
@@ -183,7 +176,7 @@ layout: admin/admin
 					<input id="event-event-date-minute" inputmode="numeric" name="event-event-date-minute" type="text" placeholder="mm" minlength="2" maxlength="2">
 				</div>
 				
-				<p class="label"><strong>Event registration closing date and time</strong></p>
+				<p class="label"><strong>Event registration closing date and time</strong> <span class="optional">(optional)</span></p>
 				<p class="label">When do registrations for the event stop?</p>
 				<p class="sub-legend">For example – 2021 12 31 13 00</p>
 				<div class="text-input date year">
@@ -339,7 +332,7 @@ layout: admin/admin
 				<p class="label-hint">If you have images or files to send too, just attach them to that email.</p>
 			</label>
 			
-			<button id="event-generate-email" onclick="generateEmail()">Generate email</button>
+			<button id="event-generate-email" onclick="generateEventEmail()">Generate email</button>
 			
 			<p>If this doesn't work, try the “Create a file” option instead.</p>
 			
@@ -361,7 +354,7 @@ layout: admin/admin
 				<p class="label-hint">If you have images or files to send too, just attach them to that email.</p>
 			</label>
 			
-			<button id="event-download-file" onclick="generateFile()">Download file</button>
+			<button id="event-download-file" onclick="generateEventFile()">Download file</button>
 			
 		</div>
 		

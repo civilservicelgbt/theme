@@ -590,3 +590,185 @@ function copyFieldContentToClipboard(el){
     navigator.clipboard.writeText(textToCopy);
   }
 }
+
+
+
+
+// ========================== //
+// ADMIN PAGES
+// SUBMIT AN EVENT
+// ========================== //
+
+// The purpose of the functions below is to take form fields and 
+// turn them into something that can be easily pasted
+// straight into a Jekyll markdown file.
+// 
+// These functions are simpler versions of the functions above
+// and used only on the /admin/submit/event page
+
+
+function checkEmptyEventFields() {
+  var eventTitle = document.getElementById("event-title").value;
+  var eventExcerpt = document.getElementById("event-excerpt").value;
+  var eventEventDateYear = document.getElementById("event-event-date-year").value;
+  var eventEventDateMonth = document.getElementById("event-event-date-month").value;
+  var eventEventDateDay = document.getElementById("event-event-date-day").value;
+  var eventEventDateHour = document.getElementById("event-event-date-hour").value;
+  var eventEventDateMinute = document.getElementById("event-event-date-minute").value;
+  var eventEventLocation = document.getElementById("event-event-location").value;
+  var eventEventURL = document.getElementById("event-event-link").value;
+  var eventEventEmail = document.getElementById("event-event-email").value;
+  var eventEventNoRegister = document.getElementById("event-event-no-register").value;
+  
+  var emptyfields = "";
+  
+  if (eventTitle == "") {
+    emptyfields += "❌ Event title \n";
+  }
+  if (eventExcerpt == "") {
+    emptyfields += "❌ Event description or details \n";
+  }
+  if (eventEventDateYear == "" || eventEventDateMonth == "" || eventEventDateDay == "") {
+    emptyfields += "❌ Event date \n";
+  }
+  if (eventEventLocation == "") {
+    emptyfields += "❌ Event location \n";
+  }
+  if (eventEventURL == "" || eventEventEmail == "" || eventEventNoRegister == "") {
+    emptyfields += "❌ Event registration link, email or no registration message";
+  }
+  
+  return emptyfields;
+}
+
+function eventInfoToMarkdown() {
+  var eventTitle = document.getElementById("event-title").value;
+  var eventExcerpt = document.getElementById("event-excerpt").value;
+  
+  var eventPublishYear = document.getElementById("event-year").value;
+  var eventPublishMonth = document.getElementById("event-month").value;
+  var eventPublishDay = document.getElementById("event-day").value;
+  
+  if (eventPublishYear == "" || eventPublishMonth == "" || eventPublishDay == "") {
+    var date = new Date();
+    var today =
+      date.getFullYear() + "-" + 
+      ("00" + (date.getMonth() + 1)).slice(-2) + "-" +
+      ("00" + date.getDate()).slice(-2);
+    console.info("No date was set so the publish date was set to " + today);
+    var eventPublishDate = today; 
+  } else {
+    var eventPublishDate = eventPublishYear + "-" + eventPublishMonth + "-" +  eventPublishDay;
+  }
+  
+  var eventAuthorName = document.getElementById("event-host-name").value;
+  var eventCategories = document.getElementById("event-categories").value;
+  var eventCategories = eventCategories.toLowerCase();
+    
+  var eventEventDateYear = document.getElementById("event-event-date-year").value;
+  var eventEventDateMonth = document.getElementById("event-event-date-month").value;
+  var eventEventDateDay = document.getElementById("event-event-date-day").value;
+  var eventEventDateHour = document.getElementById("event-event-date-hour").value;
+  var eventEventDateMinute = document.getElementById("event-event-date-minute").value;
+  var eventEventDate = eventEventDateYear + "-" + eventEventDateMonth + "-" +  eventEventDateDay + " " + eventEventDateHour + ":" + eventEventDateMinute + ":00";
+  
+  var eventEventRegistrationCloseDateYear = document.getElementById("event-registration-close-date-year").value;
+  var eventEventRegistrationCloseDateMonth = document.getElementById("event-registration-close-date-month").value;
+  var eventEventRegistrationCloseDateDay = document.getElementById("event-registration-close-date-day").value;
+  var eventEventRegistrationCloseDateHour = document.getElementById("event-registration-close-date-hour").value;
+  var eventEventRegistrationCloseDateMinute = document.getElementById("event-registration-close-date-minute").value;
+  if (eventEventRegistrationCloseDateYear == "" || eventEventRegistrationCloseDateMonth == "" || eventEventRegistrationCloseDateDay == "") {
+    var eventEventRegistrationCloseDate = "";
+  } else {
+    var eventEventRegistrationCloseDate = eventEventRegistrationCloseDateYear + "-" + eventEventRegistrationCloseDateMonth + "-" +  eventEventRegistrationCloseDateDay + " " + eventEventRegistrationCloseDateHour + ":" + eventEventRegistrationCloseDateMinute + ":00";
+  }
+  
+  var eventEventLocation = document.getElementById("event-event-location").value;
+  var eventEventURL = document.getElementById("event-event-link").value;
+  var eventEventEmail = document.getElementById("event-event-email").value;
+  var eventEventNoRegister = document.getElementById("event-event-no-register").value;
+  
+  var eventPermalink = "/event/" + eventEventDateYear + "/" + eventEventDateMonth + "/" + eventEventDateDay + "/" + eventTitle.replace(/([^a-z0-9]+)/gi, '-');
+    
+  var eventcontent = "";
+  
+  eventcontent += "---\n" // Do not remove – must be present
+  
+  eventcontent += "layout: event\n";
+  eventcontent += "date: " + eventPublishDate + " \# YYYY-MM-DD \n";
+  eventcontent += "title: \"" + eventTitle + "\"\n";
+  eventcontent += "excerpt: \"" + eventExcerpt + "\"\n";
+  if (eventAuthorName != "") {
+    eventcontent += "author: \"" + eventAuthorName + "\"\n";
+  }
+  if (eventCategories != "") {
+    eventcontent += "category: \[" + eventCategories + "\]\n";
+  }
+
+  eventcontent += "event-date: " + eventEventDate + " \# YYYY-MM-DD hh:mm \n";
+  if (eventEventRegistrationCloseDate != "") {
+    eventcontent += "registration-close-date: " + eventEventRegistrationCloseDate + " \# YYYY-MM-DD hh:mm \n";
+  }
+  eventcontent += "location: \"" + eventEventLocation + "\"\n";
+  if (eventEventURL != "") {
+    eventcontent += "link: \"" + eventEventURL + "\"\n";
+  }
+  if (eventEventEmail != "") {
+    eventcontent += "email: \"" + eventEventEmail + "\"\n";
+  }
+  if (eventEventNoRegister != "") {
+    eventcontent += "no-register: \"" + eventEventNoRegister + "\"\n";
+  }
+  
+  eventcontent += "permalink: \"" + eventPermalink + "\"\n";
+  
+      
+  eventcontent += "---\n\n" // Do not remove – must be present
+  
+  eventcontent += document.getElementById("event-body").value;
+  
+  
+  return eventcontent;
+}
+
+function eventFileName() {
+  var eventTitle = document.getElementById("event-title").value;
+  var filename = eventTitle.replace(/([^a-z0-9]+)/gi, '-') + ".md";
+  return filename;
+}
+
+function generateEventEmail() {
+  var emptyfields = checkEmptyEventFields();
+  if (emptyfields != "") {
+    alert("You haven't filled in the required fields.\n\nComplete the following information:\n\n" + emptyfields);
+  } else {
+    var eventcontent = eventInfoToMarkdown() // Post content
+    var subject = "[Event for website]" + "event name and date";
+    
+    // Generate the email
+    document.location.href = "mailto:info+event@civilservice.lgbt?subject="
+    + encodeURIComponent(subject)
+    + "&body=" + encodeURIComponent(eventcontent);
+  }
+}
+
+function generateEventFile() {
+  var emptyfields = checkEmptyEventFields();
+  if (emptyfields != "") {
+    alert("You haven't filled in the required fields.\n\nComplete the following information:\n\n" + emptyfields);
+  } else {
+    var eventcontent = eventInfoToMarkdown() // Post content
+    var filename = eventFileName(); 
+    // Create the file and download it
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(eventcontent));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  }
+}
+
+// Start file download.
+// generateEventFile("hello.md","This is the content of my file :)");
