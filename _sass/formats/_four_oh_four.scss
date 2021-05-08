@@ -2,7 +2,8 @@
 
 // Page styles
 
-main#four-oh-four {
+main#four-oh-four,
+main[id*="four-oh-four"] {
   @supports (display: grid) {
     display: grid;
     grid-template-rows: auto auto auto;

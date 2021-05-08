@@ -201,61 +201,61 @@ collections:
     permalink: /:path/
     defaults:
       values:
-        layout: page
+        layout: format/page
   news:
     output: true
     permalink: /news/:year/:month/:day/:title/
     defaults:
       values:
-        layout: news
+        layout: format/news
   archives:
     output: true
     permalink: /archive/:title/
     defaults:
       values:
-        layout: news
+        layout: format/news
   publications:
     output: true
     permalink: /publication/:title/
     defaults:
       values:
-        layout: publication
+        layout: format/publication
   consultations:
     output: true
     permalink: /consultation/:title/
     defaults:
       values:
-        layout: consultation
+        layout: format/consultation
   events:
     output: true
     permalink: /event/:title/
     defaults:
       values:
-        layout: event
+        layout: format/event
   past-events:
     output: true
     permalink: /event/:title/
     defaults:
       values:
-        layout: event
+        layout: format/event
   manuals:
     output: true
     permalink: /manual/:title/
     defaults:
       values:
-        layout: manual
+        layout: format/manual
   notices:
     output: true
     permalink: /notices/:title/
     defaults:
       values:
-        layout: notice
+        layout: format/notice
   topics:
     output: true
     permalink: /:title/
     defaults:
       values:
-        layout: topics
+        layout: format/topics
 
 defaults:
   - scope:

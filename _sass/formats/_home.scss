@@ -1,6 +1,7 @@
 // Home page styles
 
-body.home {
+body.home,
+body[class*="home"] {
   section#header {
     div.container {
       @supports (display: grid) {

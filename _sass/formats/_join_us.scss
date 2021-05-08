@@ -1,7 +1,8 @@
 // Page styles
 
 main#join-us,
-main#update-profile {
+main#update-profile,
+main[id^="join-us"] {
   @supports (display: grid) {
     display: grid;
     grid-template-rows: auto auto auto;

@@ -1,7 +1,9 @@
 // Loop page styles
 
 main#loop,
-main#admin {
+main#admin,
+main[id*="loop"],
+main[id*="admin"] {
   @include clearfix;
 
   @supports (display: grid) {

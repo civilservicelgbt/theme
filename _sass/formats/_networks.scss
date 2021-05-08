@@ -1,6 +1,7 @@
 // Page styles
 
-main#networks {
+main#networks,
+main[id*="networks"] {
   @extend #page;
 
   @supports (display: grid) {

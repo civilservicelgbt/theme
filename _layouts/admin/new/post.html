@@ -171,7 +171,7 @@ layout: admin/admin
 			<div class="radio-input">
 				<input type="radio" name="post-format" id="post-format--{{ post-layout }}" value="{{ post-layout }}" onChange="toggleFieldSets();" {% if collection.label == "news" %} checked{% endif %}>
 				<label for="post-format--{{ post-layout }}">
-					{{ post-layout | capitalize }} format
+					{{ post-layout | remove: "format/" | capitalize }} format
 				</label>
 			</div>
 			{% endfor %}
