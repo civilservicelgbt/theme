@@ -87,6 +87,10 @@ header-menu--links:
     alt-text: "Visit the Events page"
     url: "/events"
     hidden: false
+  - display-text: "Topics"
+    alt-text: "Visit the Topics page"
+    url: "/topics"
+    hidden: false
   - display-text: "Publications"
     alt-text: "Visit the Publications page"
     url: "/publications"
