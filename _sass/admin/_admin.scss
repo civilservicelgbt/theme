@@ -1,12 +1,7 @@
 // Page styles
 
 main#admin,
-main#admin-new-post,
-main#admin-new-image,
-main#admin-new-document,
-main#admin-edit-post,
-main#admin-edit-image,
-main#admin-edit-document {
+main[id^="admin-"] {
   @supports (display: grid) {
     display: grid;
     grid-template-rows: auto auto auto auto auto;
