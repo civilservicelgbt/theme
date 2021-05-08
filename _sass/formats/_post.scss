@@ -5,24 +5,24 @@ main {
 }
 
 main#news,
-main[id*="news"],
+main#format-news,
 main#notice,
-main[id*="notice"],
+main#format-notice,
 main#consultation,
-main[id*="consultation"],
+main#format-consultation,
 main#publication,
-main[id*="publication"],
+main#format-publication,
 main#event,
-main[id*="event"],
+main#format-event,
 main#manual,
-main[id*="manual"] {
+main#format-manual {
   padding: 45px 0;
 }
 
 main#news,
-main[id*="news"],
+main#format-news,
 main#notice,
-main[id*="notice"] {
+main#format-notice {
   @supports (display: grid) {
     display: grid;
     grid-template-rows: auto auto auto auto auto;
@@ -225,7 +225,7 @@ main[id*="notice"] {
 }
 
 main#consultation,
-main[id*="consultation"] {
+main#format-consultation {
   @extend #news;
 
   @supports (display: grid) {
@@ -332,9 +332,9 @@ main[id*="consultation"] {
 }
 
 main#publication,
-main[id*="publication"],
+main#format-publication,
 main#manual,
-main[id*="manual"] {
+main#format-manual {
   @supports (display: grid) {
     display: grid;
     grid-template-rows: auto auto;
@@ -492,7 +492,7 @@ main[id*="manual"] {
 }
 
 main#event,
-main[id*="event"] {
+main#format-event {
   @extend #news;
 
   @supports (display: grid) {

@@ -1,8 +1,8 @@
 // Loop page styles
 
 main#loop,
+main#format-loop,
 main#admin,
-main[id*="loop"],
 main[id*="admin"] {
   @include clearfix;
 

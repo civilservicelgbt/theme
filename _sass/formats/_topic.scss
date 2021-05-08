@@ -1,7 +1,7 @@
 // Page styles
 
 body.topic nav#site-navigation,
-main[class*="topic"] nav#site-navigation {
+body.format-topic nav#site-navigation {
   padding: 0;
 
   div#menu {
@@ -30,7 +30,7 @@ header#bispace {
 }
 
 main#topic,
-main[id*="topic"] {
+main#format-topic {
   @extend #page;
 
   @supports (display: grid) {

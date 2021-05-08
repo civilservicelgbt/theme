@@ -1,7 +1,7 @@
 // Page styles
 
 main#page,
-main[id*="page"] {
+main#format-page {
   @supports (display: grid) {
     display: grid;
     grid-template-rows: auto auto auto;
