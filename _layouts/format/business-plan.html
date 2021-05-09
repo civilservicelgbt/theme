@@ -3,18 +3,91 @@ layout: global/default
 ---
 
 <main id="{{ page.layout | slugify }}">
-	
-	<div id="page-title">		
-		<h1 class="page-title">{{ page.title }}</h1>
-	</div>
-	
-	<div id="page-lead-paragraph">
-		<p>{{ page.excerpt }}</p>
-	</div>
-	
-	<div id="page-content">
+
+	<div id="publication-header">
+
+		<div id="page-title">		
+			<p class="page-type">Publication</p>
+			<h1 class="page-title">{{ page.title }}</h1>
+		</div>
 		
-		{{ content }}
+		<div id="page-lead-paragraph">
+			<p>{{ page.excerpt }}</p>
+		</div>
+		
+	{% include formats/meta.html %}
+		
+	</div>
+	
+	<div id="page-contents">
+		
+		<ul id="toc">
+			{% for obj in page.objectives %}
+			<li><a href="{{ obj.objective | slugify | prepend: '#' }}">{{ obj.objective }}</a></li>
+			{% endfor %}
+		</ul>
+		
+		
+		<div id="page-content">
+			
+			{{ content }}
+			
+			{% for obj in page.objectives %}
+			{% assign count-milestones = 0 %}
+			{% assign count-completed-milestones = 0 %}
+			
+			<details class="objective" id="{{ obj.objective | slugify }}">
+				<summary>
+					
+					<div class="objective-summary">
+						<h3>{{ obj.objective }}</h3>
+						
+						<p>{{ obj.description }}</p>
+						
+						{% for mile in obj.milestones %}
+							{% assign count-milestones = count-milestones | plus: 1 %}
+							{% if mile.complete == true %}
+								{% assign count-completed-milestones = count-completed-milestones | plus: 1 %}
+							{% endif %}
+						{% endfor %}
+						
+						{% if count-milestones == count-completed-milestones %}
+							{% assign objective-complete = "complete" %}
+						{% else %}
+							{% assign objective-complete = "in-progress" %}
+						{% endif %}
+						<progress class="{{ objective-complete }}" value="{{ count-completed-milestones }}" max="{{ count-milestones }}">{{ count-completed-milestones }} completed out of {{ count-milestones }}</progress>
+					
+					</div>
+				
+				</summary>
+				
+				<div class="container">
+					
+					<ul class="milestones">
+					{% assign milestones = obj.milestones | sort: "date" %}
+					{% for mile in milestones %}
+						<li class="milestone">
+							<span class="milestone">
+								{% if mile.complete == true %}
+								<span class="status complete"><span class="sr-only">Complete</span></span>
+								{% else %}
+								<span class="status in-progress"><span class="sr-only">In progress</span></span>
+								{% endif %}
+								{{ mile.milestone | markdownify }} 
+								<p class="date">{{ mile.date | date: "%B %Y" }}</p>
+							</span>
+						</li>
+					{% endfor %}
+					</ul>
+					
+				</div>
+			</details>
+			
+			{% endfor %}
+			
+		</div>
+		
 	</div>
 	
 </main>

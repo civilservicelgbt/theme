@@ -15,7 +15,8 @@ main#format-publication,
 main#event,
 main#format-event,
 main#manual,
-main#format-manual {
+main#format-manual,
+main[id^="format-"] {
   padding: 45px 0;
 }
 
@@ -333,6 +334,8 @@ main#format-consultation {
 
 main#publication,
 main#format-publication,
+main#business-plan,
+main#format-business-plan,
 main#manual,
 main#format-manual {
   @supports (display: grid) {
@@ -377,6 +380,17 @@ main#format-manual {
         color: $brand-inverse;
       }
     }
+  
+    div#page-lead-paragraph {
+      width: 100%;
+  
+      margin-bottom: 45px;
+  
+      p {
+        font-size: $font-size-base + 5px;
+        color: $white;
+      }
+    }
 
     div#page-metadata {
       margin-bottom: 0;
@@ -418,7 +432,8 @@ main#format-manual {
     padding-top: 15px;
     border-top: none;
 
-    ul#markdown-toc {
+    ul#markdown-toc,
+    ul#toc {
       width: 25%;
       float: left;
       clear: left;
@@ -489,6 +504,166 @@ main#format-manual {
       }
     }
   }
+  
+  details.objective {
+    
+    ul {
+      padding: 0;
+    }
+    
+    li {
+      display: block;
+      position: relative;
+      
+      line-height: 1;
+      list-style: none;
+      padding: $container-padding 0 !important;
+      @include md-up {
+        padding: $container-padding ($container-padding * 0.5);
+      }
+      border-top: 1px solid $light-gray;
+      
+      p {
+        display: block;
+        padding-left: $radios-size + $radios-label-padding-left-right;
+        min-height: $input-size;
+        vertical-align: middle;
+        &:first-of-type {
+          padding-top: 7.5px;
+        }
+        margin-bottom: 7.5px;
+        &.date {
+          min-height: unset;
+          padding-top: 0;
+          padding-bottom: 0;
+          color: $dark-gray;
+        }
+      }
+      
+      span.milestone {
+        position: relative;
+        display: block;
+        min-height: $radios-size;
+      }
+      span.status {
+        display: inline-block;
+        margin-bottom: 0;
+        padding: 0px $radios-label-padding-left-right;
+    
+        font-weight:    400;
+
+        &::before {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: $radios-size;
+            height: $radios-size;
+
+            border: 2px solid $black;
+            border-radius: 0;
+            background: transparent;
+        }
+
+        &::after {
+            content: "";
+
+            position: absolute;
+            top: 7px;
+            left: 13px;
+
+            width: $radios-size / 3;
+            height: $radios-size / 2;
+
+            opacity: 0;
+            background: none;
+            border-bottom: 5px solid $brand-primary;
+            border-right: 5px solid $brand-primary;
+            
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+        &.complete::after {
+          opacity: 1;
+        }
+      }
+      
+    }
+    
+    p {
+      max-width: 60ch;
+    }
+    
+  }
+  // Business plan format
+  div.objective-summary {
+    display: inline-block;
+    width: calc(100% - (#{$container-padding} * 2));
+    
+    label {
+      display: inline-block;
+      position: relative;
+      padding: 0 0 $container-padding !important;
+    }
+    
+    progress {
+      
+      &[value] {
+        /* Reset the default appearance */
+        -webkit-appearance: none;
+           -moz-appearance: none;
+                appearance: none;
+        
+        /* Get rid of default border in Firefox. */
+        border: none;
+      }
+      
+      display: block;
+      position: relative;
+      
+      width: 100%;
+      max-width: 600px;
+    
+      &::-webkit-progress-bar {
+        /* style rules */
+        background-color: $light-gray;
+        border-radius: 0px;
+      }
+      
+      &.in-progress {
+      
+        color: $cyan;
+        
+        &::-webkit-progress-value {
+          background-color: $cyan;
+        }
+        &::-moz-progress-bar {
+          background-color: $cyan;
+        }
+        
+      }
+      
+      &.complete {
+        
+        color: $green;
+        
+        &::-webkit-progress-value {
+          background-color: $green;
+        }
+        &::-moz-progress-bar {
+          background-color: $green;
+        }
+        
+      }
+      
+      
+    }
+    
+  }
+  
 }
 
 main#event,

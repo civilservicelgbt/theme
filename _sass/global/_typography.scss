@@ -392,3 +392,9 @@ summary {
   
   @include clearfix;
 }
+
+details > div.container {
+  width: calc(100% - (#{$container-padding} * 2));
+  margin: 0 0 0 ($container-padding * 2);
+  padding: 0;
+}
