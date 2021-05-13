@@ -76,12 +76,12 @@ function stopGA(trackingId, domain) {
 // GENERATE POST CONTENT
 // ========================== //
 
-// The purpose of the functions below is to take form fields and 
+// The purpose of the functions below is to take form fields and
 // turn them into something that can be easily pasted
-// straight into a Jekyll markdown file – reducing the 
+// straight into a Jekyll markdown file – reducing the
 // need to understand how Github works to update the site.
 function toggleFieldSets() {
-  
+
   var fieldSetPostCollection = document.getElementById('post-collection');
   var fieldSetPostFormat = document.getElementById('post-format');
   var fieldSetPostTitleAndExcerpt = document.getElementById('post-title-and-excerpt');
@@ -93,8 +93,8 @@ function toggleFieldSets() {
   var fieldSetPostConsultation = document.getElementById('post-consultation');
   var fieldSetPostPermalinkSetup = document.getElementById('post-permalink-setup');
   var fieldSetPostRedirects = document.getElementById('post-redirects');
-  var fieldSetPostContent = document.getElementById('post-content');  
-  
+  var fieldSetPostContent = document.getElementById('post-content');
+
   var postFormat = document.getElementsByName('post-format');
   for (var i = 0, length = postFormat.length; i < length; i++) {
     if (postFormat[i].checked) {
@@ -104,7 +104,7 @@ function toggleFieldSets() {
       break;
     }
   }
-  
+
   fieldSetPostCollection.hidden = false;
   fieldSetPostFormat.hidden = false;
   fieldSetPostTitleAndExcerpt.hidden = false;
@@ -116,26 +116,26 @@ function toggleFieldSets() {
   fieldSetPostConsultation.hidden = false;
   fieldSetPostPermalinkSetup.hidden = false;
   fieldSetPostContent.hidden = false;
-  
-  if (postFormat == "event" || postFormat == "topics" || postFormat == "page" || postFormat == "manual" ) {
+
+  if (postFormat == "format/event" || postFormat == "format/topics" || postFormat == "format/page" || postFormat == "format/manual" ) {
     fieldSetPostDates.hidden = true;
-  } 
-  if (postFormat == "event" || postFormat == "topics" || postFormat == "consultation" || postFormat == "manual" ) {
+  }
+  if (postFormat == "format/event" || postFormat == "format/topics" || postFormat == "format/consultation" || postFormat == "format/manual" ) {
     fieldSetPostImagesAndVideos.hidden = true;
-  } 
-  if (postFormat == "page" || postFormat == "topics" ) {
+  }
+  if (postFormat == "format/page" || postFormat == "format/topics" ) {
     fieldSetPostAuthor.hidden = true;
-  } 
-  if (postFormat != "event") {
+  }
+  if (postFormat != "format/event") {
     fieldSetPostEvent.hidden = true;
-  } 
-  if (postFormat != "consultation") {
+  }
+  if (postFormat != "format/consultation") {
     fieldSetPostConsultation.hidden = true;
   }
 }
 
 function generateJekyllPostContent() {
-  
+
   var postFormat = document.getElementsByName('post-format');
   for (var i = 0, length = postFormat.length; i < length; i++) {
     if (postFormat[i].checked) {
@@ -145,40 +145,40 @@ function generateJekyllPostContent() {
       break;
     }
   }
-  
+
   var postTitle = document.getElementById("post-title").value;
   var postExcerpt = document.getElementById("post-excerpt").value;
-  
+
   var postPublishYear = document.getElementById("post-year").value;
   var postPublishMonth = document.getElementById("post-month").value;
   var postPublishDay = document.getElementById("post-day").value;
-  
+
   if (postPublishYear == "" || postPublishMonth == "" || postPublishDay == "") {
     var date = new Date();
     var today =
-      date.getFullYear() + "-" + 
+      date.getFullYear() + "-" +
       ("00" + (date.getMonth() + 1)).slice(-2) + "-" +
       ("00" + date.getDate()).slice(-2);
     console.info("No date was set so the publish date was set to " + today);
-    var postPublishDate = today; 
+    var postPublishDate = today;
   } else {
     var postPublishDate = postPublishYear + "-" + postPublishMonth + "-" +  postPublishDay;
   }
-  
+
   var postAuthorName = document.getElementById("post-author-name").value;
   var postAuthorURL = document.getElementById("post-author-url").value;
   var postCategories = document.getElementById("post-categories").value;
   var postCategories = postCategories.toLowerCase();
   var postImageURL = document.getElementById("post-image").value;
   var postVideoURL = document.getElementById("post-video").value;
-  
+
   var postEventDateYear = document.getElementById("post-event-date-year").value;
   var postEventDateMonth = document.getElementById("post-event-date-month").value;
   var postEventDateDay = document.getElementById("post-event-date-day").value;
   var postEventDateHour = document.getElementById("post-event-date-hour").value;
   var postEventDateMinute = document.getElementById("post-event-date-minute").value;
   var postEventDate = postEventDateYear + "-" + postEventDateMonth + "-" +  postEventDateDay + " " + postEventDateHour + ":" + postEventDateMinute + ":00";
-  
+
   var postEventRegistrationCloseDateYear = document.getElementById("post-registration-close-date-year").value;
   var postEventRegistrationCloseDateMonth = document.getElementById("post-registration-close-date-month").value;
   var postEventRegistrationCloseDateDay = document.getElementById("post-registration-close-date-day").value;
@@ -189,26 +189,26 @@ function generateJekyllPostContent() {
   } else {
     var postEventRegistrationCloseDate = postEventRegistrationCloseDateYear + "-" + postEventRegistrationCloseDateMonth + "-" +  postEventRegistrationCloseDateDay + " " + postEventRegistrationCloseDateHour + ":" + postEventRegistrationCloseDateMinute + ":00";
   }
-  
+
   var postEventLocation = document.getElementById("post-event-location").value;
   var postEventURL = document.getElementById("post-event-link").value;
   var postEventEmail = document.getElementById("post-event-email").value;
   var postEventNoRegister = document.getElementById("post-event-no-register").value;
-  
+
   var postConsultationURL = document.getElementById("post-consultation-link").value;
   var postConsultationEndYear = document.getElementById("post-consultation-end-year").value;
   var postConsultationEndMonth = document.getElementById("post-consultation-end-month").value;
   var postConsultationEndDay = document.getElementById("post-consultation-end-day").value;
   var postConsultationEndDate = postConsultationEndYear + "-" + postConsultationEndMonth + "-" +  postConsultationEndDay;
-  
+
   var postPermalink = document.getElementById("post-permalink").value;
   var postRedirectFrom = document.getElementById("post-redirect_from").value;
   var postRedirectTo = document.getElementById("post-redirect_to").value;
-  
+
   var jekyllpost = "";
-  
+
   jekyllpost += "---\n" // Do not remove – must be present
-  
+
   jekyllpost += "layout: " + postFormat+ "\n";
   jekyllpost += "date: " + postPublishDate + " \# YYYY-MM-DD \n";
   jekyllpost += "title: \"" + postTitle + "\"\n";
@@ -228,7 +228,7 @@ function generateJekyllPostContent() {
   if (postVideoURL != "") {
     jekyllpost += "video: \"" + postVideoURL + "\"\n";
   }
-  if (postFormat == "event") {
+  if (postFormat == "format/event") {
     jekyllpost += "event-date: " + postEventDate + " \# YYYY-MM-DD hh:mm \n";
     if (postEventRegistrationCloseDate != "") {
       jekyllpost += "registration-close-date: " + postEventRegistrationCloseDate + " \# YYYY-MM-DD hh:mm \n";
@@ -244,7 +244,7 @@ function generateJekyllPostContent() {
       jekyllpost += "no-register: \"" + postEventNoRegister + "\"\n";
     }
   }
-  if (postFormat == "consultation") {
+  if (postFormat == "format/consultation") {
     jekyllpost += "consultation-link: \"" + postConsultationURL + "\"\n";
     jekyllpost += "end-date: " + postConsultationEndDate + " \# YYYY-MM-DD \n";
   }
@@ -257,10 +257,10 @@ function generateJekyllPostContent() {
   if (postRedirectTo != "") {
     jekyllpost += "redirect_to: \n- " + postRedirectTo + "\n";
   }
-      
+
   jekyllpost += "---\n\n" // Do not remove – must be present
-  
-  if (postFormat == "publication") {
+
+  if (postFormat == "format/publication") {
     jekyllpost += "<!-- Include the following to generate a Table of Contents -->" + "\n";
     jekyllpost += "* Table of contents will generate here" + "\n";
     jekyllpost += "{:toc}" + "\n";
@@ -269,24 +269,24 @@ function generateJekyllPostContent() {
     jekyllpost += "<!-- Don't remove code above -->" + "\n";
     jekyllpost += "\n\n";
   }
-  
+
   jekyllpost += document.getElementById("post-body").value;
-  
-  if (postFormat == "publication") {
+
+  if (postFormat == "format/publication") {
     jekyllpost += "\n\n";
     jekyllpost += "<!-- Include this line to process the Markdown and format the content properly -->" + "\n";
     jekyllpost += "</div>" + "\n";
     jekyllpost += "<!-- Don't remove the line of code above -->" + "\n";
   }
-  
-  
-  
+
+
+
   return jekyllpost;
 
 }
 
 function generateJekyllPostFileName() {
-  
+
   // Post file names should usually be in the format:
   //   2021-12-31-filename.md
   //
@@ -294,59 +294,59 @@ function generateJekyllPostFileName() {
   // case they should omit the date:
   //   filename.md
   //
-  // Instead of dates in the file name, events should be nested in 
+  // Instead of dates in the file name, events should be nested in
   // folders reflecting their respective dates; this will be reflected
   // in the permalink structure.
-  
+
   var postCollection = getCollection();
-  
+
   if (
-    postCollection == "_events" || 
-    postCollection == "_topics" || 
-    postCollection == "_pages" || 
+    postCollection == "_events" ||
+    postCollection == "_topics" ||
+    postCollection == "_pages" ||
     postCollection == "_manuals"
   ) {
     // Does not have a post date
     var postDate = "";
   } else {
-    
+
     var postPublishYear = document.getElementById("post-year").value;
     var postPublishMonth = document.getElementById("post-month").value;
     var postPublishDay = document.getElementById("post-day").value;
     if (postPublishYear == "" || postPublishMonth == "" || postPublishDay == "") {
       var date = new Date();
-      
+
       var postPublishYear = date.getFullYear();
       var postPublishMonth = ("00" + (date.getMonth() + 1)).slice(-2);
       var postPublishDay = ("00" + date.getDate()).slice(-2);
-      
+
       console.info("No date was set so the publish date was set to today's date");
     }
-    
+
     var postDate = postPublishYear + "-" + postPublishMonth + "-" +  postPublishDay+ "-";
   }
 
   var postTitle = document.getElementById("post-title").value;
   var postTitle = postTitle.toLowerCase();
-    
+
   if (postTitle != "") {
     var postFilename = postDate + postTitle.replace(/([^a-z0-9]+)/gi, '-') + '.md';
   } else {
     var postFilename = null;
   }
-  
+
   return postFilename;
 }
 
 function generateJekyllPostPermalink() {
-  
+
   // Post permalinks should usually be in either of these formats:
-  //   /collection/2021/12/31/filename 
+  //   /collection/2021/12/31/filename
   //   /collection/filename/
   //
-  // Permalinks should be prepended by the page layout name unless 
+  // Permalinks should be prepended by the page layout name unless
   // they are in the _pages collection.
-  
+
   var postCollection = getCollection();
 
   if ( postCollection == "_consultations" ) {
@@ -368,7 +368,7 @@ function generateJekyllPostPermalink() {
   } else {
     var postCollectionPermalink = "/";
   }
-  
+
   if ( postCollection == "_events" ) {
     // If it's an event, it will have a date set by the event start date, not the post date
     var postEventDateYear = document.getElementById("post-event-date-year").value;
@@ -379,8 +379,8 @@ function generateJekyllPostPermalink() {
       alert("ERROR\n\nNo date was set for the event.\n\nAll events require a date.\n\nSet the date in the “Add the event details” section");
     }
   } else if (
-    postCollection == "_topics" || 
-    postCollection == "_pages" || 
+    postCollection == "_topics" ||
+    postCollection == "_pages" ||
     postCollection == "_manuals"
   ) {
     // Does not have a post date
@@ -392,30 +392,30 @@ function generateJekyllPostPermalink() {
     var postPublishDay = document.getElementById("post-day").value;
     if (postPublishYear == "" || postPublishMonth == "" || postPublishDay == "") {
       var date = new Date();
-      
+
       var postPublishYear = date.getFullYear();
       var postPublishMonth = ("00" + (date.getMonth() + 1)).slice(-2);
       var postPublishDay = ("00" + date.getDate()).slice(-2);
-      
+
       console.info("No date was set so the publish date was set to today's date");
     }
-    
+
     var postDate = postPublishYear + "/" + postPublishMonth + "/" +  postPublishDay+ "/";
   }
-  
+
   var postTitle = document.getElementById("post-title").value;
   var postTitle = postTitle.toLowerCase();
-    
+
   if (postTitle != "") {
     var postPermalink = postCollectionPermalink + postDate + postTitle.replace(/([^a-z0-9]+)/gi, '-');
   } else {
     var postPermalink = null;
   }
-  
-  
-  
+
+
+
   return postPermalink;
-  
+
 }
 
 // ========================== //
@@ -429,7 +429,7 @@ function updatePostPreview() {
   updatePostPreviewHeader(headerText);
   // Show a preview
   updatePostPreviewBody(bodyText);
-  
+
 }
 
 function updatePostPreviewHeader(previewtext) {
@@ -456,7 +456,7 @@ function getFormat() {
       break;
     }
   }
-  
+
   return postFormat;
 }
 
@@ -470,7 +470,7 @@ function getCollection() {
       break;
     }
   }
-  
+
   return postCollection;
 }
 
@@ -493,7 +493,7 @@ function getPermalink() {
 }
 
 // ========================== //
-// ADMIN: OPEN / FOCUS GITHUB 
+// ADMIN: OPEN / FOCUS GITHUB
 // ========================== //
 
 
@@ -505,7 +505,7 @@ function createGitHubPostURL() {
     var postEventDateMonth = document.getElementById("post-event-date-month").value;
     var postEventDateDay = document.getElementById("post-event-date-day").value;
     var postEventDate = "/" + postEventDateYear + "/" + postEventDateMonth + "/" +  postEventDateDay;
-    postURL += postEventDate ;  
+    postURL += postEventDate ;
   }
   return postURL;
 }
@@ -530,14 +530,14 @@ function testPermalink() {
 }
 
 function createGitHubDirectory(id, repo, rootdir) {
-  
+
   // URL needs to be in this format:
   // https://github.com/civilservicelgbt/REPO/upload/main/ROOT-DIRECTORY
-  
+
   var id = id;
   var repo = repo;
   var dir = rootdir;
-  
+
   var field = document.getElementById(id)
   var fieldvalue = field.value;
   if (fieldvalue == "") {
@@ -599,10 +599,10 @@ function copyFieldContentToClipboard(el){
 // SUBMIT AN EVENT
 // ========================== //
 
-// The purpose of the functions below is to take form fields and 
+// The purpose of the functions below is to take form fields and
 // turn them into something that can be easily pasted
 // straight into a Jekyll markdown file.
-// 
+//
 // These functions are simpler versions of the functions above
 // and used only on the /admin/submit/event page
 
@@ -619,9 +619,9 @@ function checkEmptyEventFields() {
   var eventEventURL = document.getElementById("event-event-link").value;
   var eventEventEmail = document.getElementById("event-event-email").value;
   var eventEventNoRegister = document.getElementById("event-event-no-register").value;
-  
+
   var emptyfields = "";
-  
+
   if (eventTitle == "") {
     emptyfields += "❌ Event title \n";
   }
@@ -637,41 +637,41 @@ function checkEmptyEventFields() {
   if (eventEventURL == "" || eventEventEmail == "" || eventEventNoRegister == "") {
     emptyfields += "❌ Event registration link, email or no registration message";
   }
-  
+
   return emptyfields;
 }
 
 function eventInfoToMarkdown() {
   var eventTitle = document.getElementById("event-title").value;
   var eventExcerpt = document.getElementById("event-excerpt").value;
-  
+
   var eventPublishYear = document.getElementById("event-year").value;
   var eventPublishMonth = document.getElementById("event-month").value;
   var eventPublishDay = document.getElementById("event-day").value;
-  
+
   if (eventPublishYear == "" || eventPublishMonth == "" || eventPublishDay == "") {
     var date = new Date();
     var today =
-      date.getFullYear() + "-" + 
+      date.getFullYear() + "-" +
       ("00" + (date.getMonth() + 1)).slice(-2) + "-" +
       ("00" + date.getDate()).slice(-2);
     console.info("No date was set so the publish date was set to " + today);
-    var eventPublishDate = today; 
+    var eventPublishDate = today;
   } else {
     var eventPublishDate = eventPublishYear + "-" + eventPublishMonth + "-" +  eventPublishDay;
   }
-  
+
   var eventAuthorName = document.getElementById("event-host-name").value;
   var eventCategories = document.getElementById("event-categories").value;
   var eventCategories = eventCategories.toLowerCase();
-    
+
   var eventEventDateYear = document.getElementById("event-event-date-year").value;
   var eventEventDateMonth = document.getElementById("event-event-date-month").value;
   var eventEventDateDay = document.getElementById("event-event-date-day").value;
   var eventEventDateHour = document.getElementById("event-event-date-hour").value;
   var eventEventDateMinute = document.getElementById("event-event-date-minute").value;
   var eventEventDate = eventEventDateYear + "-" + eventEventDateMonth + "-" +  eventEventDateDay + " " + eventEventDateHour + ":" + eventEventDateMinute + ":00";
-  
+
   var eventEventRegistrationCloseDateYear = document.getElementById("event-registration-close-date-year").value;
   var eventEventRegistrationCloseDateMonth = document.getElementById("event-registration-close-date-month").value;
   var eventEventRegistrationCloseDateDay = document.getElementById("event-registration-close-date-day").value;
@@ -682,18 +682,18 @@ function eventInfoToMarkdown() {
   } else {
     var eventEventRegistrationCloseDate = eventEventRegistrationCloseDateYear + "-" + eventEventRegistrationCloseDateMonth + "-" +  eventEventRegistrationCloseDateDay + " " + eventEventRegistrationCloseDateHour + ":" + eventEventRegistrationCloseDateMinute + ":00";
   }
-  
+
   var eventEventLocation = document.getElementById("event-event-location").value;
   var eventEventURL = document.getElementById("event-event-link").value;
   var eventEventEmail = document.getElementById("event-event-email").value;
   var eventEventNoRegister = document.getElementById("event-event-no-register").value;
-  
+
   var eventPermalink = "/event/" + eventEventDateYear + "/" + eventEventDateMonth + "/" + eventEventDateDay + "/" + eventTitle.replace(/([^a-z0-9]+)/gi, '-');
-    
+
   var eventcontent = "";
-  
+
   eventcontent += "---\n" // Do not remove – must be present
-  
+
   eventcontent += "layout: format/event\n";
   eventcontent += "date: " + eventPublishDate + " \# YYYY-MM-DD \n";
   eventcontent += "title: \"" + eventTitle + "\"\n";
@@ -719,15 +719,15 @@ function eventInfoToMarkdown() {
   if (eventEventNoRegister != "") {
     eventcontent += "no-register: \"" + eventEventNoRegister + "\"\n";
   }
-  
+
   eventcontent += "permalink: \"" + eventPermalink + "\"\n";
-  
-      
+
+
   eventcontent += "---\n\n" // Do not remove – must be present
-  
+
   eventcontent += document.getElementById("event-body").value;
-  
-  
+
+
   return eventcontent;
 }
 
@@ -744,7 +744,7 @@ function generateEventEmail() {
   } else {
     var eventcontent = eventInfoToMarkdown() // Post content
     var subject = "[Event for website]" + "event name and date";
-    
+
     // Generate the email
     document.location.href = "mailto:info+event@civilservice.lgbt?subject="
     + encodeURIComponent(subject)
@@ -758,7 +758,7 @@ function generateEventFile() {
     alert("You haven't filled in the required fields.\n\nComplete the following information:\n\n" + emptyfields);
   } else {
     var eventcontent = eventInfoToMarkdown() // Post content
-    var filename = eventFileName(); 
+    var filename = eventFileName();
     // Create the file and download it
     var element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(eventcontent));
