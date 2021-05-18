@@ -3,31 +3,31 @@ layout: admin/admin
 ---
 
 <div id="page-help">
-	
+
 	<h2>Help</h2>
-	
+
 	<details open>
-		
+
 		<summary>
 			<h2>ℹ️ About this form</h2>
 		</summary>
-		
+
 		<div class="container">
-		
+
 			{{ content }}
-			
-		</div>	
-		
+
+		</div>
+
 	</details>
-		
+
 	<details>
 		<summary>
 			<h2>🎨 Formatting and styles</h2>
 		</summary>
-		
+
 		<div class="container">
 			<p>Our website uses plain text files to generate content. If you need to include links or formatted text, you can use <a href="https://kramdown.gettalong.org/quickref.html" title="See the Markdown style guide">Markdown</a> syntax. For example:</p>
-			
+
 			<table>
 				<thead>
 					<th>To create...</th>
@@ -46,112 +46,112 @@ layout: admin/admin
 					<td>[Hyperlinks](//www.example.com)</td>
 				</tr>
 			</table>
-			
+
 		</div>
-					
+
 	</details>
-	
+
 	<details>
-		
+
 		<summary>
 			<h2>📸 Using images or files</h2>
 		</summary>
-		
+
 		<div class="container">
-		
+
 			<p>If you would like to include an image or file as part of the event page, you need to send those to the website administrator as attachments to an email.</p>
 
 			<p><strong>Images</strong> must be in <code>.jpg</code>, <code>.gif</code>, <code>.png</code> or <code>.webp</code> format. <strong>Do not</strong> send images to us in a Word Document – we can't always extract them and will not be able to use them.</p>
 
 			<p><strong>Files</strong> must be in Open Document Format, Microsoft Office or <code>.pdf</code> format. We prefer to use Word files because we can turn these into accessible documents more easily.</p>
-			
-		</div>	
-		
+
+		</div>
+
 	</details>
-	
+
 	<details>
-		
+
 		<summary>
 			<h2>🚨 Reminder</h2>
 		</summary>
-		
+
 		<div class="container">
-		
+
 			<p><strong>Everything we publish is on the open internet</strong>. Do not send us something to include that you are not comfortable having online.</p>
-			
+
 			<p><strong>Everything we do must be in line with the Civil Service Code</strong>. That means we must act with honest, integrity, objectivity and impartiality.<p>
-			
-		</div>	
-		
+
+		</div>
+
 	</details>
-	
+
 </div>
 
 <div id="page-content">
-	
+
 	<h2>Event details</h2>
-	
+
 	<fieldset id="event-title-and-description">
 		<details>
-			
+
 			<summary>
 				<h3><legend>Event title and description</legend></h3>
 			</summary>
-			
-			<div class="container">	
-				
+
+			<div class="container">
+
 				<div class="text-input">
 					<label for="event-title">Name of the event</label>
 					<input id="event-title" name="event-title" type="text" placeholder="Enter post title">
 				</div>
-				
+
 				<div class="text-input">
 					<label for="event-excerpt">Describe the event in a tweet</label>
 					<p class="label-hint">This description will be used for page previews on places like Twitter. It should be no more than 140 characters long.</p>
 					<textarea id="event-excerpt" name="event-excerpt" placeholder="Enter a short excerpt here" cols="30" rows="3"></textarea>
 				</div>
-				
+
 				<div class="text-input">
 					<label for="event-body">Explain the event fully</label>
 					<p class="label-hint">This description will show up on the event page itself. Include all the details you need people to have.</p>
 					<textarea id="event-body" name="event-body" placeholder="Enter your post content here" cols="30" rows="20"></textarea>
 				</div>
-				
+
 			</div>
-			
+
 		</details>
 	</fieldset>
-	
+
 	<fieldset id="event-host">
 		<details>
-			
+
 			<summary>
 				<h3><legend>Event host <span class="optional">(optional)</span></legend></h3>
 			</summary>
-			
-			<div class="container">	
-			
+
+			<div class="container">
+
 				<div class="text-input">
 					<label for="event-host-name">Who is hosting the event?</label>
 					<p class="label-hint">For example – the Civil Service LGBT+ Network</p>
 					<input id="event-host-name" name="event-host-name" type="text" placeholder="Enter host’s name" value="Civil Service LGBT+ Network">
 				</div>
-				
+
 			</div>
-			
+
 		</details>
-		
+
 	</fieldset>
-	
+
 	<fieldset id="event-dates-and-times">
 		<details>
-			
+
 			<summary>
 				<h3><legend>Event dates and times</legend></h3>
 			</summary>
-			
-			<div class="container">	
-				
+
+			<div class="container">
+
 				<p class="label"><strong>Event start date and time</strong></p>
 				<p class="label">On what date and at what time is the event taking place?</p>
 				<p class="sub-legend">For example – 2021 12 31 13 00</p>
@@ -175,7 +175,7 @@ layout: admin/admin
 					<label for="event-event-date-minute">Minute</label>
 					<input id="event-event-date-minute" inputmode="numeric" name="event-event-date-minute" type="text" placeholder="mm" minlength="2" maxlength="2">
 				</div>
-				
+
 				<p class="label"><strong>Event registration closing date and time</strong> <span class="optional">(optional)</span></p>
 				<p class="label">When do registrations for the event stop?</p>
 				<p class="sub-legend">For example – 2021 12 31 13 00</p>
@@ -202,40 +202,40 @@ layout: admin/admin
 			</div>
 		</details>
 	</fieldset>
-		
+
 	<fieldset id="event-location">
 		<details>
-			
+
 			<summary>
 				<h3><legend>Event location or web address</legend></h3>
 			</summary>
-			
-			<div class="container">	
-			
+
+			<div class="container">
+
 				<div class="text-input">
 					<label for="event-event-location">Event location</label>
 					<p class="label">If this is an in-person event, where is it taking place?</p>
 					<p class="label-hint">For example – 1 Horseguards Parade, London</p>
-	
+
 					<p class="label">If this is a digital event, what platform is being used?</p>
 					<p class="label-hint">For example – Google Meet</p>
 					<input id="event-event-location" name="event-event-location" type="text" placeholder="Enter location">
 				</div>
-				
+
 			</div>
-	
+
 		</details>
 	</fieldset>
-	
+
 	<fieldset id="event-location">
 		<details>
-			
+
 			<summary>
 				<h3><legend>How to register</legend></h3>
 			</summary>
-			
-			<div class="container">	
-			
+
+			<div class="container">
+
 				<div class="text-input">
 					<label for="event-event-link">Registration link</label>
 					<p class="label">If you want people to register on Eventbrite and you'd like us to set this up for you, type "yes" into this box.</p>
@@ -243,35 +243,35 @@ layout: admin/admin
 					<p class="label-hint">For example – https://www.surveymonkey.com/aBcDeFg123/</p>
 					<input id="event-event-link" name="event-event-link" type="text" placeholder="Type “yes” or enter URL">
 				</div>
-				
+
 				<div class="text-input">
 					<label for="event-event-email">Registration email</label>
 					<p class="label">If you want people to register by email, enter an email address to contact.</p>
 					<p class="label-hint">For example – events@example.com</p>
 					<input id="event-event-email" name="event-event-email" type="email" placeholder="Enter email address">
 				</div>
-				
+
 				<div class="text-input">
 					<label for="event-event-no-register">No registration message</label>
 					<p class="label">If the event does not require registration, what message do you want to display instead?</p>
 					<p class="label-hint">For example – "No need to register. Just turn up."</p>
 					<input id="event-event-no-register" name="event-event-no-register" type="text" placeholder="Enter message">
 				</div>
-				
+
 			</div>
-			
+
 		</details>
-		
+
 	</fieldset>
-	
+
 	<fieldset id="event-publish-date">
 		<details>
 			<summary>
 				<h3><legend>Publication date <span class="optional">(optional)</span></legend></h3>
 			</summary>
-			
+
 			<div class="container">
-			
+
 				<p class="label">On what date should the event be published on the website?</p>
 				<p class="sub-legend">For example – 2021 12 31</p>
 				<p class="sub-legend">If you don't provide a date, we'll publish your event as soon as we can.</p>
@@ -287,21 +287,21 @@ layout: admin/admin
 					<label for="event-day">Day</label>
 					<input id="event-day" inputmode="numeric" name="event-day" type="text" placeholder="DD" minlength="2" maxlength="2">
 				</div>
-				
+
 			</div>
-			
+
 		</details>
 	</fieldset>
-	
+
 	<fieldset id="event-categories-topics">
 		<details>
-			
+
 			<summary>
 				<h3><legend>Add topics <span class="optional">(optional)</span></legend></h3>
 			</summary>
-			
-			<div class="container">	
-				
+
+			<div class="container">
+
 				<div class="text-input">
 					<label for="event-categories">Topics
 						<p class="label">Used to generate topic pages. If a post on the website is tagged with a topic, it will show up on the corresponding topic page.</p>
@@ -310,55 +310,55 @@ layout: admin/admin
 					</label>
 					<input id="event-categories" name="event-categories" type="text" placeholder='"pride-2021"'>
 				</div>
-				
+
 			</div>
-			
+
 		</details>
-		
+
 	</fieldset>
-				
+
 	<h2>Generate the event</h2>
-	
+
 	<details open>
-		
+
 		<summary>
 			<h3><legend>Send an email</legend></h3>
 		</summary>
 
-		<div class="container">	
-			
+		<div class="container">
+
 			<label for="event-generate-email">
 				<p>This button will open your default email client and populate a new message with the information you entered above, in the format we require.</p>
 				<p class="label-hint">If you have images or files to send too, just attach them to that email.</p>
 			</label>
-			
-			<button id="event-generate-email" onclick="generateEventEmail()">Generate email</button>
-			
+
+			<button id="event-generate-email" onclick="eventGenerateEmail()">Generate email</button>
+
 			<p>If this doesn't work, try the “Create a file” option instead.</p>
-			
+
 		</div>
-		
+
 	</details>
-	
+
 	<details>
-		
+
 		<summary>
 			<h3><legend>Create a file</legend></h3>
 		</summary>
-		
-		<div class="container">	
-			
+
+		<div class="container">
+
 			<label for="event-download-file">
 				<p>This button will create a plain text file with the correct information in it.</p>
 				<p>Attach the file to an email and send it to us.</p>
 				<p class="label-hint">If you have images or files to send too, just attach them to that email.</p>
 			</label>
-			
-			<button id="event-download-file" onclick="generateEventFile()">Download file</button>
-			
+
+			<button id="event-download-file" onclick="eventGenerateFile()">Download file</button>
+
 		</div>
-		
+
 	</details>
 
-	
+
 </div>
