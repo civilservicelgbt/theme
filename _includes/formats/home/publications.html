@@ -2,11 +2,13 @@
 	
 	<h1 class="section-title"><a href="{{ site.url | append: site.baseurl | append: '/publications/' }}" title="Go to the publications page">Latest publications</a></h1>
 
+	{% assign today-date = 'now' | date: '%s' %}
 	{% assign publications = site.publications | sort: "date" | reverse %}
 
 	<ul>
 		{% for post in publications limit: 3 %}
-		{% if post.preview != true %}
+		{% assign post-date = post.date | date: '%s' %}
+		{% if post-date <= today-date %}
 		<li>
 			<article>
 				<h2>

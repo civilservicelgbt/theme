@@ -2,9 +2,11 @@
 	
 	<h1 class="section-title"><a href="{{ site.url | append: site.baseurl | append: '/news/' }}" title="Go to the news page">Latest news</a></h1>
 
+
+	{% assign today-date = 'now' | date: '%s' %}
+	{% assign news = site.news | sort: 'date' | reverse %}
+
 	<ul>
-		{% assign today-date = 'now' | date: '%s' %}
-		{% assign news = site.news | sort: 'date' | reverse %}
 		{% for post in news limit: 3 %}
 		{% assign post-date = post.date | date: '%s' %}
 		{% if post-date <= today-date %}
