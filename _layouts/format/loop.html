@@ -52,7 +52,7 @@ layout: global/default
 		{% elsif collection == "events" %}
 		
 			{% assign today-date = 'now' | date: '%s' %}
-			{% assign events = site.events | sort: "date" | reverse %}
+			{% assign events = site.events | sort: "event-date" | reverse %}
 			
 			<h2 class="loop-subheading">Upcoming events</h2>
 				
