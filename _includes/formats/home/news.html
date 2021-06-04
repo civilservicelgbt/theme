@@ -6,7 +6,8 @@
 		{% assign today-date = 'now' | date: '%s' %}
 		{% assign news = site.news | sort: 'date' | reverse %}
 		{% for post in news limit: 3 %}
-		{% if post.date <= today-date %}
+		{% assign post-date = post.date | date: '%s' %}
+		{% if post-date <= today-date %}
 		<li>
 			<article>
 				<h2>
