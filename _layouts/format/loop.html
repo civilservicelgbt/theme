@@ -176,10 +176,12 @@ layout: global/default
 			{% endif %}
 		
 		{% elsif collection == "topics" %}
-				
+		
+			{% assign today-date = 'now' | date: '%s' %}
+			{% assign topics = site.publications | sort: "date" | reverse %}
 			<ul>
-			{% for topic in site.topics reversed %}
-				{% if topic.preview != true %}
+			{% for topic in topics %}
+				{% if today-date < date %}
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: topic.url }}" title="Find out more about {{ topic.title }}">{{ topic.title }}</a></h2>
