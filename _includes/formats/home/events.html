@@ -5,7 +5,7 @@
 	{% assign count = 0 %}
 	{% assign future-events = 0 %}
 	{% assign today-date = 'now' | date: '%s' %}
-	{% assign events = site.events | sort: "date" | limit: 3 %}
+	{% assign events = site.events | sort: "event-date" | limit: 3 %}
 	
 	{% for post in events %}
 	{% assign date = post.event-date | date: '%s' %}
