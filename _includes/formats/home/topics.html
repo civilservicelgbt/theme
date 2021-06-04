@@ -1,8 +1,12 @@
 <section id="posts-topics">
  <h1 class="section-title"><a href="{{ site.url | append: site.baseurl | append: '/topics/' }}" title="Go to the topics page">Explore topics</a></h1>
-  {% assign topics = site.topics | sort: "date" | reverse %}
+ 
+   {% assign today-date = 'now' | date: '%s' %}
+   {% assign topics = site.topics | sort: "date" | reverse %}
    <ul>
-    {% for topic in topics | limit: 3 %}
+   {% for topic in topics limit: 3 %}
+   {% assign post-date = topic.date | date: '%s' %}
+   {% if post-date <= today-date %}
      <li>
       <article>
        <h2>
@@ -13,6 +17,7 @@
        </h2>
       </article>
      </li>
-    {% endfor %}
+   {% endif %}
+   {% endfor %}
    </ul>
 </section>
