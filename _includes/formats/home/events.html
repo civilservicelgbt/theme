@@ -2,7 +2,6 @@
 	
 	<h1 class="section-title"><a href="{{ site.url | append: site.baseurl | append: '/events/' }}" title="Go to the events page">Upcoming events</a></h1>
 	
-	{% assign count = 0 %}
 	{% assign future-events = 0 %}
 	{% assign today-date = 'now' | date: '%s' %}
 	{% assign events = site.events | sort: "event-date" %}
@@ -28,9 +27,10 @@
 	
 	{% else %}
 	
+		{% assign output-count = 0 %}
 		{% for post in events %}
 		{% assign date = post.event-date | date: '%s' %}
-		{% if today-date < date AND count < 3 %}
+		{% if today-date < date AND output-count < 3 %}
 		<li>
 			<article>
 				<h2>
@@ -41,7 +41,7 @@
 				<p class="post-metadata">On <time datetime="{{ post.event-date | date: '%Y-%m-%d %H:%M' }}">{{ post.event-date  | date:'%-d %B %Y at %H:%M' }}</time></p>
 			</article>
 		</li>
-		{% assign count = count | plus: 1 %}
+		{% assign output-count = output-count | plus: 1 %}
 		{% endif %}
 		{% endfor %}
 	
