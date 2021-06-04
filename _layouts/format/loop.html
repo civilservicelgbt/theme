@@ -19,9 +19,11 @@ layout: global/default
 		{% if collection == "news" %}
 		
 			<ul>
+			{% assign today-date = 'now' | date: '%s' %}
 			{% assign news = site.news | sort: 'date' | reverse %}
 			{% for post in news %}
-				{% if post.preview != true %}
+				{% assign post-date = post.date | date: '%s' %}
+				{% if post-date <= today-date %}
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
@@ -74,11 +76,13 @@ layout: global/default
 		
 		{% elsif collection == "publications" %}
 		
+			{% assign today-date = 'now' | date: '%s' %}
 			{% assign publications = site.publications | sort: "date" | reverse %}
 
 			<ul>				
 			{% for post in publications %}
-				{% if post.preview != true %}
+				{% assign post-date = post.date | date: '%s' %}
+				{% if post-date <= today-date %}
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
@@ -170,23 +174,6 @@ layout: global/default
 			</ul>
 			
 			{% endif %}
-			
-		
-		{% elsif collection == "manuals" %}
-		
-			<ul>
-			{% for post in site.manuals %}
-				{% if post.preview != true %}
-				<li>
-					<article>
-						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
-						<p class="post-metadata"><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date  | date:'%-d %B %Y' }}</time></p>
-					</article>
-				</li>
-				{% endif %}
-			{% endfor %}
-			</ul>
-
 		
 		{% elsif collection == "topics" %}
 				
