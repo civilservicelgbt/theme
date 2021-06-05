@@ -193,7 +193,7 @@ layout: global/default
 		{% elsif collection == "topics" %}
 		
 			{% assign today-date = 'now' | date: '%s' %}
-			{% assign topics = site.publications | sort: "date" | reverse %}
+			{% assign topics = site.topics | sort: "date" | reverse %}
 			<ul>
 			{% for topic in topics %}
 				{% if today-date < date %}
