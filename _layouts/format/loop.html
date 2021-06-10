@@ -191,7 +191,7 @@ layout: global/default
 		{% elsif collection == "topics" %}
 
 			{% assign today-date = 'now' | date: '%s' %}
-			{% assign topics = site.topics | sort: "date" %}
+			{% assign topics = site.topics | sort: "date" | reverse %}
 			<ul>
 			{% for post in topics %}
 				{% assign publish-date = post.date | date: '%s' %}
