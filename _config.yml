@@ -70,7 +70,7 @@ header-menu--title--display-text: "Civil Service LGBT+"
 # - `header-menu--subdomain-title` to 'true'
 # - `header-menu--subdomain-title--display-text` to any string value (i.e. "Image maker")
 header-menu--subdomain-title: false
-header-menu--subdomain-title--display-text: "Website Theme" 
+header-menu--subdomain-title--display-text: "Website Theme"
 
 header-menu--links--hidden: false
 # Header menu links
@@ -129,11 +129,11 @@ footer-menu--links:
     url: "/join-us"
     hidden: false
   - display-text: "Update your profile"
-    alt-text: "Update your contact details and preferences" 
+    alt-text: "Update your contact details and preferences"
     url: "/update-profile"
     hidden: false
   - display-text: "Contact us"
-    alt-text: "Get our contact details" 
+    alt-text: "Get our contact details"
     url: "/about/contact-us"
     hidden: false
   - display-text: "About"
@@ -141,11 +141,11 @@ footer-menu--links:
     url: "/about"
     hidden: true
   - display-text: "Your data"
-    alt-text: "Read our data and privacy policy" 
+    alt-text: "Read our data and privacy policy"
     url: "/about/your-data"
     hidden: false
   - display-text: "Archived posts"
-    alt-text: "View archived news posts" 
+    alt-text: "View archived news posts"
     url: "/archives"
     hidden: false
 
@@ -193,7 +193,7 @@ unsubscribe-form: "https://us17.admin.mailchimp.com/lists/designer/?id=118945"
 # Collections #
 ###############
 #This is the default permalink for the "_posts" folder.
-permalink: /:year/:month/:day/:title:output_ext 
+permalink: /:year/:month/:day/:title:output_ext
 
 collections:
   pages:
@@ -232,12 +232,6 @@ collections:
     defaults:
       values:
         layout: format/event
-  past-events:
-    output: true
-    permalink: /event/:title/
-    defaults:
-      values:
-        layout: format/event
   manuals:
     output: true
     permalink: /manual/:title/
@@ -265,7 +259,7 @@ defaults:
   - scope:
       path: "store"
     values:
-      image: true    
+      image: true
 ##################
 # Build settings #
 ##################
@@ -283,7 +277,7 @@ plugins:
 - jekyll-feed
 - jekyll-redirect-from
 
-    
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
