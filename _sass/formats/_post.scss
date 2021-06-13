@@ -491,22 +491,22 @@ main#format-manual {
       margin-bottom: 45px;
     }
 
-      div.footnotes {
-        border-top: 2px solid $light-gray;
-        padding: 15px 0 0 0;
+    div.footnotes {
+      border-top: 2px solid $light-gray;
+      padding: 15px 0 0 0;
 
-        &::before {
-          @extend h4;
+      &::before {
+        @extend h4;
 
-          display: inline-block;
-          width: 100%;
-          padding-bottom: 15px;
-          content: "Footnotes";
-        }
-        &.padding-top {
-          padding: 45px 0 0 0;
-        }
+        display: inline-block;
+        width: 100%;
+        padding-bottom: 15px;
+        content: "Footnotes";
       }
+      &.padding-top {
+        padding: 45px 0 0 0;
+      }
+
     }
   }
 
