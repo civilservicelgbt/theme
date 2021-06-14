@@ -210,7 +210,7 @@ collections:
         layout: format/news
   archives:
     output: true
-    permalink: /archive/:title/
+    permalink: /archives/:year/:month/:day/:title/
     defaults:
       values:
         layout: format/news
