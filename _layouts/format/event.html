@@ -17,6 +17,8 @@ layout: global/default
 
 		<h2>Event details</h2>
 
+		{% if page.author %}{% if page.author != "Civil Service LGBT+ Network" %}<p><strong>Host</strong><br>{{ page.author | remove: "The" }}</p>{% endif %}{% endif %}
+
 		{% unless page.link or page.email or page.no-register %}
 			<p><strong>Error: No registration link or email found.</strong> Add a link or email address in post front matter using either of these formats:
 				<ol>

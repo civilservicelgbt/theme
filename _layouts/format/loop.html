@@ -66,6 +66,8 @@ layout: global/default
 				<li>
 					<article>
 						<h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+						{% if post.author %}{% if post.author != "Civil Service LGBT+ Network" %}
+						<p class="post-metadata">Hosted by the {{ post.author | remove: "The" }}</p>{% endif %}{% endif %}
 						<p class="post-metadata"><time datetime="{{ post.event-date | date: '%Y-%m-%d %H:%M' }}">{{ post.event-date  | date:'%-d %B %Y at %H:%M' }}</time></p>
 					</article>
 				</li>
@@ -235,13 +237,13 @@ layout: global/default
 
 			<h2 class="page-share-title">Got a story to tell?</h2>
 
-			<p>If you'd like to write a news article or blog post for us, we'd love to hear from you. Just <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">get in touch</a>.</p>
+			<p>If you'd like to write a news article or blog post for us, we'd love to hear from you. Just <a href="{{ site.url | append: site.base-url | append: '/submit-a-blogpost' }}">get in touch</a>.</p>
 
 		{% elsif collection == "events" %}
 
 			<h2 class="page-share-title">Share your event</h2>
 
-			<p>If you are running an event, and you'd like us to share it too, please <a href="{{ site.url | append: site.base-url | append: '/about/contact-us' }}">contact us</a>.</p>
+			<p>If you are running an event, and you'd like us to share it too, please <a href="{{ site.url | append: site.base-url | append: '/submit-an-event' }}">contact us</a>.</p>
 
 			<h2 class="page-share-title">Who can attend</h2>
 
