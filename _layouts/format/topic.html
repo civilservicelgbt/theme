@@ -161,13 +161,13 @@ layout: global/skeleton
 
       <!-- Consultations -->
 
-      {% assign today-date = 'now' | date: '%Y-%m-%d' %}
+      {% assign today-date = 'now' | date: '%s' %}
       {% assign consultations = site.consultations | where: 'category', page.category %}
       {% assign not-empty = 0 %}
 
       {% for post in consultations %}
-        {% assign post-date = post.date | date: '%Y-%m-%d' %}
-        {% assign end-date = post.end-date | date: '%Y-%m-%d' %}
+        {% assign post-date = post.date | date: '%s' %}
+        {% assign end-date = post.end-date | date: '%s' %}
         {% if today-date <= end-date and today-date >= post-date %}
           {% assign not-empty = not-empty | plus: 1 %}
         {% endif %}
@@ -179,8 +179,8 @@ layout: global/skeleton
         <h2 class="section-title">Consultations and surveys</h2>
         <ul>
           {% for post in consultations reversed %}
-            {% assign post-date = post.date | date: '%Y-%m-%d' %}
-            {% assign end-date = post.end-date | date: '%Y-%m-%d' %}
+            {% assign post-date = post.date | date: '%s' %}
+            {% assign end-date = post.end-date | date: '%s' %}
             {% if today-date <= end-date and today-date >= post-date %}
             <li>
               <article>

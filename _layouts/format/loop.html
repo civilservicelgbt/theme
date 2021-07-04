@@ -102,8 +102,9 @@ layout: global/default
 
 			{% assign consultation-counter = 0 %}
 			{% for post in consultations %}
+			{% assign post-date = post.date | date: '%s' %}
 			{% assign end-date = post.end-date | date: '%s' %}
-			{% if today-date < end-date %}
+			{% if today-date < end-date and today-date >= post-date %}
 				{% assign consultation-counter = consultation-counter | plus: 1 %}
 			{% endif %}
 			{% endfor %}
