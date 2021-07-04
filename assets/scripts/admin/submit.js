@@ -95,7 +95,7 @@ function postGenerateEmail() {
     var subject = "[Blogpost for website] " + postFileName();
 
     // Generate the email
-    document.location.href = "mailto:info+event@civilservice.lgbt?subject="
+    document.location.href = "mailto:info+blogpost@civilservice.lgbt?subject="
     + encodeURIComponent(subject)
     + "&body=" + encodeURIComponent(eventcontent);
   }
