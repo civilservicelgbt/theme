@@ -15,12 +15,12 @@ a {
   box-sizing: content-box;
   text-decoration-skip: ink;
   text-decoration-skip-ink: auto;
-  font-weight: inherit;  
-  
+  font-weight: inherit;
+
   &:link,
   &:visited {
     color: $link-color;
-    text-decoration: none;    
+    text-decoration: none;
   }
   &:hover {
     color: $link-hover-color;
@@ -256,7 +256,7 @@ twitter-widget {
 
 details {
   &.collection {
-    border-top: 2px solid $light-gray;    
+    border-top: 2px solid $light-gray;
   }
   &.collection--posts--item {
     border-top: 1px solid $light-gray;
@@ -266,7 +266,7 @@ details {
   }
   &[open] {
     summary.collection--label {
-      
+
     }
   }
   section {
@@ -282,7 +282,7 @@ details {
         }
         &:last-child {
           padding-bottom: $container-padding;
-        }  
+        }
       }
     }
     &.collections--posts {
@@ -291,7 +291,7 @@ details {
         margin: 0 0 3px 0;
         &:last-child {
           margin-top: $container-padding;
-        }  
+        }
       }
     }
   }
@@ -302,12 +302,12 @@ details {
   @include md-up {
     padding: $container-padding ($container-padding * 0.5);
   }
-  border-top: 2px solid $light-gray;  
+  border-top: 2px solid $light-gray;
   &[open] {
     > summary {
       margin-bottom: $container-padding;
-    }    
-  }  
+    }
+  }
   blockquote {
     display: block;
     padding: $container-padding;
@@ -323,7 +323,7 @@ details {
       width: 0;
       height: 0;
     }
-    
+
     &:before {
       display: block;
       position: relative;
@@ -333,7 +333,7 @@ details {
       content: '+';
       width: $container-padding * 2;
       float: left;
-      
+
       text-align: left;
       font-weight: bold;
       line-height: 1;
@@ -345,7 +345,7 @@ details {
     list-style-image: none;
     content: '';
   }
-  
+
   &[open] > summary:before {
     content: '–';
   }
@@ -373,7 +373,7 @@ summary {
   font-size: $font-size-base;
   line-height: $font-line-height;
   font-weight: bold;
-  
+
   &:hover {
     color: $link-color;
     text-decoration: underline !important;
@@ -389,7 +389,7 @@ summary {
     background: $link-active-background;
     outline: 3px solid $link-active-background;
   }
-  
+
   @include clearfix;
 }
 
@@ -397,4 +397,29 @@ details > div.container {
   width: calc(100% - (#{$container-padding} * 2));
   margin: 0 0 0 ($container-padding * 2);
   padding: 0;
+}
+
+p.external-link a {
+  @extend .button;
+
+  &:link,
+  &:visited {
+    color: $white;
+    text-decoration: none;
+  }
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: underline !important;
+    cursor: pointer;
+  }
+  &:focus {
+    color: $black !important;
+    background: $link-focus-background;
+    outline: 3px solid $link-focus-background;
+  }
+  &:active {
+    color: $white !important;
+    background: $link-active-background;
+    outline: 3px solid $link-active-background;
+  }
 }
