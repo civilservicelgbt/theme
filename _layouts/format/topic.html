@@ -166,8 +166,9 @@ layout: global/skeleton
       {% assign not-empty = 0 %}
 
       {% for post in consultations %}
+        {% assign post-date = post.date | date: '%Y-%m-%d' %}
         {% assign end-date = post.end-date | date: '%Y-%m-%d' %}
-        {% if today-date <= end-date %}
+        {% if today-date <= end-date and today-date >= post-date %}
           {% assign not-empty = not-empty | plus: 1 %}
         {% endif %}
       {% endfor %}
@@ -178,12 +179,16 @@ layout: global/skeleton
         <h2 class="section-title">Consultations and surveys</h2>
         <ul>
           {% for post in consultations reversed %}
+            {% assign post-date = post.date | date: '%Y-%m-%d' %}
+            {% assign end-date = post.end-date | date: '%Y-%m-%d' %}
+            {% if today-date <= end-date and today-date >= post-date %}
             <li>
               <article>
                 <h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
                 <p class="post-metadata"><time datetime="{{ post.date | date: '%Y-%m-%d %H:%M' }}">{{ post.date  | date:'%-d %B %Y' }}</time></p>
               </article>
             </li>
+            {% endif %}
           {% endfor %}
         </ul>
       </section>
