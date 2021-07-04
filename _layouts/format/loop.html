@@ -118,8 +118,9 @@ layout: global/default
 
 			{% for post in consultations %}
 
+				{% assign post-date = post.date | date: '%s' %}
 				{% assign end-date = post.end-date | date: '%s' %}
-				{% if today-date < end-date %}
+				{% if today-date <= end-date and today-date >= post-date %}
 
 				{% if post.preview != true %}
 				<li>

@@ -1,21 +1,22 @@
 <section id="posts-consultations">
-	
+
 	<h1 class="section-title"><a href="{{ site.url | append: site.baseurl | append: '/consultations/' }}" title="Go to the consultations page">Latest consultations</a></h1>
-	
+
 	{% assign consultations = site.consultations | sort: "end-date" | reverse %}
 	{% assign today-date = 'now' | date: '%s' %}
-	
+
 	{% assign consultation-counter = 0 %}
 	{% for post in consultations | limit: 3 %}
+	{% assign post-date = post.date | date: '%s' %}
 	{% assign end-date = post.end-date | date: '%s' %}
-	{% if today-date < end-date %}
+	{% if today-date <= end-date and today-date >= post-date %}
 		{% assign consultation-counter = consultation-counter | plus: 1 %}
 	{% endif %}
 	{% endfor %}
 
 	<ul>
 	{% if consultation-counter == 0 %}
-	
+
 		<li>
 			<article>
 				<h2>
@@ -24,14 +25,14 @@
 				<p class="post-metadata">We don't currently have any open consultations. Check back soon.</p>
 			</article>
 		</li>
-	
+
 	{% else %}
-	
+
 		{% for post in consultations %}
-		
+
+		{% assign post-date = post.date | date: '%s' %}
 		{% assign end-date = post.end-date | date: '%s' %}
-						
-		{% if today-date < end-date %}
+		{% if today-date <= end-date and today-date >= post-date %}
 		<li>
 			<article>
 				<h2>
@@ -47,11 +48,11 @@
 			</article>
 		</li>
 		{% endif %}
-							
+
 		{% endfor %}
-	
+
 	{% endif %}
-		
+
 	</ul>
-	
+
 </section>
