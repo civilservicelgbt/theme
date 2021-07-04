@@ -71,7 +71,7 @@ layout: global/skeleton
 
       <!-- Blog posts / news updates -->
 
-      {% assign today-date = 'now' | date: '%Y' %}
+      {% assign today-date = 'now' | date: '%Y-%m-%d' %}
       {% assign news = site.news | where: 'category', page.category %}
       {% assign not-empty = 0 %}
 
@@ -133,7 +133,7 @@ layout: global/skeleton
 
       <!-- Publications -->
 
-      {% assign today-date = 'now' | date: '%Y' %}
+      {% assign today-date = 'now' | date: '%Y-%m-%d' %}
       {% assign publications = site.publications | where: 'category', page.category %}
       {% assign not-empty = 0 %}
 
@@ -159,9 +159,40 @@ layout: global/skeleton
 
       {% endif %}
 
+      <!-- Consultations -->
+
+      {% assign today-date = 'now' | date: '%Y-%m-%d' %}
+      {% assign consultations = site.consultations | where: 'category', page.category %}
+      {% assign not-empty = 0 %}
+
+      {% for post in consultations %}
+        {% assign end-date = post.end-date | date: '%Y-%m-%d' %}
+        {% if today-date <= end-date %}
+          {% assign not-empty = not-empty | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+
+      {% if not-empty != 0 %}
+
+      <section id="topic-section">
+        <h2 class="section-title">Consultations and surveys</h2>
+        <ul>
+          {% for post in consultations reversed %}
+            <li>
+              <article>
+                <h2><a href="{{ site.url | append: site.baseurl | append: post.url }}" title="Read {{ post.title }}">{{ post.title }}</a></h2>
+                <p class="post-metadata"><time datetime="{{ post.date | date: '%Y-%m-%d %H:%M' }}">{{ post.date  | date:'%-d %B %Y' }}</time></p>
+              </article>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      {% endif %}
+
       <!-- Archived blog posts / news updates -->
 
-      {% assign today-date = 'now' | date: '%Y' %}
+      {% assign today-date = 'now' | date: '%Y-%m-%d' %}
       {% assign news = site.archives | where: 'category', page.category %}
       {% assign not-empty = 0 %}
 
