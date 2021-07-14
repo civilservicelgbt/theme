@@ -399,7 +399,8 @@ details > div.container {
   padding: 0;
 }
 
-p.external-link a {
+p.external-link a,
+a.external-link {
   @extend .button;
 
   &:link,
@@ -421,5 +422,35 @@ p.external-link a {
     color: $white !important;
     background: $link-active-background;
     outline: 3px solid $link-active-background;
+  }
+}
+
+blockquote.document-box {
+  position: relative;
+  background: $white;
+  padding: 15px;
+  border-radius: 3px;
+
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+  p:first-of-type {
+    @extend h4;
+    font-weight: bold;
+    padding: 0 0 5px 0;
+    margin-bottom: 0;
+  }
+  p:nth-of-type(2) {
+    font-style: italic;
+    margin-bottom: 10px;
+    color: $dark-gray;
+  }
+
+  a::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
   }
 }
