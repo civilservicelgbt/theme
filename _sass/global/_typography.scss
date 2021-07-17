@@ -429,12 +429,11 @@ blockquote.document-box {
   position: relative;
   background: $white;
   padding: 15px;
-  border-radius: 3px;
-
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border: 1px $light-gray solid;
+  margin: 5px 0;
 
   p:first-of-type {
-    @extend h4;
+    @extend h5;
     font-weight: bold;
     padding: 0 0 5px 0;
     margin-bottom: 0;
@@ -453,4 +452,12 @@ blockquote.document-box {
     right: 0;
     bottom: 0;
   }
+}
+
+blockquote.document-box + h1,
+blockquote.document-box + h2,
+blockquote.document-box + h3,
+blockquote.document-box + h4,
+blockquote.document-box + h5 {
+  padding-top: 60px;
 }
