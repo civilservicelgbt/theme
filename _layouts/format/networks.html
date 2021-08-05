@@ -3,23 +3,23 @@ layout: global/default
 ---
 
 <main id="{{ page.layout | slugify }}">
-	
-	<div id="page-title">		
+
+	<div id="page-title">
 		<h1 class="page-title">{{ page.title }}</h1>
 	</div>
-	
+
 	<div id="page-lead-paragraph">
 		<p>{{ page.excerpt }}</p>
 	</div>
-	
+
 	<div id="page-content">
-		
+
 		{{ content }}
-		
+
 	</div>
-	
+
 	<div id="page-networks">
-		
+
 		{% assign deptnetworks = site.data.networks | where: "type", "Departmental" %}
 
 		<details>
@@ -31,24 +31,7 @@ layout: global/default
 				<summary><h3>{{ network.department }}</h3></summary>
 				<p><strong>Organisation:</strong> {{ network.department }}</p>
 				<p><strong>Network:</strong> {{ network.network }}</p>
-				
-				{% if network.email %}
-				<a href="mailto:{{ network.email }}" title="email {{ network.network }}" class="button">Email this network</a>
-				{% endif %}
-			</details>
-			{% endfor %}
-		</details>
-		
-		
-		{% assign crossgovnetworks = site.data.networks | where: "type", "Cross-government" %}		
-		<details>
-			<summary>
-				<h2>Cross-government diversity and inclusion networks</h2>
-			</summary>
-			{% for network in crossgovnetworks %}
-			<details>
-				<summary><h3>{{ network.network }}</h3></summary>
-				
+
 				{% if network.email != '' %}
 				<a href="mailto:{{ network.email }}" title="email {{ network.network }}" class="button">Email this network</a>
 				{% endif %}
@@ -61,13 +44,36 @@ layout: global/default
 			</details>
 			{% endfor %}
 		</details>
-		
-		
+
+
+		{% assign crossgovnetworks = site.data.networks | where: "type", "Cross-government" %}
+		<details>
+			<summary>
+				<h2>Cross-government diversity and inclusion networks</h2>
+			</summary>
+			{% for network in crossgovnetworks %}
+			<details>
+				<summary><h3>{{ network.network }}</h3></summary>
+
+				{% if network.email != '' %}
+				<a href="mailto:{{ network.email | first }}" title="email {{ network.network }}" class="button">Email this network</a>
+				{% endif %}
+				{% if network.website != '' %}
+				<a href="{{ network.website }}" title="Open {{ network.network }}s website" rel="external noreferrer nofollow" class="button">Network website</a>
+				{% endif %}
+				{% if network.twitter != '' %}
+				<a href="mailto:{{ network.twitter }}" title="Open {{ network.network }}s Twitter" class="button">Twitter</a>
+				{% endif %}
+			</details>
+			{% endfor %}
+		</details>
+
+
 	</div>
-	
+
 	<div id="page-dept-aside">
 		<h2 class="page-aside-title">Something missing?</h2>
 		<p>If you think a network is missing from this list, please <a href="/about/contact-us/">get in touch</a>.</p>
 	</div>
-	
+
 </main>
