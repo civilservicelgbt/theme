@@ -202,54 +202,135 @@ collections:
     defaults:
       values:
         layout: format/page
-  news:
-    output: true
-    permalink: /news/:year/:month/:day/:title/
-    defaults:
-      values:
-        layout: format/news
+        admin:
+          add-to-collection: true
+          show-in-formats: true
   archives:
     output: true
     permalink: /archives/:year/:month/:day/:title/
     defaults:
       values:
         layout: format/news
+        admin:
+          add-to-collection: false
+          show-in-formats: false
+  news:
+    output: true
+    permalink: /news/:year/:month/:day/:title/
+    defaults:
+      values:
+        layout: format/news
+        admin:
+          add-to-collection: true
+          show-in-formats: true
   publications:
     output: true
     permalink: /publication/:title/
     defaults:
       values:
         layout: format/publication
+        admin:
+          add-to-collection: true
+          show-in-formats: true
   consultations:
     output: true
     permalink: /consultation/:title/
     defaults:
       values:
         layout: format/consultation
+        admin:
+          add-to-collection: true
+          show-in-formats: true
   events:
     output: true
     permalink: /event/:title/
     defaults:
       values:
         layout: format/event
-  manuals:
-    output: true
-    permalink: /manual/:title/
-    defaults:
-      values:
-        layout: format/manual
+        admin:
+          add-to-collection: true
+          show-in-formats: true
   notices:
     output: true
-    permalink: /notices/:title/
+    permalink: /notice/:title/
     defaults:
       values:
         layout: format/notice
+        admin:
+          add-to-collection: true
+          show-in-formats: true
   topics:
     output: true
     permalink: /:title/
     defaults:
       values:
-        layout: format/topics
+        layout: format/topic
+        admin:
+          add-to-collection: true
+          show-in-formats: true
+  team:
+    output: true
+    permalink: /our-team/:title/
+    defaults:
+      values:
+        layout: format/page
+        admin:
+          add-to-collection: true
+          show-in-formats: true
+  rules:
+    output: true
+    permalink: /our-rules/:title/
+    defaults:
+      values:
+        layout: format/publication
+        admin:
+          add-to-collection: true
+          show-in-formats: false
+  forum:
+    output: true
+    permalink: /discuss/:title/
+    defaults:
+      values:
+        layout: format/publication
+        admin:
+          add-to-collection: true
+          show-in-formats: false
+  membership:
+    output: true
+    permalink: /membership/:title/
+    defaults:
+      values:
+        layout: format/page
+        admin:
+          add-to-collections: true
+          show-in-formats: false
+  programmes:
+    output: true
+    permalink: /programmes/:title/
+    defaults:
+      values:
+        layout: format/page
+        admin:
+          add-to-collection: true
+          show-in-formats: false
+  contact:
+    output: true
+    permalink: /contact/:title/
+    defaults:
+      values:
+        layout: format/page
+        admin:
+          add-to-collection: false
+          show-in-formats: false
+  admin:
+    output: true
+    permalink: /membership/:title/
+    defaults:
+      values:
+        layout: format/page
+        admin:
+          add-to-collection: false
+          show-in-formats: false
 
 defaults:
   - scope:
