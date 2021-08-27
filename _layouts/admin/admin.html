@@ -16,7 +16,7 @@ layout: global/default
 	<div id="page-admin-nav">
 		<h2>Menu</h2>
 		<ul class="admin-nav">
-			{% assign adminpages = site.pages | where_exp: "page", "page.url contains '/admin'" %}
+			{% assign adminpages = site.admin %}
 			{% for page in adminpages %}
 			<li><a href="{{ site.url | append: page.url }}">{{ page.title }}</a></li>
 			{% endfor %}
