@@ -276,7 +276,7 @@ collections:
         layout: format/page
         admin:
           add-to-collection: true
-          show-in-formats: true
+          show-in-formats: false
   rules:
     output: true
     permalink: /our-rules/:title/

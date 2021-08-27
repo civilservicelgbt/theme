@@ -133,7 +133,7 @@ layout: admin/admin
 			<p class="legend">Which part of the site will this post appear on?</p>
 			<p class="label-hint">For example – if it's a blog post, it would go in the 'News' collection.</p>
 
-			{% assign collections = site.collections %}
+			{% assign collections = site.collections | where_exp: "collections", "collections.label != 'posts'" %}
 			{% for collection in collections %}
 				{% for default in collection.defaults %}
 				{% for admin in default[1].admin %}
@@ -143,14 +143,14 @@ layout: admin/admin
 					{% endif %}
 				{% endfor %}
 				{% endfor %}
-			{% if bool == true %}
-			<div class="radio-input">
-				<input type="radio" name="post-collection" id="post-collection--{{ collection.label }}" value="{{ collection.relative_directory }}"{% if collection.label == "news" %} checked{% endif %}>
-				<label for="post-collection--{{ collection.label }}">
-					{{ collection.label | capitalize }}
-				</label>
-			</div>
-			{% endif %}
+				{% if bool == true %}
+				<div class="radio-input">
+					<input type="radio" name="post-collection" id="post-collection--{{ collection.label }}" value="{{ collection.relative_directory }}"{% if collection.label == "news" %} checked{% endif %}>
+					<label for="post-collection--{{ collection.label }}">
+						{{ collection.label | capitalize }}
+					</label>
+				</div>
+				{% endif %}
 			{% endfor %}
 
 		</div>
@@ -171,7 +171,7 @@ layout: admin/admin
 			<p class="label">This is almost always the same as the Collection, but you can change this setting to override the format if you need to use a different format for some reason.</p>
 			<p class="label-hint">For example – if it's an event, choose 'Event format'.</p>
 
-			{% assign collections = site.collections %}
+			{% assign collections = site.collections | where_exp: "collections", "collections.label != 'posts'" %}
 			{% for collection in collections %}
 				{% for default in collection.defaults %}
 					{% for layout in default[1].layout %}
@@ -184,14 +184,14 @@ layout: admin/admin
 						{% endif %}
 					{% endfor %}
 				{% endfor %}
-			{% if bool == true %}
-			<div class="radio-input">
-				<input type="radio" name="post-format" id="post-format--{{ post-layout }}" value="{{ post-layout }}" onChange="toggleFieldSets();" {% if collection.label == "news" %} checked{% endif %}>
-				<label for="post-format--{{ post-layout }}">
-					{{ post-layout | remove: "format/" | capitalize }} format
-				</label>
-			</div>
-			{% endif %}
+				{% if bool == true %}
+				<div class="radio-input">
+					<input type="radio" class="from-{{ collection.label }}" name="post-format" id="post-format--{{ post-layout }}" value="{{ post-layout }}" onChange="toggleFieldSets();" {% if collection.label == "news" %} checked{% endif %}>
+					<label for="post-format--{{ post-layout }}">
+						{{ post-layout | remove: "format/" | capitalize }} format
+					</label>
+				</div>
+				{% endif %}
 			{% endfor %}
 
 		</div>
