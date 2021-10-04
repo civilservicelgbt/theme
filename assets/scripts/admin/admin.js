@@ -47,19 +47,19 @@ function toggleFieldSets() {
   fieldSetPostPermalinkSetup.hidden = false;
   fieldSetPostContent.hidden = false;
 
-  if (postFormat == "format/event" || postFormat == "format/topics" || postFormat == "format/page" || postFormat == "format/manual" ) {
+  if (postFormat == "event" || postFormat == "topics" || postFormat == "page" || postFormat == "manual" ) {
     fieldSetPostDates.hidden = true;
   }
-  if (postFormat == "format/event" || postFormat == "format/topics" || postFormat == "format/consultation" || postFormat == "format/manual" ) {
+  if (postFormat == "event" || postFormat == "topics" || postFormat == "consultation" || postFormat == "manual" ) {
     fieldSetPostImagesAndVideos.hidden = true;
   }
-  if (postFormat == "format/page" || postFormat == "format/topics" ) {
+  if (postFormat == "page" || postFormat == "topics" ) {
     fieldSetPostAuthor.hidden = true;
   }
-  if (postFormat != "format/event") {
+  if (postFormat != "event") {
     fieldSetPostEvent.hidden = true;
   }
-  if (postFormat != "format/consultation") {
+  if (postFormat != "consultation") {
     fieldSetPostConsultation.hidden = true;
   }
 }
@@ -158,7 +158,7 @@ function generateJekyllPostContent() {
   if (postVideoURL != "") {
     jekyllpost += "video: \"" + postVideoURL + "\"\n";
   }
-  if (postFormat == "format/event") {
+  if (postFormat == "event") {
     jekyllpost += "event-date: " + postEventDate + " \# YYYY-MM-DD hh:mm \n";
     if (postEventRegistrationCloseDate != "") {
       jekyllpost += "registration-close-date: " + postEventRegistrationCloseDate + " \# YYYY-MM-DD hh:mm \n";
@@ -174,7 +174,7 @@ function generateJekyllPostContent() {
       jekyllpost += "no-register: \"" + postEventNoRegister + "\"\n";
     }
   }
-  if (postFormat == "format/consultation") {
+  if (postFormat == "consultation") {
     jekyllpost += "consultation-link: \"" + postConsultationURL + "\"\n";
     jekyllpost += "end-date: " + postConsultationEndDate + " \# YYYY-MM-DD \n";
   }
@@ -190,7 +190,7 @@ function generateJekyllPostContent() {
 
   jekyllpost += "---\n\n" // Do not remove – must be present
 
-  if (postFormat == "format/publication") {
+  if (postFormat == "publication") {
     jekyllpost += "<!-- Include the following to generate a Table of Contents -->" + "\n";
     jekyllpost += "* Table of contents will generate here" + "\n";
     jekyllpost += "{:toc}" + "\n";
@@ -202,7 +202,7 @@ function generateJekyllPostContent() {
 
   jekyllpost += document.getElementById("post-body").value;
 
-  if (postFormat == "format/publication") {
+  if (postFormat == "publication") {
     jekyllpost += "\n\n";
     jekyllpost += "<!-- Include this line to process the Markdown and format the content properly -->" + "\n";
     jekyllpost += "</div>" + "\n";

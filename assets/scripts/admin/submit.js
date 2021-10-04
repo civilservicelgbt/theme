@@ -60,7 +60,7 @@ function postInfoToMarkdown() {
 
   postcontent += "---\n" // Do not remove – must be present
 
-  postcontent += "layout: format/post\n";
+  postcontent += "layout: post\n";
   postcontent += "date: " + postPublishDate + " \# YYYY-MM-DD \n";
   postcontent += "title: \"" + postTitle + "\"\n";
   postcontent += "excerpt: \"" + postExcerpt + "\"\n";
@@ -227,7 +227,7 @@ function eventInfoToMarkdown() {
 
   eventcontent += "---\n" // Do not remove – must be present
 
-  eventcontent += "layout: format/event\n";
+  eventcontent += "layout: event\n";
   eventcontent += "date: " + eventPublishDate + " \# YYYY-MM-DD \n";
   eventcontent += "title: \"" + eventTitle + "\"\n";
   eventcontent += "excerpt: \"" + eventExcerpt + "\"\n";
